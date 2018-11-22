@@ -38,6 +38,8 @@
   text-align: left;
 }
 
-.reveal .slides p {
+.reveal .slides p,
+.reveal .slides a,
+.reveal .slides li {
   font-size: .8em;
 }
