@@ -1,4 +1,4 @@
----?color=#C6E8F7
+---?color=#E6F3F9
 
 <h1>JuanMa Garrido</h1>
 <div class="about-me">
@@ -6,7 +6,7 @@
   <small>Frontend Specialist</small> 
 </div> 
 
-+++?color=#C6E8F7
++++?color=#E6F3F9
 
 <ul class="personal">
   <li>@fa[envelope] [JuanMa.Garrido@gmail.com](mailto:JuanMa.Garrido@gmail.com)</li>
