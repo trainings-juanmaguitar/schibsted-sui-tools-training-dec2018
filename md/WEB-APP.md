@@ -37,7 +37,7 @@ npm i -D \
   husky
 ```
 
-
++++
 
 ## Resources
 
