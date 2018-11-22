@@ -37,3 +37,7 @@
 .reveal .slides {
   text-align: left;
 }
+
+.reveal .slides p {
+  font-size: 1em;
+}
