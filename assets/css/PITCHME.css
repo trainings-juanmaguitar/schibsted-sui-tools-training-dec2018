@@ -43,3 +43,7 @@
 .reveal .slides li {
   font-size: .9em !important;
 }
+
+.reveal pre {
+  margin: 0;
+}
