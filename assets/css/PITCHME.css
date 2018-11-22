@@ -41,5 +41,5 @@
 .reveal .slides p,
 .reveal .slides a,
 .reveal .slides li {
-  font-size: .8em;
+  font-size: .8em !important;
 }
