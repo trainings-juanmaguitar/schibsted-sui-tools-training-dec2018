@@ -1,15 +1,15 @@
----?color=#D7CE57
+---?color=#FFD3A2
 
 ##  @emoji[sunny] WEB APP
 
-+++?color=#D7CE57
++++?color=#FFD3A2
 
 This piece of our architecture is in charge of:
 - handling the routing
 - link the domain to the pages & components
 - use components from `sui-components` & `uilib-components`
 
-+++?color=#D7CE57
++++?color=#FFD3A2
 
 ### First Steps
 
@@ -24,7 +24,7 @@ npm init -y
 git init
 ```
 
-+++?color=#D7CE57
++++?color=#FFD3A2
 
 ### First Steps (Install DEV dependendencies)
 
