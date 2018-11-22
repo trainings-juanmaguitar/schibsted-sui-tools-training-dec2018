@@ -4,6 +4,8 @@
 
 Let's start!!
 
----?include=md/common/ABOUT-ME.md&color=linear-gradient(to left, #56ccf2, #2f80ed)
+---?color=linear-gradient(to left, #56ccf2, #2f80ed)
+---?include=md/common/ABOUT-ME.md
 
----?include=md/topics/WEB-APP.md&color=#e49436
+---?color=#e49436
+---?include=md/topics/WEB-APP.md
