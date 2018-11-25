@@ -11,7 +11,7 @@ This piece of our architecture is in charge of:
 
 +++?color=#FFD3A2
 
-### First Steps
+### Project Creation 
 
 Create the folder w/ the proper syntax
 
