@@ -14,6 +14,8 @@ This piece of our architecture is in charge of:
 ### [Project Creation](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/blob/pitchme/docs/WEB-APP.md) 
 
 
++++?color=#FFD3A2
+
 ## Resources
 
 - Boilerplate → https://github.schibsted.io/carlos-villuendas/spa-mock
