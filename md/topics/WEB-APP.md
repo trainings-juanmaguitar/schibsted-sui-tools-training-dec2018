@@ -29,7 +29,7 @@ git init
 
 +++?color=#FFD3A2
 
-### First Steps (Install DEV dependendencies)
+### DEV dependencies
 
 ```
 npm i -D \
@@ -39,6 +39,29 @@ npm i -D \
   @s-ui/mono \
   @s-ui/precommit \
   husky
+```
++++
+
+### DEV dependencies
+
+- [@s-ui/bundler](https://github.com/SUI-Components/sui/tree/master/packages/sui-bundler) → The responsible of handle with our bundling with webpack etc...
+- [@s-ui/ssr](https://github.com/SUI-Components/sui/tree/master/packages/sui-ssr) → The responsible of set our server side rendering server creating our server folder, passing and getting context and more...
+- [@s-ui/lint](https://github.com/SUI-Components/sui/tree/master/packages/sui-lint) → The responsible of handle with our linting
+- [@s-ui/mono](https://github.com/SUI-Components/sui/tree/master/packages/sui-mono) → The one that will handle with our commit and release flow
+- [@s-ui/precommit](https://github.com/SUI-Components/sui/tree/master/packages/sui-precommit) → Pre-commit hook management
+- [husky](https://github.com/typicode/husky#readme) - Git hooks management
+
++++
+
+### PROD dependencies
+
+```
+npm i -S \
+  @s-ui/component-peer-dependencies \
+  @s-ui/hoc \
+  @s-ui/i18n \
+  @s-ui/react-initial-props \
+  isomorphic-fetch
 ```
 
 +++
