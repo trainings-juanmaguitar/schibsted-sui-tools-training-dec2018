@@ -1,4 +1,4 @@
----?border=3px
+---?color=#FFD3A2
 
 ##  @emoji[sunny] WEB APP
 
