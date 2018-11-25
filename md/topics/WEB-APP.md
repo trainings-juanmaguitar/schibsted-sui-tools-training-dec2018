@@ -15,7 +15,10 @@ This piece of our architecture is in charge of:
 
 Create the folder w/ the proper syntax
 
-`frontend-<marketplace>--web-app` → `frontend-mv--web-app`
+```
+frontend-<marketplace>--web-app
+frontend-mv--web-app
+```
 
 Initiate proper repo and npm package
 
