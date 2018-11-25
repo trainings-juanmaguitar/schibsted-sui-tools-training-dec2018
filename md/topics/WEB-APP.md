@@ -40,7 +40,7 @@ npm i -D \
   @s-ui/precommit \
   husky
 ```
-+++
++++?color=#FFD3A2
 
 ### DEV dependencies
 
@@ -51,7 +51,7 @@ npm i -D \
 - [@s-ui/precommit](https://github.com/SUI-Components/sui/tree/master/packages/sui-precommit) → Pre-commit hook management
 - [husky](https://github.com/typicode/husky#readme) - Git hooks management
 
-+++
++++?color=#FFD3A2
 
 ### PROD dependencies
 
@@ -64,7 +64,7 @@ npm i -S \
   isomorphic-fetch
 ```
 
-+++
++++?color=#FFD3A2
 
 ## Resources
 
