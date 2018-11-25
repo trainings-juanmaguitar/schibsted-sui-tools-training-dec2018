@@ -56,13 +56,9 @@ npm i -S \
 ```
 
 - [@s-ui/component-peer-dependencies](https://github.com/SUI-Components/sui/tree/master/packages/sui-component-peer-dependencies) - Peer dependencies of frontend projects at schibsted spain, react, react-dom, react-router, proptypes and more...
-
 - [@s-ui/hoc](https://github.com/SUI-Components/sui/tree/master/packages/sui-hoc) - Provide the context to our component tree
-
 - [@s-ui/i18n](https://github.com/SUI-Components/sui/tree/master/packages/sui-i18n) - The isomorphic way to handle with locales.
-
 - [@s-ui/react-initial-props](https://github.com/SUI-Components/sui/tree/master/packages/sui-react-initial-props) - Provides a way to make our app isomorphic standarizing getInitial props on client and server.
-
 - [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch) - An isomorphic fetcher for node and browserify.
 
 #### 1.3 Scripts
