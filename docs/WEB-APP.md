@@ -1,6 +1,6 @@
 # Web app
 
-This piece of our architecture is in charge of:
+This piece of Schibsted architecture projects is in charge of:
 - managing the routing
 - link the domain to the _pages_ & _components_
 - use components from `sui-components` & `uilib-components`
@@ -108,11 +108,11 @@ This code will be used by both the SPA and the SSR version of the app to _inject
 
  > ⚠️ &nbsp; NOTE: The usage of `<!-- APP -- >` is not trivial it MUST HAVE THIS COMMENT for server side replacement purposes. More info on the [code of the tool](https://github.com/SUI-Components/sui/blob/master/packages/sui-ssr/server/ssr/index.js#L105)
 
-#### 1.6 `contextFactory.js`
+#### 1.6 `contextFactory.js` (isomorfico)
 
-This `contextFactory.js` returns an _async_ function with the elements (most of the times `i18n` and `domain`) we want to inject into the of our app so it's available for or react components. 
+This `contextFactory.js` returns an _async_ function with the elements (most of the times `i18n` and `domain`) we want to inject into the _context_ of our app so it's available in our react components. 
 
-The convention is to return an `async` function _even if they don't implement any async operation_.
+The convention is to return an `async` function, so this function will always return a Promise _even if it doesn't implement any async operation_
 
 ```js
 import domain from '<marketplace-domain-package>'
@@ -120,7 +120,7 @@ import domain from '<marketplace-domain-package>'
 export default async () => ({ domain })
 ```
 
-#### 1.7 `routes.js`
+#### 1.7 `routes.js` (isomorfico)
 
 ```js
 import React from 'react'
@@ -161,7 +161,7 @@ Notice the [webpack dynamic importation](https://webpack.js.org/guides/code-spli
 The method [`loadPage`](https://github.com/SUI-Components/sui/blob/master/packages/sui-react-initial-props/src/loadPage.js) will return a Universal Page (detecting if we're on client or server it will return the proper Page for each case)
 
 
-#### 1.7 `app.js` (client, SPA)
+#### 1.7 `app.js` (no isomorfico → client, SPA)
 
 This is the starting point for our SPA (client version)
 
@@ -187,6 +187,10 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       }
 
       const App = withContext(context)(Router)
+
+      // componente Router le pasamos las rutas via renderProps
+      // renderProps contiene directamente children pasar 
+
       ReactDOM.render(<App {...renderProps} />, document.getElementById('app'))
     }
   )
@@ -216,11 +220,24 @@ const contextFactory = ({ cookies, isClient, pathName, req = {}, userAgent }) =>
 }
 ```
 
-##### 1.7.1 `match` ???
+##### 1.7.2 `match`
 
 [`match`](https://knowbody.github.io/react-router-docs/api/match.html) have the purpose of be a kind of 'middleware' between a user url access and their final page component.
 
-##### 1.7.2 `withContext`
+**`renderProps`**
+```
+{  
+  components: (4) [undefined, ƒ, undefined, ƒ]
+  location: {pathname: "/", search: "", hash: "", state: undefined, action: "POP", …}
+  matchContext: {}
+  params: {}
+  router: {...}
+  routes: (4) [{…}, {…}, {…}, {…}]
+}
+```
+
+
+##### 1.7.3 `withContext`
 
 
  [`withContext`](https://github.com/SUI-Components/sui/blob/master/packages/sui-hoc/src/withContext.js) HOC receives 
@@ -252,6 +269,7 @@ Home.contextTypes = { i18n: PropTypes.object }
 export default Home
 ```
 
+Helmet allows to put things in the header of our page
 
 ## Resources
 
