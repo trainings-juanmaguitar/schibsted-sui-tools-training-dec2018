@@ -1,8 +1,8 @@
----?color=#F0B8C2
+---?color=#fbe6f9
 
 ## RESOURCES
 
-+++?color=#F0B8C2
++++?color=#fbe6f9
 
 ## Coding Live an App w/ Schibsted Tools
 

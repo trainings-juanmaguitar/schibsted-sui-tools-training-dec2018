@@ -1,18 +1,18 @@
----?color=#fbe6f9
+---?color=#C4EAF0
 
 ##  DOMAIN
 
-+++?color=#fbe6f9
++++?color=#C4EAF0
 
 Why?
 > to avoid coupling our frontend solution to our logic
 
-+++?color=#fbe6f9
++++?color=#C4EAF0
 
 [Definition and motivation](../../docs/DOMAIN/1-Definition-and-motivation)
 
 
-+++?color=#fbe6f9
++++?color=#C4EAF0
 
 ## Resources
 
