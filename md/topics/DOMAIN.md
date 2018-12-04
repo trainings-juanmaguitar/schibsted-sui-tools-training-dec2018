@@ -10,7 +10,7 @@
 
 +++?color=#C4EAF0
 
-**Why?**
+**Why?**  
 👉  to avoid coupling our frontend solution to our logic
 
 +++?color=#C4EAF0
