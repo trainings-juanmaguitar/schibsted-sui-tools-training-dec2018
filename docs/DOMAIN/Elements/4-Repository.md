@@ -52,6 +52,27 @@ export default class HTTPSearchRepository extends SearchRepository {
 }
 ```
 
+If we need a fetcher to get data from the outside we should use the [`FetcherFactory`](https://github.com/SUI-Components/sui/tree/master/packages/sui-domain#using-fetcher) provided by `@s-ui/domain`
+
+```js
+import { FetcherFactory } from '@s-ui/domain'
+import UserEntitiesFactory from '../../user/Entities/factory'
+import UserValueObjectsFactory from '../../user/ValueObjects/factory'
+
+import HTTPUserRepository from './HTTPUserRepository'
+
+export default class UserRepositoriesFactory {
+  static hTTPUserRepository = ({config}) =>
+    new HTTPUserRepository({
+      config,
+      fetcher: FetcherFactory.httpFetcher(),
+      userEntityFactory: UserEntitiesFactory.userEntity,
+      emptyUserValueObjectFactory: UserValueObjectsFactory.emptyUserValueObject
+    })
+}
+```
+
+
 A Repository could use:
 
 * Mappers
