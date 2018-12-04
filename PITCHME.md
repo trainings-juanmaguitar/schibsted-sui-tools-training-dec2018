@@ -8,3 +8,4 @@ Let's start!!
 
 ---?include=md/topics/WEB-APP.md
 ---?include=md/topics/DOMAIN.md
+---?include=md/topics/RESOURCES.md
