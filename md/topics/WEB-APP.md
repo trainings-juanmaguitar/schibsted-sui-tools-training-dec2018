@@ -1,6 +1,6 @@
 ---?color=#FFD3A2
 
-##  @emoji[sunny] WEB APP
+##  WEB APP
 
 +++?color=#FFD3A2
 
@@ -23,7 +23,3 @@ This piece of our architecture is in charge of:
 - Examples:
   - https://github.schibsted.io/victor-ribero/frontend-mv--web-app
   - https://github.schibsted.io/david-marin/frontend-mv--web-app
-
-- Coding Live w/ Schibsted Tools
-  - 📺 https://www.youtube.com/watch?v=0Q1p1cXI_64
-  - 🗒 https://github.com/AprendiendoFrontend/wtfront-site

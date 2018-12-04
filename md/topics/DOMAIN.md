@@ -1,29 +1,19 @@
----?color=#FFD3A2
+---?color=#C4EAF0
 
-##  @emoji[sunny] WEB APP
+##  DOMAIN
 
-+++?color=#FFD3A2
++++?color=#C4EAF0
 
-This piece of our architecture is in charge of:
-- handling the routing
-- link the domain to the pages & components
-- use components from `sui-components` & `uilib-components`
+Why?
+> to avoid coupling our frontend solution to our logic
 
-+++?color=#FFD3A2
++++?color=#C4EAF0
 
-[Project Creation step by step](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/blob/pitchme/docs/WEB-APP.md)
+[Definition and motivation](../../docs/DOMAIN/1-Definition-and-motivation)
 
 
-+++?color=#FFD3A2
++++?color=#C4EAF0
 
 ## Resources
 
-- Boilerplate → https://github.schibsted.io/carlos-villuendas/spa-mock
-
-- Examples:
-  - https://github.schibsted.io/victor-ribero/frontend-mv--web-app
-  - https://github.schibsted.io/david-marin/frontend-mv--web-app
-
-- Coding Live w/ Schibsted Tools
-  - 📺 https://www.youtube.com/watch?v=0Q1p1cXI_64
-  - 🗒 https://github.com/AprendiendoFrontend/wtfront-site
+- `@s-ui/domain` → https://github.com/SUI-Components/sui/tree/master/packages/sui-domain
