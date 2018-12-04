@@ -4,13 +4,13 @@
 
 +++?color=#C4EAF0
 
-What?  
+**What?** 
 👉  the logic of our business separated from the code of our interface    
 👉  an SDK for controlling the logic business of our application developed using only pure Javascript    
 
 +++?color=#C4EAF0
 
-Why?
+**Why?**
 👉  to avoid coupling our frontend solution to our logic
 
 +++?color=#C4EAF0
