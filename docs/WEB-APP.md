@@ -67,7 +67,8 @@ Add proper scripts to `package.json`
 "scripts": {
   "co": "sui-mono commit",
   "test": "echo \"Error: no test specified\" && exit 1",
-  "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`"
+  "dev": "sui-bundler dev",
+  "ssr": "sui-bundler build -C && sui-ssr build -C && node server"
 }
 ```
 
@@ -268,6 +269,66 @@ export default Home
 ```
 
 Helmet allows to put things in the header of our page
+
+## 2. Adding offline behavior
+
+We can have an offline version of our app (that will be automatically updated when new versions of the code are detected)
+
+By adding the following config to `package.json`
+
+```
+"sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    ...
+  },
+```
+
+and the following code to our entry point (`app.js`)
+
+```js
+import {register} from '@s-ui/bundler/registerServiceWorker'
+
+register({
+  first: () => window.alert('Content is cached for offline use.'),
+  renovate: () => window.alert('New content is available; please refresh.')
+})();
+```
+
+Check this by:
+- disconecting the WIFI and reloading the page
+- deploying a new version and reload the page (new offline version will be loaded)
+
+## 3. Adding Hot-Module Replacement (HMR)
+
+Be default webpack will use Hot-Module Reloading which means it will load the whole page when a change is detected
+
+We can add Hot-Module Replacement to avoid reloading the whole page, and reload only specific components when changes on them are detected by adding this code...
+
+```js
+if (module.hot) {
+  module.hot.accept('./hello', () => render(require('./hello').default))
+}
+```
+
+## 4. Generating our SSR version
+
+By using `@s-ui/ssr` we can generate a SSR version of our SPA
+
+We can do `yarn ssr` and launch this script we added at the begining
+
+```js
+"ssr": "sui-bundler build -C && sui-ssr build -C && node server"
+```
+
+This script will
+- Generate a `public` folder w/ the static version of the page
+- Generate a `server` folder w/ the backend code to launch the server
+- Launch the `server/index` that will launch the SSR version of the app
+
 
 ## Resources
 
