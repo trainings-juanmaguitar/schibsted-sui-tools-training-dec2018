@@ -84,7 +84,7 @@ NODE_ENV=development node server
 Para hacer deploy de la versión SSR de nuestra app tenemos primero que generar una versión autocontenida con `sui-ssr archive`
 
 ```
-sui-ssr archive > /tmp/server.zip
+sui-ssr archive -C > /tmp/server.zip
 ```
 
 Esto genera un paquete autocontenido (artifactory) que se puede deployar de manera autónoma
