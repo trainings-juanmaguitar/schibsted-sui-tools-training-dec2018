@@ -1,0 +1,61 @@
+{
+  "name": "spa_mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "co": "sui-mono commit",
+    "lint": "sui-lint js --fix && sui-lint sass",
+    "precommit": "sui-precommit run",
+    "build": "sui-bundler build -C",
+    "spa:build": "npm run build && cp -R statics/ public/ && cp public/index.html public/200.html",
+    "spa:dev": "sui-bundler dev",
+    "spa:deploy": "npm run spa:deploy:surge",
+    "spa:deploy:now": "export DATE=`date \"+%Y%m%d-%s\"` && export NODE_ENV=development && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV && npm run spa:build && sui-deploy spa $SUBDOMAIN public --now --public",
+    "spa:deploy:surge": "export DATE=`date \"+%Y%m%d-%s\"` && export NODE_ENV=development && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV && export && npm run spa:build && npx surge --domain https://$SUBDOMAIN.surge.sh/ public",
+    "ssr:build": "npm run spa:build && sui-ssr build -C",
+    "ssr:dev": "npm run ssr:build && node server",
+    "ssr:deploy:now": "export NODE_ENV=development && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV && npm run ssr:build && sui-deploy $SUBDOMAIN server --now --public",
+    "ssr:archive": "npm run ssr:build && cp -R statics/ public/ && cp public/index.html public/200.html && sui-ssr archive -C > /tmp/server-src-$DATE.zip",
+    "ssr:deploy": "npm run ssr:archive && unzip -o /tmp/server-src-$DATE.zip -d /tmp/server-src-$DATE || true && now -n $SUBDOMAIN /tmp/server-src-$DATE",
+    "ssr:deploy:development": "export DATE=`date \"+%Y%m%d-%s\"` && export NODE_ENV=development && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV && npm run ssr:deploy",
+    "ssr:deploy:pr": "export DATE=`date \"+%Y%m%d-%s\"` && export NODE_ENV=development && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV-PR-$TRAVIS_PULL_REQUEST && npm run ssr:deploy",
+    "ssr:deploy:production": "export DATE=`date \"+%Y%m%d-%s\"` && export NODE_ENV=production && export SUBDOMAIN=$DATE-spa-mock-$NODE_ENV && npm run ssr:deploy"
+  },
+  "now": {
+    "engines": {
+      "node": "8.11.2"
+    },
+    "type": "docker"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@s-ui/component-peer-dependencies": "1",
+    "@s-ui/hoc": "1",
+    "@s-ui/i18n": "1",
+    "@s-ui/react-initial-props": "1",
+    "isomorphic-fetch": "2.2.1"
+  },
+  "devDependencies": {
+    "@s-ui/bundler": "3",
+    "@s-ui/deploy": "2",
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "1",
+    "@s-ui/precommit": "2",
+    "@s-ui/ssr": "2",
+    "husky": "0.13.4"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": "@s-ui/mono/src/types"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}

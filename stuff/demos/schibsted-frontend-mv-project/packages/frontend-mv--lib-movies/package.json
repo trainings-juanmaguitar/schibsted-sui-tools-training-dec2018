@@ -1,0 +1,50 @@
+{
+  "name": "frontend-mv--lib-movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "sui-lint js && sui-lint sass",
+    "dev": "npx babel-node src/index.js",
+    "co": "sui-mono commit",
+    "lib": "rm -Rf ./lib && babel ./src -d lib",
+    "test": "NODE_ENV=test npm run test:client && NODE_ENV=test npm run test:server",
+    "test:ci": "NODE_ENV=test ./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test:client": "NODE_ENV=test sui-test browser",
+    "test:client:watch": "NODE_ENV=test sui-test browser --watch",
+    "test:server": "NODE_ENV=test sui-test server",
+    "test:server:watch": "npm run test:server --watch",
+    "prepublish": "npm run lib",
+    "precommit": "sui-precommit run",
+    "commitmsg": "validate-commit-msg"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "1",
+    "@s-ui/precommit": "2",
+    "babel-preset-sui": "^1.10.0",
+    "babel-register": "^6.26.0",
+    "husky": "0.13.4",
+    "mocha": "^5.2.0"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
+  "dependencies": {
+    "@s-ui/domain": "^1.12.0",
+    "@s-ui/mockmock": "1.2.0",
+    "@s-ui/test": "1.14.0",
+    "debug": "^4.1.0",
+    "sinon": "7.1.1"
+  }
+}

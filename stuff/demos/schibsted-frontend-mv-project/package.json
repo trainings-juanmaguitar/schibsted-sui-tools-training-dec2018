@@ -1,0 +1,25 @@
+{
+  "name": "schibsted-frontend-mv-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "phoenix": "sui-mono phoenix",
+    "co": "sui-mono commit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@s-ui/mono": "1"
+  },
+  "config": {
+    "sui-mono": {
+      "access": "public",
+      "packagesFolder": "./packages"
+    },
+    "validate-commit-msg": {
+      "types": "@s-ui/mono/src/types"
+    }
+  }
+}
