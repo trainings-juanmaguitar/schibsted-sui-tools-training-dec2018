@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    font-size: 14px;
+}
+[data-all] {
+    padding: 2px;
+}
+.class #id a > span {
+    color: #fff;
+}
