@@ -1,0 +1,13 @@
+$bgColor: #f0f2f4;
+$fontColor: #333;
+
+.container {
+    display: flex;
+    transform: scale(1);
+    .title {
+        color: $fontColor;
+    }
+    .body {
+        background-color: $bgColor;
+    }
+}
