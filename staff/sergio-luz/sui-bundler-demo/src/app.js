@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 
 import './index.scss'
+import Foo from './foo'
 
 // console.log('hey!')
+Foo()
 
 ReactDOM.render(<App />, document.getElementById('⚛️'))
