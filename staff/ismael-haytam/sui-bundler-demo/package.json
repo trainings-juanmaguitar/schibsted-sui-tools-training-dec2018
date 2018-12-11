@@ -18,7 +18,8 @@
   "devDependencies": {
     "@s-ui/bundler": "^3.29.0",
     "@s-ui/component-peer-dependencies": "^1.5.0",
-    "@s-ui/lint": "^2.20.0"
+    "@s-ui/lint": "^2.20.0",
+    "@s-ui/mono": "^1.39.0"
   },
   "eslintConfig": {
     "extends": [
