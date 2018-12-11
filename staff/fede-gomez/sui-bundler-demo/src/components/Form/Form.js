@@ -18,8 +18,8 @@ class Form extends Component {
     this.setState({[field]: event.target.value})
   }
 
-  emailChangeHandler = event => {
-    this.setState({email: event.target.value})
+  emailChangeHandler = field => event => {
+    this.setState({[field]: event.target.value})
   }
 
   messageChangeHandler = ({value}) => {
@@ -48,7 +48,7 @@ class Form extends Component {
           placeholder="eMail"
           label="Description"
           value={this.state.email}
-          onChange={this.emailChangeHandler}
+          onChange={this.emailChangeHandler('email')}
         />
         <MoleculeTextareaField
           className="inputMessage"

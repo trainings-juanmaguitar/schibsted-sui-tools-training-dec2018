@@ -1,7 +1,10 @@
 import React from 'react'
 import Form from '../Form/Form'
+import foo from '../../foo'
 
 const BASE_CLASS = 'MyApp'
+
+foo()
 
 const App = () => {
   return (
