@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  width: 300px;
+  box-shadow: 1px 1px 10px black;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: grey;
+  color: black;
+  transition: 0.3s;
+  cursor: pointer;
+  overflow: scroll;
+}
+
+.form:hover {
+  background-color: black;
+  color: white;
+}
