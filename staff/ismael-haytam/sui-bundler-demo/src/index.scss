@@ -1,6 +1,20 @@
 @import "~@schibstedspain/sui-atom-button/lib/index.scss";
+@import "~@s-ui/react-molecule-input-field/lib/index.scss";
+@import "~@s-ui/react-molecule-textarea-field/lib/index.scss";
+
+body {
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
 .MyApp {
- background: blue;
- color: white;
+    background: white;
+    width: 600px;
+    height: 80vh;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, .2);
+    padding: 20px;
 }
