@@ -34,29 +34,30 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <MoleculeInputField
-          id="second"
-          placeholder="Insert your name"
-          label="Name"
-          onChange={this.handleNameChange}
-        />
-        <MoleculeInputField
-          className="input"
-          id="second"
-          placeholder="Insert your email"
-          rightAddon="@schibsted.com"
-          label="Email"
-          onChange={this.handleEmailChange}
-        />
-        <MoleculeTextareaField
-          id="description"
-          label="Mensaje"
-          maxChars={500}
-          onChange={this.handleMessageChange}
-        />
-        <Button type="primary">Send</Button>
-      </form>
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
+          <MoleculeInputField
+            id="second"
+            placeholder="Insert your name"
+            label="Name"
+            onChange={this.handleNameChange}
+          />
+          <MoleculeInputField
+            id="second"
+            placeholder="Insert your email"
+            rightAddon="@schibsted.com"
+            label="Email"
+            onChange={this.handleEmailChange}
+          />
+          <MoleculeTextareaField
+            id="description"
+            label="Mensaje"
+            maxChars={500}
+            onChange={this.handleMessageChange}
+          />
+          <Button type="primary">Send</Button>
+        </form>
+      </div>
     )
   }
 }
