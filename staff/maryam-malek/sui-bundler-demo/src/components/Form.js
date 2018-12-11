@@ -31,7 +31,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-container">
         <MoleculeInputField
           id="second"
           placeholder="Insert your name"
@@ -39,7 +39,6 @@ class Form extends Component {
           onChange={this.handleNameChange}
         />
         <MoleculeInputField
-          className="mailInput"
           id="second"
           placeholder="Insert your email"
           rightAddon="@mail.com"

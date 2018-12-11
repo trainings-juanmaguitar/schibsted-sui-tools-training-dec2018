@@ -1,6 +1,7 @@
-@import '~@schibstedspain/sui-atom-button/lib/index.scss';
-@import '~@s-ui/react-molecule-input-field/lib/index.scss';
-@import '~@s-ui/react-molecule-textarea-field/lib/index.scss';
+$fz-atom-textarea: 15px;
+@import '~@schibstedspain/sui-atom-button/lib/index';
+@import '~@s-ui/react-molecule-input-field/lib/index';
+@import '~@s-ui/react-molecule-textarea-field/lib/index';
 
 $background-color: #FFECB3;
 $color: #fff;
@@ -10,23 +11,7 @@ body {
   color: $color;
 }
 
-#second {
-  width: 200px;
-  padding: 0;
-  border-radius: 5px;
-}
-// #second:first-child {
-//   width: 200px;
-//   padding: 0;
-//   border-radius: 5px 0 0 5px;
-// }
-
-#description {
+.form-container {
   width: 450px;
-  padding: 0;
-  border-radius: 5px;
 }
 
-.mailInput {
-  border-radius: 5px 0 0 5px;  
-}
