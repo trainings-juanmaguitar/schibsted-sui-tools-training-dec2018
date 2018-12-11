@@ -14,8 +14,8 @@ class Form extends Component {
     message: ''
   }
 
-  nameChangeHandler = field => ({event}) => {
-    this.setState({field: event.target.value})
+  nameChangeHandler = field => event => {
+    this.setState({[field]: event.target.value})
   }
 
   emailChangeHandler = event => {
@@ -40,7 +40,7 @@ class Form extends Component {
           placeholder="Name"
           label="Description"
           value={this.state.name}
-          onChange={() => this.nameChangeHandler('name')}
+          onChange={this.nameChangeHandler('name')}
         />
         <MoleculeInputField
           className="inputEmail"
@@ -58,7 +58,7 @@ class Form extends Component {
           onChange={this.messageChangeHandler}
         />
 
-        <Button type="Submit" className="button">
+        <Button type="Submit" className="button" size="large">
           Send
         </Button>
       </form>
