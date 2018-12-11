@@ -16,11 +16,12 @@
     "ssr": "sui-bundler build -C && sui-ssr build -C && node server"
   },
   "dependencies": {
-    "@s-ui/component-peer-dependencies": "1"
+    "@s-ui/component-peer-dependencies": "1",
+    "@s-ui/react-initial-props": "1.7.0"
   },
   "devDependencies": {
     "@s-ui/mono": "1",
-    "@s-ui/bundler": "2",
+    "@s-ui/bundler": "3",
     "@s-ui/lint": "2",
     "@s-ui/ssr": "2"
   },

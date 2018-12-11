@@ -5,6 +5,6 @@ import App from './components/App'
 
 export default (
   <Router>
-    <Route component={App} />
+    <Route path="/" component={App} />
   </Router>
 )
