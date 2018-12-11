@@ -1,9 +1,32 @@
 @import '~@schibstedspain/sui-atom-button/lib/index.scss';
+@import '~@s-ui/react-molecule-input-field/lib/index.scss';
+@import '~@s-ui/react-molecule-textarea-field/lib/index.scss';
 
-$background-color: #0700ff;
+$background-color: #FFECB3;
 $color: #fff;
 
 body {
   background: $background-color;
   color: $color;
+}
+
+#second {
+  width: 200px;
+  padding: 0;
+  border-radius: 5px;
+}
+// #second:first-child {
+//   width: 200px;
+//   padding: 0;
+//   border-radius: 5px 0 0 5px;
+// }
+
+#description {
+  width: 450px;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.mailInput {
+  border-radius: 5px 0 0 5px;  
 }
