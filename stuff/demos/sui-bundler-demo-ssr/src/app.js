@@ -2,6 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {AppContainer} from 'react-hot-loader'
+import {register} from '@s-ui/bundler/registerServiceWorker'
 
 import './index.scss'
 
@@ -15,12 +16,10 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
   }
 )
 
-import {register} from '@s-ui/bundler/registerServiceWorker'
-
 register({
   first: () => window.alert('Content is cached for offline use.'),
   renovate: () => window.alert('New content is available; please refresh.')
-})();
+})()
 
 // https://webpack.js.org/guides/hmr-react/#components/sidebar/sidebar.jsx
 const render = Component =>
@@ -34,5 +33,7 @@ const render = Component =>
 render(App)
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => render(require('./components/App').default))
+  module.hot.accept('./components/App', () =>
+    render(require('./components/App').default)
+  )
 }
