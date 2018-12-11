@@ -6,15 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sui-bundler build -C",
-    "start": "sui-bundler dev"
+    "start": "sui-bundler dev",
+    "co": "sui-mono commit"
   },
+  "private": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@s-ui/bundler": "^3.29.0",
-    "@s-ui/component-peer-dependencies": "^1.5.0",
-    "@s-ui/lint": "^2.20.0"
+    "@s-ui/bundler": "3",
+    "@s-ui/component-peer-dependencies": "1",
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "^1.39.0"
   },
   "eslintConfig": {
     "extends": [
