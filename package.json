@@ -1,0 +1,24 @@
+{
+  "name": "schibsted-sui-tools-training",
+  "version": "1.0.0",
+  "description": "https://gitpitch.com/trainings-juanmaguitar/schibsted-sui-tools-training/devel",
+  "main": "index.js",
+  "scripts": {
+    "co": "sui-mono commit",
+    "phoenix": "sui-mono phoenix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/issues"
+  },
+  "homepage": "https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training#readme",
+  "dependencies": {
+    "@s-ui/mono": "1.39.0"
+  }
+}
