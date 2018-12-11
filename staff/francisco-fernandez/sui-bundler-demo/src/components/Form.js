@@ -44,9 +44,6 @@ class Form extends Component {
         <Button label="Submit" onClick={this.handleSubmit}>
           Submit
         </Button>
-        <p>{this.state.name}</p>
-        <p>{this.state.mail}</p>
-        <p>{this.state.message}</p>
       </div>
     )
   }
