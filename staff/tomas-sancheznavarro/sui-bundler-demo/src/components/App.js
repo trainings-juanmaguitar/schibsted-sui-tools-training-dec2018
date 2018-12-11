@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ContactForm from './ContactForm'
 import Button from '@schibstedspain/sui-atom-button'
 
 const BASE_CLASS = 'MyApp'
@@ -11,6 +11,8 @@ const App = () => {
       <Button onClick={() => window.alert('Primary with onClick')}>
         Primary with onClick
       </Button>
+      <h1>Contact Form</h1>
+      <ContactForm />
     </div>
   )
 }
