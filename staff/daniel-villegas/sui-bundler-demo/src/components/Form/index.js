@@ -20,6 +20,7 @@ class Form extends Component {
 
   onChange = ({value}) => {
     const text = value
+
     this.setState({text})
   }
 

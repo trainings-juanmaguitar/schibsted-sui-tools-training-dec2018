@@ -1,5 +1,7 @@
+$fz-atom-textarea: 25px;
+
 @import '~@schibstedspain/sui-atom-button/lib/index.scss';
 @import '~@s-ui/react-molecule-input-field/lib/index.scss';
 @import '~@s-ui/react-molecule-textarea-field/lib/index.scss';
 
-.MyApp { display: flex; justify-content: center; flex-direction: column; align-items: center; color: green; background-color: #000000; font-size: 20px; }
+.MyApp { display: flex; justify-content: center; flex-direction: column; align-items: center; color: rgb(0, 13, 128); background-color: #cacaca; font-size: 20px; }
