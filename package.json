@@ -20,5 +20,16 @@
   "homepage": "https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training#readme",
   "dependencies": {
     "@s-ui/mono": "1.39.0"
+  },
+  "private": true,
+  "config": {
+    "sui-mono": {
+      "access": "public",
+      "packagesFolder": "stuff",
+      "deepLevel": 2
+    },
+    "validate-commit-msg": {
+      "types": "@s-ui/mono/src/types"
+    }
   }
 }
