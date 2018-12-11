@@ -1,3 +1,5 @@
 @import '~@schibstedspain/sui-atom-button/lib/index.scss';
+@import '~@s-ui/react-molecule-input-field/lib/index.scss';
+@import '~@s-ui/react-molecule-textarea-field/lib/index.scss';
 
-.MyApp { color: green; background-color: #000000; font-size: 20px; }
+.MyApp { display: flex; justify-content: center; flex-direction: column; align-items: center; color: green; background-color: #000000; font-size: 20px; }
