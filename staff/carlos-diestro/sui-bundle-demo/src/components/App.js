@@ -1,14 +1,9 @@
 import React from 'react'
 
-import Button from '@schibstedspain/sui-atom-button'
+// import Button from '@schibstedspain/sui-atom-button'
 
-const BASE_CLASS = 'MyApp'
+import FormDemo from './FormDemo'
 
-const App = () => (
-  <div className={BASE_CLASS}>
-    <h1>Hola Mundo</h1>
-    <Button onClick={() => window.alert('hello world')}>Click</Button>
-  </div>
-)
+const App = () => <FormDemo />
 
 export default App
