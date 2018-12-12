@@ -6,7 +6,7 @@
   "scripts": {
     "build": "sui-bundler build -C",
     "start": "sui-bundler dev",
-    "phoenix": "npx rimraf node_modules && npm i --cache-min=999999",
+    "phoenix": "sui-mono phoenix",
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "sui-lint js",
     "lint:sass": "sui-lint sass",
@@ -18,8 +18,9 @@
   },
   "devDependencies": {
     "@s-ui/ssr": "2",
-    "@s-ui/bundler": "2",
-    "@s-ui/lint": "2"
+    "@s-ui/bundler": "3",
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "1"
   },
   "keywords": [],
   "author": "",

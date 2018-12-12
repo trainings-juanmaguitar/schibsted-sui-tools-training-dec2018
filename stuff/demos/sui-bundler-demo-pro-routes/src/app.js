@@ -2,8 +2,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Hello from './hello'
+// import Hello from './hello'
 import AppWithRoutes from './routes'
+
+import {register} from '@s-ui/bundler/registerServiceWorker'
 
 // eslint-next-disable-line
 import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
@@ -12,8 +14,6 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
     foo()
   }
 )
-
-import {register} from '@s-ui/bundler/registerServiceWorker'
 
 register({
   first: () => window.alert('Content is cached for offline use.'),
