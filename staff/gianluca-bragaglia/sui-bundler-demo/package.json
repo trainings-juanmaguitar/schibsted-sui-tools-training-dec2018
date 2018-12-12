@@ -21,6 +21,14 @@
     "@s-ui/lint": "2",
     "@s-ui/mono": "1"
   },
+  "sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    "vendor": ["react", "react-dom"]
+  },
   "eslintConfig": {
     "extends": [
       "./node_modules/@s-ui/lint/eslintrc.js"
