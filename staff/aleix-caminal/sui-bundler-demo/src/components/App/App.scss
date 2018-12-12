@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  padding: 20px;
+  height: 100vh;
+
+  &-title {
+    font-weight: 400;
+    font-size: 40px;
+  }
+}

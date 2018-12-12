@@ -20,7 +20,6 @@
       "./node_modules/@s-ui/lint/eslintrc.js"
     ]
   },
-  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
   "devDependencies": {
     "@s-ui/bundler": "3",
     "@s-ui/component-peer-dependencies": "1",
@@ -28,7 +27,8 @@
     "@s-ui/mono": "1"
   },
   "dependencies": {
-    "@s-ui/react-atom-input": "^2.1.0",
+    "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@s-ui/react-molecule-textarea-field": "^1.2.0",
     "@schibstedspain/sui-atom-button": "^1.22.0"
   }
 }
