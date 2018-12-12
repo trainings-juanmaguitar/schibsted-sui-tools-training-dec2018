@@ -25,7 +25,6 @@ class Form extends Component {
   render() {
     return (
       <section className="form">
-        <h1>Form</h1>
         <Input
           id="name"
           placeholder="Write your name..."
@@ -46,7 +45,7 @@ class Form extends Component {
           onChange={this.handleChangeTextarea('message')}
           label="Message"
         />
-        <Button onClick={this.handleSubmit}>Show Data</Button>
+        <Button onClick={this.handleSubmit}>Send</Button>
       </section>
     )
   }

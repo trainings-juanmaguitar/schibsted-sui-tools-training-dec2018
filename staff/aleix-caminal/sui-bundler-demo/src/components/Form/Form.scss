@@ -7,7 +7,19 @@
   flex-direction: column;
   width: 400px;
 
-  &__input {
-    width: 50%;
+  .sui {
+    &-MoleculeField {
+      margin-bottom: 1rem;
+    }
+
+    &-AtomTextarea {
+      width: -webkit-fill-available;
+      resize: vertical;
+    }
+
+    &-AtomButton {
+      width: 100px;
+      align-self: flex-end;
+    }
   }
 }
