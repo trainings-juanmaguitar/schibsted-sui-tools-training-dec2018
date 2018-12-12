@@ -15,6 +15,10 @@ const loadDetailPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "Detail" */ './pages/Detail')
 )
 
+// A simple code splitting tutorial using react router v3 and webpack
+// https://medium.com/@nahush.farkande/a-simple-code-splitting-tutorial-using-react-router-v3-and-webpack-7a6b1cf58167
+// https://github.com/ReactTraining/react-router/blob/v3/docs/API.md#getcomponentnextstate-callback
+
 export default (
   <Router>
     <Route component={require('./components/App').default}>
