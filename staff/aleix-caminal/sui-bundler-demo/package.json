@@ -1,0 +1,34 @@
+{
+  "name": "sui-bundler-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sui-bundler dev",
+    "build": "sui-bundler build -C",
+    "phoenix": "sui-mono phoenix",
+    "co": "sui-mono commit",
+    "release:check": "sui-mono check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
+  "devDependencies": {
+    "@s-ui/bundler": "3",
+    "@s-ui/component-peer-dependencies": "1",
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "1"
+  },
+  "dependencies": {
+    "@s-ui/react-atom-input": "^2.1.0",
+    "@schibstedspain/sui-atom-button": "^1.22.0"
+  }
+}

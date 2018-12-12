@@ -1,0 +1,31 @@
+@import '~@schibstedspain/sui-atom-button/lib/index.scss';
+
+body {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  padding: 20px;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+
+  &-title {
+    font-weight: 400;
+    font-size: 40px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+    &__input {
+      width: 50%;
+    }
+  }
+}
