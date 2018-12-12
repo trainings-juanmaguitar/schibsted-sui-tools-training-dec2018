@@ -24,10 +24,17 @@
       "./node_modules/@s-ui/lint/eslintrc.js"
     ]
   },
+  "sui-bundler": {
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
   "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
   "dependencies": {
     "@s-ui/react-molecule-input-field": "^2.0.0",
     "@s-ui/react-molecule-textarea-field": "^1.2.0",
-    "@schibstedspain/sui-atom-button": "^1.22.0"
+    "@schibstedspain/sui-atom-button": "^1.22.0",
+    "react-helmet": "5.2.0"
   }
 }
