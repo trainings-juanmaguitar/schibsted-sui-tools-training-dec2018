@@ -1,5 +1,5 @@
 $color-background: #eee;
-$height-navbar: 80px;
+$height-navbar: 60px;
 
 .app {
   display: flex;
@@ -7,8 +7,7 @@ $height-navbar: 80px;
   justify-content: center;
   align-items: center;
   background: $color-background;
-  padding: 20px;
-  min-height: calc(100vh - #{$height-navbar});
+  min-height: 100vh;
 
   &-navbar {
     position: fixed;
