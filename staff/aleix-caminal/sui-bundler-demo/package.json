@@ -20,6 +20,14 @@
       "./node_modules/@s-ui/lint/eslintrc.js"
     ]
   },
+  "sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    "vendor": ["react", "react-dom"]
+  },
   "devDependencies": {
     "@s-ui/bundler": "3",
     "@s-ui/component-peer-dependencies": "1",

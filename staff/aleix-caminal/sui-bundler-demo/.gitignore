@@ -22,10 +22,10 @@ spec/.hash
 
 # dependencies
 /node_modules
+package-lock.json
 
 # production
-/build
-/dist
+/public
 
 # environment
 .env
@@ -34,8 +34,6 @@ spec/.hash
 .env.development.local
 .env.test.local
 .env.production.local
-config.js
 
 # misc
 .DS_Store
-package-lock.json
