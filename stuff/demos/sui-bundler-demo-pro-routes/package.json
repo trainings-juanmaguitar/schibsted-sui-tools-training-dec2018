@@ -26,11 +26,6 @@
   "author": "",
   "license": "ISC",
   "sui-bundler": {
-    "offline": {
-      "whitelist": [
-        "::all::"
-      ]
-    },
     "vendor": [
       "react",
       "react-dom"
