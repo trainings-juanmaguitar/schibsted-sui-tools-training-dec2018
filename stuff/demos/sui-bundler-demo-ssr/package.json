@@ -8,7 +8,7 @@
     "build": "sui-bundler build -C",
     "start": "sui-bundler dev",
     "co": "sui-mono commit",
-    "phoenix": "npx rimraf node_modules && rm package-lock.json && npm i --cache-min=999999",
+    "phoenix": "sui-mono phoenix",
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "sui-lint js",
     "lint:sass": "sui-lint sass",
