@@ -1,11 +1,7 @@
-/* eslint-disable */
-
 import React from 'react'
-
 import Route from 'react-router/lib/Route'
 import Router from 'react-router/lib/Router'
 import IndexRoute from 'react-router/lib/IndexRoute'
-
 import App from './components/App'
 
 const loadHomePage = async (nextState, cb) => {
@@ -30,7 +26,7 @@ const loadDetailPage = async (nextState, cb) => {
 const Root = (
   <Router>
     <Route component={App}>
-      <Route path='/'>
+      <Route path="/">
         <IndexRoute getComponent={loadHomePage} />
         <Route path="list" getComponent={loadListPage} />
         <Route path="detail" getComponent={loadDetailPage} />
@@ -38,6 +34,5 @@ const Root = (
     </Route>
   </Router>
 )
-
 
 export default Root
