@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run prepublish && node app.js",
+    "start": "npm run prepublish && node index.js",
     "prepublish": "babel src --out-dir lib"
   },
   "keywords": [],
@@ -14,11 +14,11 @@
     "@babel/core": "^7.2.0",
     "@babel/node": "^7.2.0",
     "babel-plugin-add-module-exports": "^1.0.0",
-    "babel-preset-sui": "^1.10.0"
+    "babel-preset-sui": "^1.10.0",
+    "@s-ui/lint": "2.20.0"
   },
   "dependencies": {
     "@s-ui/domain": "1.12.0",
-    "@s-ui/lint": "2.20.0"
   },
   "babel": {
     "presets": [
