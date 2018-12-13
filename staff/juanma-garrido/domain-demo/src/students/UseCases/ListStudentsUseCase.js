@@ -1,8 +1,9 @@
 import {UseCase} from '@s-ui/domain'
 
 class ListStudentsUseCase extends UseCase {
-  constructor({repository}) {
+  constructor({config, repository}) {
     super()
+    this._config = config
     this._repository = repository
   }
 
