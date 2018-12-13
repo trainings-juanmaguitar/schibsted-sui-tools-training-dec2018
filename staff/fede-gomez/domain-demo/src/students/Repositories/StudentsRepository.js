@@ -1,9 +1,9 @@
-import { Repository } from "@s-ui/domain";
+import {Repository} from '@s-ui/domain'
 
 class StudentsRepository extends Repository {
   all() {
-    throw new Error("[StudentsRepository#all] mandatory");
+    throw new Error('[StudentsRepository#all] mandatory')
   }
 }
 
-export default StudentsRepository;
+export default StudentsRepository

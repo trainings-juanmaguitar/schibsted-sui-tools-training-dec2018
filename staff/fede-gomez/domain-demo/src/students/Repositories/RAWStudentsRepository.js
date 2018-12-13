@@ -1,26 +1,28 @@
-import StudentsRepository from "./StudentsRepository";
+import StudentsRepository from './StudentsRepository'
 
 class RAWStudentsRepository extends StudentsRepository {
-  constructor({ config }) {
-    super();
-    this._config = config;
+  constructor({config, studentsEntityFactory}) {
+    super()
+    this._config = config
+    this._studentsEntityFactory = studentsEntityFactory
   }
-
-  async all() { //in our "contract" we have agreed that we would return always a Promise, therefore async
+  all() {
     const students = [
       {
-        github: "@anasanjuan",
+        github: '@anasanjuan',
         name: 'anasanjuan',
         alias: ''
       },
       {
-        github: "@b-rage",
+        github: '@b-rage',
         name: 'Gianluca',
         alias: 'b-rage'
       }
-    ];
-    return students;
+    ]
+
+    const studentsEntities = students.map(this._studentsEntityFactory)
+    return Promise.resolve(studentsEntities)
   }
 }
 
-export default RAWStudentsRepository;
+export default RAWStudentsRepository
