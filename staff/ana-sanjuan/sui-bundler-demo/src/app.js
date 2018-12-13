@@ -1,11 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
-import App from './components/App'
+import Router from 'react-router/lib/Router'
+import {browserHistory} from 'react-router'
 
-// import foo from './foo'
+import routes from './routes'
 
-// foo()
+import {register} from '@s-ui/bundler/registerServiceWorker'
+
+register({
+  first: () => window.alert('Content is cached for offline use.'),
+  renovate: () => window.alert('New content is available; please refresh.')
+})()
 
 // eslint-next-disable-line
 import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
@@ -17,4 +23,7 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 
 console.log('hey') //eslint-disable-line
 
-ReactDOM.render(<App />, document.getElementById('⚛️'))
+ReactDOM.render(
+  <Router history={browserHistory} routes={routes} />,
+  document.getElementById('⚛️')
+)

@@ -25,6 +25,14 @@
       "./node_modules/@s-ui/lint/eslintrc.js"
     ]
   },
+  "sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    "vendor": ["react", "react-dom"]
+  },
   "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
   "dependencies": {
     "@s-ui/react-molecule-input-field": "^2.0.0",

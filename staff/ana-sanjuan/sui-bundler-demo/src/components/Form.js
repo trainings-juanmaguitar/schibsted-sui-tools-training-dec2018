@@ -28,7 +28,7 @@ class Form extends Component {
     const {name, email, message} = this.state
 
     window.alert(
-      `${name} with ${email} submitted the following message: ${message}`
+      `${name} with email: ${email} submitted the following message: ${message}`
     )
   }
 
