@@ -1,0 +1,74 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\calvi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\calvi\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\QuickTime\QTSystem;C:\Program Files\Calibre2;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Users\calvi\Anaconda3;C:\Users\calvi\Anaconda3\Library\mingw-w64\bin;C:\Users\calvi\Anaconda3\Library\usr\bin;C:\Users\calvi\Anaconda3\Library\bin;C:\Users\calvi\Anaconda3\Scripts;C:\Users\calvi\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\calvi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\calvi\AppData\Roaming\npm;C:\Program Files\heroku\bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\calvi\Desktop\curso-schibsted\schibsted-sui-tools-training\staff\tomas-sancheznavarro\sui-bundler-demo\package.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at C:\Users\calvi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1136:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\calvi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
+      at C:\Users\calvi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "sui-bundler-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "sui-bundler build -C",
+      "start": "sui-bundler dev",
+      "co": "sui-mono commit",
+      "phoenix": "sui-mono phoenix",
+      "release:check": "sui-mono check"
+    },
+    "private": true,
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@s-ui/bundler": "3",
+      "@s-ui/component-peer-dependencies": "1",
+      "@s-ui/lint": "2",
+      "@s-ui/mono": "1"
+    },
+    "eslintConfig": {
+      "extends": [
+        "./node_modules/@s-ui/lint/eslintrc.js"
+      ]
+    },
+    "sui-bundler": {
+      "vendor": [
+        "react",
+        "react-dom"
+      ],
+      "offline": {
+        "whitelist": ["::all::"]
+    },
+    "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
+    "dependencies": {
+      "@s-ui/react-molecule-input-field": "^2.0.0",
+      "@s-ui/react-molecule-textarea-field": "^1.2.0",
+      "@schibstedspain/sui-atom-button": "^1.22.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
