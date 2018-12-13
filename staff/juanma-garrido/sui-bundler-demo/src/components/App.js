@@ -7,7 +7,7 @@ import Link from 'react-router/lib/Link'
 console.log('App..') // eslint-disable-line
 
 const App = props => {
-  console.log(props, data) // eslint-disable-line
+  console.log(props) // eslint-disable-line
   const {children} = props
   return (
     <div className="App">
