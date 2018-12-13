@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{CKuZ:function(o,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var u=function(o){return o&&o.__esModule?o:{default:o}}(n("Kz1y"));e.default=function(){console.log("this is a foo function!!");var o=(0,u.default)({},{a:1,b:2,c:3},{d:4});console.log(o)}}}]);
