@@ -1,5 +1,3 @@
-
-
 class Movies {
   constructor(getData) {
     this.getData = getData
