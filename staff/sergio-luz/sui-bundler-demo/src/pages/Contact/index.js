@@ -6,7 +6,7 @@ import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 
 const BASE_CLASS = 'MyApp'
 
-class Form extends Component {
+class Contact extends Component {
   state = {
     name: '',
     email: '',
@@ -69,4 +69,4 @@ class Form extends Component {
   }
 }
 
-export default Form
+export default Contact
