@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Domain from '../../domain-demo/src'
 // import App from './components/App'
 import Router from 'react-router/lib/Router'
 import {browserHistory} from 'react-router'
@@ -12,6 +13,13 @@ import './index.scss'
 //   }
 // )
 import {register} from '@s-ui/bundler/registerServiceWorker'
+
+const domain = new Domain()
+
+domain
+  .get('list_students_use_case')
+  .execute()
+  .then(console.log) //eslint-disable-line
 
 register({
   first: () => window.alert('Content is cached for offline use.'),

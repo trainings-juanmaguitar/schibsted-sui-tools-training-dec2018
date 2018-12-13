@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run prepublish && node index.js",
+    "start": "npm run prepublish && node app.js",
     "prepublish": "babel src --out-dir lib"
   },
   "keywords": [],

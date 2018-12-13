@@ -32,5 +32,8 @@
     "validate-commit-msg": {
       "types": "@s-ui/mono/src/types"
     }
+  },
+  "devDependencies": {
+    "@s-ui/bundler": "^3.32.0"
   }
 }
