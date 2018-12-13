@@ -1,7 +1,7 @@
 import StudentEntity from './StudentEntity'
 
-class StudentEntitiesFactory {
+class StudentsEntitiesFactory {
   static studentEntity = student => new StudentEntity(student)
 }
 
-export default StudentEntitiesFactory
+export default StudentsEntitiesFactory

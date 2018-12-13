@@ -1,0 +1,23 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _domain = require('@s-ui/domain');
+
+var _factory = require('./students/UseCases/factory');
+
+var _factory2 = _interopRequireDefault(_factory);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var config = {};
+var useCases = {
+  list_students_use_case: _factory2.default.listStudentsUseCase({ config: config })
+};
+
+var Domain = (0, _domain.EntryPointFactory)({ config: config, useCases: useCases });
+
+exports.default = Domain;
+module.exports = exports.default;
