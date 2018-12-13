@@ -5,8 +5,17 @@ import App from './components/App'
 
 import './index.scss'
 
-import foo from './foo'
+// import foo from './foo'
+// foo()
 
-console.log('Hi!') //eslint-disable-line
+// eslint-next-disable-line
+import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
+  ({default: foo}) => {
+    console.log('loaded async chunk')
+    foo()
+  }
+)
+
+console.log('Hey!') //eslint-disable-line
 
 ReactDOM.render(<App />, document.getElementById('app'))
