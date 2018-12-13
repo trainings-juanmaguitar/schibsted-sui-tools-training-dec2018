@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom'
 import Router from 'react-router/lib/Router'
 import {browserHistory} from 'react-router'
 
-// import Hello from './hello'
 import routes from './routes'
 
 import {register} from '@s-ui/bundler/registerServiceWorker'
