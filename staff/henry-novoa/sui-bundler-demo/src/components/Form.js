@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 import Button from '@schibstedspain/sui-atom-button'
@@ -48,7 +47,6 @@ class Form extends Component {
         <MoleculeTextareaField
           id="description"
           label="Message"
-          errorText="All wrong!"
           onChange={this.handleMessageChange}
         />
         <Button onClick={this.handleSubmit}>Send</Button>
