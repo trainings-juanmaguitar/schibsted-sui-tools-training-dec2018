@@ -1,17 +1,31 @@
 import React from 'react'
-// import Button from '@schibstedspain/sui-atom-button'
-import Form from './Form'
-const BASE_CLASS = 'MyApp'
-const FORM_CLASS = 'MyForm'
+import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
 
-const App = () => (
-  <div className={BASE_CLASS}>
-    <h1>Hola Mundo</h1>
-    {/* <Button onClick={() => window.alert('Primary with onClick')}>
-      Primary with onClick
-    </Button> */}
-    <Form className={FORM_CLASS} />
-  </div>
-)
+import Link from 'react-router/lib/Link'
+
+console.log('App..') // eslint-disable-line
+
+const App = (props, data) => {
+  console.log(props, data) // eslint-disable-line
+  const {children} = props
+  return (
+    <div className="App">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content="Helmet application" />
+        <title>SPA MOCK</title>
+      </Helmet>
+      <nav>
+        <h1>App</h1>
+        <Link to="/">Home</Link>
+        <Link to="/list">List</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+      {children}
+    </div>
+  )
+}
+App.propTypes = {children: PropTypes.element}
 
 export default App
