@@ -2,8 +2,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// import Hello from './hello'
-import AppWithRoutes from './routes'
+import Router from 'react-router/lib/Router'
+import {browserHistory} from 'react-router'
+
+import routes from './routes'
 
 import {register} from '@s-ui/bundler/registerServiceWorker'
 
@@ -20,4 +22,7 @@ register({
   renovate: () => window.alert('New content is available; please refresh.')
 })()
 
-ReactDOM.render(<AppWithRoutes />, document.getElementById('root'))
+ReactDOM.render(
+  <Router history={browserHistory} routes={routes} />,
+  document.getElementById('root')
+)
