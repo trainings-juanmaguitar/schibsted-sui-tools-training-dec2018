@@ -8,7 +8,7 @@ class ListStudentsUseCase extends UseCase {
 
   async execute() {
     const students = await this._repository.all()
-    return students.map( student => student.toJSON())
+    return students.map(student => student.toJSON())
   }
 }
 
