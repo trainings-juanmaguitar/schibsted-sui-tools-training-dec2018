@@ -1,0 +1,39 @@
+# npm package
+.npmrc
+/npm/dist
+/npm/path.txt
+npm-debug.log*
+
+# yarn
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
+
+# Generated API definitions
+electron-api.json
+electron.d.ts
+
+# Spec hash calculation
+spec/.hash
+
+# Eslint
+.eslintignore
+.eslintcache
+
+# dependencies
+/node_modules
+package-lock.json
+
+# production
+/public
+
+# environment
+.env
+.envrc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# misc
+.DS_Store
