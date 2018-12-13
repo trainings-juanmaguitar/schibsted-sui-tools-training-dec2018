@@ -5,6 +5,7 @@ class ListStudentsUseCase extends UseCase {
     super()   
     this._repository =repository
   }
+
   execute() {
     
   }
