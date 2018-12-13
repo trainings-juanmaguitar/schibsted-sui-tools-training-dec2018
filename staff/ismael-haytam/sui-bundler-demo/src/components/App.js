@@ -9,7 +9,7 @@ console.log('App..') // eslint-disable-line
 const App = (props, data) => {
   console.log(props, data) // eslint-disable-line
   const {children} = props
-  const BASE_CLASS = 'MyApp'
+
   return (
     <div className="App">
       <Helmet>
@@ -17,7 +17,7 @@ const App = (props, data) => {
         <meta name="description" content="Helmet application" />
         <title>SPA MOCK</title>
       </Helmet>
-      <nav>
+      <nav className="nav">
         <h1>App</h1>
         <div className="links">
           <Link to="/">Home</Link>
@@ -26,7 +26,7 @@ const App = (props, data) => {
           <Link to="/contact">Contact</Link>
         </div>
       </nav>
-      <div className={BASE_CLASS}>{children}</div>
+      <div>{children}</div>
     </div>
   )
 }
