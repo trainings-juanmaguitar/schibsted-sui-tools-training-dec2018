@@ -16,6 +16,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    "vendor": [
+      "react", "react-dom"
+    ]
+  },
   "devDependencies": {
     "@s-ui/bundler": "^3.29.0",
     "@s-ui/component-peer-dependencies": "^1.5.0",
