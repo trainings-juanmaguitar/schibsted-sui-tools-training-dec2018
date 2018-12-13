@@ -9,7 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
   "dependencies": {
-    "@s-ui/domain": "1"
+    "@s-ui/domain": "1",
+    "@s-ui/lint": "2"
   }
 }

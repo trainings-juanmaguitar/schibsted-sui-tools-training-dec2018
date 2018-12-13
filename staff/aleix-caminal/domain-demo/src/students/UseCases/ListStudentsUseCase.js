@@ -7,9 +7,7 @@ class ListStudentsUseCase extends UseCase {
     this._repository = repository
   }
 
-  execute() {
-
-  }
+  execute() {}
 }
 
 export default ListStudentsUseCase

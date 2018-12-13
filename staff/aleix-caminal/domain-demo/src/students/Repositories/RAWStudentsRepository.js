@@ -2,6 +2,8 @@ import StudentsRepository from './StudentsRepository'
 
 class RAWStudentsRepository extends StudentsRepository {
   constructor({config, studentsEntityFactory}) {
+    super()
+
     this._config = config
     this._studentsEntityFactory = studentsEntityFactory
   }
