@@ -1,10 +1,10 @@
 /* eslint-disable */
 
-import Domain from './src'
+import Domain from './domain'
 
 const domain = new Domain()
 
-console.log("hey!")
+console.log('hey!')
 domain
   .get('list_students_use_case')
   .execute()

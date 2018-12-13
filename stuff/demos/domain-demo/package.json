@@ -4,15 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js"
+    "start": "sui-bundler dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@s-ui/domain": "1.12.0",
-    "@s-ui/lint": "2.20.0",
-    "babel-preset-env": "1.7.0"
+    "@s-ui/lint": "2.20.0"
   },
   "eslintConfig": {
     "extends": [
@@ -23,6 +22,6 @@
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/node": "^7.2.0",
-    "babel-preset-sui": "^1.10.0"
+    "@s-ui/bundler": "^3.32.0"
   }
 }
