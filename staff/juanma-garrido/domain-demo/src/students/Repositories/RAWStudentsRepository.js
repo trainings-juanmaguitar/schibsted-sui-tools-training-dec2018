@@ -18,6 +18,8 @@ class RAWStudentsRepository extends StudentsRepository {
       }
     ]
 
+    return Promise.resolve(students)
+
   }
 
 }
