@@ -1,13 +1,15 @@
-import { UseCase } from '@s-ui/domain'
+import {UseCase} from '@s-ui/domain'
 
 class ListStudentUseCases extends UseCase {
-    constructor(respository) {
-        super()
-        this._repository = repository
-    }
-    execute() {
-        
-    }
+  constructor(config, repository) {
+    super()
+    this._config = config
+    this._repository = repository
+  }
+  async execute() {
+    const students = await this._repository.all()
+    return students.map(student => student.toJSON())
+  }
 }
 
 export default ListStudentUseCases

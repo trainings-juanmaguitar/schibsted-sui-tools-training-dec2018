@@ -9,9 +9,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@s-ui/domain": "1",
-    "@s-ui/lint": "^2.20.0"
+    "@s-ui/lint": "2"
   },
-  "dependencies": {},
-  "description": ""
+  "dependencies": {
+    "@s-ui/domain": "1"
+  },
+  "eslintConfig": {
+    "extends": ["./node_modules/@s-ui/lint/eslintrc.js"]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
 }
