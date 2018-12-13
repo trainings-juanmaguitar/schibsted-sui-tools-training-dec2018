@@ -10,10 +10,7 @@ import {browserHistory} from 'react-router'
 
 import routes from './routes'
 
-register({
-  first: () => window.alert('Content is cached for offline use.'),
-  renovate: () => window.alert('New content is available; please refresh.')
-})()
+import Domain from '../../domain-demo/src'
 
 // import foo from './foo'
 // foo()
@@ -25,6 +22,18 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
     foo()
   }
 )
+
+const domain = new Domain()
+
+domain
+  .get('list_students_use_case')
+  .execute()
+  .then(console.log) // eslint-disable-line
+
+register({
+  first: () => window.alert('Content is cached for offline use.'),
+  renovate: () => window.alert('New content is available; please refresh.')
+})()
 
 console.log('Hey!') // eslint-disable-line
 
