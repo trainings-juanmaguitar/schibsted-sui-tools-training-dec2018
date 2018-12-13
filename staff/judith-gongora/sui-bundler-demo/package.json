@@ -11,6 +11,14 @@
     "phoenix": "sui-mono phoenix",
     "release:check": "sui-mono check"
   },
+  "sui-bundler": {
+    "vendor": ["react", "react-dom"],
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    }
+  },
   "private": true,
   "keywords": [],
   "author": "",
