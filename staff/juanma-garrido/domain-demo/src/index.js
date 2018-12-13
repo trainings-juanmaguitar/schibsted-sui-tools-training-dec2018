@@ -1,8 +1,12 @@
 import {EntryPointFactory} from '@s-ui/domain'
 
-const config = {}
-const useCases = {}
+import StudentsUseCasesFactory from './students/UseCases/factory'
 
-const Domain = EntryPointFactory({ config, useCases })
+const config = {}
+const useCases = {
+  list_students_use_case: StudentsUseCasesFactory.listStudentsUseCase({config})
+}
+
+const Domain = EntryPointFactory({config, useCases})
 
 export default Domain
