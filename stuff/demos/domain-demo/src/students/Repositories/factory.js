@@ -1,13 +1,15 @@
+import {FetcherFactory} from '@s-ui/domain'
 import StudentsEntitiesFactory from '../Entities/factory'
 
-import JSONStudentsRepository from './JSONStudentsRepository'
+import HTTPStudentsRepository from './HTTPStudentsRepository'
 import RAWStudentsRepository from './RAWStudentsRepository'
 
 class StudentsRepositoriesFactory {
-  static jsonStudentsRepository = ({config}) =>
-    new JSONStudentsRepository({
+  static httpStudentsRepository = ({config}) =>
+    new HTTPStudentsRepository({
       config,
-      studentsEntityFactory: StudentsEntitiesFactory.studentEntity
+      studentsEntityFactory: StudentsEntitiesFactory.studentEntity,
+      fetcher: FetcherFactory.httpFetcher({config})
     })
 
   static rawStudentsRepository = ({config}) =>
