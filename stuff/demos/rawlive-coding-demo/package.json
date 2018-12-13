@@ -1,0 +1,29 @@
+{
+  "name": "rawlive-coding-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sui-bundler dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/bundler": "3",
+    "@s-ui/lint": "2"
+  },
+  "dependencies": {
+    "@s-ui/domain": "1",
+    "firebase": "^5.6.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}

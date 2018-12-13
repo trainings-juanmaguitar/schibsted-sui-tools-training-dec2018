@@ -1,0 +1,46 @@
+{
+  "name": "sui-bundler-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sui-bundler build -C",
+    "start": "sui-bundler dev",
+    "phoenix": "npx rimraf node_modules && npm i --cache-min=999999",
+    "lint": "npm run lint:js && npm run lint:sass",
+    "lint:js": "sui-lint js",
+    "lint:sass": "sui-lint sass",
+    "deploy": "npx surge -d https://sui-bundler-demo.surge.sh public",
+    "ssr": "sui-bundler build -C && sui-ssr build -C && node server"
+  },
+  "dependencies": {
+    "domain-demo": "file:../domain-demo",
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
+  },
+  "devDependencies": {
+    "@s-ui/ssr": "2",
+    "@s-ui/bundler": "2",
+    "@s-ui/lint": "2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "sui-bundler": {
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    },
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}

@@ -193,3 +193,9 @@ Poder reconstruir una entidad siempre a partir de su salida del toJSON()
 Lo que sale del `toJSON()` es lo que podría entrar a la factoría para crear exactamente la misma entidad (objeto de dominio)
 
 La salida del `toJSON` no es la entrada del constructor → es la entrada de la factoria (es la factoria la que se encarga siempre de crear los objetos)
+
+Ejemplos:
+
+- Domain → https://github.com/carlosvillu/UABTexthandler/blob/master/src/domain
+- Entidad con metodos propios  → https://github.com/carlosvillu/UABTexthandler/blob/master/src/domain/texts/Entities/TextEntity.js
+- Uso de entidad con metodo propio → https://github.com/carlosvillu/UABTexthandler/blob/4319285544efab492814db9b9fd6d50486e3a3db/src/domain/texts/Repositories/FireBaseTextsRepository.js#L46
