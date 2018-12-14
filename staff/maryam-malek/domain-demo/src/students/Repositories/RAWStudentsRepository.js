@@ -6,8 +6,7 @@ class RAWStudentsRepository extends StudentsRepository {
     this._config = config
     this._studentsEntityFactory = studentsEntityFactory
   }
-
-  all() {
+  async all() {
     const students = [
       {
         id: 1,
@@ -23,7 +22,7 @@ class RAWStudentsRepository extends StudentsRepository {
       }
     ]
 
-    return Promise.resolve(students.map(this._studentsEntityFactory))
+    return students.map(this._studentsEntityFactory)
   }
 }
 
