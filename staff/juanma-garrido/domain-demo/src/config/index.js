@@ -1,6 +1,6 @@
 import base from './base'
 
-export default class Config {
+class Config {
   constructor(deps) {
     this._config = {
       ...base
@@ -16,3 +16,5 @@ export default class Config {
     return this
   }
 }
+
+export default Config

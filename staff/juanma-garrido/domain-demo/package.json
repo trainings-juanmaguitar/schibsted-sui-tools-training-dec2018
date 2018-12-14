@@ -4,9 +4,10 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run prepublish && node demo.js",
-    "prepublish": "npx rimraf lib && babel src --out-dir lib"
+    "demo": "npm run build && node demo.js",
+    "build": "npx rimraf lib && babel src --out-dir lib"
   },
+  "private": true, 
   "keywords": [],
   "author": "",
   "license": "ISC",
