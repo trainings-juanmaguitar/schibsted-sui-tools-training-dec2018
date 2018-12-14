@@ -5,6 +5,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
 import {register} from '@s-ui/bundler/registerServiceWorker'
+import Domain from '../../domain-demo/src'
+
+const domain = new Domain()
+
+domain
+  .get('list_students_use_case')
+  .execute()
+  .then(console.log)
+
 register({
   first: () => window.alert('Content is cached for offline use.'),
   renovate: () => window.alert('New content is available; please refresh.')
