@@ -4,7 +4,9 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run prepublish && node index.js",
+    "start": "npm run lib && npm run demo",
+    "demo": "node demo.js",
+    "lib": "npx rimraf ./lib && babel ./src -d lib",
     "prepublish": "babel src --out-dir lib",
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "sui-lint js",

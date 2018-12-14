@@ -6,22 +6,23 @@ class RAWStudentsRepository extends StudentsRepository {
     this._config = config
     this._studentsEntityFactory = studentsEntityFactory
   }
-  all() {
+  async all() {
     const students = [
       {
+        id: 1,
         github: '@anasanjuan',
         name: 'anasanjuan',
         alias: ''
       },
       {
+        id: 2,
         github: '@b-rage',
         name: 'Gianluca',
         alias: 'b-rage'
       }
     ]
 
-    const studentsEntities = students.map(this._studentsEntityFactory)
-    return Promise.resolve(studentsEntities)
+    return students.map(this._studentsEntityFactory)
   }
 }
 

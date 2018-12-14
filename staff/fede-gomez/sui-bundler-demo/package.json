@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "sui-bundler build -C",
-    "start": "sui-bundler dev",
+    "start": "sui-bundler dev --link-package ../domain-demo",
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "sui-lint js",
     "lint:sass": "sui-lint sass",
@@ -41,6 +41,7 @@
   },
   "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
   "dependencies": {
+    "@s-ui/hoc": "^1.6.0",
     "@s-ui/react-molecule-input-field": "^2.0.0",
     "@s-ui/react-molecule-textarea-field": "^1.2.0",
     "@schibstedspain/sui-atom-button": "^1.22.0",
