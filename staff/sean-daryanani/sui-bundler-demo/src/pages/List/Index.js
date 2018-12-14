@@ -1,7 +1,9 @@
 import React from 'react'
 
-const List = props => {
-  return <p>This is list</p>
-}
+const List = () => (
+  <React.Fragment>
+    <h1>List</h1>
+  </React.Fragment>
+)
 
 export default List
