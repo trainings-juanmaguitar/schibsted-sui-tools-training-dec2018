@@ -1,13 +1,15 @@
-$color-background: #eee;
-$height-navbar: 60px;
+@import '../../index';
+
+$color-navbar-background: #111;
+$color-navbar-text: #fff;
 
 .app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $color-background;
-  min-height: 100vh;
+  margin-top: $height-navbar;
+  min-height: calc(100vh - #{$height-navbar});
 
   &-navbar {
     position: fixed;
@@ -18,6 +20,8 @@ $height-navbar: 60px;
     align-items: center;
     width: 100vw;
     height: $height-navbar;
+    background-color: $color-navbar-background;
+    color: $color-navbar-text;
 
     &__title {
       margin: 0;
@@ -36,7 +40,7 @@ $height-navbar: 60px;
 
     &__item {
       * {
-        color: #000;
+        color: $color-navbar-text;
         text-decoration: none;
 
         &:hover {
