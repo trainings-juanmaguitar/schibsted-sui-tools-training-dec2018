@@ -27,6 +27,11 @@
 
 +++?color=#C4EAF0
 
+- [Resumen sobre DDD. Domain Driven Design](https://github.com/jatubio/5minutos_laravel/wiki/Resumen-sobre-DDD.-Domain-Driven-Design)
+- [Domain Driven Design Slides Talk](https://www.slideshare.net/dodonona/domain-driven-design-29187892)
+
++++?color=#C4EAF0
+
 ## Resources
 
 - `@s-ui/domain` → https://github.com/SUI-Components/sui/tree/master/packages/sui-domain
