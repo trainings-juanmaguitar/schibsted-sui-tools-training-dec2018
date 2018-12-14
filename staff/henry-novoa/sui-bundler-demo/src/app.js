@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import {register} from '@s-ui/bundler/registerServiceWorker'
 import Domain from '../../domain-demo/src'
+import withContext from '@s-ui/hoc/lib/withContext'
+const RouterWithContext = withContext({bootcamp: 'Skylab'})(Router)
 
 const domain = new Domain()
 
@@ -26,6 +28,6 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
   }
 )
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
+  <RouterWithContext history={browserHistory} routes={routes} />,
   document.getElementById('⚛️')
 )

@@ -1,0 +1,74 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\henry\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
+
+PATH: 
+  C:\Users\henry\Desktop\Cmder\bin;C:\Users\henry\Desktop\Cmder\vendor\git-for-windows\cmd;C:\Users\henry\Desktop\Cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\Users\henry\Desktop\Cmder\vendor\conemu-maximus5;C:\Users\henry\Desktop\Cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\henry\AppData\Local\Microsoft\WindowsApps;C:\Users\henry\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\henry\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files (x86)\EaseUS\Todo Backup\bin\x64\;C:\Users\henry\Desktop\Cmder\vendor\git-for-windows\cmd;C:\Users\henry\Desktop\Cmder\vendor\git-for-windows\mingw64;C:\Users\henry\Desktop\Cmder\vendor\git-for-windows\usr\bin;C:\Users\henry\Desktop\Cmder
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: c:\Users\henry\Desktop\sui\schibsted-sui-tools-training\staff\henry-novoa\sui-bundler-demo\package.json: Unexpected token } in JSON at position 375
+      at JSON.parse (<anonymous>)
+      at C:\Users\henry\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1136:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\henry\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
+      at C:\Users\henry\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "sui-bundler-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "sui-bundler build -C",
+      "co": "sui-mono commit",
+      "phoenix": "sui-mono phoenix",
+      "release:check": "sui-mono check",
+      "start": "sui-bundler dev --link-package ../domain-demo",
+    },
+    "private": true,
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@s-ui/bundler": "3",
+      "@s-ui/component-peer-dependencies": "1",
+      "@s-ui/lint": "2",
+      "@s-ui/mono": "^1.39.0"
+    },
+    "eslintConfig": {
+      "extends": [
+        "./node_modules/@s-ui/lint/eslintrc.js"
+      ]
+    },
+    "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml",
+    "dependencies": {
+      "@s-ui/react-molecule-input-field": "^2.0.0",
+      "@s-ui/react-molecule-textarea-field": "^1.2.0",
+      "@schibstedspain/sui-atom-button": "^1.22.0"
+    },
+    "sui-bundler": {
+      "vendor": ["react", "react-dom"],
+      "offline": {
+        "whitelist": [
+          "::all::"
+        ]
+      }
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
