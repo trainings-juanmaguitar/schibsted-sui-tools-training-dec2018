@@ -1,12 +1,12 @@
-import StudentRepository from './StudentRepository'
+import StudentsRepository from './StudentsRepository'
 
-class RAWStudentsRepository extends StudentRepository {
-  constructor({config}) {
+class RAWStudentsRepository extends StudentsRepository {
+  constructor({config, studentsEntityFactory}) {
     super()
     this._config = config
+    this._studentsEntityFactory = studentsEntityFactory
   }
-
-  all() {
+  async all() {
     const students = [
       {
         id: 1,
@@ -21,7 +21,8 @@ class RAWStudentsRepository extends StudentRepository {
         alias: 'b-rage'
       }
     ]
-    return Promise.resolve(students.map(this._studentsEntityFactory))
+
+    return students.map(this._studentsEntityFactory)
   }
 }
 
