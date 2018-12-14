@@ -1,59 +1,61 @@
 import React, {Component} from 'react'
-import Button from '@schibstedspain/sui-atom-button'
+
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
+import Button from '@schibstedspain/sui-atom-button'
 
-export default class Form extends Component {
-  state = {email: '', name: '', message: ''}
-
-  handleEmailChange = e => {
-    const email = e.target.value
-
-    this.setState({email})
+class Form extends Component {
+  state = {
+    name: '',
+    mail: '',
+    message: ''
   }
 
-  handleNameChange = e => {
-    const name = e.target.value
-
-    this.setState({name})
+  onChangeInput = field => (e, {value}) => {
+    this.setState({[field]: value})
   }
 
-  onChange = ({value}) => {
-    const message = value
-    this.setState({message})
+  onChangeTextarea = field => ({value}) => {
+    this.setState({[field]: value})
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-
-    const {name, email, message} = this.state
-
-    window.alert(
-      'name: ' + name + '  email: ' + email + '  message: ' + message
-    )
+  showData = e => {
+    console.log(this.state) // eslint-disable-line
   }
 
   render() {
+    const {onChangeInput, onChangeTextarea, showData} = this
+    const {name, mail, message} = this.state
     return (
       <div>
+        <h1>Form</h1>
+
         <MoleculeInputField
           id="name"
+          placeholder="Write your name..."
           label="Name"
-          onChange={this.handleNameChange}
+          value={name}
+          onChange={onChangeInput('name')}
         />
         <MoleculeInputField
-          id="email"
-          label="Email"
-          onChange={this.handleEmailChange}
+          id="mail"
+          placeholder="Write your mail..."
+          label="Mail"
+          value={mail}
+          onChange={onChangeInput('mail')}
         />
         <MoleculeTextareaField
           id="message"
+          value={message}
+          onChange={onChangeTextarea('message')}
           label="Message"
-          maxChars={500}
-          onChange={this.onChange}
         />
-        <Button onClick={this.handleSubmit}>Send</Button>
+        <Button type="primary" onClick={showData}>
+          Show Data
+        </Button>
       </div>
     )
   }
 }
+
+export default Form

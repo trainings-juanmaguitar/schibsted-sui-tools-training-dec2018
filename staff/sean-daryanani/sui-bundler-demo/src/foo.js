@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export default function Foo() {
   console.log('this is a foo function!!')
   const o1 = {a: 1, b: 2}

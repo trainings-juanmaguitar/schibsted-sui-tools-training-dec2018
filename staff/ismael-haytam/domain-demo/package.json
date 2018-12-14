@@ -1,0 +1,36 @@
+{
+  "name": "domain-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "npm run lib && npm run demo",
+    "demo": "node demo.js",
+    "lib": "npx rimraf ./lib && babel ./src -d lib",
+    "co": "sui-mono commit"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/lint": "2.20.0",
+    "babel-cli": "6.26.0",
+    "babel-preset-sui": "1.5.0",
+    "@s-ui/mono": "^1.39.0"
+  },
+  "dependencies": {
+    "@s-ui/domain": "1.12.0"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}
