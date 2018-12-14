@@ -1,7 +1,11 @@
-@import "~@schibstedspain/sui-atom-button/lib/index";
-@import "~@s-ui/react-molecule-input-field/lib/index";
-@import "~@s-ui/react-molecule-textarea-field/lib/index";
+$fz-atom-textarea: 50px;
 
-body {
-  background-color: rgb(243, 242, 242);
+@import '~@schibstedspain/sui-atom-button/lib/index.scss';
+@import '~@s-ui/react-molecule-input-field/lib/index.scss';
+@import '~@s-ui/react-molecule-textarea-field/lib/index.scss';
+
+.MyApp {
+  background: #eee;
+  height: 100vh;
+  padding: 20px;
 }

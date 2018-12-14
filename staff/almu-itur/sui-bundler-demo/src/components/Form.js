@@ -1,52 +1,58 @@
 import React, {Component} from 'react'
+
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 import Button from '@schibstedspain/sui-atom-button'
 
 class Form extends Component {
-  state = {name: '', email: '', message: ''}
-
-  onSubmitClick = event => {
-    event.preventDefault()
-    window.alert('Click!')
+  state = {
+    name: '',
+    mail: '',
+    message: ''
   }
 
-  handleNameChange = event => {
-    const name = event.target.value
-    this.setState({name})
+  onChangeInput = field => (e, {value}) => {
+    this.setState({[field]: value})
   }
 
-  handleEmailChange = event => {
-    const email = event.target.value
-    this.setState({email})
+  onChangeTextarea = field => ({value}) => {
+    this.setState({[field]: value})
   }
 
-  handleMessageChange = ({value}) => {
-    this.setState({message: value})
+  showData = e => {
+    console.log(this.state) // eslint-disable-line
   }
 
   render() {
+    const {onChangeInput, onChangeTextarea, showData} = this
+    const {name, mail, message} = this.state
     return (
       <div>
+        <h1>Form</h1>
+
         <MoleculeInputField
           id="name"
-          placeholder="Medium Input"
-          label="Your name"
-          onChange={this.handleNameChange}
+          placeholder="Write your name..."
+          label="Name"
+          value={name}
+          onChange={onChangeInput('name')}
         />
         <MoleculeInputField
-          id="email"
-          placeholder="Medium Input"
-          label="Your email"
-          onChange={this.handleEmailChange}
+          id="mail"
+          placeholder="Write your mail..."
+          label="Mail"
+          value={mail}
+          onChange={onChangeInput('mail')}
         />
         <MoleculeTextareaField
           id="message"
+          value={message}
+          onChange={onChangeTextarea('message')}
           label="Message"
-          maxChars={100}
-          onChange={this.handleMessageChange}
         />
-        <Button onClick={this.onSubmitClick}>Submit</Button>
+        <Button type="primary" onClick={showData}>
+          Show Data
+        </Button>
       </div>
     )
   }
