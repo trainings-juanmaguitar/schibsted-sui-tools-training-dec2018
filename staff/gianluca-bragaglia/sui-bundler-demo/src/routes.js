@@ -9,17 +9,17 @@ import IndexRoute from 'react-router/lib/IndexRoute'
 import App from './components/App'
 
 const loadHomePage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Home" */ './components/pages/Home')
+  const component = await import(/* webpackChunkName: "Home" */ './pages/Home')
   cb(null, component.default)
 }
 
 const loadListPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "List" */ './components/pages/List')
+  const component = await import(/* webpackChunkName: "List" */ './pages/List')
   cb(null, component.default)
 }
 
 const loadDetailPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Details" */ './components/pages/Detail')
+  const component = await import(/* webpackChunkName: "Details" */ './pages/Detail')
   cb(null, component.default)
 }
 
@@ -33,7 +33,7 @@ const Root = (
       <Route path='/'>
         <IndexRoute getComponent={loadHomePage} />
         <Route path="list" getComponent={loadListPage} />
-        <Route path="contacts" getComponent={loadDetailPage} />
+        <Route path="detail" getComponent={loadDetailPage} />
       </Route>
     </Route>
   </Router>
