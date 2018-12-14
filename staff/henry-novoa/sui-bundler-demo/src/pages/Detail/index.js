@@ -1,11 +1,9 @@
 import React from 'react'
-import Form from '../../components/Form'
 
-const Detail = () => {
-  return (
-    <div>
-      <Form />
-    </div>
-  )
-}
+const Detail = () => (
+  <React.Fragment>
+    <h1>Details</h1>
+  </React.Fragment>
+)
+
 export default Detail

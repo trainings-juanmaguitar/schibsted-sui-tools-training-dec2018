@@ -1,1 +1,0 @@
-# SUI bundler demo
