@@ -10,4 +10,5 @@ class Home extends Component {
   }
 }
 
+Home.contextTypes = {bootcamp: PropTypes.string}
 export default Home
