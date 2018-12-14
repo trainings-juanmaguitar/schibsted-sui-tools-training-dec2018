@@ -3,10 +3,10 @@ import StudentsRepositoriesFactory from '../Repositories/factory'
 import ListStudentsUseCase from './ListStudentsUseCase'
 
 class StudentsUseCasesFactory {
-  listStudentsUseCase = ({config}) =>
+  static listStudentsUseCase = ({config}) =>
     new ListStudentsUseCase({
       config,
-      repository: StudentsRepositoriesFactory.rawStudentsRepository({config})
+      repository: StudentsRepositoriesFactory.httpStudentsRepository({config})
     })
 }
 
