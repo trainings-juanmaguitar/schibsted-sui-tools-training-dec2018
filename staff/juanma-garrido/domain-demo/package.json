@@ -4,22 +4,27 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run build && node app.js",
-    "build": "sui-bundler build -C"
+    "start": "npm run prepublish && node demo.js",
+    "prepublish": "npx rimraf lib && babel src --out-dir lib"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@s-ui/bundler": "^3.32.0"
+    "@s-ui/lint": "2.20.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "babel-plugin-add-module-exports": "^1.0.0"
   },
   "dependencies": {
-    "@s-ui/domain": "1.12.0",
-    "@s-ui/lint": "2.20.0"
+    "@s-ui/domain": "1.12.0"
   },
   "babel": {
     "presets": [
       "sui"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "eslintConfig": {
