@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import './index.scss'
 import Router from 'react-router/lib/Router'
 import {browserHistory} from 'react-router'
@@ -10,6 +11,19 @@ import routes from './routes'
 // import foo from './foo'
 // foo()
 import {register} from '@s-ui/bundler/registerServiceWorker'
+
+import Domain from '../../domain-demo/src'
+
+import withContext from '@s-ui/hoc/lib/withContext'
+
+const domain = new Domain()
+
+const RouterWithContext = withContext({domain})(Router)
+
+domain
+  .get('list_students_use_case')
+  .execute()
+  .then(console.log) //eslint-disable-line
 
 register({
   first: () => window.alert('Content is cached for offline use.'),
@@ -28,6 +42,6 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 console.log('hey') //eslint-disable-line
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
+  <RouterWithContext history={browserHistory} routes={routes} />,
   document.getElementById('⚛️')
 )
