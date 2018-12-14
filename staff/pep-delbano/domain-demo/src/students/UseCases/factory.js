@@ -1,9 +1,12 @@
+import StudentsRepositoriesFactory from '../Repositories/factory'
+
 import ListStudentsUseCase from './ListStudentsUseCase'
 
 class StudentsUseCasesFactory {
-    ListStudentsUseCase = ({ config }) => 
+  static listStudentsUseCase = ({config}) =>
     new ListStudentsUseCase({
-        config, repository: StudentsRepositoriesFactory.rawStudentsRepository({ config })
+      config,
+      repository: StudentsRepositoriesFactory.httpStudentsRepository({config})
     })
 }
 
