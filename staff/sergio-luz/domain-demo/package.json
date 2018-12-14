@@ -6,7 +6,10 @@
   "scripts": {
     "start": "npm run lib && npm run demo",
     "demo": "node demo.js",
-    "lib": "npx rimraf ./lib && babel ./src -d lib"
+    "lib": "npx rimraf ./lib && babel ./src -d lib",
+    "co": "sui-mono commit",
+    "phoenix": "sui-mono phoenix",
+    "release-check": "sui-mono check"
   },
   "private": true,
   "keywords": [],
@@ -15,7 +18,8 @@
   "devDependencies": {
     "@s-ui/lint": "2.20.0",
     "babel-cli": "6.26.0",
-    "babel-preset-sui": "1.5.0"
+    "babel-preset-sui": "1.5.0",
+    "@s-ui/mono": "1"
   },
   "dependencies": {
     "@s-ui/domain": "1.12.0"
