@@ -32,6 +32,7 @@
     ]
   },
   "dependencies": {
+    "@s-ui/hoc": "1.6.0",
     "@s-ui/react-molecule-input-field": "^2.0.0",
     "@s-ui/react-molecule-textarea-field": "^1.2.0",
     "@schibstedspain/sui-atom-button": "^1.22.0",

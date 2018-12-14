@@ -5,7 +5,7 @@ class StudentsUseCasesFactory {
   static listStudentsUseCase = ({config}) =>
     new ListStudentsUseCase({
       config,
-      repository: StudentsRepositoriesFactory.rawStudentsRepository
+      repository: StudentsRepositoriesFactory.rawStudentsRepository({config})
     })
 }
 
