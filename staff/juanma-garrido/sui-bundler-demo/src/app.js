@@ -10,7 +10,7 @@ import {browserHistory} from 'react-router'
 
 import routes from './routes'
 
-import Domain from '../../domain-demo/src'
+import Domain from '../../domain-demo/lib'
 
 // import foo from './foo'
 // foo()
