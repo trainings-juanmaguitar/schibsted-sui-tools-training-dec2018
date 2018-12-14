@@ -1,34 +1,34 @@
 import React, {Component} from 'react'
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-class Home extends Component {
+class List extends Component {
   state = {
     students: []
   }
+
   async componentDidMount() {
     const {domain} = this.context
     const students = await domain.get('list_students_use_case').execute()
     this.setState({students})
   }
+
   render() {
     const {students} = this.state
     return (
       <React.Fragment>
-        <Helmet>
-          <link rel="canonical" href="http://spa.mock/" />
-        </Helmet>
-        <h1>Home</h1>
+        <h1>List</h1>
         {students.length && (
-          <ul>
-            {students.map((student, i) => <li key={i}>{student.name}</li>)}
-          </ul>
+          <ul>{students.map(student => <li>{student.name}</li>)}</ul>
         )}
       </React.Fragment>
     )
   }
 }
 
-Home.contextTypes = {domain: PropTypes.object}
+// = (props, context) => {
+//   console.log(context) // eslint-disable-line
+// }
 
-export default Home
+List.contextTypes = {domain: PropTypes.object}
+
+export default List
