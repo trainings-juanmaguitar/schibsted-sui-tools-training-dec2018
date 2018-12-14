@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "sui-bundler build -C",
-    "start": "sui-bundler dev",
+    "start": "sui-bundler dev --link-package ../domain-demo",
     "co": "sui-mono commit",
     "phoenix": "sui-mono phoenix",
     "release:check": "sui-mono check"
