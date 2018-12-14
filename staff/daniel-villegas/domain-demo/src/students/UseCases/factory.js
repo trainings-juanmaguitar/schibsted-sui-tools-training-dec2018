@@ -1,12 +1,20 @@
-import ListStudentUseCase from './ListStudentsUseCases'
 import StudentsRepositoriesFactory from '../Repositories/factory'
 
-class ListStudentUseCasesFactory {
-  ListStudentUseCase = ({config}) =>
-    new ListStudentUseCase({
+import ListStudentsUseCase from './ListStudentsUseCase'
+import SearchStudentsByNameUseCase from './SearchStudentsByNameUseCase'
+
+class StudentsUseCasesFactory {
+  static listStudentsUseCase = ({config}) =>
+    new ListStudentsUseCase({
       config,
-      repository: StudentsRepositoriesFactory.rawStudentsRepository({config})
+      repository: StudentsRepositoriesFactory.httpStudentsRepository({config})
+    })
+
+  static searchStudentsByNameUseCase = ({config}) =>
+    new SearchStudentsByNameUseCase({
+      config,
+      repository: StudentsRepositoriesFactory.httpStudentsRepository({config})
     })
 }
 
-export default ListStudentUseCasesFactory
+export default StudentsUseCasesFactory
