@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 import Button from '@schibstedspain/sui-atom-button'
@@ -7,50 +8,52 @@ class Form extends Component {
   state = {
     name: '',
     mail: '',
-    text: ''
+    message: ''
   }
 
-  onChange = ({value}) => {
-    this.setState({value})
+  onChangeInput = field => (e, {value}) => {
+    this.setState({[field]: value})
   }
 
-  onSubmit = ({e}) => {
-    e.preventDefault()
-    this.printData()
+  onChangeTextarea = field => ({value}) => {
+    this.setState({[field]: value})
   }
 
-  printData() {
-    window.alert(
-      `Your name is: ${this.state.name}. Your email is: ${
-        this.state.mail
-      }. Your text is: ${this.state.mail}.`
-    )
+  showData = e => {
+    console.log(this.state) // eslint-disable-line
   }
 
   render() {
+    const {onChangeInput, onChangeTextarea, showData} = this
+    const {name, mail, message} = this.state
     return (
-      <form onSubmit={this.onSubmit}>
+      <div>
+        <h1>Form</h1>
+
         <MoleculeInputField
-          id="input-name"
+          id="name"
+          placeholder="Write your name..."
           label="Name"
-          placeholder="Medium Input"
-          value={this.state.name}
+          value={name}
+          onChange={onChangeInput('name')}
         />
         <MoleculeInputField
-          id="input-mail"
-          placeholder="yourname@mail.com"
-          leftAddon="www."
+          id="mail"
+          placeholder="Write your mail..."
           label="Mail"
-          value={this.state.mail}
+          value={mail}
+          onChange={onChangeInput('mail')}
         />
         <MoleculeTextareaField
-          id="description"
-          label="Description"
-          value={this.state.text}
-          maxChars={250}
+          id="message"
+          value={message}
+          onChange={onChangeTextarea('message')}
+          label="Message"
         />
-        <Button type="submit">Send</Button>
-      </form>
+        <Button type="primary" onClick={showData}>
+          Show Data
+        </Button>
+      </div>
     )
   }
 }
