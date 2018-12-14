@@ -14,5 +14,5 @@ const Home = (props, context) => {
   )
 }
 
-Home.contextTypes = {domain: PropTypes.object}
+Home.contextTypes = {bootcamp: PropTypes.string}
 export default Home

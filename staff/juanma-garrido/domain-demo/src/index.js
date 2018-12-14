@@ -8,7 +8,7 @@ const useCases = {
   list_students_use_case: StudentsUseCasesFactory.listStudentsUseCase({config})
 }
 
-console.log('entry point') // eslint-disable-line
+console.log('IT WORKS!!!!!') // eslint-disable-line
 
 const Domain = EntryPointFactory({config, useCases})
 
