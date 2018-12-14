@@ -9,9 +9,8 @@ class HTTPStudentsRepository extends StudentsRepository {
   }
   async all() {
     const url = this._config.get('URL_JSON_STUDENTS')
-
-    const { data: results } = await this._fetcher.get(url)
-    console.log(results)
+    const {data: results} = await this._fetcher.get(url)
+    console.log(results) // eslint-disable-line
     return results.map(this._studentsEntityFactory)
   }
 }
