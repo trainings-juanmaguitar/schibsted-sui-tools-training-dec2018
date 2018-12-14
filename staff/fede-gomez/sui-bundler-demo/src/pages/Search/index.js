@@ -1,9 +1,9 @@
 import React from 'react'
 
-const List = () => (
+const Search = props => (
   <React.Fragment>
-    <h1>List</h1>
+    <h1>Search</h1>
   </React.Fragment>
 )
 
-export default List
+export default Search

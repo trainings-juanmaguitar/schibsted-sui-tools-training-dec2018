@@ -1,9 +1,9 @@
 import React from 'react'
 
-const List = () => (
+const Detail = () => (
   <React.Fragment>
-    <h1>List</h1>
+    <h1>Details</h1>
   </React.Fragment>
 )
 
-export default List
+export default Detail
