@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import Students from '../../components/Students'
 
 class Home extends Component {
   state = {
@@ -18,15 +19,22 @@ class Home extends Component {
     this.setState({students})
   }
 
+  async handleSearchStudents({target}) {
+    const students = await this.context.domain
+      .get('list_students_use_case')
+      .execute({name: target.value})
+
+    this.setState({students})
+  }
+
   render() {
     return (
       <React.Fragment>
         <h1>Home</h1>
-        {this.state.students &&
-          this.state.students.length > 0 &&
-          this.state.students.map((student, index) => (
-            <p key={index}>{student.name}</p>
-          ))}
+        <Students
+          students={this.state.students}
+          onSearch={this.handleSearchStudents}
+        />
       </React.Fragment>
     )
   }
