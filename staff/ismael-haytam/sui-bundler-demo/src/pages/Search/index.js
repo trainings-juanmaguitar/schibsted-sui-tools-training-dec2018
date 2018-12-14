@@ -2,12 +2,15 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-class Home extends React.Component {
+class Search extends React.Component {
   state = {students: []}
 
   async componentDidMount() {
+    const query = this.props.params.name
     const {domain} = this.context
-    const students = await domain.get('list_students_use_case').execute()
+    const students = await domain
+      .get('list_student_by_name_use_case')
+      .execute({query})
     this.setState({students})
   }
 
@@ -29,6 +32,12 @@ class Home extends React.Component {
   }
 }
 
-Home.contextTypes = {domain: PropTypes.object}
+Search.contextTypes = {domain: PropTypes.object}
 
-export default Home
+Search.propTypes = {
+  params: PropTypes.shape({
+    name: PropTypes.string
+  })
+}
+
+export default Search
