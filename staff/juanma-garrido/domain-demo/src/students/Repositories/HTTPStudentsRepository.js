@@ -7,12 +7,21 @@ class HTTPStudentsRepository extends StudentsRepository {
     this._config = config
     this._studentsEntityFactory = studentsEntityFactory
   }
+
   async all() {
     const url = this._config.get('URL_JSON_STUDENTS')
-
     const {data: results} = await this._fetcher.get(url)
 
     return results.map(this._studentsEntityFactory)
+  }
+
+  async searchByName({query}) {
+    const url = this._config.get('URL_JSON_STUDENTS')
+    const {data: results} = await this._fetcher.get(url)
+
+    return results
+      .filter(({name}) => name.includes(query))
+      .map(this._studentsEntityFactory)
   }
 }
 

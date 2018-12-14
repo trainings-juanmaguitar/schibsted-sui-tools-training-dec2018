@@ -7,7 +7,6 @@ import Link from 'react-router/lib/Link'
 console.log('App..') // eslint-disable-line
 
 const App = props => {
-  console.log(props) // eslint-disable-line
   const {children} = props
   return (
     <div className="App">
@@ -21,6 +20,7 @@ const App = props => {
         <Link to="/">Home</Link>
         <Link to="/list">List</Link>
         <Link to="/detail">Detail</Link>
+        <Link to="/search/ju">Search Results</Link>
       </nav>
       {children}
     </div>
