@@ -1,0 +1,36 @@
+@import '~@s-ui/react-molecule-input-field/lib/index.scss';
+@import '../../index';
+
+.students {
+  width: calc(100vw - 6rem);
+  padding: 0 3rem;
+
+  &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__title {
+        margin: 0;
+        font-size: 22px;
+      }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 -3rem;
+    padding: 0;
+    list-style-type: none;
+
+    &__item {
+      padding: .5rem 4.25rem;
+      line-height: 1.5rem;
+
+      &--odd {
+        background-color: darken($color-background, 4%);
+      }
+    }
+  }
+}

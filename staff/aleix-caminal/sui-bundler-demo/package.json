@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sui-bundler dev",
+    "start": "sui-bundler dev --link-package ../domain-demo",
     "build": "sui-bundler build -C",
     "phoenix": "sui-mono phoenix",
     "co": "sui-mono commit",
@@ -26,17 +26,22 @@
         "::all::"
       ]
     },
-    "vendor": ["react", "react-dom"]
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "dependencies": {
+    "@s-ui/hoc": "1.6.0",
+    "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@s-ui/react-molecule-textarea-field": "^1.2.0",
+    "@schibstedspain/sui-atom-button": "^1.22.0",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "@s-ui/bundler": "3",
     "@s-ui/component-peer-dependencies": "1",
     "@s-ui/lint": "2",
     "@s-ui/mono": "1"
-  },
-  "dependencies": {
-    "@s-ui/react-molecule-input-field": "^2.0.0",
-    "@s-ui/react-molecule-textarea-field": "^1.2.0",
-    "@schibstedspain/sui-atom-button": "^1.22.0"
   }
 }
