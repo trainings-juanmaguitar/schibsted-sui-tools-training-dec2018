@@ -1,30 +1,32 @@
 {
-  "name": "sui-bundler-demo",
+  "name": "sui-bundler-test-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "sui-bundler build -C",
     "start": "sui-bundler dev --link-package ../domain-demo",
-    "co": "sui-mono commit",
     "phoenix": "sui-mono phoenix",
-    "release:check": "sui-mono check"
+    "lint": "npm run lint:js && npm run lint:sass",
+    "lint:js": "sui-lint js",
+    "lint:sass": "sui-lint sass",
+    "deploy": "npx surge -d https://sui-bundler-demo.surge.sh public",
+    "ssr": "sui-bundler build -C && sui-ssr build -C && node server"
+  },
+  "dependencies": {
+    "@s-ui/component-peer-dependencies": "1",
+    "@s-ui/hoc": "1.6.0",
+    "@s-ui/react-initial-props": "1.7.0"
+  },
+  "devDependencies": {
+    "@s-ui/ssr": "2",
+    "@s-ui/bundler": "3",
+    "@s-ui/lint": "2",
+    "@s-ui/mono": "1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@s-ui/react-molecule-input-field": "^2.0.0",
-    "@s-ui/react-molecule-textarea-field": "^1.2.0",
-    "@schibstedspain/sui-atom-button": "^1.22.0",
-    "react-helmet": "5.2.0"
-  },
-  "devDependencies": {
-    "@s-ui/bundler": "3",
-    "@s-ui/component-peer-dependencies": "1",
-    "@s-ui/lint": "2",
-    "@s-ui/mono": "^1.39.0"
-  },
   "sui-bundler": {
     "vendor": [
       "react",
