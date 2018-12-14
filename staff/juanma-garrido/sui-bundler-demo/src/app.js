@@ -11,6 +11,7 @@ import {browserHistory} from 'react-router'
 import routes from './routes'
 
 import Domain from 'domain-demo'
+import withContext from '@s-ui/hoc/lib/withContext'
 
 // import foo from './foo'
 // foo()
@@ -24,11 +25,7 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 )
 
 const domain = new Domain()
-
-domain
-  .get('list_students_use_case')
-  .execute()
-  .then(console.log) // eslint-disable-line
+const RouterWithContext = withContext({domain})(Router)
 
 register({
   first: () => window.alert('Content is cached for offline use.'),
@@ -38,6 +35,6 @@ register({
 console.log('Hey!') // eslint-disable-line
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
+  <RouterWithContext history={browserHistory} routes={routes} />,
   document.getElementById('⚛️')
 )
