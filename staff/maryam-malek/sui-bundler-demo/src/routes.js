@@ -9,17 +9,22 @@ import IndexRoute from 'react-router/lib/IndexRoute'
 import App from './components/App'
 
 const loadHomePage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Home" */ './components/pages/Home')
+  const component = await import(/* webpackChunkName: "Home" */ './pages/Home')
   cb(null, component.default)
 }
 
 const loadListPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "List" */ './components/pages/List')
+  const component = await import(/* webpackChunkName: "List" */ './pages/List')
   cb(null, component.default)
 }
 
 const loadDetailPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Contact" */ './components/pages/Contact')
+  const component = await import(/* webpackChunkName: "Details" */ './pages/Detail')
+  cb(null, component.default)
+}
+
+const loadSearchPage = async (nextState, cb) => {
+  const component = await import(/* webpackChunkName: "Search" */ './pages/Search')
   cb(null, component.default)
 }
 
@@ -33,7 +38,8 @@ const Root = (
       <Route path='/'>
         <IndexRoute getComponent={loadHomePage} />
         <Route path="list" getComponent={loadListPage} />
-        <Route path="contact" getComponent={loadDetailPage} />
+        <Route path="detail" getComponent={loadDetailPage} />
+        <Route path="search" getComponent={loadSearchPage} />
       </Route>
     </Route>
   </Router>
