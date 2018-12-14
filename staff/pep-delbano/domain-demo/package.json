@@ -2,14 +2,36 @@
   "name": "domain-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && node app.js",
+    "build": "babel src --out-dir lib"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-preset-sui": "^1.10.0"
+  },
   "dependencies": {
-    "@s-ui/domain": "1"
-  }
+    "@s-ui/domain": "1.12.0",
+    "@s-ui/lint": "2.20.0"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
 }

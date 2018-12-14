@@ -6,7 +6,10 @@ class ListStudentsUseCase extends UseCase {
     this._repository =repository
   }
 
-  execute() {
-    
+ async execute() {
+    const students = await this._repository.all()
+    return students.map(student => student.toJSON())
   }
 }
+
+export default ListStudentsUseCase
