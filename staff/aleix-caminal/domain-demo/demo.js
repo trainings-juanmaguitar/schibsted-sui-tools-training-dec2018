@@ -1,4 +1,4 @@
-import Domain from './src'
+const Domain = require('./lib')
 
 const domain = new Domain()
 
