@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 
 import Link from 'react-router/lib/Link'
 
-console.log('App..') // eslint-disable-line
-
 const App = (props, data) => {
-  console.log(props, data) // eslint-disable-line
   const {children} = props
 
   return (
