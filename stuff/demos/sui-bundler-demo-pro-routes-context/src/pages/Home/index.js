@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 const Home = (props, context) => {
-  console.log(context)
+  console.log(context) // eslint-disable-line
   return (
     <React.Fragment>
       <Helmet>
@@ -14,5 +14,5 @@ const Home = (props, context) => {
   )
 }
 
-Home.contextTypes = {name: PropTypes.string}
+Home.contextTypes = {domain: PropTypes.object}
 export default Home

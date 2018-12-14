@@ -10,7 +10,7 @@ import routes from './routes'
 import withContext from '@s-ui/hoc/lib/withContext'
 import {register} from '@s-ui/bundler/registerServiceWorker'
 
-import Domain from '../../domain-demo/src'
+import Domain from 'domain-demo'
 
 // eslint-next-disable-line
 import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
@@ -26,7 +26,7 @@ register({
 })()
 
 const domain = new Domain()
-const RouterWithContext = withContext(domain)(Router)
+const RouterWithContext = withContext({domain})(Router)
 
 ReactDOM.render(
   <RouterWithContext history={browserHistory} routes={routes} />,

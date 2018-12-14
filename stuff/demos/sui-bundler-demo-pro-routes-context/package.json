@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "sui-bundler build -C",
-    "start": "sui-bundler dev",
+    "start": "sui-bundler dev --link-package ../domain-demo",
     "phoenix": "sui-mono phoenix",
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "sui-lint js",
