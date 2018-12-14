@@ -5,6 +5,14 @@ import {AppContainer} from 'react-hot-loader'
 
 import Hello from './hello'
 
+import Domain from 'domain-demo'
+const domain = new Domain()
+console.log(domain)
+domain
+  .get('list_students_use_case')
+  .execute()
+  .then(console.log)
+
 // eslint-next-disable-line
 import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
   ({default: foo}) => {
