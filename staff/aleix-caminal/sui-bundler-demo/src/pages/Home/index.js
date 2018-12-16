@@ -29,7 +29,9 @@ class Home extends Component {
     } = props
 
     const students = await this.context.domain
-      .get('search_by_name_students_use_case')
+      .get(
+        query ? 'search_by_name_students_use_case' : 'list_students_use_case'
+      )
       .execute({query})
 
     this.setState({students})
@@ -37,7 +39,7 @@ class Home extends Component {
 
   handleSearchStudents = ({target}) => {
     if (target.value) {
-      this.props.router.push(`/search/${target.value}`)
+      this.props.router.push(`/search/${target.value.toLowerCase()}`)
     } else {
       this.props.router.push('/')
     }
