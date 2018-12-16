@@ -18,8 +18,13 @@ const loadListPage = async (nextState, cb) => {
   cb(null, component.default)
 }
 
-const loadContactPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Contact" */ './pages/Contact')
+const loadDetailPage = async (nextState, cb) => {
+  const component = await import(/* webpackChunkName: "Details" */ './pages/Detail')
+  cb(null, component.default)
+}
+
+const loadSearchPage = async (nextState, cb) => {
+  const component = await import(/* webpackChunkName: "Search" */ './pages/Search')
   cb(null, component.default)
 }
 
@@ -30,13 +35,15 @@ const loadContactPage = async (nextState, cb) => {
 const Root = (
   <Router>
     <Route component={App}>
-      <Route path="/">
+      <Route path='/'>
         <IndexRoute getComponent={loadHomePage} />
         <Route path="list" getComponent={loadListPage} />
-        <Route path="contact" getComponent={loadContactPage} />
+        <Route path="detail" getComponent={loadDetailPage} />
+        <Route path="search" getComponent={loadSearchPage} />
       </Route>
     </Route>
   </Router>
 )
+
 
 export default Root

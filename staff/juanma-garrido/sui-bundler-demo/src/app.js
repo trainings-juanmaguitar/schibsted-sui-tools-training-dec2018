@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import './index.scss'
 
-import {register} from '@s-ui/bundler/registerServiceWorker'
+// import {register} from '@s-ui/bundler/registerServiceWorker'
 
 import Router from 'react-router/lib/Router'
 import {browserHistory} from 'react-router'
@@ -27,10 +27,10 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 const domain = new Domain()
 const RouterWithContext = withContext({domain})(Router)
 
-register({
-  first: () => window.alert('Content is cached for offline use.'),
-  renovate: () => window.alert('New content is available; please refresh.')
-})()
+// register({
+//   first: () => window.alert('Content is cached for offline use.'),
+//   renovate: () => window.alert('New content is available; please refresh.')
+// })()
 
 console.log('Hey!') // eslint-disable-line
 
