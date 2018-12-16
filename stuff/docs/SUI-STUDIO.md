@@ -3,7 +3,7 @@
 To create a custom studio 
 
 ```
-npx @s-ui/studio-create my-studio
+npx @s-ui/studio-create studio-demo
 ```
 
 This will create a folder `my-studio` w/ the following structure of folders
