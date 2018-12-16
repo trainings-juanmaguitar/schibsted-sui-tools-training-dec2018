@@ -30,6 +30,7 @@ const Root = (
         <IndexRoute getComponent={loadHomePage} />
         <Route path="list" getComponent={loadListPage} />
         <Route path="detail" getComponent={loadDetailPage} />
+        <Route path="search/:query" getComponent={loadHomePage} />
       </Route>
     </Route>
   </Router>

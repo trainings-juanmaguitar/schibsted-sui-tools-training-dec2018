@@ -11,6 +11,10 @@ class Home extends Component {
     domain: PropTypes.object
   }
 
+  static propTypes = {
+    router: PropTypes.object
+  }
+
   async componentDidMount() {
     const students = await this.context.domain
       .get('list_students_use_case')
@@ -19,12 +23,24 @@ class Home extends Component {
     this.setState({students})
   }
 
-  async handleSearchStudents({target}) {
+  async componentWillReceiveProps(props) {
+    const {
+      params: {query}
+    } = props
+
     const students = await this.context.domain
-      .get('list_students_use_case')
-      .execute({name: target.value})
+      .get('search_by_name_students_use_case')
+      .execute({query})
 
     this.setState({students})
+  }
+
+  handleSearchStudents = ({target}) => {
+    if (target.value) {
+      this.props.router.push(`/search/${target.value}`)
+    } else {
+      this.props.router.push('/')
+    }
   }
 
   render() {
