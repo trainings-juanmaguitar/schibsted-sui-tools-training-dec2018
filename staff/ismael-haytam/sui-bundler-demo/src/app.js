@@ -8,12 +8,18 @@ import './index.scss'
 
 import routes from './routes'
 
+import withContext from '@s-ui/hoc/lib/withContext'
+import Domain from 'domain-demo'
+
+const domain = new Domain()
+const RouterWithContext = withContext({domain})(Router)
+
 register({
   first: () => window.alert('Content is cached for offline use.'),
   renovate: () => window.alert('New content is available; please refresh.')
 })()
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
+  <RouterWithContext history={browserHistory} routes={routes} />,
   document.getElementById('root')
 )

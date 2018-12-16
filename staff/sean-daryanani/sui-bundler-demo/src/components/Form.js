@@ -1,62 +1,59 @@
 import React, {Component} from 'react'
-// import ReactDOM from 'react-dom'
-import AtomInput from '@s-ui/react-atom-input'
+
+import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 import Button from '@schibstedspain/sui-atom-button'
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
+
 class Form extends Component {
-  state = {name: '', email: '', message: ''}
-
-  onNameChange = event => {
-    event.preventDefault()
-    const name = event.target.value
-    this.setState({name})
+  state = {
+    name: '',
+    mail: '',
+    message: ''
   }
 
-  onEmailChange = event => {
-    event.preventDefault()
-    const email = event.target.value
-    this.setState({email})
+  onChangeInput = field => (e, {value}) => {
+    this.setState({[field]: value})
   }
 
-  onDescriptionChange = ({value}) => {
-    const message = value
-    this.setState({message})
+  onChangeTextarea = field => ({value}) => {
+    this.setState({[field]: value})
   }
 
-  onSubmitForm = event => {
-    event.preventDefault()
-    const {name, email, message} = this.state
-    console.log(name, email, message)
+  showData = e => {
+    console.log(this.state) // eslint-disable-line
   }
 
   render() {
+    const {onChangeInput, onChangeTextarea, showData} = this
+    const {name, mail, message} = this.state
     return (
-      <form onSubmit={this.onSubmitForm}>
-        <AtomInput
-          type="text"
-          className="form__input"
-          name="name"
-          placeholder="name"
-          onChange={this.onNameChange}
-        />
-        <AtomInput
-          type="text"
-          name="email"
-          className="form__input"
-          placeholder="email"
-          onChange={this.onEmailChange}
-        />
+      <div>
+        <h1>Form</h1>
 
-        <MoleculeTextareaField
-          id="description"
-          className="form__input"
-          label="Description"
-          onChange={this.onDescriptionChange}
+        <MoleculeInputField
+          id="name"
+          placeholder="Write your name..."
+          label="Name"
+          value={name}
+          onChange={onChangeInput('name')}
         />
-        <Button>Submit</Button>
-      </form>
+        <MoleculeInputField
+          id="mail"
+          placeholder="Write your mail..."
+          label="Mail"
+          value={mail}
+          onChange={onChangeInput('mail')}
+        />
+        <MoleculeTextareaField
+          id="message"
+          value={message}
+          onChange={onChangeTextarea('message')}
+          label="Message"
+        />
+        <Button type="primary" onClick={showData}>
+          Show Data
+        </Button>
+      </div>
     )
   }
 }

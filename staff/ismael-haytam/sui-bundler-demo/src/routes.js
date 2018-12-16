@@ -24,10 +24,14 @@ const loadDetailPage = async (nextState, cb) => {
 }
 
 const loadContactPage = async (nextState, cb) => {
-    const component = await import(/* webpackChunkName: "Details" */ './pages/Contact')
-    cb(null, component.default)
-  }
-  
+  const component = await import(/* webpackChunkName: "Contact" */ './pages/Contact')
+  cb(null, component.default)
+}
+
+const loadSearchPage = async (nextState, cb) => {
+  const component = await import(/* webpackChunkName: "Search" */ './pages/Search')
+  cb(null, component.default)
+}
 
 // A simple code splitting tutorial using react router v3 and webpack
 // https://medium.com/@nahush.farkande/a-simple-code-splitting-tutorial-using-react-router-v3-and-webpack-7a6b1cf58167
@@ -41,6 +45,7 @@ const Root = (
         <Route path="list" getComponent={loadListPage} />
         <Route path="detail" getComponent={loadDetailPage} />
         <Route path="contact" getComponent={loadContactPage} />
+        <Route path="search/:name" getComponent={loadSearchPage} />
       </Route>
     </Route>
   </Router>
