@@ -1,6 +1,6 @@
 import {UseCase} from '@s-ui/domain'
 
-export default class GetAllMoviesUseCase extends UseCase {
+class GetPopularMoviesUseCase extends UseCase {
   constructor({repository} = {}) {
     super()
     this._repository = repository
@@ -11,3 +11,5 @@ export default class GetAllMoviesUseCase extends UseCase {
     return results.map(movieEntity => movieEntity.toJSON())
   }
 }
+
+export default GetPopularMoviesUseCase

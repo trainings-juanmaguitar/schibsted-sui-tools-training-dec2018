@@ -4,6 +4,8 @@
   "description": "The next block will go over creating the boilerplate that will host the business logic of our application.",
   "main": "./lib/index.js",
   "scripts": {
+    "start": "npm run lib && npm run demo",
+    "demo": "node demo.js",
     "co": "sui-mono commit",
     "lib": "rm -Rf ./lib && babel ./src -d lib",
     "lint": "sui-lint js --fix",
@@ -22,6 +24,9 @@
   "babel": {
     "presets": [
       "sui"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "author": "",
@@ -41,6 +46,7 @@
   "dependencies": {
     "@s-ui/domain": "^1.12.0",
     "@s-ui/js": "^1.17.0",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "babel-plugin-add-module-exports": "^1.0.0"
   }
 }

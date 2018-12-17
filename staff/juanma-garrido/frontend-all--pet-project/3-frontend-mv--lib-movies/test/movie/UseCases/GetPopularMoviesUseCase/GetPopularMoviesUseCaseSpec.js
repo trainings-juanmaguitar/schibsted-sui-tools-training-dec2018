@@ -1,39 +1,41 @@
 import { expect } from 'chai'
 import Movies from '../../../../src'
-import MockedResponses from './MockedResponses'
+import {mockedApiResponse, expectedUseCaseResponse} from './testResponses'
 import { HttpMocker } from '@s-ui/mockmock'
-import baseConfig from '../../../../src/config/base'
+import Config from '../../../../src/config'
 
 describe('GetPopularMoviesUseCaseSpec', () => {
   const moviesAPIMock = new HttpMocker()
   const useCaseName = 'get_popular_movies_use_case'
   const domain = new Movies()
+  const config = new Config()
 
   beforeEach(() => moviesAPIMock.create())
   afterEach(() => moviesAPIMock.restore())
 
   it('GIVEN the useCase THEN it exists', () => {
     const useCase = domain.get(useCaseName)
-
     expect(useCase).to.not.be.undefined
   })
 
   it('GIVEN page=1 THEN we find results', async () => {
-    const expectedResponse = MockedResponses.getPopularMoviesPage1;
-    const mockedPage = 1
+    
+    const apiBaseUrl = config.get('API_BASE_URL')
+    const apiKey = config.get('API_KEY')
 
     moviesAPIMock
-      .httpMock(baseConfig.API_BASE_URL)
+      .httpMock(apiBaseUrl)
       .get(`/movie/popular`)
       .query({
-        api_key: baseConfig.API_KEY,
-        page: mockedPage,
+        api_key: apiKey
       })
-      .reply(expectedResponse, 200)
+      .reply(mockedApiResponse, 200)
 
-    domain
-      .get(useCaseName)
-      .execute({pageNumber: mockedPage})
+    
+    const response = await domain.get(useCaseName).execute()
+    
+    expect(response).to.deep.equal(expectedUseCaseResponse)
+
   })
 
 })

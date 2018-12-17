@@ -14,9 +14,9 @@ class MoviesMapper extends Mapper {
       overview,
       original_language: language,
       release_date: release,
-      poster_path: relativePosterPath
+      posterPath: relativePosterPath
     } = movie
-
+    
     const imageBaseUrl = this._config.get('IMAGE_BASE_URL')
 
     return this._movieEntity({
