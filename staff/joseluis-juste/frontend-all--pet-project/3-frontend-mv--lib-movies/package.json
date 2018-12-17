@@ -1,0 +1,53 @@
+{
+  "name": "3-frontend-mv--lib-movies",
+  "version": "1.0.0",
+  "description": "The next block will go over creating the boilerplate that will host the business logic of our application.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "co": "sui-mono commit",
+    "lint": "sui-lint js --fix",
+    "test": "NODE_ENV=test npm run test:client && NODE_ENV=test npm run test:server",
+    "test:ci": "NODE_ENV=test ./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test:client": "NODE_ENV=test sui-test browser",
+    "test:client:watch": "npm run test:client --watch",
+    "test:server": "NODE_ENV=test sui-test server",
+    "test:server:watch": "npm run test:server --watch",
+    "prepublish": "npm run lib",
+    "commitmsg": "validate-commit-msg",
+    "start": "npm run lib && npm run demo",
+    "demo": "node demo.js",
+    "lib": "npx rimraf ./lib && babel ./src -d lib"
+  },
+  "browser": {
+    "./test/helpers/describers/index.js": "./test/helpers/describers/clientDescribers.js"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/lint": "^2.20.0",
+    "@s-ui/mockmock": "^1.2.0",
+    "@s-ui/mono": "^1.39.0",
+    "@s-ui/precommit": "^2.5.0",
+    "@s-ui/test": "^1.14.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-sui": "^1.10.0",
+    "babelify": "^8.0.0",
+    "husky": "^1.2.1",
+    "validate-commit-msg": "^2.14.0",
+    "babel-plugin-add-module-exports": "^1.0.0"
+  },
+  "dependencies": {
+    "@s-ui/domain": "^1.12.0",
+    "@s-ui/js": "^1.17.0",
+    "axios": "^0.18.0"
+  }
+}
