@@ -13,7 +13,6 @@
     "test:server": "NODE_ENV=test sui-test server",
     "test:server:watch": "npm run test:server --watch",
     "prepublish": "npm run lib",
-    "precommit": "sui-precommit run",
     "commitmsg": "validate-commit-msg",
     "start": "npm run lib && npm run demo",
     "demo": "node demo.js",
