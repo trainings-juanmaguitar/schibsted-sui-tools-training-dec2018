@@ -14,7 +14,7 @@ export default class MoviesUseCasesFactory {
     new GetMovieDetailsByIdUseCase({
       repository: MoviesRepositoriesFactory.httpMoviesRepository({config})
     })
-  
+
   static getPopularMoviesUseCase = ({config}) =>
     new GetPopularMoviesUseCase({
       repository: MoviesRepositoriesFactory.httpMoviesRepository({config})

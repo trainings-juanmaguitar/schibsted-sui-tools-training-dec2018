@@ -48,5 +48,11 @@
     "@s-ui/js": "^1.17.0",
     "axios": "^0.18.0",
     "babel-plugin-add-module-exports": "^1.0.0"
-  }
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
 }

@@ -1,13 +1,12 @@
 import MoviesRepository from './MoviesRepository'
 
 export default class HTTPMoviesRepository extends MoviesRepository {
-  constructor({config, mapper, log, fetcher, movieEntityFactory} = {}) {
+  constructor({config, mapper, log, fetcher} = {}) {
     super()
     this._config = config
     this._log = log
     this._fetcher = fetcher
     this._mapper = mapper
-    this._movieEntityFactory = movieEntityFactory
   }
 
   // all methods of the domain are named → receives an object w/ properties
@@ -35,13 +34,10 @@ export default class HTTPMoviesRepository extends MoviesRepository {
 
     const url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
 
-    console.log(url)
-    console.log(this._fetcher)
-
     const {
       data: {results}
     } = await this._fetcher.get(url)
-    console.log(results)
+
     return results.map(this._mapper.map)
   }
 
