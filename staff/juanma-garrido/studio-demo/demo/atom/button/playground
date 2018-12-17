@@ -1,0 +1,6 @@
+return (
+  <div>
+    <h1>Demo button with text</h1>
+    <AtomButton text="Hi there!"/>
+  </div>
+)

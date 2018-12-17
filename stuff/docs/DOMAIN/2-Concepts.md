@@ -14,7 +14,7 @@ From outside of the domain, only **UseCases** (provided by the **EntryPoint** ) 
 
 ## Building Blocks
 
-The majority of patterns used to compose the domain are based on [Domain Driven Design][ddd-building-blocks].
+The majority of patterns used to compose the domain are based on [Domain Driven Design](https://js-training.now.sh/slides/DomainDrivenDesign.md#/3)
 
 
 
