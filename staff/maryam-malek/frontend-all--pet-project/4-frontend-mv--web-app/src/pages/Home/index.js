@@ -9,7 +9,7 @@ class Home extends Component {
   async componentDidMount() {
     const {domain} = this.context
     const movies = await domain.get('list_popular_movies_use_case').execute()
-    debugger //eslint-disable-line
+    console.log(movies) // eslint-disable-line
     this.setState({movies})
   }
   render() {
@@ -21,7 +21,7 @@ class Home extends Component {
         </Helmet>
         <h1>Home</h1>
         {movies.length && (
-          <ul>{movies.map((movie, i) => <li key={i}>{movie.name}</li>)}</ul>
+          <ul>{movies.map((movie, i) => <li key={i}>{movie.title}</li>)}</ul>
         )}
       </React.Fragment>
     )

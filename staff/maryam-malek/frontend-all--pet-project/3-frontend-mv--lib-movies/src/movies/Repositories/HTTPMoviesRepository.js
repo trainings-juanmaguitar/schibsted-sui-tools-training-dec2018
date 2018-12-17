@@ -10,7 +10,9 @@ class HTTPSMoviesRepository extends MoviesRepository {
   async all() {
     const host = this._config.get('URL_TMDB_API')
     const apiKey = this._config.get('API_KEY')
-    const {results} = await this._fetcher.get(`${host}/movie/popular/${apiKey}`)
+    const {
+      data: {results}
+    } = await this._fetcher.get(`${host}/movie/popular?api_key=${apiKey}`)
     return results.map(this._moviesEntityFactory)
   }
 }
