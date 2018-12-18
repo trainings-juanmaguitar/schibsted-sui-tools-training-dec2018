@@ -4,9 +4,9 @@ import {mockedApiResponse, expectedUseCaseResponse} from './testResponses'
 import {HttpMocker} from '@s-ui/mockmock'
 import Config from '../../../../src/config'
 
-describe('GetPopularMoviesUseCaseSpec', () => {
+describe('SearchMoviesUseCaseSpec', () => {
   const moviesAPIMock = new HttpMocker()
-  const useCaseName = 'get_popular_movies_use_case'
+  const useCaseName = 'search_movies_use_case'
   const domain = new Movies()
   const config = new Config()
 
@@ -22,16 +22,18 @@ describe('GetPopularMoviesUseCaseSpec', () => {
     it('return proper results', async () => {
       const apiBaseUrl = config.get('API_BASE_URL')
       const apiKey = config.get('API_KEY')
+      const query = 'indi'
 
       moviesAPIMock
         .httpMock(apiBaseUrl)
-        .get(`/movie/popular`)
+        .get(`/search/movie`)
         .query({
-          api_key: apiKey
+          api_key: apiKey,
+          query
         })
         .reply(mockedApiResponse, 200)
 
-      const response = await domain.get(useCaseName).execute()
+      const response = await domain.get(useCaseName).execute({query})
 
       expect(response).to.deep.equal(expectedUseCaseResponse)
     })

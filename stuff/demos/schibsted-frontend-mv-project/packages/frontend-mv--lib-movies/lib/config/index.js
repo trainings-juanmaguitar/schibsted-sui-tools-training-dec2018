@@ -86,3 +86,4 @@ var Config = function () {
 }();
 
 exports.default = Config;
+module.exports = exports.default;

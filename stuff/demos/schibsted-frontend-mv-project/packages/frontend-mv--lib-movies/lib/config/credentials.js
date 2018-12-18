@@ -6,3 +6,4 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   API_KEY: 'ba09f3c8c6c830377b422df18cfa833e'
 };
+module.exports = exports.default;
