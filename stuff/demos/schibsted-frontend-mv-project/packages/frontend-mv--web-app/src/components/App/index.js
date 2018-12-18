@@ -13,7 +13,8 @@ const App = ({children}) => (
     </Helmet>
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/list">List</Link>
+      <Link to="/popular">Popular Movies</Link>
+      <Link to="/s/indy">Search Results for 'indy'</Link>
     </nav>
     {children}
   </div>

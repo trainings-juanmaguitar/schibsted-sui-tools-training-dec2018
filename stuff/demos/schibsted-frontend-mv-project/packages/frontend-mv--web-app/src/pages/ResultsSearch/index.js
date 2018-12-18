@@ -2,22 +2,25 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import ListMovies from '../../components/ListMovies'
+import ResultsSearch from '../../components/ResultsSearch'
 
-const List = ({movies, canonical}, {i18n}) => (
+const ResultsSearchPage = ({movies, canonical}, {i18n}) => (
   <React.Fragment>
     <Helmet>
       <link rel="canonical" href={canonical} />
     </Helmet>
     <h1>{i18n.t('LIST_TITLE')}</h1>
-    <ListMovies movies={movies} />
+    <ResultsSearch movies={movies} />
   </React.Fragment>
 )
 
-List.propTypes = {movies: PropTypes.array, canonical: PropTypes.string}
-List.contextTypes = {i18n: PropTypes.object}
-List.renderLoading = () => <h1>Loading...</h1>
-List.getInitialProps = async ({context, routeInfo}) => {
+ResultsSearchPage.propTypes = {
+  movies: PropTypes.array,
+  canonical: PropTypes.string
+}
+ResultsSearchPage.contextTypes = {i18n: PropTypes.object}
+ResultsSearchPage.renderLoading = () => <h1>Loading...</h1>
+ResultsSearchPage.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
   const {
     params: {query}
@@ -31,4 +34,4 @@ List.getInitialProps = async ({context, routeInfo}) => {
   }
 }
 
-export default List
+export default ResultsSearchPage
