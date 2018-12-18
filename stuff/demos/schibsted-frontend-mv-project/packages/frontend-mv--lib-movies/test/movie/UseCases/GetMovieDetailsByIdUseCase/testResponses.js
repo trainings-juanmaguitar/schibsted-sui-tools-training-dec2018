@@ -1,7 +1,7 @@
 const mockedApiResponse = {
   id: 353081,
   original_title: 'Mission: Impossible - Fallout',
-  posterPath: '/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
+  poster_path: '/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
   original_language: 'en',
   overview:
     'When an IMF mission ends badly, the world is faced with dire consequences. As Ethan Hunt takes it upon himself to fulfil his original briefing, the CIA begin to question his loyalty and his motives. The IMF team find themselves in a race against time, hunted by assassins while trying to prevent a global catastrophe.',

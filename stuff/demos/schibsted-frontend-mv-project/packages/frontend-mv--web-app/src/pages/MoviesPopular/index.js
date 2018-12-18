@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import MoviesPopular from '../../components/MoviesPopular'
+import MoviesList from '../../components/MoviesList'
 
 const MoviesPopularPage = ({movies, canonical}, {i18n}) => (
   <React.Fragment>
@@ -10,7 +10,7 @@ const MoviesPopularPage = ({movies, canonical}, {i18n}) => (
       <link rel="canonical" href={canonical} />
     </Helmet>
     <h1>{i18n.t('LIST_TITLE')}</h1>
-    <MoviesPopular movies={movies} />
+    <MoviesList movies={movies} />
   </React.Fragment>
 )
 

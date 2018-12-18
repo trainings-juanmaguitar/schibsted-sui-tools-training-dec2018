@@ -32,7 +32,6 @@ describe('GetPopularMoviesUseCaseSpec', () => {
         .reply(mockedApiResponse, 200)
 
       const response = await domain.get(useCaseName).execute()
-
       expect(response).to.deep.equal(expectedUseCaseResponse)
     })
   })

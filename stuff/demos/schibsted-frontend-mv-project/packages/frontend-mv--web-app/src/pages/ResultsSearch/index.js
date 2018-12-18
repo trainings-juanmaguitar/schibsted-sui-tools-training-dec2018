@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import ResultsSearch from '../../components/ResultsSearch'
+import MoviesList from '../../components/MoviesList'
 
 const ResultsSearchPage = ({movies, canonical}, {i18n}) => (
   <React.Fragment>
@@ -10,7 +10,7 @@ const ResultsSearchPage = ({movies, canonical}, {i18n}) => (
       <link rel="canonical" href={canonical} />
     </Helmet>
     <h1>{i18n.t('LIST_TITLE')}</h1>
-    <ResultsSearch movies={movies} />
+    <MoviesList movies={movies} />
   </React.Fragment>
 )
 

@@ -1,0 +1,11 @@
+.sui-MoviesApp {
+  &-listMovies {
+    width: auto;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  &-cardMedia {
+    height: 100px;
+    padding-top: 56.25%; /* 16:9 */
+  }
+}
