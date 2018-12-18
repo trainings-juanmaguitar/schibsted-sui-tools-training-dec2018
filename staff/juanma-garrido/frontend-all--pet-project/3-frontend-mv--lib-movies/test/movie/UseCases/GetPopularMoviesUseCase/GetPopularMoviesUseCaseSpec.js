@@ -1,10 +1,10 @@
 import {expect} from 'chai'
-import Movies from '../../../../src'
-import {mockedApiResponse, expectedUseCaseResponse} from './testResponses'
 import {HttpMocker} from '@s-ui/mockmock'
+import {mockedApiResponse, expectedUseCaseResponse} from './testResponses'
+import Movies from '../../../../src'
 import Config from '../../../../src/config'
 
-describe('GetPopularMoviesUseCaseSpec', () => {
+describe('SearchMoviesUseCase', () => {
   const moviesAPIMock = new HttpMocker()
   const useCaseName = 'get_popular_movies_use_case'
   const domain = new Movies()
@@ -14,11 +14,11 @@ describe('GetPopularMoviesUseCaseSpec', () => {
   afterEach(() => moviesAPIMock.restore())
 
   it('it exists in the domain', () => {
-    const useCase = domain.get(useCaseName)
-    expect(useCase).to.not.be.undefined
+    const UseCase = domain.get(useCaseName)
+    expect(UseCase).not.to.be.undefined
   })
 
-  describe('execute', () => {
+  describe('"execute" method', () => {
     it('return proper results', async () => {
       const apiBaseUrl = config.get('API_BASE_URL')
       const apiKey = config.get('API_KEY')
