@@ -9,5 +9,5 @@ domain
 
 domain
   .get('search_by_name_movies_use_case')
-  .execute({query:'batman'})
+  .execute({query: 'batman'})
   .then(console.log) // eslint-disable-line

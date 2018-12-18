@@ -11,7 +11,9 @@ class HTTPMoviesRepository extends MoviesRepository {
   async popular() {
     const url = this._config.get('URL_JSON_MOVIES')
     const key = this._config.get('URL_KEY')
-    const {data: {results}} = await this._fetcher.get(`${url}/movie/popular?api_key=${key}`)
+    const {
+      data: {results}
+    } = await this._fetcher.get(`${url}/movie/popular?api_key=${key}`)
 
     return results.map(this._moviesEntityFactory)
   }
@@ -19,10 +21,13 @@ class HTTPMoviesRepository extends MoviesRepository {
   async searchByName({query}) {
     const url = this._config.get('URL_JSON_MOVIES')
     const key = this._config.get('URL_KEY')
-    const {data: {results}} = await this._fetcher.get(`${url}/search/movie?api_key=${key}&query=${query}`)
+    const {
+      data: {results}
+    } = await this._fetcher.get(
+      `${url}/search/movie?api_key=${key}&query=${query}`
+    )
 
     return results.map(this._moviesEntityFactory)
-      
   }
 }
 

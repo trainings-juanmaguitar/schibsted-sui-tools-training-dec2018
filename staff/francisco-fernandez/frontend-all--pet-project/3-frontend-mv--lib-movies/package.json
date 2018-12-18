@@ -49,5 +49,16 @@
     "@s-ui/js": "^1.17.0",
     "axios": "^0.18.0",
     "babel-plugin-add-module-exports": "^1.0.0"
+  },
+  "sui-bundler": {
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
   }
 }
