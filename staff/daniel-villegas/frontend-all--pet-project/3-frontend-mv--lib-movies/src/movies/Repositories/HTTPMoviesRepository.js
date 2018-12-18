@@ -11,9 +11,12 @@ class HTTPMoviesRepository extends MoviesRepository {
     const url = this._config.get('URL_JSON_MOVIES')
     const key = this._config.get('URL_KEY')
 
-    const {data: {results}} = await this._fetcher.get(`${url}/movie/popular?api_key=${key}`)
-    console.log(results.length)
-    console.log(results.map)
+    const {
+      data: {results}
+    } = await this._fetcher.get(`${url}/movie/popular?api_key=${key}`)
+    console.log(results.length)// eslint-disable-line
+
+    console.log(results.map)// eslint-disable-line
     return results.map(this._moviesEntityFactory)
   }
 
@@ -21,7 +24,11 @@ class HTTPMoviesRepository extends MoviesRepository {
     const url = this._config.get('URL_JSON_MOVIES')
     const key = this._config.get('URL_KEY')
 
-    const {data: {results}} = await this._fetcher.get(`${url}/search/movie?api_key=${key}&query=${query}`)
+    const {
+      data: {results}
+    } = await this._fetcher.get(
+      `${url}/search/movie?api_key=${key}&query=${query}`
+    )
 
     return results.map(this._moviesEntityFactory)
   }

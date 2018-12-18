@@ -29,6 +29,22 @@
       "add-module-exports"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sui-bundler": {
+    "vendor": [
+      "react",
+      "react-dom"
+    ],
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    }
+  },
   "author": "dani",
   "license": "ISC",
   "devDependencies": {

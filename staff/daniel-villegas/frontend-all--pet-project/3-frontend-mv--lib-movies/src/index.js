@@ -6,9 +6,7 @@ import Config from './config'
 const config = new Config()
 const useCases = {
   list_movies_use_case: MoviesUseCasesFactory.listMoviesUseCase({config}),
-  search_movies_use_case: MoviesUseCasesFactory.searchMoviesUseCase(
-    {config}
-  )
+  search_movies_use_case: MoviesUseCasesFactory.searchMoviesUseCase({config})
 }
 
 console.log('IT WORKS!!!!!') // eslint-disable-line

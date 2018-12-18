@@ -4,7 +4,10 @@
   "description": "### What is it?",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "co": "sui-mono commit",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "sui-bundler dev",
+    "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +18,22 @@
     "@s-ui/precommit": "^2.5.0",
     "@s-ui/ssr": "^2.11.0",
     "husky": "^1.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sui-bundler": {
+    "vendor": [
+      "react",
+      "react-dom"
+    ],
+    "offline": {
+      "whitelist": [
+        "::all::"
+      ]
+    }
   },
   "dependencies": {
     "@s-ui/component-peer-dependencies": "^1.5.0",
