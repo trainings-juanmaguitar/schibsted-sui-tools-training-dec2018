@@ -1,6 +1,6 @@
 import { UseCase } from "@s-ui/domain";
 
-class GetPopularsUseCase extends UseCase {
+class SearchMoviesUseCase extends UseCase {
     
   constructor({ config, repository }) {
     super();
@@ -8,10 +8,10 @@ class GetPopularsUseCase extends UseCase {
     this._repository = repository;
   }
 
-  async execute(page = 1) {
-    const result = await this._repository.getPopulars(page);
+  async execute(query, page = 1) {
+    const result = await this._repository.searchMovies(query, page);
     return result.toJSON()
   }
 }
 
-export default GetPopularsUseCase;
+export default SearchMoviesUseCase;

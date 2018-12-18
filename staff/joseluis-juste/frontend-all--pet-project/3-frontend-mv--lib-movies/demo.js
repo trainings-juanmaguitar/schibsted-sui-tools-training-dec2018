@@ -3,6 +3,6 @@ const Domain = require('./lib')
 const domain = new Domain()
 
 domain
-  .get('get_populars_use_case')
-  .execute()
-  .then(data) // eslint-disable-line
+  .get('search_movies_use_case')
+  .execute({release:"2018-12-07", title:"spider"})
+  .then(console.log) // eslint-disable-line

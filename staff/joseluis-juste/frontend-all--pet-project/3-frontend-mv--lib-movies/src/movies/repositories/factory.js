@@ -6,7 +6,7 @@ class MoviesRepositoriesFactory {
   static httpMoviesRepository = ({ config }) =>
     new HTTPMoviesRepository({
       config,
-      moviesEntityFactory: MoviesEntitiesFactory.movieEntity,
+      MoviesEntitiesFactory: MoviesEntitiesFactory.movieEntity,
       fetcher: FetcherFactory.httpFetcher({ config })
     });
 }

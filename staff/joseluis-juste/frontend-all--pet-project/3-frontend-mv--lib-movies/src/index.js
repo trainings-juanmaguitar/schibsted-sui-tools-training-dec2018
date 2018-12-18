@@ -1,15 +1,16 @@
-import {EntryPointFactory} from '@s-ui/domain'
+import { EntryPointFactory } from "@s-ui/domain";
+import MoviesUseCasesFactory from "./movies/usecases/factory";
+import Config from "./config";
 
-import MoviesUseCasesFactory from './movies/usecases/factory'
-import Config from './config'
+const config = new Config();
+const useCases = {
+  get_populars_use_case: MoviesUseCasesFactory.getPopularsUseCase({ config }),
+  get_movie_detail_use_case: MoviesUseCasesFactory.getMovieDetailUseCase({ config }),
+  get_latest_movie_use_case: MoviesUseCasesFactory.getLatestMovieUseCase({ config }),
+  search_movies_use_case: MoviesUseCasesFactory.searchMoviesUseCase({ config })
+};
 
-const config = new Config()
-const UseCases = {
-  get_populars_use_case: MoviesUseCasesFactory.getPopularsUseCase({ config })
-}
 
-console.log('IT WORKS!!!!!') // eslint-disable-line
+const Domain = EntryPointFactory({ config, useCases });
 
-const Domain = EntryPointFactory({config, UseCases})
-
-export default Domain
+export default Domain;
