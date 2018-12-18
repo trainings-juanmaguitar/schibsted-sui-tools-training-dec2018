@@ -1,0 +1,26 @@
+{
+  "name": "4-frontend-mv--web-app",
+  "version": "1.0.0",
+  "description": "### What is it?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/bundler": "^3.32.0",
+    "@s-ui/lint": "^2.20.0",
+    "@s-ui/mono": "^1.39.0",
+    "@s-ui/precommit": "^2.5.0",
+    "@s-ui/ssr": "^2.11.0",
+    "husky": "^1.2.1"
+  },
+  "dependencies": {
+    "@s-ui/component-peer-dependencies": "^1.5.0",
+    "@s-ui/hoc": "^1.6.0",
+    "@s-ui/i18n": "^1.5.0",
+    "@s-ui/react-initial-props": "^1.7.0",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
