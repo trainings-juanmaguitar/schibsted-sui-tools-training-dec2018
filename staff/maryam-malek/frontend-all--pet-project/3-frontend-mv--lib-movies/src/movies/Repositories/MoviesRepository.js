@@ -1,7 +1,7 @@
 import {Repository} from '@s-ui/domain'
 
 class MoviesRepository extends Repository {
-  all() {
+  listPopularMovies() {
     throw new Error('[MoviesRepository#all] mandatory')
   }
 }

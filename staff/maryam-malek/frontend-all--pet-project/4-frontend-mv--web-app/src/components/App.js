@@ -11,11 +11,13 @@ const App = props => {
       <Helmet>
         <meta charSet="utf-8" />
         <meta name="description" content="Helmet application" />
-        <title>SPA MOCK</title>
+        <title>MOVIES TMDB</title>
       </Helmet>
       <nav>
-        <h1>App</h1>
-        <Link to="/">Home</Link>
+        <h1>Movies App</h1>
+        <Link to="/popular_movies">Popular Movies</Link>
+        <Link to="/latest_movies">Latest Movies</Link>
+        <Link to="/search">Search</Link>
       </nav>
       {children}
     </div>

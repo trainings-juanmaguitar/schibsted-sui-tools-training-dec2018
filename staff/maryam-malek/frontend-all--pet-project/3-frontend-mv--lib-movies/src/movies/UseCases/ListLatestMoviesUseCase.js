@@ -1,6 +1,6 @@
 import {UseCase} from '@s-ui/domain'
 
-class ListPopularMoviesUseCase extends UseCase {
+class ListLatestMoviesUseCase extends UseCase {
   constructor({config, repository}) {
     super()
     this._config = config
@@ -8,9 +8,9 @@ class ListPopularMoviesUseCase extends UseCase {
   }
 
   async execute() {
-    const movies = await this._repository.listPopularMovies()
+    const movies = await this._repository.listLatestMovies()
     return movies.map(movie => movie.toJSON())
   }
 }
 
-export default ListPopularMoviesUseCase
+export default ListLatestMoviesUseCase

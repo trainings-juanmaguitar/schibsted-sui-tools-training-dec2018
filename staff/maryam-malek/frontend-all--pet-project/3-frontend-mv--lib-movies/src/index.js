@@ -7,10 +7,17 @@ const config = new Config()
 const useCases = {
   list_popular_movies_use_case: MoviesUseCasesFactory.listPopularMoviesUseCase({
     config
+  }),
+  list_latest_movies_use_case: MoviesUseCasesFactory.listLatestMoviesUseCase({
+    config
+  }),
+  search_movies_use_case: MoviesUseCasesFactory.searchMoviesUseCase({
+    config
+  }),
+  get_movie_details_use_case: MoviesUseCasesFactory.getMovieDetailsUseCase({
+    config
   })
 }
-
-console.log('IT WORKS!!!!!') // eslint-disable-line
 
 const Domain = EntryPointFactory({config, useCases})
 
