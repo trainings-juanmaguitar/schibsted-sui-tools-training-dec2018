@@ -48,8 +48,6 @@ export default class HTTPMoviesRepository extends MoviesRepository {
 
     const url = `${host}/movie/${idMovie}?api_key=${apiKey}`
 
-
-    console.log(url)
     const {data: result} = await this._fetcher.get(url)
     return this._mapper.map(result)
   }

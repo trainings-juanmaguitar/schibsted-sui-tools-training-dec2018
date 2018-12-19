@@ -13,12 +13,13 @@ class Home extends Component {
   }
   render() {
     const {movies} = this.state
+    const {i18n} = this.context
     return (
       <React.Fragment>
         <Helmet>
           <link rel="canonical" href="http://spa.mock/" />
         </Helmet>
-        <h1>Home</h1>
+        <h1>{i18n.t('HOME_TITLE')}</h1>
         {movies.length && (
           <ul>{movies.map((movie, i) => <li key={i}>{movie.title}</li>)}</ul>
         )}
@@ -27,6 +28,6 @@ class Home extends Component {
   }
 }
 
-Home.contextTypes = {domain: PropTypes.object}
+Home.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
 
 export default Home
