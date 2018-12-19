@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -15,7 +17,7 @@ contextFactory(createClientContextFactoryParams()).then(context => {
     {routes, history: browserHistory},
     (err, redirectLocation, renderProps) => {
       if (err) {
-        console.error(err) // @es-lint disable
+        console.error(err) // eslint-disable-line
       }
 
       const App = withContext(context)(Router)
