@@ -8,11 +8,16 @@ import contextFactory from './contextFactory'
 const loadHomePage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "Home" */ './pages/Home')
 )
-const loadListPage = loadPage(contextFactory, () =>
-  import(/* webpackChunkName: "List" */ './pages/List')
+const loadMoviesPopularPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "MoviesPopular" */ './pages/MoviesPopular')
 )
-const loadDetailPage = loadPage(contextFactory, () =>
-  import(/* webpackChunkName: "Detail" */ './pages/Detail')
+
+const loadResultsSearchPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "ResultsSearch" */ './pages/ResultsSearch')
+)
+
+const loadMovieDetailsPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "MovieDetails" */ './pages/MovieDetails')
 )
 
 // A simple code splitting tutorial using react router v3 and webpack
@@ -24,8 +29,9 @@ export default (
     <Route component={require('./components/App').default}>
       <Route path="/">
         <IndexRoute getComponent={loadHomePage} />
-        <Route path="list(/:query)" getComponent={loadListPage} />
-        <Route path="detail/:id" getComponent={loadDetailPage} />
+        <Route path="s(/:query)" getComponent={loadResultsSearchPage} />
+        <Route path="popular" getComponent={loadMoviesPopularPage} />
+        <Route path="movie/:id" getComponent={loadMovieDetailsPage} />
       </Route>
     </Route>
   </Router>

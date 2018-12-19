@@ -21,6 +21,8 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       if (err) {
         console.error(err) // eslint-disable-line
       }
+      const {router} = renderProps
+      context.router = router
       const App = withContext(context)(Router)
       ReactDOM.hydrate(<App {...renderProps} />, document.getElementById('app'))
     }
