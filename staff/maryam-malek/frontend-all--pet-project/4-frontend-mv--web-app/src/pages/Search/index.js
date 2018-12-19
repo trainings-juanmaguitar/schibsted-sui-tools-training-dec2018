@@ -25,9 +25,13 @@ class Search extends Component {
   render() {
     const {query, movies} = this.state
     const {onChangeInput, showData} = this
+    const {i18n} = this.context
     return (
       <div>
         <h1>Search movie by title</h1>
+        {movies.length && (
+          <h1>{i18n.t('SEARCH_RESULTS', {query: this.state.query})}</h1>
+        )}
 
         <MoleculeInputField
           id="name"
@@ -53,6 +57,6 @@ class Search extends Component {
   }
 }
 
-Search.contextTypes = {domain: PropTypes.object}
+Search.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
 
 export default Search

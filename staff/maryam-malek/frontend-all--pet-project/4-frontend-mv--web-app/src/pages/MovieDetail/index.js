@@ -11,7 +11,6 @@ class MovieDetail extends Component {
     const {
       params: {id}
     } = this.props
-    console.log(id)//eslint-disable-line
     const movie = await domain.get('get_movie_details_use_case').execute({id})
     this.setState({movie})
   }
@@ -23,8 +22,15 @@ class MovieDetail extends Component {
           <link rel="canonical" href="http://spa.mock/" />
         </Helmet>
         <h1>Movie Detail</h1>
-        <h3>{movie.id}</h3>
         <h3>{movie.title}</h3>
+        <h3>{movie.language}</h3>
+        <h3>{movie.releaseDate}</h3>
+        <h3>{movie.overview}</h3>
+        {movie.genres && (
+          <ul>
+            {movie.genres.map((genre, i) => <li key={i}>{genre.name}</li>)}
+          </ul>
+        )}
         <img src={movie.posterPath} />
       </React.Fragment>
     )

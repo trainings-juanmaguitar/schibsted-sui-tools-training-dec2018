@@ -1,4 +1,5 @@
 import MoviesMapper from './MoviesMapper'
+
 import MovieEntitiesFactory from '../Entities/factory'
 
 class MoviesMapperFactory {

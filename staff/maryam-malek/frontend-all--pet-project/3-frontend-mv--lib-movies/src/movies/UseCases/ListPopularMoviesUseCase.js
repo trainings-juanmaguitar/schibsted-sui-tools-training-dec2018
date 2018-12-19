@@ -8,8 +8,14 @@ class ListPopularMoviesUseCase extends UseCase {
   }
 
   async execute() {
-    const movies = await this._repository.listPopularMovies()
-    return movies.map(movie => movie.toJSON())
+    const moviesList = await this._repository.listPopularMovies()
+    const {actualPage, totalPages, totalResults, movies} = moviesList
+    return {
+      actualPage,
+      totalPages,
+      totalResults,
+      movies: movies.map(movie => movie.toJSON())
+    }
   }
 }
 
