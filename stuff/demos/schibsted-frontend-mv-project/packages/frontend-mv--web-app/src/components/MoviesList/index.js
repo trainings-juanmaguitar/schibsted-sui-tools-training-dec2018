@@ -19,14 +19,14 @@ const BASE_CLASS = `sui-MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
 const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
 
-const MoviesList = ({movies, title, subtitle}) => {
-  console.log(movies) //eslint-disable-line
+const MoviesList = ({movies, title, subtitle, page = 1, totalPages = 1}) => {
+  console.log({movies, title, subtitle, page, totalPages}) //eslint-disable-line
   return (
     <div className={CLASS_LIST}>
       {/* End hero unit */}
       <h1>{title}</h1>
       {subtitle && <h4>{subtitle}</h4>}
-      <MoleculePagination totalPages={25} page={7} />
+      <MoleculePagination totalPages={totalPages} page={page} />
       <Grid container spacing={40}>
         {movies.map(movie => (
           <Grid item key={movie.id} sm={6} md={4} lg={3}>
@@ -61,7 +61,9 @@ const MoviesList = ({movies, title, subtitle}) => {
 MoviesList.propTypes = {
   movies: PropTypes.array,
   title: PropTypes.string,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.string,
+  page: PropTypes.number,
+  totalPages: PropTypes.number
 }
 
 export default MoviesList
