@@ -10,13 +10,14 @@ export default class HTTPMoviesRepository extends MoviesRepository {
     this._moviesListValueObject = moviesListValueObject
   }
 
-  async popular() {
+  async popular({page: pageRequest} = {}) {
     this._log(`Getting POPULAR movies`)
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
 
-    const url = `${host}/movie/popular?api_key=${apiKey}`
+    let url = `${host}/movie/popular?api_key=${apiKey}`
+    if (pageRequest) url += `&page=${pageRequest}`
 
     const {
       data: {
@@ -36,13 +37,14 @@ export default class HTTPMoviesRepository extends MoviesRepository {
   }
 
   // all methods of the domain are named → receives an object w/ properties
-  async search({query} = {}) {
+  async search({query, page: pageRequest} = {}) {
     this._log(`Getting movies by query → ${query}`)
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
 
-    const url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
+    let url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
+    if (pageRequest) url += `&page=${pageRequest}`
 
     const {
       data: {

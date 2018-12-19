@@ -1,7 +1,7 @@
 const mockedApiResponse = {
   page: 1,
-  total_results: 19797,
-  total_pages: 990,
+  total_pages: 993,
+  total_results: 19845,
   results: [
     {
       id: 353081,
@@ -26,8 +26,8 @@ const mockedApiResponse = {
 
 const expectedUseCaseResponse = {
   page: 1,
-  totalResults: 19797,
-  totalPages: 990,
+  totalPages: 993,
+  totalResults: 19845,
   movies: [
     {
       id: 353081,
@@ -52,4 +52,63 @@ const expectedUseCaseResponse = {
   ]
 }
 
-export {mockedApiResponse, expectedUseCaseResponse}
+const mockedApiResponsePage5 = {
+  page: 5,
+  total_pages: 993,
+  total_results: 19845,
+  results: [
+    {
+      id: 89,
+      original_title: 'Indiana Jones and the Last Crusade',
+      original_language: 'en',
+      overview:
+        "When Dr. Henry Jones Sr. suddenly goes missing while pursuing the Holy Grail, eminent archaeologist Indiana must team up with Marcus Brody, Sallah and Elsa Schneider to follow in his father's footsteps and stop the Nazis from recovering the power of eternal life.",
+      poster_path: '/4p1N2Qrt8j0H8xMHMHvtRxv9weZ.jpg',
+      release_date: '1989-05-24'
+    },
+    {
+      id: 87,
+      original_title: 'Indiana Jones and the Temple of Doom',
+      original_language: 'en',
+      overview:
+        'After arriving in India, Indiana Jones is asked by a desperate village to find a mystical stone. He agrees – and stumbles upon a secret cult plotting a terrible plan in the catacombs of an ancient palace.',
+      poster_path: '/f2nTRKk2zGdUTE7tLJ5EGGSuKA6.jpg',
+      release_date: '1984-05-23'
+    }
+  ]
+}
+
+const expectedUseCaseResponsePage5 = {
+  page: 5,
+  totalPages: 993,
+  totalResults: 19845,
+  movies: [
+    {
+      id: 89,
+      language: 'en',
+      overview:
+        "When Dr. Henry Jones Sr. suddenly goes missing while pursuing the Holy Grail, eminent archaeologist Indiana must team up with Marcus Brody, Sallah and Elsa Schneider to follow in his father's footsteps and stop the Nazis from recovering the power of eternal life.",
+      posterPath:
+        'https://image.tmdb.org/t/p/w300_and_h450_bestv2/4p1N2Qrt8j0H8xMHMHvtRxv9weZ.jpg',
+      release: '1989-05-24',
+      title: 'Indiana Jones and the Last Crusade'
+    },
+    {
+      id: 87,
+      language: 'en',
+      overview:
+        'After arriving in India, Indiana Jones is asked by a desperate village to find a mystical stone. He agrees – and stumbles upon a secret cult plotting a terrible plan in the catacombs of an ancient palace.',
+      posterPath:
+        'https://image.tmdb.org/t/p/w300_and_h450_bestv2/f2nTRKk2zGdUTE7tLJ5EGGSuKA6.jpg',
+      release: '1984-05-23',
+      title: 'Indiana Jones and the Temple of Doom'
+    }
+  ]
+}
+
+export {
+  mockedApiResponse,
+  mockedApiResponsePage5,
+  expectedUseCaseResponse,
+  expectedUseCaseResponsePage5
+}
