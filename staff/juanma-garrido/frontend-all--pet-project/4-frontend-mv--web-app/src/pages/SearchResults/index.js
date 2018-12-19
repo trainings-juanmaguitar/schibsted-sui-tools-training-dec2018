@@ -19,22 +19,26 @@ class SearchResults extends Component {
   }
   render() {
     const {students} = this.state
+    const {i18n} = this.context
     return (
       <React.Fragment>
         <Helmet>
           <link rel="canonical" href="http://spa.mock/" />
         </Helmet>
-        <h1>SearchResults</h1>
-        {students.length && (
-          <ul>
-            {students.map((student, i) => <li key={i}>{student.name}</li>)}
-          </ul>
-        )}
+        <h1>
+          {i18n.t('SEARCH_RESULTS', {query: 'juanma', totalResults: 234})}
+        </h1>
+        {students &&
+          students.length && (
+            <ul>
+              {students.map((student, i) => <li key={i}>{student.name}</li>)}
+            </ul>
+          )}
       </React.Fragment>
     )
   }
 }
 
-SearchResults.contextTypes = {domain: PropTypes.object}
+SearchResults.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
 
 export default SearchResults

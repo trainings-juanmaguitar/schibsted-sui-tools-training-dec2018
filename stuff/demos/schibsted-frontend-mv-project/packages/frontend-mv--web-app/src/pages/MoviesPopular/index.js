@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
@@ -19,6 +20,8 @@ const MoviesPopularPage = (
         page,
         totalPages
       })}
+      page={page}
+      totalPages={totalPages}
     />
   </React.Fragment>
 )
@@ -38,6 +41,8 @@ MoviesPopularPage.getInitialProps = async ({context}) => {
   const {page, totalResults, totalPages, movies} = await domain
     .get('get_popular_movies_use_case')
     .execute()
+  
+    console.log('getInitialProps...')
   console.log({
     movies: movies || [],
     page,
