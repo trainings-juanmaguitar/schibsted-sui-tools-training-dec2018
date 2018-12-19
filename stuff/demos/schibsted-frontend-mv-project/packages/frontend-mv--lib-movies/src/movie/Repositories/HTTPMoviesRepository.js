@@ -1,12 +1,13 @@
 import MoviesRepository from './MoviesRepository'
 
 export default class HTTPMoviesRepository extends MoviesRepository {
-  constructor({config, mapper, log, fetcher} = {}) {
+  constructor({config, mapper, log, fetcher, moviesListValueObject} = {}) {
     super()
     this._config = config
     this._log = log
     this._fetcher = fetcher
     this._mapper = mapper
+    this._moviesListValueObject = moviesListValueObject
   }
 
   async popular() {
@@ -18,10 +19,20 @@ export default class HTTPMoviesRepository extends MoviesRepository {
     const url = `${host}/movie/popular?api_key=${apiKey}`
 
     const {
-      data: {results}
+      data: {
+        page,
+        total_results: totalResults,
+        total_pages: totalPages,
+        results
+      }
     } = await this._fetcher.get(url)
 
-    return results.map(this._mapper.map)
+    return this._moviesListValueObject({
+      page,
+      totalResults,
+      totalPages,
+      movies: results.map(this._mapper.map)
+    })
   }
 
   // all methods of the domain are named → receives an object w/ properties
@@ -34,10 +45,20 @@ export default class HTTPMoviesRepository extends MoviesRepository {
     const url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
 
     const {
-      data: {results}
+      data: {
+        page,
+        total_results: totalResults,
+        total_pages: totalPages,
+        results
+      }
     } = await this._fetcher.get(url)
 
-    return results.map(this._mapper.map)
+    return this._moviesListValueObject({
+      page,
+      totalResults,
+      totalPages,
+      movies: results.map(this._mapper.map)
+    })
   }
 
   async getMovieById({id: idMovie}) {

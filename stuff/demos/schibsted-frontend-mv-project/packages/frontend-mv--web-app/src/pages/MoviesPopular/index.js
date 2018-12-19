@@ -9,8 +9,7 @@ const MoviesPopularPage = ({movies, canonical}, {i18n}) => (
     <Helmet>
       <link rel="canonical" href={canonical} />
     </Helmet>
-    <h1>{i18n.t('LIST_TITLE')}</h1>
-    <MoviesList movies={movies} />
+    <MoviesList movies={movies} title={i18n.t('POPULAR_MOVIES')} />
   </React.Fragment>
 )
 

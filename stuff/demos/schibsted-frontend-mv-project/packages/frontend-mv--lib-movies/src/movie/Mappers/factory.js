@@ -1,9 +1,9 @@
-import MoviesMapper from './MoviesMapper'
+import MovieMapper from './MovieMapper'
 import MovieEntitiesFactory from '../Entities/factory'
 
 class MoviesMapperFactory {
-  static moviesMapper = ({config}) =>
-    new MoviesMapper({
+  static movieMapper = ({config}) =>
+    new MovieMapper({
       config,
       movieEntity: MovieEntitiesFactory.movieEntity
     })

@@ -7,8 +7,8 @@ class GetPopularMoviesUseCase extends UseCase {
   }
 
   async execute() {
-    const results = await this._repository.popular()
-    return results.map(movieEntity => movieEntity.toJSON())
+    const resultsPopularMovies = await this._repository.popular()
+    return resultsPopularMovies.toJSON()
   }
 }
 

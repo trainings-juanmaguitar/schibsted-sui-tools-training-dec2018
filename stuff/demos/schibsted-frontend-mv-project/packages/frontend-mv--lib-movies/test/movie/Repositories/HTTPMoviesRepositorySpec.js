@@ -1,15 +1,15 @@
 import assert from 'assert'
 import sinon from 'sinon'
 
-import MovieEntity from '../../../src/movie/Entities/MovieEntity'
+import MoviesListValueObject from '../../../src/movie/ValueObjects/MoviesListValueObject'
 import MoviesRepository from '../../../src/movie/Repositories/MoviesRepository.js'
 import HTTPMoviesRepository from '../../../src/movie/Repositories/HTTPMoviesRepository.js'
-import MoviesMapperFactory from '../../../src/movie/Mappers/factory'
+import MovieMapperFactory from '../../../src/movie/Mappers/factory'
+import MoviesValueObjectsFactory from '../../../src/movie/ValueObjects/factory'
 
 let repository
 let config
 let fetcher
-let movieEntityFactory
 
 const mockedResponse = {
   data: {
@@ -35,9 +35,10 @@ describe('HTTPMoviesRepository → implementation of the MoviesRepository @inter
 
     repository = new HTTPMoviesRepository({
       log: () => {},
-      mapper: MoviesMapperFactory.moviesMapper({config}),
+      mapper: MovieMapperFactory.movieMapper({config}),
       config,
-      fetcher
+      fetcher,
+      moviesListValueObject: MoviesValueObjectsFactory.moviesListValueObject
     })
   })
 
@@ -87,9 +88,9 @@ describe('HTTPMoviesRepository → implementation of the MoviesRepository @inter
       assert.equal(repository._fetcher.get.called, true)
     })
 
-    it('returns a movie entity (domain element)', async function() {
-      const movies = await repository.search()
-      assert.equal(movies[0] instanceof MovieEntity, true)
+    it('returns a moviesList valueObject (domain element)', async function() {
+      const response = await repository.search()
+      assert.equal(response instanceof MoviesListValueObject, true)
     })
   })
 })

@@ -11,17 +11,21 @@ import Button from '@material-ui/core/Button'
 
 import Link from 'react-router/lib/Link'
 
+import MoleculePagination from '@s-ui/react-molecule-pagination'
+
 import './index.scss'
 
 const BASE_CLASS = `sui-MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
 const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
 
-const MoviesList = ({movies}) => {
+const MoviesList = ({movies, title}) => {
   console.log(movies) //eslint-disable-line
   return (
     <div className={CLASS_LIST}>
       {/* End hero unit */}
+      <h1>{title}</h1>
+      <MoleculePagination totalPages={25} page={7} />
       <Grid container spacing={40}>
         {movies.map(movie => (
           <Grid item key={movie.id} sm={6} md={4} lg={3}>
@@ -53,6 +57,6 @@ const MoviesList = ({movies}) => {
   )
 }
 
-MoviesList.propTypes = {movies: PropTypes.array}
+MoviesList.propTypes = {movies: PropTypes.array, title: PropTypes.string}
 
 export default MoviesList
