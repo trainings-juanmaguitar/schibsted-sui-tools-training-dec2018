@@ -5,7 +5,9 @@ import Config from './config'
 
 const config = new Config()
 const useCases = {
-  list_popular_movies_use_case: MoviesUseCasesFactory.listPopularMoviesUseCase({config}),
+  list_popular_movies_use_case: MoviesUseCasesFactory.listPopularMoviesUseCase({
+    config
+  }),
   search_by_name_movies_use_case: MoviesUseCasesFactory.searchByNameMoviesUseCase(
     {config}
   )
