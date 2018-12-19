@@ -35,24 +35,19 @@ MoviesPopularPage.propTypes = {
 }
 MoviesPopularPage.contextTypes = {i18n: PropTypes.object}
 MoviesPopularPage.renderLoading = () => <h1>Loading...</h1>
-MoviesPopularPage.getInitialProps = async ({context}) => {
+MoviesPopularPage.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
+  const {
+    params: {page = 1}
+  } = routeInfo
 
-  const {page, totalResults, totalPages, movies} = await domain
+  const {page: _page, totalResults, totalPages, movies} = await domain
     .get('get_popular_movies_use_case')
-    .execute()
+    .execute({page})
   
-    console.log('getInitialProps...')
-  console.log({
-    movies: movies || [],
-    page,
-    totalResults,
-    totalPages,
-    canonical: 'http:/spa.mock/list'
-  })
   return {
     movies: movies || [],
-    page,
+    page: _page,
     totalResults,
     totalPages,
     canonical: 'http:/spa.mock/list'

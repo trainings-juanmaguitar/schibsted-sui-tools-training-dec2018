@@ -29,8 +29,8 @@ export default (
     <Route component={require('./components/App').default}>
       <Route path="/">
         <IndexRoute getComponent={loadHomePage} />
-        <Route path="s(/:query)" getComponent={loadResultsSearchPage} />
-        <Route path="popular" getComponent={loadMoviesPopularPage} />
+        <Route path="s/:query(/p/:page)" getComponent={loadResultsSearchPage} />
+        <Route path="popular(/p/:page)" getComponent={loadMoviesPopularPage} />
         <Route path="movie/:id" getComponent={loadMovieDetailsPage} />
       </Route>
     </Route>

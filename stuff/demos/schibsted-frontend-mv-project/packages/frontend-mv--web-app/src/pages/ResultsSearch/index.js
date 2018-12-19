@@ -20,6 +20,8 @@ const ResultsSearchPage = (
           page,
           totalPages
         })}
+        page={page}
+        totalPages={totalPages}
       />
     </React.Fragment>
   )
@@ -38,16 +40,18 @@ ResultsSearchPage.renderLoading = () => <h1>Loading...</h1>
 ResultsSearchPage.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
   const {
-    params: {query}
+    params: {query, page}
   } = routeInfo
 
-  const {page, totalResults, totalPages, movies} = await domain
+  console.log({query, page}) // eslint-disable-line
+
+  const {page: _page, totalResults, totalPages, movies} = await domain
     .get('search_movies_use_case')
-    .execute({query})
+    .execute({query, page})
 
   return {
     movies: movies || [],
-    page,
+    page: _page,
     totalResults,
     totalPages,
     canonical: 'http:/spa.mock/list',

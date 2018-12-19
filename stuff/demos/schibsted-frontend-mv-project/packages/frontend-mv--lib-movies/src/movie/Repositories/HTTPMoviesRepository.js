@@ -11,7 +11,7 @@ export default class HTTPMoviesRepository extends MoviesRepository {
   }
 
   async popular({page: pageRequest} = {}) {
-    this._log(`Getting POPULAR movies`)
+    this._log(`Getting POPULAR movies on page → ${pageRequest}`)
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
@@ -38,7 +38,7 @@ export default class HTTPMoviesRepository extends MoviesRepository {
 
   // all methods of the domain are named → receives an object w/ properties
   async search({query, page: pageRequest} = {}) {
-    this._log(`Getting movies by query → ${query}`)
+    this._log(`Getting movies by query → ${query} and page → ${pageRequest}`)
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
