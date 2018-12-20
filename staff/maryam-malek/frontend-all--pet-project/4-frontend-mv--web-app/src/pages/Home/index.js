@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 class Home extends Component {
   render() {
-    const {i18n} = this.context
+    const {i18n} = this.props
     return (
       <React.Fragment>
         <Helmet>
@@ -17,5 +17,12 @@ class Home extends Component {
 }
 
 Home.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
+Home.propTypes = {i18n: PropTypes.object}
+
+Home.getInitialProps = async ({context, routeInfo}) => {
+  const {i18n} = context
+
+  return {i18n}
+}
 
 export default Home

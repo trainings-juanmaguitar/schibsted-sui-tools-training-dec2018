@@ -31,10 +31,6 @@ const loadMovieDetailPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "MovieDetail" */ './pages/MovieDetail')
 )
 
-// A simple code splitting tutorial using react router v3 and webpack
-// https://medium.com/@nahush.farkande/a-simple-code-splitting-tutorial-using-react-router-v3-and-webpack-7a6b1cf58167
-// https://github.com/ReactTraining/react-router/blob/v3/docs/API.md#getcomponentnextstate-callback
-
 const Root = (
   <Router>
     <Route component={App}>
