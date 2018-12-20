@@ -6,22 +6,22 @@ import Route from 'react-router/lib/Route'
 import Router from 'react-router/lib/Router'
 import IndexRoute from 'react-router/lib/IndexRoute'
 
+import loadPage from '@s-ui/react-initial-props/lib/loadPage'
+
 import App from './components/App'
+import contextFactory from './contextFactory'
 
-const loadHomePage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Home" */ './pages/Home')
-  cb(null, component.default)
-}
 
-const loadListPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "List" */ './pages/List')
-  cb(null, component.default)
-}
+const loadHomePage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "Home" */ './pages/Home')
+)
+const loadListPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "List" */ './pages/List')
+)
 
-const loadDetailPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Details" */ './pages/Detail')
-  cb(null, component.default)
-}
+const loadDetailPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "Detail" */ './pages/Detail')
+)
 
 // A simple code splitting tutorial using react router v3 and webpack
 // https://medium.com/@nahush.farkande/a-simple-code-splitting-tutorial-using-react-router-v3-and-webpack-7a6b1cf58167
