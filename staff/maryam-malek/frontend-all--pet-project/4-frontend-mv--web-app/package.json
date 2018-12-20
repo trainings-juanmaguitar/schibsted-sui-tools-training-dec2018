@@ -1,0 +1,39 @@
+{
+  "name": "4-frontend-mv--web-app",
+  "version": "1.0.0",
+  "description": "### What is it?",
+  "main": "index.js",
+  "scripts": {
+    "co": "sui-mono commit",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`",
+    "build": "sui-bundler build -C",
+    "start": "sui-bundler dev --link-package ../3-frontend-mv--lib-movies",
+    "phoenix": "sui-mono phoenix",
+    "release:check": "sui-mono check"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/bundler": "^3.32.0",
+    "@s-ui/lint": "^2.20.0",
+    "@s-ui/mono": "^1.39.0",
+    "@s-ui/ssr": "^2.11.0",
+    "husky": "^1.2.1"
+  },
+  "dependencies": {
+    "@s-ui/component-peer-dependencies": "^1.5.0",
+    "@s-ui/hoc": "^1.6.0",
+    "@s-ui/i18n": "1.5.0",
+    "@s-ui/react-initial-props": "^1.7.0",
+    "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@schibstedspain/sui-atom-button": "^1.22.0",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}
