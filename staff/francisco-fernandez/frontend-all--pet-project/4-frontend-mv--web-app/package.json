@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "co": "sui-mono commit",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "ssr": "sui-bundler build -C ",
-    "dev": "sui-bundler dev"
+    "build": "sui-bundler build -C ",
+    "dev": "sui-bundler dev",
+    "ssr": "npm run build && sui-ssr build -C && node server"
   },
   "keywords": [],
   "author": "",
