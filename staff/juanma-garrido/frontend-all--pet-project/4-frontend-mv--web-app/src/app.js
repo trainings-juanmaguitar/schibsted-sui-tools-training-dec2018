@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -5,12 +6,12 @@ import './index.scss'
 
 // import {register} from '@s-ui/bundler/registerServiceWorker'
 
-import Router from 'react-router/lib/Router'
-import {browserHistory} from 'react-router'
+import {Router, match, browserHistory} from 'react-router'
 
 import routes from './routes'
 
-import Domain from '3-frontend-mv--lib-movies'
+// import Domain from '3-frontend-mv--lib-movies'
+import Domain from '../../3-frontend-mv--lib-movies/src'
 import i18nFactory from './literals'
 
 import withContext from '@s-ui/hoc/lib/withContext'
@@ -29,7 +30,8 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 const domain = new Domain()
 const i18n = i18nFactory({lang: 'es-ES'})
 
-const RouterWithContext = withContext({domain, i18n})(Router)
+const context = {domain, i18n}
+const RouterWithContext = withContext(context)(Router)
 
 // register({
 //   first: () => window.alert('Content is cached for offline use.'),
@@ -37,6 +39,18 @@ const RouterWithContext = withContext({domain, i18n})(Router)
 // })()
 
 console.log('Hey!') // eslint-disable-line
+
+// match(
+//   {routes, history: browserHistory},
+//   (err, redirectLocation, renderProps) => {
+//     if (err) {
+//       console.error(err) // eslint-disable-line
+//     }
+//     console.log(routes, history)
+//     const App = withContext(context)(Router)
+//     ReactDOM.render(<App {...renderProps} />, document.getElementById('app'))
+//   }
+// )
 
 ReactDOM.render(
   <RouterWithContext history={browserHistory} routes={routes} />,
