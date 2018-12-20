@@ -14,12 +14,17 @@ const loadListPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "List" */ './pages/List')
 )
 
+const loadSearchPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "List" */ './pages/Search')
+)
+
 export default (
   <Router>
     <Route component={App}>
       <Route path="/">
         <IndexRoute getComponent={LoadHomePage} />
         <Route path="popular" getComponent={loadListPage} />
+        <Route path="s/:query" getComponent={loadSearchPage} />
       </Route>
     </Route>
   </Router>
