@@ -6,32 +6,30 @@ import Route from 'react-router/lib/Route'
 import Router from 'react-router/lib/Router'
 import IndexRoute from 'react-router/lib/IndexRoute'
 
+import loadPage from '@s-ui/react-initial-props/lib/loadPage'
+import contextFactory from './contextFactory'
+
 import App from './components/App'
 
-const loadHomePage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Home" */ './pages/Home')
-  cb(null, component.default)
-}
+const loadHomePage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "Home" */ './pages/Home')
+)
 
-const loadPopularMoviesPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "PopularMovies" */ './pages/PopularMovies')
-  cb(null, component.default)
-}
+const loadPopularMoviesPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "PopularMovies" */ './pages/PopularMovies')
+)
 
-const loadLatestMoviesPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "LatestMovies" */ './pages/LatestMovies')
-  cb(null, component.default)
-}
+const loadLatestMoviesPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "LatestMovies" */ './pages/LatestMovies')
+)
 
-const loadSearchPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "Search" */ './pages/Search')
-  cb(null, component.default)
-}
+const loadSearchPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "Search" */ './pages/Search')
+)
 
-const loadMovieDetailPage = async (nextState, cb) => {
-  const component = await import(/* webpackChunkName: "MovieDetail" */ './pages/MovieDetail')
-  cb(null, component.default)
-}
+const loadMovieDetailPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "MovieDetail" */ './pages/MovieDetail')
+)
 
 // A simple code splitting tutorial using react router v3 and webpack
 // https://medium.com/@nahush.farkande/a-simple-code-splitting-tutorial-using-react-router-v3-and-webpack-7a6b1cf58167

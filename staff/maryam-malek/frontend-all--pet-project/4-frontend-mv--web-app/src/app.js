@@ -10,12 +10,10 @@ import {browserHistory} from 'react-router'
 
 import routes from './routes'
 
-import Domain from '3-frontend-mv--lib-movies'
-import i18nFactory from './literals'
+
 import withContext from '@s-ui/hoc/lib/withContext'
 
-const domain = new Domain()
-const i18n = i18nFactory({lang: 'es-ES'})
+
 const RouterWithContext = withContext({domain, i18n})(Router)
 
 // register({

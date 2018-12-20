@@ -1,21 +1,19 @@
+/* eslint-disable */
 import React, {Component} from 'react'
 import Link from 'react-router/lib/Link'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 class PopularMovies extends Component {
-  state = {moviesList: {movies: []}}
-  async componentDidMount() {
-    const {domain} = this.context
-    const moviesList = await domain
-      .get('list_popular_movies_use_case')
-      .execute()
-    this.setState({moviesList})
-  }
+  
+  
   render() {
-    const {
-      moviesList: {movies, totalPages, totalResults, actualPage}
-    } = this.state
+    // const {
+    //   moviesList: {movies, totalPages, totalResults, actualPage}
+    // } = this.state
+    const {movies} = this.props
+    const [totalPages, totalResults, actualPage] = [1,1,1]
+    console.log(this.props.movies)
     return (
       <React.Fragment>
         <Helmet>
@@ -39,6 +37,22 @@ class PopularMovies extends Component {
   }
 }
 
-PopularMovies.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
+PopularMovies.contextTypes = {
+  domain: PropTypes.object,
+  i18n: PropTypes.object,
+  movies: PropTypes.array
+}
+
+PopularMovies.getInitialProps = async ({context, routeInfo}) => {
+  const {domain} = context
+
+  const {movies} = await domain
+      .get('list_popular_movies_use_case')
+      .execute()
+
+  return {
+    movies: movies || []
+  }
+}
 
 export default PopularMovies
