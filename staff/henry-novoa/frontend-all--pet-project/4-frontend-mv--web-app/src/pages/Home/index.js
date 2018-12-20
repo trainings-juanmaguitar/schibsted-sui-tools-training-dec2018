@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Home = () => (
+const Home = (_, {i18n}) => (
   <React.Fragment>
-    <h1>Home test title</h1>
+    <h1>{i18n.t('HOME_TITLE')}</h1>
   </React.Fragment>
 )
 
