@@ -17,7 +17,6 @@ class App extends Component {
     event.preventDefault()
     const {query} = this.state
     const {router} = this.context
-    debugger // eslint-disable-line
     router.push(`/s/${query}`)
   }
 

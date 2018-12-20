@@ -14,10 +14,15 @@ const Search = ({movies}) => (
 Search.propTypes = {movies: PropTypes.array}
 Search.contextTypes = {i18n: PropTypes.object}
 Search.renderLoading = () => <h1>Loading...</h1>
-Search.getInitialProps = async ({context}) => {
+Search.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
+  const {
+    params: {query}
+  } = routeInfo
 
-  const movies = await domain.get('list_movies_use_case').execute()
+  const movies = await domain
+    .get('search_by_name_movies_use_case')
+    .execute({query})
 
   return {
     movies: movies || [],
