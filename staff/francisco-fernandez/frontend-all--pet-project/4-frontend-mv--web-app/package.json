@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "co": "sui-mono commit",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`",
-    "dev": "sui-bundler dev"
+    "build": "sui-bundler build -C ",
+    "dev": "sui-bundler dev",
+    "ssr": "npm run build && sui-ssr build -C && node server"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,8 @@
     "@s-ui/hoc": "^1.6.0",
     "@s-ui/i18n": "1.5.0",
     "@s-ui/react-initial-props": "^1.7.0",
+    "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@schibstedspain/sui-atom-button": "^1.22.0",
     "isomorphic-fetch": "^2.2.1"
   },
   "sui-bundler": {
