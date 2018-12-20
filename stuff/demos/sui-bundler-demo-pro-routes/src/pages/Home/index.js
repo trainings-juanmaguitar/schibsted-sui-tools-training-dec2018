@@ -12,7 +12,8 @@ const Home = () => (
   </React.Fragment>
 )
 
-Home.getInitialProps = () => {
+
+Home.getInitialProps = async () => {
   console.log('getInitialProps... ')
   return {}
 }
