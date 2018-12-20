@@ -2,6 +2,8 @@
 @import '~@schibstedspain/sui-atom-button/lib/index.scss';
 @import '~@s-ui/react-molecule-pagination/lib/index.scss';
 
+@import '~@s-ui/react-molecule-pagination/lib/index.scss';
+
 .App {
   nav a {
     margin-right: 10px;
@@ -18,4 +20,54 @@
 .ListUsers {
   background-color: #efd760;
   padding: 30px;
+}
+
+.sui-MoviesApp {
+  &-homePage {
+    margin: 40px auto;
+    max-width: 600px;
+  }
+}
+
+
+.sui-MoviesApp {
+  &-listMovies {
+    width: auto;
+    margin-left: 100px;
+    margin-right: 100px;
+    h1 {
+      font-family: "Roboto";
+    }
+  }
+  &-cardMedia {
+    height: 100px;
+    padding-top: 56.25%; /* 16:9 */
+  }
+  &-pagination {
+    margin-top: 20px;
+    float:right;
+  }
+}
+
+.sui-MoviesApp {
+  &-formSearch {
+    display:flex;    
+  }
+}
+
+.sui-MoviesApp {
+  &-jumbotron {
+    margin: 40px auto;
+    max-width: 600px;
+  }
+  &-toolbar {
+    display: flex;
+    justify-content: space-between;
+    &-home {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100px;
+    }
+  }
 }

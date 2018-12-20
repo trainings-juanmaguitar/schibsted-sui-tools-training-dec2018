@@ -7,7 +7,6 @@ import AtomInput from '@s-ui/react-atom-input'
 import AtomButton from '@schibstedspain/sui-atom-button'
 
 import SearchIcon from '@material-ui/icons/Search'
-import './index.scss'
 
 const BASE_CLASS = `sui-MoviesApp`
 const CLASS_FORM_SEARCH = `${BASE_CLASS}-formSearch`

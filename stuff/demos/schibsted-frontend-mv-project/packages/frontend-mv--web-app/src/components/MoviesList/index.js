@@ -11,8 +11,6 @@ import Link from 'react-router/lib/Link'
 
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
-import './index.scss'
-
 const BASE_CLASS = `sui-MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
 const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
@@ -23,7 +21,6 @@ const MoviesList = (
   {router}
 ) => {
   const updatePage = (e, {page}) => {
-    console.log(page)
     const {
       location: {pathname: currentPath}
     } = router

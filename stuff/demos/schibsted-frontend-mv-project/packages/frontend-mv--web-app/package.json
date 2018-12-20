@@ -32,8 +32,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "3.7.0",
-    "@material-ui/icons": "3.0.1",
     "@s-ui/component-peer-dependencies": "1",
     "@s-ui/hoc": "1",
     "@s-ui/i18n": "1",
@@ -41,6 +39,8 @@
     "@s-ui/react-initial-props": "1",
     "@s-ui/react-molecule-pagination": "^1.1.0",
     "@schibstedspain/sui-atom-button": "^1.22.0",
+    "bloomer": "0.6.5",
+    "bulma": "0.7.2",
     "isomorphic-fetch": "2.2.1",
     "react-router-dom": "4.3.1"
   },
