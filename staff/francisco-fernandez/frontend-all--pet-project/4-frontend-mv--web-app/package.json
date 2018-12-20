@@ -6,7 +6,7 @@
   "scripts": {
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`",
+    "ssr": "sui-bundler build -C ",
     "dev": "sui-bundler dev"
   },
   "keywords": [],

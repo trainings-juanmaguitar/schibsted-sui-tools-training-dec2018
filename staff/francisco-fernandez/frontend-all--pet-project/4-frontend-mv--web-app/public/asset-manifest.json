@@ -1,6 +1,9 @@
 {
-  "main.js": "/main.2105f4db.js",
-  "Home.js": "/Home.937384b2.js",
-  "runtime~main.js": "/runtime~main.6e9fa30b.js",
+  "app.css": "/0.5022d2b8.css",
+  "app.js": "/app.5dcd2261.js",
+  "vendor.js": "/vendor.e700fafd.js",
+  "Home.js": "/Home.a65b9202.js",
+  "List.js": "/List.7e874481.js",
+  "runtime~app.js": "/runtime~app.d875f477.js",
   "index.html": "/index.html"
 }
