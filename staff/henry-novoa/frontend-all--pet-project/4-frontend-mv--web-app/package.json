@@ -23,7 +23,7 @@
   "dependencies": {
     "@s-ui/component-peer-dependencies": "^1.5.0",
     "@s-ui/hoc": "^1.6.0",
-    "@s-ui/i18n": "^1.5.0",
+    "@s-ui/i18n": "1.5.0",
     "@s-ui/react-initial-props": "^1.7.0",
     "isomorphic-fetch": "^2.2.1"
   },

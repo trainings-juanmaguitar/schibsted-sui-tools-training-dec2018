@@ -7,7 +7,7 @@ const Home = (_, {i18n}) => (
     <Helmet>
       <link rel="canonical" href="http://spa.mock/" />
     </Helmet>
-    <h1>Home test title</h1>
+    <h1>{i18n.t('HOME_TITLE')}</h1>
   </React.Fragment>
 )
 

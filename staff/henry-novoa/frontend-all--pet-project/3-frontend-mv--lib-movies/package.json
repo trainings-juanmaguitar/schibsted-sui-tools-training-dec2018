@@ -51,16 +51,10 @@
     "axios": "^0.18.0"
   },
   "sui-bundler": {
-  "vendor":[
-    "react",
-    "react-dom"
-  ] 
-} ,
-
-  "eslintConfig": {
-    "extends": [
-      "./node_modules/@s-ui/lint/eslintrc.js"
-    ]
+    "eslintConfig": {
+      "extends": [
+        "./node_modules/@s-ui/lint/eslintrc.js"
+      ]
+    }
   }
- }
-
+}
