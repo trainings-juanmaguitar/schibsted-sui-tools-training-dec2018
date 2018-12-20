@@ -1,0 +1,41 @@
+@import '~@s-ui/react-molecule-input-field/lib/index.scss';
+@import '~@schibstedspain/sui-atom-button/lib/index.scss';
+
+.App {
+  nav{
+    background-color:#FBE901;
+    padding: 10px;
+  }
+}
+
+h1 {
+    padding-left: 10px;
+}
+
+.navOptions{
+    display: flex;
+    justify-content: flex-start;   
+    
+}
+
+.Link{
+    padding-left: 10px;
+}
+
+label{
+    padding-left: 10px;
+
+}
+
+.DetailUser {
+  background-color: #7c9752;
+  color: #FFF;
+  padding: 10px;
+}
+
+
+.ListUsers {
+  background-color: #efd760;
+  padding: 30px;
+}
+

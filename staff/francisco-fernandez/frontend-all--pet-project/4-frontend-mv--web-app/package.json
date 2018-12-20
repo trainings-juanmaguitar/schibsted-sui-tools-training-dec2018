@@ -1,0 +1,43 @@
+{
+  "name": "4-frontend-mv--web-app",
+  "version": "1.0.0",
+  "description": "First of all... what is a web app project? For us a web app project is the project that will handle with the routing, get route requests, server side rendering and more...",
+  "main": "index.js",
+  "scripts": {
+    "co": "sui-mono commit",
+    "build": "sui-bundler build -C ",
+    "dev": "sui-bundler dev",
+    "ssr": "npm run build && sui-ssr build -C && node server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/bundler": "^3.32.0",
+    "@s-ui/lint": "^2.20.0",
+    "@s-ui/mono": "^1.39.0",
+    "@s-ui/precommit": "^2.5.0",
+    "@s-ui/ssr": "^2.11.0",
+    "husky": "^1.2.1"
+  },
+  "dependencies": {
+    "@s-ui/component-peer-dependencies": "^1.5.0",
+    "@s-ui/hoc": "^1.6.0",
+    "@s-ui/i18n": "1.5.0",
+    "@s-ui/react-initial-props": "^1.7.0",
+    "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@schibstedspain/sui-atom-button": "^1.22.0",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "sui-bundler": {
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  }
+}
