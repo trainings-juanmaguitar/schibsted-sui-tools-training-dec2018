@@ -2,12 +2,19 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import {Hero, HeroHeader, Nav, NavLeft, NavItem, NavRight} from 'bloomer'
+import {
+  NavbarItem,
+  NavbarBrand,
+  Navbar,
+  Icon,
+  NavbarMenu,
+  NavbarEnd
+} from 'bloomer'
 
 import Link from 'react-router/lib/Link'
 
-const BASE_CLASS = `sui-MoviesApp`
-const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
+// const BASE_CLASS = `sui-MoviesApp`
+// const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
 // const CLASS_TOOLBAR_HOME = `${CLASS_TOOLBAR}-home`
 // const CLASS_TOOLBAR_OPTIONS = `${CLASS_TOOLBAR}-options`
 
@@ -16,14 +23,6 @@ const App = ({children}) => (
     <Helmet>
       <meta charSet="utf-8" />
       <meta name="description" content="Helmet application" />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      />
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
@@ -31,20 +30,26 @@ const App = ({children}) => (
       <title>SPA MOCK</title>
     </Helmet>
 
-    <Hero isColor="info" isSize="medium">
-      <HeroHeader>
-        <Nav>
-          <NavLeft>
-            <NavItem isBrand>Movies</NavItem>
-          </NavLeft>
-          <NavRight isMenu>
-            <NavItem>
-              <Link to="/popular">Popular movies</Link>
-            </NavItem>
-          </NavRight>
-        </Nav>
-      </HeroHeader>
-    </Hero>
+    <Navbar style={{border: 'solid 1px #00D1B2', margin: '0'}}>
+      <NavbarBrand>
+        <NavbarItem>
+          <img src={'sdfsdfds'} style={{marginRight: 5}} /> Bloomer
+        </NavbarItem>
+        <NavbarItem isHidden="desktop">
+          <Icon className="fa fa-github" />
+        </NavbarItem>
+        <NavbarItem isHidden="desktop">
+          <Icon className="fa fa-twitter" style={{color: '#55acee'}} />
+        </NavbarItem>
+      </NavbarBrand>
+      <NavbarMenu>
+        <NavbarEnd>
+          <NavbarItem>
+            <Link to="/popular">Popular movies</Link>
+          </NavbarItem>
+        </NavbarEnd>
+      </NavbarMenu>
+    </Navbar>
 
     {children}
   </div>

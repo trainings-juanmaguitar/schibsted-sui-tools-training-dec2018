@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{Vz7R:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){return e&&e.__esModule?e:{default:e}}(n("mXGw"));t.default=function(){return u.default.createElement(u.default.Fragment,null,u.default.createElement("h1",null,"Details"))}}}]);

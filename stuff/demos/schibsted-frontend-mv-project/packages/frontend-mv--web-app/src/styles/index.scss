@@ -1,73 +1,84 @@
+@import "~bulma/css/bulma.css";
+
+/*
+@import "~bulma/sass/base/_all.scss";
+@import "~bulma/sass/elements/_all.scss";
+@import "~bulma/sass/components/_all.scss";
+@import "~bulma/sass/grid/_all.scss";
+@import "~bulma/sass/layout/_all.scss";
+*/
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
 @import '~@s-ui/react-atom-input/lib/index.scss';
 @import '~@schibstedspain/sui-atom-button/lib/index.scss';
 @import '~@s-ui/react-molecule-pagination/lib/index.scss';
 
 @import '~@s-ui/react-molecule-pagination/lib/index.scss';
 
-.App {
-  nav a {
-    margin-right: 10px;
-  }
-}
+// .App {
+//   nav a {
+//     margin-right: 10px;
+//   }
+// }
 
-.DetailUser {
-  background-color: #7c9752;
-  color: #FFF;
-  padding: 10px;
-}
-
-
-.ListUsers {
-  background-color: #efd760;
-  padding: 30px;
-}
-
-.sui-MoviesApp {
-  &-homePage {
-    margin: 40px auto;
-    max-width: 600px;
-  }
-}
+// .DetailUser {
+//   background-color: #7c9752;
+//   color: #FFF;
+//   padding: 10px;
+// }
 
 
-.sui-MoviesApp {
-  &-listMovies {
-    width: auto;
-    margin-left: 100px;
-    margin-right: 100px;
-    h1 {
-      font-family: "Roboto";
-    }
-  }
-  &-cardMedia {
-    height: 100px;
-    padding-top: 56.25%; /* 16:9 */
-  }
-  &-pagination {
-    margin-top: 20px;
-    float:right;
-  }
-}
+// .ListUsers {
+//   background-color: #efd760;
+//   padding: 30px;
+// }
 
-.sui-MoviesApp {
-  &-formSearch {
-    display:flex;    
-  }
-}
+// .sui-MoviesApp {
+//   &-homePage {
+//     margin: 40px auto;
+//     max-width: 600px;
+//   }
+// }
 
-.sui-MoviesApp {
-  &-jumbotron {
-    margin: 40px auto;
-    max-width: 600px;
-  }
-  &-toolbar {
-    display: flex;
-    justify-content: space-between;
-    &-home {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      width: 100px;
-    }
-  }
-}
+
+// .sui-MoviesApp {
+//   &-listMovies {
+//     width: auto;
+//     margin-left: 100px;
+//     margin-right: 100px;
+//     h1 {
+//       font-family: "Roboto";
+//     }
+//   }
+//   &-cardMedia {
+//     height: 100px;
+//     padding-top: 56.25%; /* 16:9 */
+//   }
+//   &-pagination {
+//     margin-top: 20px;
+//     float:right;
+//   }
+// }
+
+// .sui-MoviesApp {
+//   &-formSearch {
+//     display:flex;    
+//   }
+// }
+
+// .sui-MoviesApp {
+//   &-jumbotron {
+//     margin: 40px auto;
+//     max-width: 600px;
+//   }
+//   &-toolbar {
+//     display: flex;
+//     justify-content: space-between;
+//     &-home {
+//       align-items: center;
+//       display: flex;
+//       justify-content: space-between;
+//       width: 100px;
+//     }
+//   }
+// }

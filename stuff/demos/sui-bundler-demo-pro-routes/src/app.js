@@ -4,9 +4,12 @@ import ReactDOM from 'react-dom'
 
 import Router from 'react-router/lib/Router'
 import {browserHistory} from 'react-router'
+import match from 'react-router/lib/match'
+
+import withContext from '@s-ui/hoc/lib/withContext'
 
 import routes from './routes'
-
+import contextFactory from './contextFactory'
 // import {register} from '@s-ui/bundler/registerServiceWorker'
 
 // eslint-next-disable-line
@@ -22,10 +25,29 @@ import(/* webpackChunkName: "my-chunk-name" */ './foo').then(
 //   renovate: () => window.alert('New content is available; please refresh.')
 // })()
 
-ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
-  document.getElementById('root')
-)
+contextFactory().then(context => {
+  match(
+    {routes, history: browserHistory},
+    (err, redirectLocation, renderProps) => {
+      if (err) {
+        console.error(err) // eslint-disable-line
+      }
+      const {router} = renderProps
+      context.router = router
+      const App = withContext(context)(Router)
+      ReactDOM.hydrate(
+        <App {...renderProps} />,
+        document.getElementById('root')
+      )
+    }
+  )
+  // })
+})
+
+// ReactDOM.render(
+//   <Router history={browserHistory} routes={routes} />,
+//   document.getElementById('root')
+// )
 
 // import React from 'react'
 // import ReactDOM from 'react-dom'

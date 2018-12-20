@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import FormSearch from '../../components/FormSearch'
 
-const BASE_CLASS = `sui-MoviesApp`
-const CLASS_HOME = `${BASE_CLASS}-homePage`
+// const BASE_CLASS = `sui-MoviesApp`
+// const CLASS_HOME = `${BASE_CLASS}-homePage`
 
 const HomePage = (_, {i18n}) => (
   <React.Fragment>

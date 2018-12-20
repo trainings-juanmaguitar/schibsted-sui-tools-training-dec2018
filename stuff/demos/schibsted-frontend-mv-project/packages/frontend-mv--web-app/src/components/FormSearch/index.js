@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import AtomInput from '@s-ui/react-atom-input'
 import AtomButton from '@schibstedspain/sui-atom-button'
 
-import SearchIcon from '@material-ui/icons/Search'
+// import SearchIcon from '@material-ui/icons/Search'
 
 const BASE_CLASS = `sui-MoviesApp`
 const CLASS_FORM_SEARCH = `${BASE_CLASS}-formSearch`
@@ -36,7 +36,6 @@ class FormSearch extends Component {
           onChange={handleChange}
           name="second"
           placeholder={i18n.t('SEARCH_MOVIES_PLACEHOLDER')}
-          leftIcon={SearchIcon}
         />
 
         <AtomButton onClick={doSearch}>{i18n.t('SEARCH_MOVIES')}</AtomButton>

@@ -8,7 +8,7 @@ const Home = () => (
     <Helmet>
       <link rel="canonical" href="http://spa.mock/" />
     </Helmet>
-    <h1>Ho__me</h1>
+    <h1>Home</h1>
   </React.Fragment>
 )
 

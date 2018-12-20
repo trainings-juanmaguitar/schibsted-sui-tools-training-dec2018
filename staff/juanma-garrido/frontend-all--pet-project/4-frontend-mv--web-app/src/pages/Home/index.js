@@ -5,19 +5,8 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 class Home extends Component {
-  // state = {
-  //   movies: []
-  // }
-  // async componentDidMount() {
-  //   console.log('componentDidMount...')
-  //   const {domain} = this.context
-  //   const movies = await domain.get('get_popular_movies_use_case').execute()
-  //   console.log(movies)
-  //   this.setState({movies})
-  // }
   render() {
-    const {movies} = this.props
-    const {i18n} = this.context
+    const {movies, i18n} = this.props
     return (
       <React.Fragment>
         <Helmet>
@@ -35,14 +24,12 @@ class Home extends Component {
 Home.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
 
 Home.getInitialProps = async ({context}) => {
-  const {domain} = context
-  console.log('getInitialProps...')
+  const {domain, i18n} = context
   const movies = await domain.get('get_popular_movies_use_case').execute()
-  console.log(movies)
   return {
-    movies: movies || []
+    movies: movies || [],
+    i18n
   }
 }
-
 
 export default Home
