@@ -15,7 +15,8 @@
   "devDependencies": {
     "@s-ui/lint": "2.20.0",
     "babel-cli": "6.26.0",
-    "babel-preset-sui": "1.5.0"
+    "babel-preset-sui": "1.5.0",
+    "babel-plugin-add-module-exports": "^1.0.0"
   },
   "dependencies": {
     "@s-ui/domain": "1.12.0"
@@ -23,6 +24,9 @@
   "babel": {
     "presets": [
       "sui"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "eslintConfig": {

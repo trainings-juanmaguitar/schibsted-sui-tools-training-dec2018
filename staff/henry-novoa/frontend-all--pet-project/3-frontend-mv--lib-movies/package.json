@@ -51,10 +51,22 @@
     "axios": "^0.18.0"
   },
   "sui-bundler": {
+<<<<<<< HEAD
     "eslintConfig": {
       "extends": [
         "./node_modules/@s-ui/lint/eslintrc.js"
       ]
     }
+=======
+    "vendor": [
+      "react",
+      "react-dom"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+>>>>>>> devel
   }
 }
