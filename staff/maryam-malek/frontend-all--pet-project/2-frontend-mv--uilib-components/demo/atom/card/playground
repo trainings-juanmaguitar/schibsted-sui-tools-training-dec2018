@@ -1,0 +1,1 @@
+return (<AtomCard title='title' img='https://dummyimage.com/600x400/000/fff' language='english' releaseDate='20-12-2001' genres={[{name: 'comedy'}, {name: 'adventure'}]} overview='lorem ipsum lorem ipsum...' />)

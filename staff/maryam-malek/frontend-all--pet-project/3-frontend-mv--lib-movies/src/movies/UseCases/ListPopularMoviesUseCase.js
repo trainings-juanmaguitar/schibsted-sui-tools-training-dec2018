@@ -7,8 +7,8 @@ class ListPopularMoviesUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute() {
-    const moviesList = await this._repository.listPopularMovies()
+  async execute({page}) {
+    const moviesList = await this._repository.listPopularMovies({page})
     const {actualPage, totalPages, totalResults, movies} = moviesList
     return {
       actualPage,

@@ -3,6 +3,7 @@ import Link from 'react-router/lib/Link'
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
 import Button from '@schibstedspain/sui-atom-button'
 import PropTypes from 'prop-types'
+import MoleculePagination from '@s-ui/react-molecule-pagination'
 
 class Search extends Component {
   state = {query: '', moviesList: {movies: []}}
@@ -15,7 +16,15 @@ class Search extends Component {
     const {domain} = this.context
     const moviesList = await domain
       .get('search_movies_use_case')
-      .execute({query: this.state.query})
+      .execute({query: this.state.query, page: 1})
+    this.setState({moviesList})
+  }
+
+  onSelectPage = async (e, {page}) => {
+    const {domain} = this.context
+    const moviesList = await domain
+      .get('search_movies_use_case')
+      .execute({query: this.state.query, page})
     this.setState({moviesList})
   }
 
@@ -51,6 +60,19 @@ class Search extends Component {
               </li>
             ))}
           </ul>
+        )}
+        {movies.length && (
+          <MoleculePagination
+            totalPages={totalPages}
+            page={actualPage}
+            // prevButtonIcon={prevButtonIcon}
+            // nextButtonIcon={nextButtonIcon}
+            // prevButtonText={prevButtonText}
+            // nextButtonText={nextButtonText}
+            // onSelectNext={onSelectNext}
+            // onSelectPrev={onSelectPrev}
+            onSelectPage={this.onSelectPage}
+          />
         )}
         <h3>{totalPages}</h3>
         <h3>{totalResults}</h3>

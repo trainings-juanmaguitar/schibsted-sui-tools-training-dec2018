@@ -6,11 +6,12 @@
   "scripts": {
     "co": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ssr": "sui-bundler build -C && sui-ssr build -C && node --inspect `pbpaste`",
     "build": "sui-bundler build -C",
     "start": "sui-bundler dev --link-package ../3-frontend-mv--lib-movies",
     "phoenix": "sui-mono phoenix",
-    "release:check": "sui-mono check"
+    "release:check": "sui-mono check",
+    "dev": "sui-bundler dev",
+    "ssr": "npm run build && sui-ssr build -C && node server"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "@s-ui/i18n": "1.5.0",
     "@s-ui/react-initial-props": "^1.7.0",
     "@s-ui/react-molecule-input-field": "^2.0.0",
+    "@s-ui/react-molecule-pagination": "^1.1.0",
     "@schibstedspain/sui-atom-button": "^1.22.0",
     "isomorphic-fetch": "^2.2.1"
   },

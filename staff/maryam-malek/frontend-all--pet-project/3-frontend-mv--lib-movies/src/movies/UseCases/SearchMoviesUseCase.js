@@ -7,8 +7,8 @@ class SearchMoviesUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute({query}) {
-    const moviesList = await this._repository.searchMovies({query})
+  async execute({query, page}) {
+    const moviesList = await this._repository.searchMovies({query, page})
     const {actualPage, totalPages, totalResults, movies} = moviesList
     return {
       actualPage,

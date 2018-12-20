@@ -8,7 +8,7 @@ class HTTPSMoviesRepository extends MoviesRepository {
     this._mapper = mapper
     this._moviesListValueObjectFactory = moviesListValueObjectFactory
   }
-  async listPopularMovies() {
+  async listPopularMovies({page}) {
     const host = this._config.get('API_URL_BASE')
     const apiKey = this._config.get('API_KEY')
 
@@ -19,7 +19,9 @@ class HTTPSMoviesRepository extends MoviesRepository {
         total_pages: totalPages,
         total_results: totalResults
       }
-    } = await this._fetcher.get(`${host}/movie/popular?api_key=${apiKey}`)
+    } = await this._fetcher.get(
+      `${host}/movie/popular?api_key=${apiKey}&page=${page}`
+    )
 
     return this._moviesListValueObjectFactory({
       actualPage,
@@ -28,25 +30,7 @@ class HTTPSMoviesRepository extends MoviesRepository {
       movies: movies.map(this._mapper.map)
     })
   }
-  async listLatestMovies() {
-    const host = this._config.get('API_URL_BASE')
-    const apiKey = this._config.get('API_KEY')
-    const {
-      data: {
-        results: movies,
-        page: actualPage,
-        total_pages: totalPages,
-        total_results: totalResults
-      }
-    } = await this._fetcher.get(`${host}/movie/upcoming?api_key=${apiKey}`)
-    return this._moviesListValueObjectFactory({
-      actualPage,
-      totalPages,
-      totalResults,
-      movies: movies.map(this._mapper.map)
-    })
-  }
-  async searchMovies({query}) {
+  async listLatestMovies({page}) {
     const host = this._config.get('API_URL_BASE')
     const apiKey = this._config.get('API_KEY')
     const {
@@ -57,7 +41,27 @@ class HTTPSMoviesRepository extends MoviesRepository {
         total_results: totalResults
       }
     } = await this._fetcher.get(
-      `${host}/search/movie?api_key=${apiKey}&query=${query}`
+      `${host}/movie/upcoming?api_key=${apiKey}&page=${page}`
+    )
+    return this._moviesListValueObjectFactory({
+      actualPage,
+      totalPages,
+      totalResults,
+      movies: movies.map(this._mapper.map)
+    })
+  }
+  async searchMovies({query, page}) {
+    const host = this._config.get('API_URL_BASE')
+    const apiKey = this._config.get('API_KEY')
+    const {
+      data: {
+        results: movies,
+        page: actualPage,
+        total_pages: totalPages,
+        total_results: totalResults
+      }
+    } = await this._fetcher.get(
+      `${host}/search/movie?api_key=${apiKey}&query=${query}&page=${page}`
     )
     return this._moviesListValueObjectFactory({
       actualPage,
