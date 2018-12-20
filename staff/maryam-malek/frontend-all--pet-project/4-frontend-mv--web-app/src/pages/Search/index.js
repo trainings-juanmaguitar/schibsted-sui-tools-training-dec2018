@@ -5,10 +5,7 @@ import Button from '@schibstedspain/sui-atom-button'
 import PropTypes from 'prop-types'
 
 class Search extends Component {
-  state = {
-    query: '',
-    movies: []
-  }
+  state = {query: '', moviesList: {movies: []}}
 
   onChangeInput = field => (e, {value}) => {
     this.setState({[field]: value})
@@ -16,14 +13,17 @@ class Search extends Component {
 
   showData = async e => {
     const {domain} = this.context
-    const movies = await domain
+    const moviesList = await domain
       .get('search_movies_use_case')
       .execute({query: this.state.query})
-    this.setState({movies})
+    this.setState({moviesList})
   }
 
   render() {
-    const {query, movies} = this.state
+    const {
+      query,
+      moviesList: {movies, totalPages, totalResults, actualPage}
+    } = this.state
     const {onChangeInput, showData} = this
     const {i18n} = this.context
     return (
@@ -52,6 +52,9 @@ class Search extends Component {
             ))}
           </ul>
         )}
+        <h3>{totalPages}</h3>
+        <h3>{totalResults}</h3>
+        <h3>{actualPage}</h3>
       </div>
     )
   }

@@ -8,8 +8,14 @@ class SearchMoviesUseCase extends UseCase {
   }
 
   async execute({query}) {
-    const movies = await this._repository.searchMovies({query})
-    return movies.map(movie => movie.toJSON())
+    const moviesList = await this._repository.searchMovies({query})
+    const {actualPage, totalPages, totalResults, movies} = moviesList
+    return {
+      actualPage,
+      totalPages,
+      totalResults,
+      movies: movies.map(movie => movie.toJSON())
+    }
   }
 }
 

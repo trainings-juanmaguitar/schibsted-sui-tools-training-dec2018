@@ -4,16 +4,16 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 class LatestMovies extends Component {
-  state = {
-    movies: []
-  }
+  state = {moviesList: {movies: []}}
   async componentDidMount() {
     const {domain} = this.context
-    const movies = await domain.get('list_latest_movies_use_case').execute()
-    this.setState({movies})
+    const moviesList = await domain.get('list_latest_movies_use_case').execute()
+    this.setState({moviesList})
   }
   render() {
-    const {movies} = this.state
+    const {
+      moviesList: {movies, totalPages, totalResults, actualPage}
+    } = this.state
     return (
       <React.Fragment>
         <Helmet>
@@ -29,6 +29,9 @@ class LatestMovies extends Component {
             ))}
           </ul>
         )}
+        <h3>{totalPages}</h3>
+        <h3>{totalResults}</h3>
+        <h3>{actualPage}</h3>
       </React.Fragment>
     )
   }

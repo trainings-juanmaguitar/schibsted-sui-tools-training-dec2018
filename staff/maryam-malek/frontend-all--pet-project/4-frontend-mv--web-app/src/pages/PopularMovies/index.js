@@ -10,7 +10,6 @@ class PopularMovies extends Component {
     const moviesList = await domain
       .get('list_popular_movies_use_case')
       .execute()
-    console.log(moviesList) // eslint-disable-line
     this.setState({moviesList})
   }
   render() {

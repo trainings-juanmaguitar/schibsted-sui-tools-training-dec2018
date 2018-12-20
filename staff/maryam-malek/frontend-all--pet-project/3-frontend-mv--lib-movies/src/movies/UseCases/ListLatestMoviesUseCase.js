@@ -8,9 +8,16 @@ class ListLatestMoviesUseCase extends UseCase {
   }
 
   async execute() {
-    const movies = await this._repository.listLatestMovies()
-    return movies.map(movie => movie.toJSON())
+    const moviesList = await this._repository.listLatestMovies()
+    const {actualPage, totalPages, totalResults, movies} = moviesList
+    return {
+      actualPage,
+      totalPages,
+      totalResults,
+      movies: movies.map(movie => movie.toJSON())
+    }
   }
 }
-
 export default ListLatestMoviesUseCase
+
+// FALTA PASSAR_HO TOT AMB TOJSON
