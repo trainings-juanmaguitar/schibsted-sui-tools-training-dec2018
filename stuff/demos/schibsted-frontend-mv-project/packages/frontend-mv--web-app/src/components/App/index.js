@@ -30,11 +30,16 @@ class App extends Component {
   }
 
   changeLanguage = ({lang}) => {
-    const {i18n} = this.context
+    const {i18n, router} = this.context
+    const {
+      location: {pathname: currentPath}
+    } = router
     console.log(`changing language to ${lang}`)
-    i18n.culture = lang
-    this.forceUpdate()
-    // console.log(i18n.culture)
+    i18n.setCulture(lang)
+    // this.context.i18n = {...i18n, culture: lang}
+    // i18n.culture = lang
+    console.log(i18n.culture)
+    router.push(currentPath)
   }
 
   render() {
@@ -89,6 +94,7 @@ class App extends Component {
 }
 
 App.propTypes = {children: PropTypes.element}
-App.contextTypes = {i18n: PropTypes.object}
+App.contextTypes = {i18n: PropTypes.object,router: PropTypes.object}
+
 
 export default App

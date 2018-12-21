@@ -25,7 +25,14 @@
     "@s-ui/domain": "1",
     "@s-ui/lint": "2",
     "@s-ui/mockmock": "1",
-    "@s-ui/test": "2.0.0-beta.2"
+    "@s-ui/test": "2.0.0-beta.2",
+    "babel-preset-sui": "1",
+    "babel-cli": "^6.26.0"
+  },
+  "babel": {
+    "presets": [
+      "sui"
+    ]
   },
   "eslintConfig": {
     "extends": [
