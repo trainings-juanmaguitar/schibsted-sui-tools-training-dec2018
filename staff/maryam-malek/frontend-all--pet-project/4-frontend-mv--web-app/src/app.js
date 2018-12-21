@@ -1,30 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import './index.scss'
-
-// import {register} from '@s-ui/bundler/registerServiceWorker'
-
 import Router from 'react-router/lib/Router'
-import {browserHistory} from 'react-router'
-
+import match from 'react-router/lib/match'
+import browserHistory from 'react-router/lib/browserHistory'
 import routes from './routes'
 
-
-import Domain from '3-frontend-mv--lib-movies'
-// import Domain from '../../3-frontend-mv--lib-movies/src'
-import i18nFactory from './literals'
 import withContext from '@s-ui/hoc/lib/withContext'
+import contextFactory from './contextFactory'
 
-
-const RouterWithContext = withContext({domain, i18n})(Router)
-
-// register({
-//   first: () => window.alert('Content is cached for offline use.'),
-//   renovate: () => window.alert('New content is available; please refresh.')
-// })()
-
-ReactDOM.render(
-  <RouterWithContext history={browserHistory} routes={routes} />,
-  document.getElementById('⚛️')
-)
+contextFactory().then(context => {
+  match(
+    {routes, history: browserHistory},
+    (err, redirectLocation, renderProps) => {
+      if (err) {
+        console.error(err) // eslint-disable-line
+      }
+      const {router} = renderProps
+      context.router = router
+      const App = withContext(context)(Router)
+      ReactDOM.render(<App {...renderProps} />, document.getElementById('⚛️'))
+    }
+  )
+})

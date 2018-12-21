@@ -13,6 +13,8 @@ class Search extends Component {
   }
 
   showData = async e => {
+    console.log(this) //eslint-disable-line
+    debugger //eslint-disable-line
     const {domain} = this.context
     const moviesList = await domain
       .get('search_movies_use_case')

@@ -1,24 +1,25 @@
+/* eslint-disable */
 import React, {Component} from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import AtomCard from '../../../../2-frontend-mv--uilib-components/components/atom/card/src'
 
 class MovieDetail extends Component {
-  state = {
-    movie: {title: ''}
-  }
-  async componentDidMount() {
-    const {domain} = this.context
-    const {
-      params: {id}
-    } = this.props
-    const movie = await domain.get('get_movie_details_use_case').execute({id})
-    this.setState({movie})
-  }
+  // state = {
+  //   movie: {title: ''}
+  // }
+  // async componentDidMount() {
+  //   const {domain} = this.context
+  //   const {
+  //     params: {id}
+  //   } = this.props
+  //   const movie = await domain.get('get_movie_details_use_case').execute({id})
+  //   this.setState({movie})
+  // }
   render() {
     const {
       movie: {title, language, releaseDate, overview, genres, posterPath}
-    } = this.state
+    } = this.props
     return (
       <React.Fragment>
         <Helmet>
@@ -50,6 +51,16 @@ class MovieDetail extends Component {
   }
 }
 
-MovieDetail.contextTypes = {domain: PropTypes.object}
+MovieDetail.contextTypes = {domain: PropTypes.object, movie: PropTypes.object}
+
+MovieDetail.getInitialProps = async ({context, routeInfo, params}) => {
+  const {domain} = context
+  const {params: {id}} = routeInfo
+
+  const movie = await domain.get('get_movie_details_use_case').execute({id})
+  return {
+    movie
+  }
+}
 
 export default MovieDetail

@@ -6,32 +6,16 @@ import PropTypes from 'prop-types'
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
 class PopularMovies extends Component {
-  
-  
-  state = {moviesList: {movies: []}}
-  async componentDidMount() {
-    const {domain} = this.context
-    const moviesList = await domain
-      .get('list_popular_movies_use_case')
-      .execute({page: 1})
-    this.setState({moviesList})
-  }
 
   onSelectPage = async (e, {page}) => {
-    const {domain} = this.context
-    const moviesList = await domain
-      .get('list_popular_movies_use_case')
-      .execute({page})
-    this.setState({moviesList})
+    console.log(this.props)
+    this.props.router.push(`/popular_movies/${page}`)
   }
 
   render() {
-    // const {
-    //   moviesList: {movies, totalPages, totalResults, actualPage}
-    // } = this.state
-    const {movies} = this.props
-    const [totalPages, totalResults, actualPage] = [1,1,1]
-    console.log(this.props.movies)
+    
+    const {movies, actualPage, totalPages, totalResults} = this.props
+    
     return (
       <React.Fragment>
         <Helmet>
@@ -71,18 +55,24 @@ class PopularMovies extends Component {
 PopularMovies.contextTypes = {
   domain: PropTypes.object,
   i18n: PropTypes.object,
-  movies: PropTypes.array
+  movies: PropTypes.array,
+  actualPage: PropTypes.number,
+  totalPages: PropTypes.number,
+  totalResults: PropTypes.number
 }
 
 PopularMovies.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
-
-  const {movies} = await domain
-      .get('list_popular_movies_use_case')
-      .execute()
+  const {params: {page}} = routeInfo
+  const {movies, actualPage, totalPages, totalResults} = await domain
+    .get('list_popular_movies_use_case')
+    .execute({page})
 
   return {
-    movies: movies || []
+    movies: movies || [],
+    actualPage,
+    totalPages,
+    totalResults
   }
 }
 

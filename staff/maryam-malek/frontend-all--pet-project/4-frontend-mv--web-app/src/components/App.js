@@ -15,7 +15,7 @@ const App = props => {
       </Helmet>
       <nav>
         <h1>Movies App</h1>
-        <Link to="/popular_movies">Popular Movies</Link>
+        <Link to="/popular_movies/1">Popular Movies</Link>
         <Link to="/latest_movies">Latest Movies</Link>
         <Link to="/search">Search</Link>
       </nav>

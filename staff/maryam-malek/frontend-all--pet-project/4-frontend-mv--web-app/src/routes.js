@@ -40,7 +40,7 @@ const Root = (
     <Route component={App}>
       <Route path='/'>
         <IndexRoute getComponent={loadHomePage} />
-        <Route path='/popular_movies' getComponent={loadPopularMoviesPage} />
+        <Route path='/popular_movies/:page' getComponent={loadPopularMoviesPage} />
         <Route path='/latest_movies' getComponent={loadLatestMoviesPage} />
         <Route path='/search' getComponent={loadSearchPage} />
         <Route path='/movies/:id' getComponent={loadMovieDetailPage} />
