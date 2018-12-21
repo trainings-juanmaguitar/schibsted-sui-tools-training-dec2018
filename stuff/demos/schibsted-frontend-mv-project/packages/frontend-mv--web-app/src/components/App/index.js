@@ -34,11 +34,8 @@ class App extends Component {
     const {
       location: {pathname: currentPath}
     } = router
-    console.log(`changing language to ${lang}`)
+    console.log(`changing language to ${lang}`) // eslint-disable-line
     i18n.setCulture(lang)
-    // this.context.i18n = {...i18n, culture: lang}
-    // i18n.culture = lang
-    console.log(i18n.culture)
     router.push(currentPath)
   }
 
