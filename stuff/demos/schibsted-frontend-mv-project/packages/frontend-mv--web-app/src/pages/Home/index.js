@@ -14,12 +14,8 @@ const HomePage = (_, {i18n}) => (
     <Helmet>
       <link rel="canonical" href="http://spa.mock/" />
     </Helmet>
-    <Title>Section</Title>
-    <Subtitle>
-      {' '}
-      A simple container to divide your page into <strong>sections</strong>,
-      like the one you're currently reading
-    </Subtitle>
+    <Title>{i18n.t('HOME_TITLE')}</Title>
+    <Subtitle>{i18n.t('HOME_DESCRIPTION')}</Subtitle>
     <FormSearch />
   </React.Fragment>
 )

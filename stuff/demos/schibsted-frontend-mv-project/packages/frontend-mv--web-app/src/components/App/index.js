@@ -20,7 +20,7 @@ import Link from 'react-router/lib/Link'
 // const CLASS_TOOLBAR_HOME = `${CLASS_TOOLBAR}-home`
 // const CLASS_TOOLBAR_OPTIONS = `${CLASS_TOOLBAR}-options`
 
-const App = ({children}) => (
+const App = ({children}, {i18n}) => (
   <div className="App">
     <Helmet>
       <meta charSet="utf-8" />
@@ -35,7 +35,7 @@ const App = ({children}) => (
     <Navbar style={{border: 'solid 1px #00D1B2', margin: '0'}}>
       <NavbarBrand>
         <NavbarItem>
-          <Link to="/">Inicio</Link>
+          <Link to="/">{i18n.t('HOME')}</Link>
         </NavbarItem>
         <NavbarItem isHidden="desktop">
           <Icon className="fa fa-github" />
@@ -58,6 +58,8 @@ const App = ({children}) => (
     </Container>
   </div>
 )
+
 App.propTypes = {children: PropTypes.element}
+App.contextTypes = {i18n: PropTypes.object}
 
 export default App
