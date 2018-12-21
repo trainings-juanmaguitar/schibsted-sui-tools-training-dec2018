@@ -34,37 +34,22 @@ const MoviesList = (
   return (
     <div className={CLASS_LIST}>
       {/* End hero unit */}
-      <Title tag="h1">{title}</Title>
-      {subtitle && <Title tag="h4">{subtitle}</Title>}
+      <Title isSize={2} tag="h1">
+        {title}
+      </Title>
+      {subtitle && (
+        <Title isSize={4} tag="h4">
+          {subtitle}
+        </Title>
+      )}
 
       <Columns isMultiline>
         {movies.map((movie, i) => (
-          <Column isSize={4} key={i}>
+          <Column isSize={3} key={i}>
             <MovieCard movie={movie} />
           </Column>
         ))}
       </Columns>
-      {/*
-        <Grid container spacing={40}>
-          {movies.map(movie => (
-            <Grid item key={movie.id} sm={6} md={4} lg={3}>
-              <Card>
-                <CardMedia
-                  className={CLASS_CARD_MEDIA}
-                  image={movie.posterPath}
-                  title="Image title"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-                  </Typography>
-                  <Typography>{movie.overview}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        */}
       <div className="level">
         <MoleculePagination
           totalPages={totalPages}

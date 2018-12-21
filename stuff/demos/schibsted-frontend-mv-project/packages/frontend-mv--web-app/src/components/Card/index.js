@@ -11,9 +11,11 @@ import {
   Content
 } from 'bloomer'
 
+import Link from 'react-router/lib/Link'
+
 import TextTruncate from 'react-text-truncate'
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie}, {i18n}) => {
   const imgStyles = {
     backgroundImage: `url(${movie.posterPath})`,
     backgroundSize: 'cover',
@@ -22,19 +24,21 @@ const MovieCard = ({movie}) => {
   }
   return (
     <Card>
-      <CardHeader>
-        <CardHeaderTitle>{movie.title}</CardHeaderTitle>
-      </CardHeader>
-      <CardImage>
-        <Image isRatio="4:3" style={imgStyles} />
-      </CardImage>
+      <Link to={`/movie/${movie.id}`}>
+        <CardHeader>
+          <CardHeaderTitle>{movie.title}</CardHeaderTitle>
+        </CardHeader>
+        <CardImage>
+          <Image isRatio="4:3" style={imgStyles} />
+        </CardImage>
+      </Link>
       <CardContent>
         <Content>
           <TextTruncate
             line={2}
             truncateText="..."
             text={movie.overview}
-            textTruncateChild={<a href="#">Read on</a>}
+            textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
           />
           {}
           <br />
@@ -46,5 +50,6 @@ const MovieCard = ({movie}) => {
 }
 
 MovieCard.propTypes = {movie: PropTypes.object}
+MovieCard.contextTypes = {i18n: PropTypes.object}
 
 export default MovieCard

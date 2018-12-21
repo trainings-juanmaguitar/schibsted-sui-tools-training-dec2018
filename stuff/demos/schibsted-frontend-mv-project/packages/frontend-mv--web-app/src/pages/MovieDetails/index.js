@@ -5,7 +5,6 @@ import MovieDetails from '../../components/MovieDetails'
 
 const MovieDetailsPage = ({movie}, {i18n}) => (
   <React.Fragment>
-    <h1>{i18n.t('DETAIL_TITLE')}</h1>
     <MovieDetails movie={movie} />
   </React.Fragment>
 )
@@ -16,6 +15,7 @@ MovieDetailsPage.renderLoading = () => <h1>Loading...</h1>
 
 MovieDetailsPage.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
+
   const {
     params: {id}
   } = routeInfo

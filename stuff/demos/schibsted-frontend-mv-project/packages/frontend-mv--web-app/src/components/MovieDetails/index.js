@@ -1,12 +1,63 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const MovieDetails = ({movie}) => (
-  <div className="MovieDetails">
-    <h1>{movie.title}</h1>
-    <p>{movie.id}</p>
-  </div>
-)
+import {
+  Columns,
+  Column,
+  Card,
+  CardHeader,
+  CardHeaderTitle,
+  Image,
+  CardContent,
+  Content
+} from 'bloomer'
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHandPointLeft} from '@fortawesome/free-solid-svg-icons'
+
+const MovieDetails = ({movie}, {router}) => {
+  const imgStyles = {
+    backgroundImage: `url(${movie.posterPath})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '50% 50%'
+  }
+  return (
+    <div className="MovieDetails">
+      <div className="level">
+        <a
+          href="#"
+          onClick={() => {
+            router.goBack()
+          }}
+        >
+          <FontAwesomeIcon icon={faHandPointLeft} /> Go Back
+        </a>
+      </div>
+      <Columns>
+        <Column isSize={6}>
+          <Image isRatio="square" style={imgStyles} />
+        </Column>
+        <Column>
+          <Card>
+            <CardHeader>
+              <CardHeaderTitle>{movie.title}</CardHeaderTitle>
+            </CardHeader>
+
+            <CardContent>
+              <Content>
+                {movie.overview}
+                <br />
+                <small>{movie.release}</small>
+              </Content>
+            </CardContent>
+          </Card>
+        </Column>
+      </Columns>
+    </div>
+  )
+}
 MovieDetails.propTypes = {movie: PropTypes.object}
+MovieDetails.contextTypes = {router: PropTypes.object}
 
 export default MovieDetails
