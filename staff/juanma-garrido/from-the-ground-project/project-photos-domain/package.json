@@ -1,0 +1,36 @@
+{
+  "name": "project-photos-domain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lib && npm run demo",
+    "demo": "node demo.js",
+    "co": "sui-mono commit",
+    "lib": "rm -Rf ./lib && babel ./src -d lib",
+    "lint": "sui-lint js --fix",
+    "test": "NODE_ENV=test npm run test:client && NODE_ENV=test npm run test:server",
+    "test:ci": "NODE_ENV=test ./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test:client": "NODE_ENV=test sui-test browser",
+    "test:client:watch": "npm run test:client --watch",
+    "test:server": "NODE_ENV=test sui-test server",
+    "test:server:watch": "npm run test:server --watch",
+    "prepublish": "npm run lib",
+    "commitmsg": "validate-commit-msg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@s-ui/domain": "1",
+    "@s-ui/lint": "2",
+    "@s-ui/mockmock": "1",
+    "@s-ui/test": "2.0.0-beta.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "sasslintConfig": "./node_modules/@s-ui/lint/sass-lint.yml"
+}

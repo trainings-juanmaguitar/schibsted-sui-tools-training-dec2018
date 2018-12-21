@@ -1,0 +1,12 @@
+{
+  "name": "from-the-ground-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "co": "sui-mono commit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
