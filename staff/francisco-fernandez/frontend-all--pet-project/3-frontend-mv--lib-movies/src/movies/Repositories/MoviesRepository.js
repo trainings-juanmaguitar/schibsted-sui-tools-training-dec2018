@@ -7,6 +7,9 @@ class MoviesRepository extends Repository {
   searchByName() {
     throw new Error('[MoviesRepository#searchByName] mandatory')
   }
+  detailsById() {
+    throw new Error('[MoviesRepository#detailsById] mandatory')
+  }
 }
 
 export default MoviesRepository
