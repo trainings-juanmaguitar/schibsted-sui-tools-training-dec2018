@@ -8,7 +8,7 @@ import AtomButton from '@schibstedspain/sui-atom-button'
 
 // import SearchIcon from '@material-ui/icons/Search'
 
-const BASE_CLASS = `sui-MoviesApp`
+const BASE_CLASS = `MoviesApp`
 const CLASS_FORM_SEARCH = `${BASE_CLASS}-formSearch`
 
 class FormSearch extends Component {

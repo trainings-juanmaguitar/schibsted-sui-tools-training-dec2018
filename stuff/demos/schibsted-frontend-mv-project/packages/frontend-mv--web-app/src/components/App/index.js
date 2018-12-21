@@ -8,7 +8,9 @@ import {
   Navbar,
   Icon,
   NavbarMenu,
-  NavbarEnd
+  NavbarEnd,
+  Container,
+  Section
 } from 'bloomer'
 
 import Link from 'react-router/lib/Link'
@@ -33,7 +35,7 @@ const App = ({children}) => (
     <Navbar style={{border: 'solid 1px #00D1B2', margin: '0'}}>
       <NavbarBrand>
         <NavbarItem>
-          <img src={'sdfsdfds'} style={{marginRight: 5}} /> Bloomer
+          <Link to="/">Inicio</Link>
         </NavbarItem>
         <NavbarItem isHidden="desktop">
           <Icon className="fa fa-github" />
@@ -51,7 +53,9 @@ const App = ({children}) => (
       </NavbarMenu>
     </Navbar>
 
-    {children}
+    <Container>
+      <Section>{children}</Section>
+    </Container>
   </div>
 )
 App.propTypes = {children: PropTypes.element}

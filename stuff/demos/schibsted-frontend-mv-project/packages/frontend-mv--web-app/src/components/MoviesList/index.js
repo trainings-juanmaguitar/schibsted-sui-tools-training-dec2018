@@ -5,10 +5,14 @@ import PropTypes from 'prop-types'
 
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
-const BASE_CLASS = `sui-MoviesApp`
+import MovieCard from '../Card'
+
+import {Columns, Column, Title} from 'bloomer'
+
+const BASE_CLASS = `MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
 // const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
-const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
+// const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
 
 const MoviesList = (
   {movies, title, subtitle, page = 1, totalPages = 1},
@@ -30,18 +34,16 @@ const MoviesList = (
   return (
     <div className={CLASS_LIST}>
       {/* End hero unit */}
-      <h1>{title}</h1>
-      {subtitle && <h4>{subtitle}</h4>}
-      <div className={CLASS_PAGINATION}>
-        <MoleculePagination
-          totalPages={totalPages}
-          page={page}
-          onSelectPage={updatePage}
-          onSelectNext={updatePage}
-          onSelectPrev={updatePage}
-        />
-      </div>
-      <ul>{movies.map((movie, i) => <li key={i}>{movie.title}</li>)}</ul>
+      <Title tag="h1">{title}</Title>
+      {subtitle && <Title tag="h4">{subtitle}</Title>}
+
+      <Columns isMultiline>
+        {movies.map((movie, i) => (
+          <Column isSize={4} key={i}>
+            <MovieCard movie={movie} />
+          </Column>
+        ))}
+      </Columns>
       {/*
         <Grid container spacing={40}>
           {movies.map(movie => (
@@ -63,7 +65,7 @@ const MoviesList = (
           ))}
         </Grid>
         */}
-      <div className={CLASS_PAGINATION}>
+      <div className="level">
         <MoleculePagination
           totalPages={totalPages}
           page={page}

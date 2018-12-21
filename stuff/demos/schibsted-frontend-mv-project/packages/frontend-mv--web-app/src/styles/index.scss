@@ -1,4 +1,4 @@
-@import "~bulma/css/bulma.css";
+@import "~bulma/bulma.sass";
 
 /*
 @import "~bulma/sass/base/_all.scss";
@@ -7,13 +7,17 @@
 @import "~bulma/sass/grid/_all.scss";
 @import "~bulma/sass/layout/_all.scss";
 */
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
-@import '~@s-ui/react-atom-input/lib/index.scss';
-@import '~@schibstedspain/sui-atom-button/lib/index.scss';
-@import '~@s-ui/react-molecule-pagination/lib/index.scss';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
-@import '~@s-ui/react-molecule-pagination/lib/index.scss';
+@import "~@s-ui/react-atom-input/lib/index.scss";
+@import "~@schibstedspain/sui-atom-button/lib/index.scss";
+@import "~@s-ui/react-molecule-pagination/lib/index.scss";
+
+@import "~@s-ui/react-molecule-pagination/lib/index.scss";
+
+@import "../components/FormSearch/index.scss";
+@import "../components/MoviesList/index.scss";
 
 // .App {
 //   nav a {
@@ -27,7 +31,6 @@
 //   padding: 10px;
 // }
 
-
 // .ListUsers {
 //   background-color: #efd760;
 //   padding: 30px;
@@ -37,32 +40,6 @@
 //   &-homePage {
 //     margin: 40px auto;
 //     max-width: 600px;
-//   }
-// }
-
-
-// .sui-MoviesApp {
-//   &-listMovies {
-//     width: auto;
-//     margin-left: 100px;
-//     margin-right: 100px;
-//     h1 {
-//       font-family: "Roboto";
-//     }
-//   }
-//   &-cardMedia {
-//     height: 100px;
-//     padding-top: 56.25%; /* 16:9 */
-//   }
-//   &-pagination {
-//     margin-top: 20px;
-//     float:right;
-//   }
-// }
-
-// .sui-MoviesApp {
-//   &-formSearch {
-//     display:flex;    
 //   }
 // }
 
