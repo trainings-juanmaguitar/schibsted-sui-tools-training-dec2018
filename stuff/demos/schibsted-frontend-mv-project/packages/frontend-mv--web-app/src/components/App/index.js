@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import React, {Component} from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
@@ -22,64 +22,70 @@ const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
 const CLASS_TOOLBAR_LANGUAGES = `${CLASS_TOOLBAR}-languages`
 // const CLASS_TOOLBAR_OPTIONS = `${CLASS_TOOLBAR}-options`
 
-const App = ({children}, {i18n}) => {
-  console.log(i18n.culture)
-  const changeLanguage = ({lang}) => {
+class App extends Component {
+  constructor() {
+    super()
+    this.changeLanguageES = this.changeLanguage.bind(null, {lang: 'es-ES'})
+    this.changeLanguageEN = this.changeLanguage.bind(null, {lang: 'en-GB'})
+  }
+
+  changeLanguage = ({lang}) => {
+    const {i18n} = this.context
     console.log(`changing language to ${lang}`)
     i18n.culture = lang
-    console.log(i18n.culture)
+    this.forceUpdate()
+    // console.log(i18n.culture)
   }
-  const changeLanguageES = changeLanguage.bind(null, {lang: 'es-ES'})
-  const changeLanguageEN = changeLanguage.bind(null, {lang: 'en-GB'})
 
-  return (
-    <div className="App">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="description" content="Helmet application" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-        <title>SPA MOCK</title>
-      </Helmet>
+  render() {
+    const {children} = this.props
+    const {i18n} = this.context
 
-      <Navbar style={{border: 'solid 1px #00D1B2', margin: '0'}}>
-        <NavbarBrand>
-          <NavbarItem>
-            <Link to="/">{i18n.t('HOME')}</Link>
-          </NavbarItem>
-          <NavbarItem isHidden="desktop">
-            <Icon className="fa fa-github" />
-          </NavbarItem>
-          <NavbarItem isHidden="desktop">
-            <Icon className="fa fa-twitter" style={{color: '#55acee'}} />
-          </NavbarItem>
-        </NavbarBrand>
-        <NavbarMenu>
-          <NavbarEnd>
+    return (
+      <div className="App">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="Helmet application" />
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
+          <title>SPA MOCK</title>
+        </Helmet>
+
+        <Navbar style={{border: 'solid 1px #00D1B2', margin: '0'}}>
+          <NavbarBrand>
             <NavbarItem>
-              <Link to="/popular">{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
+              <Link to="/">{i18n.t('HOME')}</Link>
             </NavbarItem>
-          </NavbarEnd>
-        </NavbarMenu>
-        <NavbarDivider />
-        <NavbarItem className={CLASS_TOOLBAR_LANGUAGES}>
-          <a onClick={changeLanguageEN}>
-            EN
-          </a>
-          |
-          <a onClick={changeLanguageES}>
-            ES
-          </a>
-        </NavbarItem>
-      </Navbar>
+            <NavbarItem isHidden="desktop">
+              <Icon className="fa fa-github" />
+            </NavbarItem>
+            <NavbarItem isHidden="desktop">
+              <Icon className="fa fa-twitter" style={{color: '#55acee'}} />
+            </NavbarItem>
+          </NavbarBrand>
+          <NavbarMenu>
+            <NavbarEnd>
+              <NavbarItem>
+                <Link to="/popular">{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
+              </NavbarItem>
+            </NavbarEnd>
+          </NavbarMenu>
+          <NavbarDivider />
+          <NavbarItem className={CLASS_TOOLBAR_LANGUAGES}>
+            <a onClick={this.changeLanguageEN}>EN</a>
+            |
+            <a onClick={this.changeLanguageES}>ES</a>
+          </NavbarItem>
+        </Navbar>
 
-      <Container>
-        <Section>{children}</Section>
-      </Container>
-    </div>
-  )
+        <Container>
+          <Section>{children}</Section>
+        </Container>
+      </div>
+    )
+  }
 }
 
 App.propTypes = {children: PropTypes.element}

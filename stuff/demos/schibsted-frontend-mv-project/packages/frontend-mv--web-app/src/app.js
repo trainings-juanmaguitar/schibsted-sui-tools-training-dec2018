@@ -24,7 +24,11 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       const {router} = renderProps
       context.router = router
       const App = withContext(context)(Router)
-      ReactDOM.hydrate(<App {...renderProps} />, document.getElementById('app'))
+      const render = window.__INITIAL_PROPS__
+        ? ReactDOM.hydrate
+        : ReactDOM.render
+
+      render(<App {...renderProps} />, document.getElementById('app'))
     }
   )
 })

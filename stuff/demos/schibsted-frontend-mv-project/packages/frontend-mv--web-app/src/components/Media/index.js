@@ -15,7 +15,7 @@ import {
 
 import Link from 'react-router/lib/Link'
 
-import TextTruncate from 'react-text-truncate'
+// import TextTruncate from 'react-text-truncate'
 
 const MovieCard = ({movie}, {i18n}) => {
   // const imgStyles = {
@@ -39,12 +39,16 @@ const MovieCard = ({movie}, {i18n}) => {
             </Link>{' '}
             <small>{movie.release}</small>
             <br />
-            <TextTruncate
-              line={2}
-              truncateText="..."
-              text={movie.overview}
-              textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
-            />
+            {movie.overview}
+            {/*
+            
+              <TextTruncate
+                line={2}
+                truncateText="..."
+                text={movie.overview}
+                textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
+              />
+            */}
           </p>
         </Content>
         <Level isMobile>

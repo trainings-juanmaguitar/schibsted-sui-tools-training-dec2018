@@ -12,8 +12,8 @@ import {Title} from 'bloomer'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
+const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
 // const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
-// const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
 
 const MoviesList = (
   {movies, title, subtitle, page = 1, totalPages = 1},
@@ -44,9 +44,9 @@ const MoviesList = (
         </Title>
       )}
 
-      {movies.map((movie, i) => <MediaListItem movie={movie} />)}
+      {movies.map((movie, i) => <MediaListItem key={i} movie={movie} />)}
 
-      <div className="level">
+      <div className={CLASS_PAGINATION}>
         <MoleculePagination
           totalPages={totalPages}
           page={page}
