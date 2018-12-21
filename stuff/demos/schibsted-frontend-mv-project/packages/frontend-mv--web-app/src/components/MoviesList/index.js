@@ -5,9 +5,10 @@ import PropTypes from 'prop-types'
 
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
-import MovieCard from '../Card'
+// import MovieCard from '../Card'
+import MediaListItem from '../Media'
 
-import {Columns, Column, Title} from 'bloomer'
+import {Title} from 'bloomer'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_LIST = `${BASE_CLASS}-listMovies`
@@ -43,13 +44,8 @@ const MoviesList = (
         </Title>
       )}
 
-      <Columns isMultiline>
-        {movies.map((movie, i) => (
-          <Column isSize={3} key={i}>
-            <MovieCard movie={movie} />
-          </Column>
-        ))}
-      </Columns>
+      {movies.map((movie, i) => <MediaListItem movie={movie} />)}
+
       <div className="level">
         <MoleculePagination
           totalPages={totalPages}
