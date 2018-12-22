@@ -1,7 +1,7 @@
 import assert from 'assert'
 
-import MoviesRepositoryFactory from '../../../src/movie/Repositories/factory.js'
-import HTTPMoviesRepository from '../../../src/movie/Repositories/HTTPMoviesRepository.js'
+import MoviesRepositoryFactory from '../../../src/movies/Repositories/factory.js'
+import HTTPMoviesRepository from '../../../src/movies/Repositories/HTTPMoviesRepository.js'
 
 describe('MoviesRepositoryFactory → static methods that returns movies-context Repositories', function() {
   it('is a class (constructor function)', function() {

@@ -2,7 +2,7 @@ import assert from 'assert'
 
 import {Entity} from '@s-ui/domain'
 import AnemicModel from '@s-ui/domain/lib/AnemicModel'
-import MovieEntity from '../../../src/movie/Entities/MovieEntity'
+import MovieEntity from '../../../src/movies/Entities/MovieEntity'
 
 let movie
 const title = 'Back To Te Future'

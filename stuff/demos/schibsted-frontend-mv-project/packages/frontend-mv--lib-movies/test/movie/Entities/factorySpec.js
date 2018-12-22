@@ -1,7 +1,7 @@
 import assert from 'assert'
 
-import MovieEntity from '../../../src/movie/Entities/MovieEntity'
-import MoviesEntityFactory from '../../../src/movie/Entities/factory'
+import MovieEntity from '../../../src/movies/Entities/MovieEntity'
+import MoviesEntityFactory from '../../../src/movies/Entities/factory'
 
 describe('MovieEntitiesFactory → static methods that returns movies-context Entities', function() {
   it('is a class (constructor function)', function() {

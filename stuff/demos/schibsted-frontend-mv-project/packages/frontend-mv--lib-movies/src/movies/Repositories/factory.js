@@ -4,7 +4,7 @@ import MovieMapperFactory from '../Mappers/factory'
 import MoviesValueObjectsFactory from '../ValueObjects/factory'
 import factoryLogger from '../../logger/factory'
 
-export default class MoviesRepositoryFactory {
+class MoviesRepositoriesFactory {
   static httpMoviesRepository = ({config}) =>
     new HTTPMoviesRepository({
       config,
@@ -14,3 +14,5 @@ export default class MoviesRepositoryFactory {
       moviesListValueObject: MoviesValueObjectsFactory.moviesListValueObject
     })
 }
+
+export default MoviesRepositoriesFactory

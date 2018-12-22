@@ -1,7 +1,7 @@
 import MovieEntity from './MovieEntity'
 
-class MovieEntitiesFactory {
+class MoviesEntitiesFactory {
   static movieEntity = properties => new MovieEntity(properties)
 }
 
-export default MovieEntitiesFactory
+export default MoviesEntitiesFactory

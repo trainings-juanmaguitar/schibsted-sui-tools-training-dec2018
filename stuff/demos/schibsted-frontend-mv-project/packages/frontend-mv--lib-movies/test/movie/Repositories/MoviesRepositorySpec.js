@@ -2,7 +2,7 @@ import assert from 'assert'
 
 import {Repository} from '@s-ui/domain'
 
-import MoviesRepository from '../../../src/movie/Repositories/MoviesRepository.js'
+import MoviesRepository from '../../../src/movies/Repositories/MoviesRepository.js'
 
 describe('MoviesRepository @interface', function() {
   it('is a class (constructor function)', function() {

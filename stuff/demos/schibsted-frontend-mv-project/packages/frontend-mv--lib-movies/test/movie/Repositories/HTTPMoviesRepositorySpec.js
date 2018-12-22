@@ -1,11 +1,11 @@
 import assert from 'assert'
 import sinon from 'sinon'
 
-import MoviesListValueObject from '../../../src/movie/ValueObjects/MoviesListValueObject'
-import MoviesRepository from '../../../src/movie/Repositories/MoviesRepository.js'
-import HTTPMoviesRepository from '../../../src/movie/Repositories/HTTPMoviesRepository.js'
-import MovieMapperFactory from '../../../src/movie/Mappers/factory'
-import MoviesValueObjectsFactory from '../../../src/movie/ValueObjects/factory'
+import MoviesListValueObject from '../../../src/movies/ValueObjects/MoviesListValueObject'
+import MoviesRepository from '../../../src/movies/Repositories/MoviesRepository.js'
+import HTTPMoviesRepository from '../../../src/movies/Repositories/HTTPMoviesRepository.js'
+import MovieMapperFactory from '../../../src/movies/Mappers/factory'
+import MoviesValueObjectsFactory from '../../../src/movies/ValueObjects/factory'
 
 let repository
 let config

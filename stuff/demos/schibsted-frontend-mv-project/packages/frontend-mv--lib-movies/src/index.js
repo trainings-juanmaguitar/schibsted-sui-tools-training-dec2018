@@ -1,5 +1,5 @@
 import {EntryPointFactory} from '@s-ui/domain'
-import MoviesUseCasesFactory from './movie/UseCases/factory'
+import MoviesUseCasesFactory from './movies/UseCases/factory'
 import Config from './config'
 
 const config = new Config()

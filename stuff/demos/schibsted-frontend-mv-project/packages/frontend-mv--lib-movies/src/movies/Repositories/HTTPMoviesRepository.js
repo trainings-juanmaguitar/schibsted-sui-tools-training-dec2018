@@ -1,6 +1,6 @@
 import MoviesRepository from './MoviesRepository'
 
-export default class HTTPMoviesRepository extends MoviesRepository {
+class HTTPMoviesRepository extends MoviesRepository {
   constructor({config, mapper, log, fetcher, moviesListValueObject} = {}) {
     super()
     this._config = config
@@ -77,3 +77,5 @@ export default class HTTPMoviesRepository extends MoviesRepository {
     return this._mapper.map(result)
   }
 }
+
+export default HTTPMoviesRepository
