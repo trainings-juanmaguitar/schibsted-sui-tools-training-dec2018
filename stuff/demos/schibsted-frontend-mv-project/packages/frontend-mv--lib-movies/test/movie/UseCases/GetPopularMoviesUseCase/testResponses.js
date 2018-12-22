@@ -106,9 +106,65 @@ const expectedUseCaseResponsePage5 = {
   ]
 }
 
+const mockedApiResponseLangES = {
+  page: 1,
+  total_pages: 993,
+  total_results: 19845,
+  results: [
+    {
+      id: 297802,
+      original_title: 'Aquaman',
+      original_language: 'en',
+      overview:
+        'Un icono durante más de 70 años, Aquaman (Jason Momoa) es el Rey de los Siete Mares. Este reacio gobernante de Atlantis se encuentra atrapado entre los constantes estragos causados al mar por los habitantes de la superficie y los atlantes buscando rebelarse. Pese a todo está decidido a proteger el mundo entero.',
+      poster_path: '/czjwK6F3Db4rWyuETdCaZOO8chx.jpg',
+      release_date: '2018-12-07'
+    },
+    {
+      id: 424783,
+      original_title: 'Bumblebee',
+      original_language: 'en',
+      overview:
+        "Sexta entrega de la saga 'Transformers', esta vez centrada en el 'hermano pequeño' de los Autobots, Bumblebee. Tratando de escapar, en el año 1987, Bumblebee encuentra refugio en un depósito de chatarra en una pequeña ciudad en la costa Californiana. Charlie (Hailee Steinfeld), a punto de cumplir 18 años y tratando de encontrar su lugar en el mundo, descubre a Bumblebee, dañado durante una batalla y descompuesto. Cuando Charlie lo revive, aprende rápidamente que éste no es un VW amarillo ordinario.",
+      poster_path: '/jy1lwWSWQf5yqPOmPbXI5T7wRZW.jpg',
+      release_date: '2018-12-15'
+    }
+  ]
+}
+
+const expectedUseCaseResponseLangES = {
+  page: 1,
+  totalPages: 993,
+  totalResults: 19845,
+  movies: [
+    {
+      id: 297802,
+      language: 'en',
+      overview:
+        'Un icono durante más de 70 años, Aquaman (Jason Momoa) es el Rey de los Siete Mares. Este reacio gobernante de Atlantis se encuentra atrapado entre los constantes estragos causados al mar por los habitantes de la superficie y los atlantes buscando rebelarse. Pese a todo está decidido a proteger el mundo entero.',
+      title: 'Aquaman',
+      posterPath:
+        'https://image.tmdb.org/t/p/w300_and_h450_bestv2/czjwK6F3Db4rWyuETdCaZOO8chx.jpg',
+      release: '2018-12-07'
+    },
+    {
+      id: 424783,
+      language: 'en',
+      title: 'Bumblebee',
+      overview:
+        "Sexta entrega de la saga 'Transformers', esta vez centrada en el 'hermano pequeño' de los Autobots, Bumblebee. Tratando de escapar, en el año 1987, Bumblebee encuentra refugio en un depósito de chatarra en una pequeña ciudad en la costa Californiana. Charlie (Hailee Steinfeld), a punto de cumplir 18 años y tratando de encontrar su lugar en el mundo, descubre a Bumblebee, dañado durante una batalla y descompuesto. Cuando Charlie lo revive, aprende rápidamente que éste no es un VW amarillo ordinario.",
+      posterPath:
+        'https://image.tmdb.org/t/p/w300_and_h450_bestv2/jy1lwWSWQf5yqPOmPbXI5T7wRZW.jpg',
+      release: '2018-12-15'
+    }
+  ]
+}
+
 export {
   mockedApiResponse,
   mockedApiResponsePage5,
   expectedUseCaseResponse,
-  expectedUseCaseResponsePage5
+  expectedUseCaseResponsePage5,
+  mockedApiResponseLangES,
+  expectedUseCaseResponseLangES
 }

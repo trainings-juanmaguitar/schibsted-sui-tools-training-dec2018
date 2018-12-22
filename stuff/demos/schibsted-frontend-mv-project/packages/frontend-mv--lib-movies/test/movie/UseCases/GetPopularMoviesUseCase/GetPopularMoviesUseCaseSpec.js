@@ -4,7 +4,9 @@ import {
   mockedApiResponse,
   mockedApiResponsePage5,
   expectedUseCaseResponse,
-  expectedUseCaseResponsePage5
+  expectedUseCaseResponsePage5,
+  mockedApiResponseLangES,
+  expectedUseCaseResponseLangES
 } from './testResponses'
 import {HttpMocker} from '@s-ui/mockmock'
 import Config from '../../../../src/config'
@@ -55,8 +57,26 @@ describe('GetPopularMoviesUseCaseSpec', () => {
         .reply(mockedApiResponsePage5, 200)
 
       const response = await domain.get(useCaseName).execute({page})
-      
+
       expect(response).to.deep.equal(expectedUseCaseResponsePage5)
+    })
+
+    it('return proper results on "{language: \'es-ES\'}" ', async () => {
+      const apiBaseUrl = config.get('API_BASE_URL')
+      const apiKey = config.get('API_KEY')
+      const language = 'es-ES'
+
+      moviesAPIMock
+        .httpMock(apiBaseUrl)
+        .get(`/movie/popular`)
+        .query({
+          api_key: apiKey,
+          language
+        })
+        .reply(mockedApiResponseLangES, 200)
+
+      const response = await domain.get(useCaseName).execute({language})
+      expect(response).to.deep.equal(expectedUseCaseResponseLangES)
     })
   })
 })

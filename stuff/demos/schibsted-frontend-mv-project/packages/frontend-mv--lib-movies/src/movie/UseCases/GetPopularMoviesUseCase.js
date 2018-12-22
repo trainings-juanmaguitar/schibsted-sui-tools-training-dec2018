@@ -6,8 +6,12 @@ class GetPopularMoviesUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute({page} = {}) {
-    const resultsPopularMovies = await this._repository.popular({page})
+  async execute({page, language, region} = {}) {
+    const resultsPopularMovies = await this._repository.popular({
+      page,
+      language,
+      region
+    })
     return resultsPopularMovies.toJSON()
   }
 }

@@ -10,7 +10,7 @@ export default class HTTPMoviesRepository extends MoviesRepository {
     this._moviesListValueObject = moviesListValueObject
   }
 
-  async popular({page: pageRequest} = {}) {
+  async popular({page: pageRequest, language, region} = {}) {
     this._log(`Getting POPULAR movies on page → ${pageRequest}`)
 
     const host = this._config.get('API_BASE_URL')
@@ -18,6 +18,8 @@ export default class HTTPMoviesRepository extends MoviesRepository {
 
     let url = `${host}/movie/popular?api_key=${apiKey}`
     if (pageRequest) url += `&page=${pageRequest}`
+    if (language) url += `&language=${language}`
+    if (region) url += `&region=${region}`
 
     const {
       data: {

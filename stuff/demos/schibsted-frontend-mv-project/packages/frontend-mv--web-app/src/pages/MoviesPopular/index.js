@@ -36,14 +36,20 @@ MoviesPopularPage.propTypes = {
 MoviesPopularPage.contextTypes = {i18n: PropTypes.object}
 MoviesPopularPage.renderLoading = () => <h1>Loading...</h1>
 MoviesPopularPage.getInitialProps = async ({context, routeInfo}) => {
-  const {domain} = context
+  const {domain, i18n} = context
   const {
     params: {page = 1}
   } = routeInfo
 
+  const {
+    culture: language
+  } = i18n
+
+  const region = language.split('-')[1]
+
   const {page: _page, totalResults, totalPages, movies} = await domain
     .get('get_popular_movies_use_case')
-    .execute({page})
+    .execute({page, language, region})
   
   return {
     movies: movies || [],

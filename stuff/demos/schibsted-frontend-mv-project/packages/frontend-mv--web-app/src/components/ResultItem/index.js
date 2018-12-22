@@ -15,9 +15,9 @@ import {
 
 import Link from 'react-router/lib/Link'
 
-// import TextTruncate from 'react-text-truncate'
+import TextTruncate from 'react-text-truncate'
 
-const MovieCard = ({movie}, {i18n}) => {
+const ResultItem = ({movie}, {i18n}) => {
   // const imgStyles = {
   //   backgroundImage: `url(${movie.posterPath})`,
   //   backgroundSize: 'cover',
@@ -39,16 +39,12 @@ const MovieCard = ({movie}, {i18n}) => {
             </Link>{' '}
             <small>{movie.release}</small>
             <br />
-            {movie.overview}
-            {/*
-            
-              <TextTruncate
-                line={2}
-                truncateText="..."
-                text={movie.overview}
-                textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
-              />
-            */}
+            <TextTruncate
+              line={2}
+              truncateText="..."
+              text={movie.overview}
+              textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
+            />
           </p>
         </Content>
         <Level isMobile>
@@ -75,7 +71,7 @@ const MovieCard = ({movie}, {i18n}) => {
   )
 }
 
-MovieCard.propTypes = {movie: PropTypes.object}
-MovieCard.contextTypes = {i18n: PropTypes.object}
+ResultItem.propTypes = {movie: PropTypes.object}
+ResultItem.contextTypes = {i18n: PropTypes.object}
 
-export default MovieCard
+export default ResultItem

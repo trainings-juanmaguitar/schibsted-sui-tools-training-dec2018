@@ -16,8 +16,16 @@ class MoviesRepository extends Repository {
    * @method
    * @return {Error}
    */
-  all() {
+  popular() {
     throw new Error('[MoviesRepository#all] must be implemented')
+  }
+
+  /**
+   * @method
+   * @return {Error}
+   */
+  getMovieById() {
+    throw new Error('[MoviesRepository#getMovieById] must be implemented')
   }
 }
 

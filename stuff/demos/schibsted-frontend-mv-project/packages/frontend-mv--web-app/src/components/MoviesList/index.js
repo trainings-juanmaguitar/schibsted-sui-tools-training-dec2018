@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
 // import MovieCard from '../Card'
-import MediaListItem from '../Media'
+import ResultItem from '../ResultItem'
 
 import {Title} from 'bloomer'
 
@@ -44,7 +44,7 @@ const MoviesList = (
         </Title>
       )}
 
-      {movies.map((movie, i) => <MediaListItem key={i} movie={movie} />)}
+      {movies.map((movie, i) => <ResultItem key={i} movie={movie} />)}
 
       <div className={CLASS_PAGINATION}>
         <MoleculePagination
