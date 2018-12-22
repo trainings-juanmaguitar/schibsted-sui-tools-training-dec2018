@@ -13,8 +13,6 @@ class Search extends Component {
   }
 
   showData = async e => {
-    console.log(this) //eslint-disable-line
-    debugger //eslint-disable-line
     const {domain} = this.context
     const moviesList = await domain
       .get('search_movies_use_case')
@@ -23,6 +21,22 @@ class Search extends Component {
   }
 
   onSelectPage = async (e, {page}) => {
+    const {domain} = this.context
+    const moviesList = await domain
+      .get('search_movies_use_case')
+      .execute({query: this.state.query, page})
+    this.setState({moviesList})
+  }
+
+  onSelectNext = async (e, {page}) => {
+    const {domain} = this.context
+    const moviesList = await domain
+      .get('search_movies_use_case')
+      .execute({query: this.state.query, page})
+    this.setState({moviesList})
+  }
+
+  onSelectPrev = async (e, {page}) => {
     const {domain} = this.context
     const moviesList = await domain
       .get('search_movies_use_case')
@@ -39,22 +53,26 @@ class Search extends Component {
     const {i18n} = this.context
     return (
       <div>
-        <h1>Search movie by title</h1>
-        {movies.length && (
-          <h1>{i18n.t('SEARCH_RESULTS', {query: this.state.query})}</h1>
+        <h1>{i18n.t('SEARCH_RESULTS_TITLE')}</h1>
+        {!!movies.length && (
+          <h1>
+            {i18n.t('SEARCH_RESULTS', {
+              query: this.state.query,
+              total: totalResults
+            })}
+          </h1>
         )}
 
         <MoleculeInputField
           id="name"
-          placeholder="Write the title you want to search..."
-          label="Name"
+          label={i18n.t('SEARCH_INPUT_TITLE')}
           value={query}
           onChange={onChangeInput('query')}
         />
         <Button type="primary" onClick={showData}>
-          Show Movies
+          {i18n.t('SEARCH_BUTTON_TITLE')}
         </Button>
-        {movies.length && (
+        {!!movies.length && (
           <ul>
             {movies.map((movie, i) => (
               <li key={i}>
@@ -63,27 +81,23 @@ class Search extends Component {
             ))}
           </ul>
         )}
-        {movies.length && (
+        {!!movies.length && (
           <MoleculePagination
             totalPages={totalPages}
             page={actualPage}
-            // prevButtonIcon={prevButtonIcon}
-            // nextButtonIcon={nextButtonIcon}
-            // prevButtonText={prevButtonText}
-            // nextButtonText={nextButtonText}
-            // onSelectNext={onSelectNext}
-            // onSelectPrev={onSelectPrev}
+            prevButtonText={i18n.t('PREV_BUTTON_TITLE')}
+            nextButtonText={i18n.t('NEXT_BUTTON_TITLE')}
+            onSelectNext={this.onSelectNext}
+            onSelectPrev={this.onSelectPrev}
             onSelectPage={this.onSelectPage}
           />
         )}
-        <h3>{totalPages}</h3>
-        <h3>{totalResults}</h3>
-        <h3>{actualPage}</h3>
       </div>
     )
   }
 }
 
 Search.contextTypes = {domain: PropTypes.object, i18n: PropTypes.object}
+Search.renderLoading = () => <h1>...</h1>
 
 export default Search

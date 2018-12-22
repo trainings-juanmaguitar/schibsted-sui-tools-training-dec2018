@@ -6,45 +6,33 @@ import PropTypes from 'prop-types'
 import MoleculePagination from '@s-ui/react-molecule-pagination'
 
 class LatestMovies extends Component {
-  // state = {moviesList: {movies: []}}
-  // async componentDidMount() {
-  //   const {domain} = this.context
-  //   const moviesList = await domain
-  //     .get('list_latest_movies_use_case')
-  //     .execute({page: 1})
-  //   this.setState({moviesList})
-  // }
 
   onSelectPage = async (e, {page}) => {
-    console.log(this)
-    debugger
-    const {domain} = this.context
-    const {movies, actualPage, totalPages, totalResults} = await domain
-      .get('list_latest_movies_use_case')
-      .execute({page})
+    this.props.router.push(`/latest_movies/${page}`)
+  }
 
-    // Això es pot fer??
+  onSelectNext = async (e, {page}) => {
+    this.props.router.push(`/latest_movies/${page}`)
+  }
 
-    this.props.movies = movies
-    this.props.actualPage = actualPage
-    this.props.totalPages = totalPages
-    this.props.totalResults = totalResults
-
-    // this.setState({moviesList})
+  onSelectPrev = async (e, {page}) => {
+    this.props.router.push(`/latest_movies/${page}`)
   }
 
   render() {
-    // const {
-    //   moviesList: {movies, totalPages, totalResults, actualPage}
-    // } = this.state
+    debugger
+    console.log(this)
+    debugger
     const {movies, actualPage, totalPages, totalResults} = this.props
+    const {i18n} = this.context
+    debugger
     return (
       <React.Fragment>
         <Helmet>
           <link rel="canonical" href="http://spa.mock/" />
         </Helmet>
-        <h1>Latest Movies</h1>
-        {movies.length && (
+        <h1>{i18n.t('LATEST_MOVIES_TITLE', {query: totalResults})}</h1>
+        {!!movies.length && (
           <ul>
             {movies.map((movie, i) => (
               <li key={i}>
@@ -53,22 +41,17 @@ class LatestMovies extends Component {
             ))}
           </ul>
         )}
-        {movies.length && (
+        {!!movies.length && (
           <MoleculePagination
             totalPages={totalPages}
             page={actualPage}
-            // prevButtonIcon={prevButtonIcon}
-            // nextButtonIcon={nextButtonIcon}
-            // prevButtonText={prevButtonText}
-            // nextButtonText={nextButtonText}
-            // onSelectNext={onSelectNext}
-            // onSelectPrev={onSelectPrev}
+            prevButtonText={i18n.t('PREV_BUTTON_TITLE')}
+            nextButtonText={i18n.t('NEXT_BUTTON_TITLE')}
+            onSelectNext={this.onSelectNext}
+            onSelectPrev={this.onSelectPrev}
             onSelectPage={this.onSelectPage}
           />
         )}
-        <h3>{totalPages}</h3>
-        <h3>{totalResults}</h3>
-        <h3>{actualPage}</h3>
       </React.Fragment>
     )
   }
@@ -84,11 +67,12 @@ LatestMovies.contextType = {
 }
 
 LatestMovies.getInitialProps = async ({context, routeInfo}) => {
+  debugger
   const {domain} = context
-
+  const {params: {page}} = routeInfo
   const {movies, actualPage, totalPages, totalResults} = await domain
     .get('list_latest_movies_use_case')
-    .execute({page: 1})
+    .execute({page})
 
   return {
     movies: movies || [],
@@ -97,4 +81,6 @@ LatestMovies.getInitialProps = async ({context, routeInfo}) => {
     totalResults
   }
 }
+LatestMovies.renderLoading = () => <h1>...</h1>
+
 export default LatestMovies

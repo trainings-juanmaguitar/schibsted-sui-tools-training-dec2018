@@ -41,8 +41,8 @@ const Root = (
       <Route path='/'>
         <IndexRoute getComponent={loadHomePage} />
         <Route path='/popular_movies/:page' getComponent={loadPopularMoviesPage} />
-        <Route path='/latest_movies' getComponent={loadLatestMoviesPage} />
-        <Route path='/search' getComponent={loadSearchPage} />
+        <Route path='/latest_movies/:page' getComponent={loadLatestMoviesPage} />
+        <Route path='/search/:page' getComponent={loadSearchPage} />
         <Route path='/movies/:id' getComponent={loadMovieDetailPage} />
       </Route>
     </Route>

@@ -10,7 +10,7 @@ class Home extends Component {
         <Helmet>
           <link rel="canonical" href="http://spa.mock/" />
         </Helmet>
-        <h1>{i18n.t('HOME_TITLE')}</h1>
+        <h1>{i18n.t('APP_TITLE')}</h1>
       </React.Fragment>
     )
   }
