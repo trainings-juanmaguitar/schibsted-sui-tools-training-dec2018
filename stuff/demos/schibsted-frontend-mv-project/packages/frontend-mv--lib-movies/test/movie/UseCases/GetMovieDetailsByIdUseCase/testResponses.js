@@ -1,6 +1,6 @@
 const mockedApiResponse = {
   id: 353081,
-  original_title: 'Mission: Impossible - Fallout',
+  title: 'Mission: Impossible - Fallout',
   poster_path: '/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
   original_language: 'en',
   overview:

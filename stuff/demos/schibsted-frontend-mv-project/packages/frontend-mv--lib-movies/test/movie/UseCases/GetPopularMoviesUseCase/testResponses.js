@@ -5,7 +5,7 @@ const mockedApiResponse = {
   results: [
     {
       id: 353081,
-      original_title: 'Mission: Impossible - Fallout',
+      title: 'Mission: Impossible - Fallout',
       poster_path: '/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
       original_language: 'en',
       overview:
@@ -14,7 +14,7 @@ const mockedApiResponse = {
     },
     {
       id: 299536,
-      original_title: 'Avengers: Infinity War',
+      title: 'Avengers: Infinity War',
       poster_path: '/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
       original_language: 'en',
       overview:
@@ -59,7 +59,7 @@ const mockedApiResponsePage5 = {
   results: [
     {
       id: 89,
-      original_title: 'Indiana Jones and the Last Crusade',
+      title: 'Indiana Jones and the Last Crusade',
       original_language: 'en',
       overview:
         "When Dr. Henry Jones Sr. suddenly goes missing while pursuing the Holy Grail, eminent archaeologist Indiana must team up with Marcus Brody, Sallah and Elsa Schneider to follow in his father's footsteps and stop the Nazis from recovering the power of eternal life.",
@@ -68,7 +68,7 @@ const mockedApiResponsePage5 = {
     },
     {
       id: 87,
-      original_title: 'Indiana Jones and the Temple of Doom',
+      title: 'Indiana Jones and the Temple of Doom',
       original_language: 'en',
       overview:
         'After arriving in India, Indiana Jones is asked by a desperate village to find a mystical stone. He agrees – and stumbles upon a secret cult plotting a terrible plan in the catacombs of an ancient palace.',
@@ -113,7 +113,7 @@ const mockedApiResponseLangES = {
   results: [
     {
       id: 297802,
-      original_title: 'Aquaman',
+      title: 'Aquaman',
       original_language: 'en',
       overview:
         'Un icono durante más de 70 años, Aquaman (Jason Momoa) es el Rey de los Siete Mares. Este reacio gobernante de Atlantis se encuentra atrapado entre los constantes estragos causados al mar por los habitantes de la superficie y los atlantes buscando rebelarse. Pese a todo está decidido a proteger el mundo entero.',
@@ -122,7 +122,7 @@ const mockedApiResponseLangES = {
     },
     {
       id: 424783,
-      original_title: 'Bumblebee',
+      title: 'Bumblebee',
       original_language: 'en',
       overview:
         "Sexta entrega de la saga 'Transformers', esta vez centrada en el 'hermano pequeño' de los Autobots, Bumblebee. Tratando de escapar, en el año 1987, Bumblebee encuentra refugio en un depósito de chatarra en una pequeña ciudad en la costa Californiana. Charlie (Hailee Steinfeld), a punto de cumplir 18 años y tratando de encontrar su lugar en el mundo, descubre a Bumblebee, dañado durante una batalla y descompuesto. Cuando Charlie lo revive, aprende rápidamente que éste no es un VW amarillo ordinario.",

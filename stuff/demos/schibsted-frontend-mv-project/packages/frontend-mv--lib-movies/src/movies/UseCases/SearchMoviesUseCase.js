@@ -6,8 +6,13 @@ export default class SearchMoviesUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute({query, page} = {}) {
-    const resultsSearchMovies = await this._repository.search({query, page})
+  async execute({query, page, language, region} = {}) {
+    const resultsSearchMovies = await this._repository.search({
+      query,
+      page,
+      language,
+      region
+    })
     return resultsSearchMovies.toJSON()
   }
 }

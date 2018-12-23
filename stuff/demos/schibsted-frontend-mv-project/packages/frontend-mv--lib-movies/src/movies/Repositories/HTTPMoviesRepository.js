@@ -11,7 +11,9 @@ class HTTPMoviesRepository extends MoviesRepository {
   }
 
   async popular({page: pageRequest, language, region} = {}) {
-    this._log(`Getting POPULAR movies on page → ${pageRequest}`)
+    this._log(
+      `Getting POPULAR movies on page:${pageRequest}, language:${language}, region:${region}`
+    )
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
@@ -39,14 +41,18 @@ class HTTPMoviesRepository extends MoviesRepository {
   }
 
   // all methods of the domain are named → receives an object w/ properties
-  async search({query, page: pageRequest} = {}) {
-    this._log(`Getting movies by query → ${query} and page → ${pageRequest}`)
+  async search({query, page: pageRequest, language, region} = {}) {
+    this._log(
+      `Getting movies by query:${query}, page:${pageRequest}, language:${language}, region:${region}`
+    )
 
     const host = this._config.get('API_BASE_URL')
     const apiKey = this._config.get('API_KEY')
 
     let url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
     if (pageRequest) url += `&page=${pageRequest}`
+    if (language) url += `&language=${language}`
+    if (region) url += `&region=${region}`
 
     const {
       data: {

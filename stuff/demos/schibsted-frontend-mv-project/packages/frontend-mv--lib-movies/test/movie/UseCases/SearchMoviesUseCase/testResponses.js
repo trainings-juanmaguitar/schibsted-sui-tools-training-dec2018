@@ -5,7 +5,7 @@ const mockedApiResponse = {
   results: [
     {
       id: 353081,
-      original_title: 'Mission: Impossible - Fallout',
+      title: 'Mission: Impossible - Fallout',
       poster_path: '/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
       original_language: 'en',
       overview:
@@ -14,7 +14,7 @@ const mockedApiResponse = {
     },
     {
       id: 299536,
-      original_title: 'Avengers: Infinity War',
+      title: 'Avengers: Infinity War',
       poster_path: '/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
       original_language: 'en',
       overview:

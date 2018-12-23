@@ -33,19 +33,17 @@ const ResultItem = ({movie}, {i18n}) => {
       </MediaLeft>
       <MediaContent>
         <Content>
-          <p>
-            <Link to={`/movie/${movie.id}`}>
-              <strong>{movie.title}</strong>
-            </Link>{' '}
-            <small>{movie.release}</small>
-            <br />
-            <TextTruncate
-              line={2}
-              truncateText="..."
-              text={movie.overview}
-              textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
-            />
-          </p>
+          <Link to={`/movie/${movie.id}`}>
+            <strong>{movie.title}</strong>
+          </Link>{' '}
+          <small>{movie.release}</small>
+          <br />
+          <TextTruncate
+            line={2}
+            truncateText="..."
+            text={movie.overview}
+            textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
+          />
         </Content>
         <Level isMobile>
           <LevelLeft>

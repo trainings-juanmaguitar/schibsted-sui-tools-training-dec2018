@@ -1,5 +1,6 @@
 import {EntryPointFactory} from '@s-ui/domain'
 import MoviesUseCasesFactory from './movies/UseCases/factory'
+import UsersUseCasesFactory from './users/UseCases/factory'
 import Config from './config'
 
 const config = new Config()
@@ -11,7 +12,14 @@ const useCases = {
   ),
   get_popular_movies_use_case: MoviesUseCasesFactory.getPopularMoviesUseCase({
     config
-  })
+  }),
+  create_users_use_case: UsersUseCasesFactory.createUsersUseCase({config}),
+  current_users_use_case: UsersUseCasesFactory.currentUsersUseCase({config}),
+  is_privileged_users_use_case: UsersUseCasesFactory.isPrivilegedUsersUseCase({
+    config
+  }),
+  login_users_use_case: UsersUseCasesFactory.loginUsersUseCase({config}),
+  logout_users_use_case: UsersUseCasesFactory.logoutUsersUseCase({config})
 }
 
 const EntryPoint = EntryPointFactory({config, useCases})

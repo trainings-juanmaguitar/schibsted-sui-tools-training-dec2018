@@ -10,7 +10,7 @@ class MoviesMapper extends Mapper {
   map = movie => {
     const {
       id,
-      original_title: title,
+      title,
       overview,
       original_language: language,
       release_date: release,
