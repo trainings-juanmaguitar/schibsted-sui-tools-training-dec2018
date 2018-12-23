@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "result": {
+    "apiKey": "AIzaSyDpIllMgYockhU-aH4dK5KrJdBp2uCOGno",
+    "databaseURL": "https://moviesfinder-ecb7c.firebaseio.com",
+    "storageBucket": "moviesfinder-ecb7c.appspot.com",
+    "authDomain": "moviesfinder-ecb7c.firebaseapp.com",
+    "messagingSenderId": "852704581938",
+    "projectId": "moviesfinder-ecb7c"
+  }
+}

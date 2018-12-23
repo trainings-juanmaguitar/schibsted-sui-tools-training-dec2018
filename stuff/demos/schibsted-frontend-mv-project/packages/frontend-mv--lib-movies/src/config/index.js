@@ -15,8 +15,9 @@ const envConfig = {
 const environment = process.env.NODE_ENV
 
 export default class Config {
-  constructor() {
+  constructor(propsConfig) {
     this._config = {
+      ...propsConfig,
       ...base,
       ...envConfig[environment]
     }

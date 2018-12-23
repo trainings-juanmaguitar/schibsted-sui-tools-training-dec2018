@@ -5,6 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "start": "npm run lib && npm run demo",
+    "createfirebaseconf": "firebase setup:web --json > ./src/config/firebase/firebase-config.json",
     "demo": "node demo.js",
     "co": "sui-mono commit",
     "lib": "rm -Rf ./lib && babel ./src -d lib",
@@ -48,7 +49,8 @@
     "@s-ui/domain": "^1.12.0",
     "@s-ui/js": "^1.17.0",
     "axios": "^0.18.0",
-    "babel-plugin-add-module-exports": "^1.0.0"
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "firebase": "5.7.1"
   },
   "eslintConfig": {
     "extends": [

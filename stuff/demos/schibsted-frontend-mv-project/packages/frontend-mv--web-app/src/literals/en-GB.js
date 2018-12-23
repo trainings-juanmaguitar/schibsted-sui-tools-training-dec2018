@@ -9,5 +9,16 @@ module.exports = {
   SEARCH_MOVIES: 'Search Movies',
   SEARCH_MOVIES_PLACEHOLDER: 'Type a Movie...',
   RESULTS_PAGINATION: 'Page %{page} of %{totalPages}',
-  READ_ON: 'Read on'
+  READ_ON: 'Read on',
+  SIGNIN: 'Login',
+  SIGNIN_PASSWORD_HINT: '123456',
+  SIGNIN_PASSWORD_LABEL: 'password',
+  SIGNIN_USER_HINT: 'user@server.com',
+  SIGNIN_USER_LABEL: 'usuario',
+  SIGNOUT: 'disconnect',
+  SIGNUP: 'Create',
+  SIGNUP_PASSWORD_LABEL: 'password',
+  SIGNUP_USER: 'Create user',
+  SIGNUP_USERNAME_LABEL: 'username',
+  SIGNUP_USER_LABEL: 'mail'
 }

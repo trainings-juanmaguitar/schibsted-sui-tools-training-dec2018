@@ -80,6 +80,10 @@ class App extends Component {
             |
             <a onClick={this.changeLanguageES}>ES</a>
           </NavbarItem>
+          <NavbarDivider />
+          <NavbarItem>
+            <Link to="/signin">{i18n.t('LOGIN')}</Link>
+          </NavbarItem>
         </Navbar>
 
         <Container>
@@ -91,7 +95,6 @@ class App extends Component {
 }
 
 App.propTypes = {children: PropTypes.element}
-App.contextTypes = {i18n: PropTypes.object,router: PropTypes.object}
-
+App.contextTypes = {i18n: PropTypes.object, router: PropTypes.object}
 
 export default App

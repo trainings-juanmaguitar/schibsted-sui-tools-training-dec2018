@@ -1,11 +1,15 @@
 import UsersEntitiesFactory from '../Entities/factory.js'
+import factoryLogger from '../../logger/factory'
 
 import FireBaseUsersRepository from './FireBaseUsersRepository'
 
-export default class UsersResporiesFactory {
+class UsersRepositoriesFactory {
   static fireBaseUsersRepository = ({config}) =>
     new FireBaseUsersRepository({
       config,
+      log: factoryLogger({prefix: 'FireBaseUsersRepository'}),
       userEntityFactory: UsersEntitiesFactory.userEntity
     })
 }
+
+export default UsersRepositoriesFactory

@@ -1,14 +1,17 @@
 import UsersRepository from './UsersRepository'
 
 export default class FireBaseUsersRepository extends UsersRepository {
-  constructor({config, userEntityFactory} = {}) {
+  constructor({config, log, userEntityFactory} = {}) {
     super()
 
     this._config = config
+    this._log = log
     this._userEntityFactory = userEntityFactory
   }
 
   async current() {
+    this._log(`Getting CURRENT user`)
+
     const firebase = this._config.get('firebase')
     const user = firebase.auth().currentUser
 
@@ -24,6 +27,7 @@ export default class FireBaseUsersRepository extends UsersRepository {
   }
 
   async create({email, name, password} = {}) {
+    this._log(`CREATING USER with email:${email}, name:${name} and password`)
     const firebase = this._config.get('firebase')
     await firebase.auth().createUserWithEmailAndPassword(email, password)
     const user = firebase.auth().currentUser
@@ -40,6 +44,7 @@ export default class FireBaseUsersRepository extends UsersRepository {
   }
 
   async login({email, password} = {}) {
+    this._log(`LOGIN USER with email:${email} and password`)
     const firebase = this._config.get('firebase')
     const {user} = await firebase
       .auth()
@@ -54,6 +59,7 @@ export default class FireBaseUsersRepository extends UsersRepository {
   }
 
   logout() {
+    this._log(`LOGOUT USER`)
     const firebase = this._config.get('firebase')
     return firebase.auth().signOut()
   }
