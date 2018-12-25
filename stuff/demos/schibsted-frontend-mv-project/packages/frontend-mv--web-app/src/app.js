@@ -25,11 +25,9 @@ contextFactory(createClientContextFactoryParams()).then(context => {
 
       context.router = router
       const App = withContext(context)(Router)
-      const isomorphicRender = window.__INITIAL_PROPS__
-        ? ReactDOM.hydrate
-        : ReactDOM.render
+
       const render = () =>
-        isomorphicRender(
+        ReactDOM.render(
           <App {...renderProps} />,
           document.getElementById('app')
         )

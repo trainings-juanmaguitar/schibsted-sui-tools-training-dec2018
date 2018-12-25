@@ -4,6 +4,7 @@ import 'firebase/auth'
 
 import {result as firebaseConfig} from './firebase-config.json'
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+const firebaseApp =
+  typeof window !== 'undefined' ? firebase.initializeApp(firebaseConfig) : {}
 
 export {firebase, firebaseApp}

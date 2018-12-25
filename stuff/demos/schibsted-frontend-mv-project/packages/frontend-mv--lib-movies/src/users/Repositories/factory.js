@@ -9,7 +9,7 @@ class UsersRepositoriesFactory {
       config,
       log: factoryLogger({prefix: 'FireBaseUsersRepository'}),
       userEntityFactory: UsersEntitiesFactory.userEntity,
-      storage: window.sessionStorage
+      storage: typeof window !== 'undefined' && window.sessionStorage
     })
 }
 
