@@ -6,6 +6,11 @@ import IndexRoute from 'react-router/lib/IndexRoute'
 import loadPage from '@s-ui/react-initial-props/lib/loadPage'
 import contextFactory from './contextFactory'
 
+
+const loadAppComponent = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "App" */ './components/App')
+)
+
 const loadHomePage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "Home" */ './pages/Home')
 )
@@ -30,14 +35,11 @@ const loadMovieDetailsPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "MovieDetails" */ './pages/MovieDetails')
 )
 
-const requireAuth = async (nextState, replace, cb) => {
-  const {domain} = await contextFactory()
-  const user = await domain.get('current_users_use_case').execute()
-  console.log('---')
-  console.log(user)
-  console.log('---')
-  return cb()
-}
+// const requireAuth = async (nextState, replace, cb) => {
+//   const {domain} = await contextFactory()
+//   const user = await domain.get('current_users_use_case').execute()
+//   return cb()
+// }
 
 // const requireAdmin = async (nextState, replace, cb) => {
 //   const isAdmin = await domain.get('is_privileged_users_use_case').execute()
@@ -48,6 +50,7 @@ const requireAuth = async (nextState, replace, cb) => {
 // }
 
 const redirectToHome = async (nextState, replace, cb) => {
+  console.log('redirectToHome...')
   const {domain} = await contextFactory()
   const user = await domain.get('current_users_use_case').execute()
   if (user) {
@@ -59,7 +62,9 @@ const redirectToHome = async (nextState, replace, cb) => {
 const logout = async (nextState, replace, cb) => {
   const {domain} = await contextFactory()
   await domain.get('logout_users_use_case').execute()
-  replace('/signin')
+  console.log('logout...')
+  replace('/')
+  console.log('replace("/signin")...')
   return cb()
 }
 
@@ -69,9 +74,9 @@ const logout = async (nextState, replace, cb) => {
 
 export default (
   <Router>
-    <Route component={require('./components/App').default}>
+    <Route getComponent={loadAppComponent}>
       <Route path="/">
-        <IndexRoute getComponent={loadHomePage} onEnter={requireAuth} />
+        <IndexRoute getComponent={loadHomePage} />
         <Route path="s/:query(/p/:page)" getComponent={loadResultsSearchPage} />
         <Route path="popular(/p/:page)" getComponent={loadMoviesPopularPage} />
         <Route path="movie/:id" getComponent={loadMovieDetailsPage} />
@@ -85,7 +90,7 @@ export default (
           onEnter={redirectToHome}
           path="signup"
         />
-        <Route path="logout" onEnter={logout} />
+        <Route path="signout" onEnter={logout} />
       </Route>
     </Route>
   </Router>

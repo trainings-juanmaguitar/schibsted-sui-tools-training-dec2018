@@ -16,7 +16,8 @@ export default compose(
       stateEmail,
       statePassword,
       router
-    }) => async () => {
+    }) => async e => {
+      e.preventDefault()
       await domain
         .get('login_users_use_case')
         .execute({
@@ -24,6 +25,7 @@ export default compose(
           password: statePassword
         })
         .catch(e => console.log(e)) // eslint-disable-line
+
       router.push('/')
     }
   })

@@ -40,9 +40,8 @@ class App extends Component {
   }
 
   render() {
-    const {children} = this.props
+    const {children, user} = this.props
     const {i18n} = this.context
-
     return (
       <div className="App">
         <Helmet>
@@ -82,7 +81,11 @@ class App extends Component {
           </NavbarItem>
           <NavbarDivider />
           <NavbarItem>
-            <Link to="/signin">{i18n.t('LOGIN')}</Link>
+            {user ? (
+              <Link to="/signout">{i18n.t('SIGNOUT')} <strong>({user.name})</strong></Link>
+            ) : (
+              <Link to="/signin">{i18n.t('LOGIN')}</Link>
+            )}
           </NavbarItem>
         </Navbar>
 
@@ -96,5 +99,15 @@ class App extends Component {
 
 App.propTypes = {children: PropTypes.element}
 App.contextTypes = {i18n: PropTypes.object, router: PropTypes.object}
+
+App.renderLoading = () => <h1>Loading...</h1>
+
+App.getInitialProps = async ({context}) => {
+  const {domain} = context
+  const user = await domain.get('current_users_use_case').execute()
+  return {
+    user
+  }
+}
 
 export default App

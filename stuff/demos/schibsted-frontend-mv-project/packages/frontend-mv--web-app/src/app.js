@@ -22,13 +22,24 @@ contextFactory(createClientContextFactoryParams()).then(context => {
         console.error(err) // eslint-disable-line
       }
       const {router} = renderProps
+
       context.router = router
       const App = withContext(context)(Router)
-      const render = window.__INITIAL_PROPS__
+      const isomorphicRender = window.__INITIAL_PROPS__
         ? ReactDOM.hydrate
         : ReactDOM.render
+      const render = () =>
+        isomorphicRender(
+          <App {...renderProps} />,
+          document.getElementById('app')
+        )
 
-      render(<App {...renderProps} />, document.getElementById('app'))
+      const {domain} = context
+      const firebaseApp = domain.get('config').get('firebase')
+
+      firebaseApp.auth().onAuthStateChanged(user => {
+        render()
+      })
     }
   )
 })

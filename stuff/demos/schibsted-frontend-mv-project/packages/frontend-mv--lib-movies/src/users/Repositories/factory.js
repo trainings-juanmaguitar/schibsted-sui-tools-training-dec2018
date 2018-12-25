@@ -8,7 +8,8 @@ class UsersRepositoriesFactory {
     new FireBaseUsersRepository({
       config,
       log: factoryLogger({prefix: 'FireBaseUsersRepository'}),
-      userEntityFactory: UsersEntitiesFactory.userEntity
+      userEntityFactory: UsersEntitiesFactory.userEntity,
+      storage: window.sessionStorage
     })
 }
 

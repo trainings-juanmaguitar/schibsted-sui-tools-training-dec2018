@@ -1,28 +1,42 @@
 import UsersRepository from './UsersRepository'
 
-export default class FireBaseUsersRepository extends UsersRepository {
-  constructor({config, log, userEntityFactory} = {}) {
+class FireBaseUsersRepository extends UsersRepository {
+  constructor({
+    config,
+    log,
+    storage,
+    firebasePersistence,
+    userEntityFactory
+  } = {}) {
     super()
 
     this._config = config
     this._log = log
+    this._storage = storage
+    this._firebasePersistence = firebasePersistence
     this._userEntityFactory = userEntityFactory
   }
 
   async current() {
     this._log(`Getting CURRENT user`)
-
     const firebase = this._config.get('firebase')
-    const user = firebase.auth().currentUser
+    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
 
-    if (!user) {
-      return false
+    const userFromStorage = this._storage.getItem(keyStorage)
+
+    if (userFromStorage) {
+      const userDB = JSON.parse(userFromStorage)
+      return this._userEntityFactory(userDB)
     }
+
+    const user = firebase.auth().currentUser
+    if (!user) return false
 
     const userDB = (await firebase
       .database()
       .ref(`/users/${user.uid}`)
       .once('value')).val()
+
     return this._userEntityFactory(userDB)
   }
 
@@ -46,21 +60,27 @@ export default class FireBaseUsersRepository extends UsersRepository {
   async login({email, password} = {}) {
     this._log(`LOGIN USER with email:${email} and password`)
     const firebase = this._config.get('firebase')
+    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
     const {user} = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
 
-    console.log('login...') // eslint-disable-line
     const userDB = (await firebase
       .database()
       .ref(`/users/${user.uid}`)
       .once('value')).val()
+
+    this._storage.setItem(keyStorage, JSON.stringify(userDB))
     return this._userEntityFactory(userDB)
   }
 
   logout() {
     this._log(`LOGOUT USER`)
     const firebase = this._config.get('firebase')
+    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
+    this._storage.removeItem(keyStorage)
     return firebase.auth().signOut()
   }
 }
+
+export default FireBaseUsersRepository
