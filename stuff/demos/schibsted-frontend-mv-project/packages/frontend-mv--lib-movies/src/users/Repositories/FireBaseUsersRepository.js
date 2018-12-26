@@ -37,6 +37,7 @@ class FireBaseUsersRepository extends UsersRepository {
       .ref(`/users/${user.uid}`)
       .once('value')).val()
 
+    console.log('¡retrieved user from firebqse...') // eslint-disable-line
     return this._userEntityFactory(userDB)
   }
 
@@ -64,6 +65,25 @@ class FireBaseUsersRepository extends UsersRepository {
     const {user} = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+
+    const userDB = (await firebase
+      .database()
+      .ref(`/users/${user.uid}`)
+      .once('value')).val()
+
+    this._storage.setItem(keyStorage, JSON.stringify(userDB))
+    return this._userEntityFactory(userDB)
+  }
+
+  async loginWithGoogle() {
+    this._log(`LOGIN USER with Google Provider`)
+    const firebase = this._config.get('firebase')
+    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
+    const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+    const result = await firebase.auth().signInWithPopup(googleProvider)
+    console.log(result) // eslint-disable-line
+    const {user} = result
 
     const userDB = (await firebase
       .database()

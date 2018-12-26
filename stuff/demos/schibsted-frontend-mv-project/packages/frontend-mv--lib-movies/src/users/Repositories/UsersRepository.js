@@ -11,6 +11,10 @@ export default class UsersRepository {
     throw Error('[UsersRepository#login] must be implemented')
   }
 
+  loginWithGoogle() {
+    throw Error('[UsersRepository#loginWithGoogle] must be implemented')
+  }
+
   logout() {
     throw Error('[UsersRepository#logout] must be implemented')
   }

@@ -26,6 +26,9 @@ const useCases = {
     config
   }),
   login_users_use_case: UsersUseCasesFactory.loginUsersUseCase({config}),
+  login_with_google_users_use_case: UsersUseCasesFactory.loginWithGoogleUsersUseCase(
+    {config}
+  ),
   logout_users_use_case: UsersUseCasesFactory.logoutUsersUseCase({config})
 }
 

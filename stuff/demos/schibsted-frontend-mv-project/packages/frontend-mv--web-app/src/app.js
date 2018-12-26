@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -36,6 +37,8 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       const firebaseApp = domain.get('config').get('firebase')
 
       firebaseApp.auth().onAuthStateChanged(user => {
+        console.log('onAuthStateChanged...')
+        console.log(user)
         render()
       })
     }

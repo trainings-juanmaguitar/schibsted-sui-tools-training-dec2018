@@ -21,5 +21,7 @@ module.exports = {
   SIGNUP_PASSWORD_LABEL: 'contraseña',
   SIGNUP_USER: 'Crear usuario',
   SIGNUP_USERNAME_LABEL: 'nombre de usuario',
-  SIGNUP_USER_LABEL: 'correo electrónico'
+  SIGNUP_USER_LABEL: 'correo electrónico',
+  LOGIN_WITH_GOOGLE: 'Entra con tu cuenta de Google',
+  LOGIN_WITH_FACEBOOK: 'Entra con tu cuenta de Facebook'
 }

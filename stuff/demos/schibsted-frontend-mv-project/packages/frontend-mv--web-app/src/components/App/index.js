@@ -29,6 +29,10 @@ class App extends Component {
     this.changeLanguageEN = this.changeLanguage.bind(null, {lang: 'en-GB'})
   }
 
+  state = {
+    user: null
+  }
+
   changeLanguage = ({lang}) => {
     const {i18n, router} = this.context
     const {
@@ -39,9 +43,28 @@ class App extends Component {
     router.push(currentPath)
   }
 
+  componentDidMount() {
+    const {domain, router} = this.context
+    const {
+      location: {pathname: currentPath}
+    } = router
+    const firebaseApp = domain.get('config').get('firebase')
+    firebaseApp.auth().onAuthStateChanged(user => {
+      this.setState({user})
+      // router.push(currentPath)
+    })
+  }
+
+  loginWithGoogle = async () => {
+    const {domain} = this.context
+    await domain.get('login_with_google_users_use_case').execute()
+  }
+
   render() {
-    const {children, user} = this.props
+    const {children} = this.props
+    const {user} = this.state
     const {i18n} = this.context
+    const {changeLanguageES, changeLanguageEN, loginWithGoogle} = this
     return (
       <div className="App">
         <Helmet>
@@ -75,16 +98,23 @@ class App extends Component {
           </NavbarMenu>
           <NavbarDivider />
           <NavbarItem className={CLASS_TOOLBAR_LANGUAGES}>
-            <a onClick={this.changeLanguageEN}>EN</a>
+            <a onClick={changeLanguageEN}>EN</a>
             |
-            <a onClick={this.changeLanguageES}>ES</a>
+            <a onClick={changeLanguageES}>ES</a>
           </NavbarItem>
           <NavbarDivider />
           <NavbarItem>
             {user ? (
-              <Link to="/signout">{i18n.t('SIGNOUT')} <strong>({user.name})</strong></Link>
+              <Link to="/signout">
+                {i18n.t('SIGNOUT')} <strong>({user.name})</strong>
+              </Link>
             ) : (
-              <Link to="/signin">{i18n.t('LOGIN')}</Link>
+              <button
+                className="loginBtn loginBtn--google"
+                onClick={loginWithGoogle}
+              >
+                {i18n.t('LOGIN_WITH_GOOGLE')}
+              </button>
             )}
           </NavbarItem>
         </Navbar>
@@ -98,16 +128,20 @@ class App extends Component {
 }
 
 App.propTypes = {children: PropTypes.element}
-App.contextTypes = {i18n: PropTypes.object, router: PropTypes.object}
+App.contextTypes = {
+  i18n: PropTypes.object,
+  router: PropTypes.object,
+  domain: PropTypes.object
+}
 
 App.renderLoading = () => <h1>Loading...</h1>
 
-App.getInitialProps = async ({context}) => {
-  const {domain} = context
-  const user = await domain.get('current_users_use_case').execute()
-  return {
-    user
-  }
-}
+// App.getInitialProps = async ({context}) => {
+//   const {domain} = context
+//   const user = await domain.get('current_users_use_case').execute()
+//   return {
+//     user
+//   }
+// }
 
 export default App

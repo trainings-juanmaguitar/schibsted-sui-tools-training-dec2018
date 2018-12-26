@@ -4,6 +4,7 @@ import CreateUsersUseCase from './CreateUsersUseCase'
 import CurrentUsersUseCase from './CurrentUsersUseCase'
 import IsPrivilegedUsersUseCase from './IsPrivilegedUsersUseCase'
 import LoginUsersUseCase from './LoginUsersUseCase'
+import LoginWithGoogleUsersUseCase from './LoginWithGoogleUsersUseCase'
 import LogoutUsersUseCase from './LogoutUsersUseCase'
 
 export default class UsersUseCasesFactory {
@@ -15,6 +16,11 @@ export default class UsersUseCasesFactory {
   static loginUsersUseCase = ({config}) =>
     new LoginUsersUseCase({
       service: UsersServicesFactory.loginUsersService({config})
+    })
+
+  static loginWithGoogleUsersUseCase = ({config}) =>
+    new LoginWithGoogleUsersUseCase({
+      service: UsersServicesFactory.loginWithGoogleUsersService({config})
     })
 
   static createUsersUseCase = ({config}) =>
