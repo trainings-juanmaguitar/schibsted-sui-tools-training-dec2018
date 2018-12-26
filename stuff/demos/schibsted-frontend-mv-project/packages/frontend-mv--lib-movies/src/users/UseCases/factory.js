@@ -13,19 +13,9 @@ export default class UsersUseCasesFactory {
       service: UsersServicesFactory.currentUsersService({config})
     })
 
-  static loginUsersUseCase = ({config}) =>
-    new LoginUsersUseCase({
-      service: UsersServicesFactory.loginUsersService({config})
-    })
-
   static loginWithGoogleUsersUseCase = ({config}) =>
     new LoginWithGoogleUsersUseCase({
       service: UsersServicesFactory.loginWithGoogleUsersService({config})
-    })
-
-  static createUsersUseCase = ({config}) =>
-    new CreateUsersUseCase({
-      service: UsersServicesFactory.createUsersService({config})
     })
 
   static logoutUsersUseCase = ({config}) =>

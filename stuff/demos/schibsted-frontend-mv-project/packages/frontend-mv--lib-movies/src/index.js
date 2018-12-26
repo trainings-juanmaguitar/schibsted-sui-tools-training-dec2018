@@ -20,12 +20,10 @@ const useCases = {
   get_popular_movies_use_case: MoviesUseCasesFactory.getPopularMoviesUseCase({
     config
   }),
-  create_users_use_case: UsersUseCasesFactory.createUsersUseCase({config}),
   current_users_use_case: UsersUseCasesFactory.currentUsersUseCase({config}),
   is_privileged_users_use_case: UsersUseCasesFactory.isPrivilegedUsersUseCase({
     config
   }),
-  login_users_use_case: UsersUseCasesFactory.loginUsersUseCase({config}),
   login_with_google_users_use_case: UsersUseCasesFactory.loginWithGoogleUsersUseCase(
     {config}
   ),
