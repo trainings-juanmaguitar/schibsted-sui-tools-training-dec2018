@@ -1,9 +1,7 @@
 import UsersServicesFactory from '../Services/factory'
 
-import CreateUsersUseCase from './CreateUsersUseCase'
 import CurrentUsersUseCase from './CurrentUsersUseCase'
 import IsPrivilegedUsersUseCase from './IsPrivilegedUsersUseCase'
-import LoginUsersUseCase from './LoginUsersUseCase'
 import LoginWithGoogleUsersUseCase from './LoginWithGoogleUsersUseCase'
 import LogoutUsersUseCase from './LogoutUsersUseCase'
 

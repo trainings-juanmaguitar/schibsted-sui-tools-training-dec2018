@@ -1,18 +1,11 @@
 import UsersRepository from './UsersRepository'
 
 class FireBaseUsersRepository extends UsersRepository {
-  constructor({
-    config,
-    log,
-    storage,
-    firebasePersistence,
-    userEntityFactory
-  } = {}) {
+  constructor({config, log, firebasePersistence, userEntityFactory} = {}) {
     super()
 
     this._config = config
     this._log = log
-    this._storage = storage
     this._firebasePersistence = firebasePersistence
     this._userEntityFactory = userEntityFactory
   }
