@@ -20,15 +20,6 @@ class FireBaseUsersRepository extends UsersRepository {
   async current() {
     this._log(`Getting CURRENT user`)
     const firebase = this._config.get('firebase')
-    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
-
-    const userFromStorage = this._storage.getItem(keyStorage)
-
-    if (userFromStorage) {
-      const userDB = JSON.parse(userFromStorage)
-      return this._userEntityFactory(userDB)
-    }
-
     const user = firebase.auth().currentUser
     if (!user) return false
 
@@ -37,52 +28,15 @@ class FireBaseUsersRepository extends UsersRepository {
       .ref(`/users/${user.uid}`)
       .once('value')).val()
 
-    console.log('¡retrieved user from firebqse...') // eslint-disable-line
-    return this._userEntityFactory(userDB)
-  }
-
-  async create({email, name, password} = {}) {
-    this._log(`CREATING USER with email:${email}, name:${name} and password`)
-    const firebase = this._config.get('firebase')
-    await firebase.auth().createUserWithEmailAndPassword(email, password)
-    const user = firebase.auth().currentUser
-    await firebase
-      .database()
-      .ref(`/users/${user.uid}`)
-      .set({
-        email,
-        name,
-        id: user.uid
-      })
-
-    return this._userEntityFactory({email, id: user.uid})
-  }
-
-  async login({email, password} = {}) {
-    this._log(`LOGIN USER with email:${email} and password`)
-    const firebase = this._config.get('firebase')
-    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
-    const {user} = await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-
-    const userDB = (await firebase
-      .database()
-      .ref(`/users/${user.uid}`)
-      .once('value')).val()
-
-    this._storage.setItem(keyStorage, JSON.stringify(userDB))
     return this._userEntityFactory(userDB)
   }
 
   async loginWithGoogle() {
     this._log(`LOGIN USER with Google Provider`)
     const firebase = this._config.get('firebase')
-    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
     const googleProvider = new firebase.auth.GoogleAuthProvider()
 
     const result = await firebase.auth().signInWithPopup(googleProvider)
-    console.log(result) // eslint-disable-line
     const {user} = result
 
     const userDB = (await firebase
@@ -90,15 +44,12 @@ class FireBaseUsersRepository extends UsersRepository {
       .ref(`/users/${user.uid}`)
       .once('value')).val()
 
-    this._storage.setItem(keyStorage, JSON.stringify(userDB))
     return this._userEntityFactory(userDB)
   }
 
   logout() {
     this._log(`LOGOUT USER`)
     const firebase = this._config.get('firebase')
-    const keyStorage = this._config.get('SESSION_FIREBASE_KEY')
-    this._storage.removeItem(keyStorage)
     return firebase.auth().signOut()
   }
 }

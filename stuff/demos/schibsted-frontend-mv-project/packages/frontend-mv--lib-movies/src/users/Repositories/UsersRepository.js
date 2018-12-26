@@ -3,14 +3,6 @@ export default class UsersRepository {
     throw Error('[UsersRepository#current] must be implemented')
   }
 
-  create() {
-    throw Error('[UsersRepository#create] must be implemented')
-  }
-
-  login() {
-    throw Error('[UsersRepository#login] must be implemented')
-  }
-
   loginWithGoogle() {
     throw Error('[UsersRepository#loginWithGoogle] must be implemented')
   }

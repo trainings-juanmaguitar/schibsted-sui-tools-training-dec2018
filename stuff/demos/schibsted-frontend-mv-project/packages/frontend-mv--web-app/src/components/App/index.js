@@ -15,12 +15,13 @@ import {
   Section
 } from 'bloomer'
 
+import AtomButton from '@schibstedspain/sui-atom-button'
+
 import Link from 'react-router/lib/Link'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
 const CLASS_TOOLBAR_LANGUAGES = `${CLASS_TOOLBAR}-languages`
-// const CLASS_TOOLBAR_OPTIONS = `${CLASS_TOOLBAR}-options`
 
 class App extends Component {
   constructor() {
@@ -29,8 +30,11 @@ class App extends Component {
     this.changeLanguageEN = this.changeLanguage.bind(null, {lang: 'en-GB'})
   }
 
+  unsubscribeFirebaseOnAuthStateChanged = null
+
   state = {
-    user: null
+    user: null,
+    update: true
   }
 
   changeLanguage = ({lang}) => {
@@ -44,15 +48,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const {domain, router} = this.context
-    const {
-      location: {pathname: currentPath}
-    } = router
+    const {domain} = this.context
     const firebaseApp = domain.get('config').get('firebase')
-    firebaseApp.auth().onAuthStateChanged(user => {
-      this.setState({user})
-      // router.push(currentPath)
-    })
+    this.unsubscribeFirebaseOnAuthStateChanged = firebaseApp
+      .auth()
+      .onAuthStateChanged(async () => {
+        this.setState({update: true})
+        const user = await domain.get('current_users_use_case').execute()
+        this.setState({user, update: false})
+      })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFirebaseOnAuthStateChanged()
   }
 
   loginWithGoogle = async () => {
@@ -60,11 +68,16 @@ class App extends Component {
     await domain.get('login_with_google_users_use_case').execute()
   }
 
+  logout = async () => {
+    const {domain} = this.context
+    await domain.get('logout_users_use_case').execute()
+  }
+
   render() {
     const {children} = this.props
-    const {user} = this.state
+    const {user, update} = this.state
     const {i18n} = this.context
-    const {changeLanguageES, changeLanguageEN, loginWithGoogle} = this
+    const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
     return (
       <div className="App">
         <Helmet>
@@ -104,10 +117,12 @@ class App extends Component {
           </NavbarItem>
           <NavbarDivider />
           <NavbarItem>
-            {user ? (
-              <Link to="/signout">
-                {i18n.t('SIGNOUT')} <strong>({user.name})</strong>
-              </Link>
+            {update ? (
+              <p>updating...</p>
+            ) : user ? (
+              <AtomButton type="tertiary" onClick={logout}>
+                <span>{i18n.t('SIGNOUT')}</span>&nbsp;<strong>({user.name})</strong>
+              </AtomButton>
             ) : (
               <button
                 className="loginBtn loginBtn--google"
@@ -135,13 +150,5 @@ App.contextTypes = {
 }
 
 App.renderLoading = () => <h1>Loading...</h1>
-
-// App.getInitialProps = async ({context}) => {
-//   const {domain} = context
-//   const user = await domain.get('current_users_use_case').execute()
-//   return {
-//     user
-//   }
-// }
 
 export default App
