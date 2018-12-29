@@ -7,10 +7,14 @@ class AtomCard extends Component {
     return (
       <div className="sui-AtomCard">
         <h1>{title}</h1>
-        <img src={img} />
-        <h3>{language}</h3>
-        <h3>{releaseDate}</h3>
-        <ul>{genres.map((genre, i) => <li key={i}>{genre.name}</li>)}</ul>
+        <div className="sui-AtomCard_details">
+          <img src={img} />
+          <div className="sui-AtomCard_details_text">
+            <h3>{language}</h3>
+            <h3>{releaseDate}</h3>
+            <ul>{genres.map((genre, i) => <li key={i}>{genre.name}</li>)}</ul>
+          </div>
+        </div>
         <p>{overview}</p>
       </div>
     )

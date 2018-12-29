@@ -1,5 +1,26 @@
-@import '~@schibstedspain/sui-theme/lib/index';
+// @import '~@schibstedspain/sui-theme/lib/index';
 
 .sui-AtomCard {
-  // Do your magic
+  width: 500px;
+  height: 350px;
+  border: 1px #82b1ff solid;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+}
+.sui-AtomCard_details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  img {
+    width: 50%;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ul {
+      padding-left: 18px;
+    }
+  }
 }

@@ -20,12 +20,8 @@ class LatestMovies extends Component {
   }
 
   render() {
-    debugger
-    console.log(this)
-    debugger
     const {movies, actualPage, totalPages, totalResults} = this.props
-    const {i18n} = this.context
-    debugger
+    const {i18n} = this.props
     return (
       <React.Fragment>
         <Helmet>
@@ -67,8 +63,7 @@ LatestMovies.contextType = {
 }
 
 LatestMovies.getInitialProps = async ({context, routeInfo}) => {
-  debugger
-  const {domain} = context
+  const {domain, i18n} = context
   const {params: {page}} = routeInfo
   const {movies, actualPage, totalPages, totalResults} = await domain
     .get('list_latest_movies_use_case')
@@ -78,7 +73,8 @@ LatestMovies.getInitialProps = async ({context, routeInfo}) => {
     movies: movies || [],
     actualPage,
     totalPages,
-    totalResults
+    totalResults,
+    i18n
   }
 }
 LatestMovies.renderLoading = () => <h1>...</h1>
