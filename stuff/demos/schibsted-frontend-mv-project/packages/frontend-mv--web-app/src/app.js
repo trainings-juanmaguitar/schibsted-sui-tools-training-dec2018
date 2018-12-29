@@ -27,20 +27,8 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       context.router = router
       const App = withContext(context)(Router)
 
-      
-      ReactDOM.render(
-        <App {...renderProps} />,
-        document.getElementById('app')
-      )
+      ReactDOM.render(<App {...renderProps} />, document.getElementById('app'))
 
-      // const {domain} = context
-      // const firebaseApp = domain.get('config').get('firebase')
-
-      // firebaseApp.auth().onAuthStateChanged(user => {
-      //   console.log('onAuthStateChanged...')
-      //   console.log(user)
-      //   render()
-      // })
     }
   )
 })

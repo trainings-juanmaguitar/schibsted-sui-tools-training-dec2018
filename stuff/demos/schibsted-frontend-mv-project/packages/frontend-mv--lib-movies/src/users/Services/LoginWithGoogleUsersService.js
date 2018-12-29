@@ -1,9 +1,14 @@
 export default class LoginUsersService {
-  constructor({repository} = {}) {
-    this._repository = repository
+  constructor({firebaseRepository, cookieRepository, httpRepository} = {}) {
+    this._firebaseRepository = firebaseRepository
+    this._cookieRepository = cookieRepository
+    this._httpRepository = httpRepository
   }
 
-  execute({email, password} = {}) {
-    return this._repository.loginWithGoogle()
+  async execute() {
+    const sessionEntity = await this._firebaseRepository.loginWithGoogle()
+    console.log(sessionEntity) // eslint-disable-line
+    this._cookieRepository.login(sessionEntity)
+    return this._httpRepository.current(sessionEntity)
   }
 }

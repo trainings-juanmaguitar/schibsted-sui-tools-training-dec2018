@@ -5,3 +5,4 @@ public/
 .DS_Store
 server
 package-lock.json
+serviceAccountKey.json

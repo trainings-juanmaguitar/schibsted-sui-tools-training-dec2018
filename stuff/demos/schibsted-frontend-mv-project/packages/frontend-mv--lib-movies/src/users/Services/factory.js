@@ -9,7 +9,13 @@ import LogoutUsersService from './LogoutUsersService'
 export default class UsersServicesFactory {
   static currentUsersService = ({config}) =>
     new CurrentUsersService({
-      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
+      firebaseRepository: UsersRepositoriesFactory.fireBaseUsersRepository({
+        config
+      }),
+      cookieRepository: UsersRepositoriesFactory.cookieUsersRepository({
+        config
+      }),
+      httpRepository: UsersRepositoriesFactory.httpUsersRepository({config})
     })
 
   static loginUsersService = ({config}) => {
@@ -20,7 +26,13 @@ export default class UsersServicesFactory {
 
   static loginWithGoogleUsersService = ({config}) => {
     return new LoginWithGoogleUsersService({
-      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
+      firebaseRepository: UsersRepositoriesFactory.fireBaseUsersRepository({
+        config
+      }),
+      cookieRepository: UsersRepositoriesFactory.cookieUsersRepository({
+        config
+      }),
+      httpRepository: UsersRepositoriesFactory.httpUsersRepository({config})
     })
   }
 

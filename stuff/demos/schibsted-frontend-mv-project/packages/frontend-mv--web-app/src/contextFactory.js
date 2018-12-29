@@ -7,7 +7,17 @@ i18n.setCulture = function(culture) {
   this.culture = culture
 }
 
+class State {
+  constructor({...props}) {
+    this._ = {...props}
+  }
+  setState({...props}) {
+    this._ = {...this.state, ...props}
+  }
+}
+
 export default async () => ({
   domain,
-  i18n
+  i18n,
+  state: new State()
 })

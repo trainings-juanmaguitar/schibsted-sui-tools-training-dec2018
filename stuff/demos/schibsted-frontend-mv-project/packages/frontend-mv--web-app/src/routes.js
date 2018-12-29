@@ -6,8 +6,7 @@ import IndexRoute from 'react-router/lib/IndexRoute'
 import loadPage from '@s-ui/react-initial-props/lib/loadPage'
 import contextFactory from './contextFactory'
 
-
-const loadAppComponent = loadPage(contextFactory, () =>
+const loadAppContainer = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "App" */ './components/App')
 )
 
@@ -33,7 +32,7 @@ const loadMovieDetailsPage = loadPage(contextFactory, () =>
 
 export default (
   <Router>
-    <Route getComponent={loadAppComponent}>
+    <Route getComponent={loadAppContainer}>
       <Route path="/">
         <IndexRoute getComponent={loadHomePage} />
         <Route path="s/:query(/p/:page)" getComponent={loadResultsSearchPage} />
