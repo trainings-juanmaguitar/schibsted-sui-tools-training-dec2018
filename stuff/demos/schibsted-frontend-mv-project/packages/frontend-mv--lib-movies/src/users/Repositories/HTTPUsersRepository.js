@@ -1,3 +1,5 @@
+/* eslint-disable */
+import to from 'await-to-js'
 import UsersRepository from './UsersRepository'
 
 class HTTPUsersRepository extends UsersRepository {
@@ -12,43 +14,20 @@ class HTTPUsersRepository extends UsersRepository {
 
   async current(session) {
     this._log(`Getting CURRENT user`)
-    console.log(session) // eslint-disable-line
+    if (session) {
+      const {token} = session.toJSON()
+      const host = this._config.get('FIREBASE_API_URL')
+      const url = `${host}/users/current/`
+      const options = {headers: {Authorization: `Bearer ${token}`}}
 
-    // const user = firebase.auth().currentUser
-    // if (!user) return false
-
-    // const userDB = (await firebase
-    //   .database()
-    //   .ref(`/users/${user.uid}`)
-    //   .once('value')).val()
-    const {token} = session.toJSON()
-    const host = this._config.get('FIREBASE_API_URL')
-    const url = `${host}/users/current/`
-    const options = {headers: {Authorization: `Bearer ${token}`}}
-    console.log({token, host, url, options}) // eslint-disable-line
-
-    const {data: userDB} = await this._fetcher.get(url, options)
-
-    return this._userEntityFactory(userDB)
-  }
-
-  async loginWithGoogle() {
-    this._log(`LOGIN USER with Google Provider`)
-    const firebase = this._config.get('firebase')
-    const googleProvider = new firebase.auth.GoogleAuthProvider()
-
-    const result = await firebase.auth().signInWithPopup(googleProvider)
-    const token = await firebase.auth().currentUser.getIdToken()
-    // const {id_token: idToken} = googleUser.getAuthResponse()
-    console.log(token) // eslint-disable-line
-    const {user} = result
-
-    const userDB = (await firebase
-      .database()
-      .ref(`/users/${user.uid}`)
-      .once('value')).val()
-
-    return this._userEntityFactory(userDB)
+      const [err, response] = await to(this._fetcher.get(url, options))
+      if (err) {
+        console.log(err)
+        return
+      }
+      const {data: userDB} = response 
+      return this._userEntityFactory(userDB)
+    }
   }
 
   logout() {

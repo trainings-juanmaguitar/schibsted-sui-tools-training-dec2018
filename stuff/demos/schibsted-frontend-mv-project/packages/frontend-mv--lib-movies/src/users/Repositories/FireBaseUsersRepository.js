@@ -1,52 +1,24 @@
 import UsersRepository from './UsersRepository'
 
 class FireBaseUsersRepository extends UsersRepository {
-  constructor({
-    config,
-    log,
-    cookie,
-    sessionEntityFactory,
-    userEntityFactory
-  } = {}) {
+  constructor({config, log, cookie, sessionEntityFactory} = {}) {
     super()
 
     this._config = config
     this._log = log
     this._cookie = cookie
     this._sessionEntityFactory = sessionEntityFactory
-    this._userEntityFactory = userEntityFactory
-  }
-
-  async current() {
-    this._log(`Getting CURRENT user`)
-    const firebase = this._config.get('firebase')
-    const user = firebase.auth().currentUser
-    if (!user) return false
-
-    const userDB = (await firebase
-      .database()
-      .ref(`/users/${user.uid}`)
-      .once('value')).val()
-
-    return this._userEntityFactory(userDB)
   }
 
   async loginWithGoogle() {
     this._log(`LOGIN USER with Google Provider`)
     const firebase = this._config.get('firebase')
-
     const googleProvider = new firebase.auth.GoogleAuthProvider()
 
     await firebase.auth().signInWithPopup(googleProvider)
     const token = await firebase.auth().currentUser.getIdToken()
 
     return this._sessionEntityFactory({token})
-  }
-
-  logout() {
-    this._log(`LOGOUT USER`)
-    const firebase = this._config.get('firebase')
-    return firebase.auth().signOut()
   }
 }
 

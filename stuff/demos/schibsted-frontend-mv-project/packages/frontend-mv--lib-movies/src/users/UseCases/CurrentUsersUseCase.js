@@ -6,8 +6,8 @@ class CurrentUsersUseCase {
     this._service = service
   }
 
-  async execute() {
-    const userEntity = await this._service.execute()
+  async execute({cookies}) {
+    const userEntity = await this._service.execute({cookies})
     return userEntity && userEntity.toJSON()
   }
 }

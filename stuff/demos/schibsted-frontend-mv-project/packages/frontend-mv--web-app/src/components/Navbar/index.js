@@ -43,22 +43,25 @@ class NavbarApp extends Component {
   }
 
   loginWithGoogle = async () => {
-    const {domain, state} = this.context
+    const {domain, router} = this.context
+    const {
+      location: {pathname: currentPath}
+    } = router
     await domain.get('login_with_google_users_use_case').execute()
-    this.forceUpdate()
+    router.push(currentPath)
   }
 
   logout = async () => {
-    const {domain, state} = this.context
+    const {domain, router} = this.context
+    const {
+      location: {pathname: currentPath}
+    } = router
     await domain.get('logout_users_use_case').execute()
-    this.forceUpdate()
+    router.push(currentPath)
   }
 
   render() {
-    console.log('render...')
-    console.log(this.context)
-    const {children} = this.props
-    const {i18n, domain, state} = this.context
+    const {i18n} = this.context
     const {user} = this.props
     const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
     return (

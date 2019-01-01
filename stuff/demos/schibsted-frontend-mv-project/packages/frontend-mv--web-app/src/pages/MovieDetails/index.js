@@ -1,19 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import MovieDetails from '../../components/MovieDetails'
+import Page from '../../hoc/Page'
 
-const MovieDetailsPage = ({movie}, {i18n}) => (
+import MovieDetailsBlock from '../../components/MovieDetails'
+
+const MovieDetails = ({movie}, {i18n}) => (
   <React.Fragment>
-    <MovieDetails movie={movie} />
+    <MovieDetailsBlock movie={movie} />
   </React.Fragment>
 )
 
-MovieDetailsPage.propTypes = {movie: PropTypes.object}
-MovieDetailsPage.contextTypes = {i18n: PropTypes.object}
-MovieDetailsPage.renderLoading = () => <h1>Loading...</h1>
+MovieDetails.propTypes = {movie: PropTypes.object}
+MovieDetails.contextTypes = {i18n: PropTypes.object}
+MovieDetails.renderLoading = () => <h1>Loading...</h1>
 
-MovieDetailsPage.getInitialProps = async ({context, routeInfo}) => {
+MovieDetails.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
 
   const {
@@ -29,4 +31,4 @@ MovieDetailsPage.getInitialProps = async ({context, routeInfo}) => {
   }
 }
 
-export default MovieDetailsPage
+export default Page(MovieDetails)

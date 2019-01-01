@@ -1,9 +1,9 @@
 export default class LogoutUsersService {
-  constructor({repository} = {}) {
-    this._repository = repository
+  constructor({cookieRepository} = {}) {
+    this._cookieRepository = cookieRepository
   }
 
-  execute() {
-    return this._repository.logout()
+  async execute() {
+    await this._cookieRepository.logout()
   }
 }

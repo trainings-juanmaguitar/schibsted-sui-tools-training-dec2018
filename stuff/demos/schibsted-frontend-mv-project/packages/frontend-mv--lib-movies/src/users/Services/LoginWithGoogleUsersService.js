@@ -7,8 +7,6 @@ export default class LoginUsersService {
 
   async execute() {
     const sessionEntity = await this._firebaseRepository.loginWithGoogle()
-    console.log(sessionEntity) // eslint-disable-line
     this._cookieRepository.login(sessionEntity)
-    return this._httpRepository.current(sessionEntity)
   }
 }

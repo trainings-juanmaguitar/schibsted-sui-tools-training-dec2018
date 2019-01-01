@@ -4,7 +4,6 @@ export default class LoginUsersUseCase {
   }
 
   async execute() {
-    const userEntity = await this._service.execute()
-    return userEntity.toJSON()
+    await this._service.execute()
   }
 }

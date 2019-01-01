@@ -6,6 +6,8 @@ const express = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
 
+const to = require('await-to-js').default
+
 const Movies = require('../../../frontend-mv--lib-movies/lib')
 const domain = new Movies()
 
@@ -39,60 +41,69 @@ app.use(
   })
 )
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+// app.get('/user/current', (req, res) => {
+//   const user = admin.auth().currentUser
 
-app.get('/user/current', (req, res) => {
-  
-  const user = admin.auth().currentUser
-  
-  instance
-    .database()
-    .ref(`/users/${user.uid}`)
-    .once('value').val()
-    .then(userDB => res.send(userDB))
-})
+//   instance
+//     .database()
+//     .ref(`/users/${user.uid}`)
+//     .once('value')
+//     .val()
+//     .then(userDB => res.send(userDB))
+// })
 
-  
-  // const { token } = req.params
-  // admin.auth().verifyIdToken(token)
-  //   .then(function(decodedToken) {
-  //     var uid = decodedToken.uid;
-  //     res.send(`your uid is ${uid}`)
-  //   })
-  //   .catch(function(error) {
-  //     console.log(error)
-  //   })
-  
+// const { token } = req.params
+// admin.auth().verifyIdToken(token)
+//   .then(function(decodedToken) {
+//     var uid = decodedToken.uid;
+//     res.send(`your uid is ${uid}`)
+//   })
+//   .catch(function(error) {
+//     console.log(error)
+//   })
 
-const getTokenFromHeaders =  ({headers: {authorization}}) => {
+const getTokenFromHeaders = ({headers: {authorization}}) => {
   if (authorization && authorization.split(' ')[0] === 'Bearer') {
-      return authorization.split(' ')[1];
+    return authorization.split(' ')[1]
   }
-  return null;
+  return null
 }
 
-app.get('/users/current', (req, res) => {
-  console.log(req.headers)
-  const token = getTokenFromHeaders(req)
-  console.log(token)
-  admin.auth().verifyIdToken(token)
-    .then(function(decodedToken) {
-      var uid = decodedToken.uid;
-      
-      console.log(instance.database().ref(`/users/${uid}`))
-      instance
-      .database()
-      .ref(`/users/${uid}`)
-      .once('value')
-      .then(userDB => res.send(userDB))
+// const asyncMiddleware = fn => (req, res, next) => {
+//   Promise.resolve(fn(req, res, next)).catch(error => {
+//     const resMethod = typeof error === 'object' ? 'json' : 'send'
+//     res.status(500)[resMethod](error)
+//   })
+// }
 
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
+
+app.get('/users/current', async (req, res) => {
+  console.log(new Date())
+  const token = getTokenFromHeaders(req)
+  if (!token) res.status(404).send('Token not found in headers')
+  console.log(`Token → ${token}`)
+  const [errDecodedToken, decodedToken] = await to(admin.auth().verifyIdToken(token))
+  if (errDecodedToken) {
+    res.status(500).json(errDecodedToken)
+    return
+  }
+  const {uid} = decodedToken
+  console.log(`uid → ${uid}`)
+
+  const [errUserDB, userDB] = await to(instance
+    .database()
+    .ref(`/users/${uid}`)
+    .once('value'))
+  if (errUserDB) {
+    res.status(500).json(errUserDB)
+    return
+  }
+  console.log(`userDB → ${userDB}`)
   
+  res.send(userDB)
 })
 
 app.get('*', (req, res) => {
@@ -136,4 +147,4 @@ const api = functions.https.onRequest((request, response) => {
   return app(request, response)
 })
 
-module.exports = { api }
+module.exports = {api}

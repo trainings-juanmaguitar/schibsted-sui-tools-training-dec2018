@@ -5,9 +5,8 @@ export default class CurrentUsersService {
     this._httpRepository = httpRepository
   }
 
-  async execute() {
-    const currentSession = await this._cookieRepository.current()
-    console.log(currentSession)
+  async execute({cookies}) {
+    const currentSession = await this._cookieRepository.current({cookies})
     return this._httpRepository.current(currentSession)
   }
 }

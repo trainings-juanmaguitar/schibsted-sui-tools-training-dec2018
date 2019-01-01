@@ -1,6 +1,6 @@
 import UsersRepositoriesFactory from '../Repositories/factory'
 
-import CreateUsersService from './CreateUsersService'
+// import CreateUsersService from './CreateUsersService'
 import CurrentUsersService from './CurrentUsersService'
 import LoginUsersService from './LoginUsersService'
 import LoginWithGoogleUsersService from './LoginWithGoogleUsersService'
@@ -36,13 +36,15 @@ export default class UsersServicesFactory {
     })
   }
 
-  static createUsersService = ({config}) =>
-    new CreateUsersService({
-      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
-    })
+  // static createUsersService = ({config}) =>
+  //   new CreateUsersService({
+  //     repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
+  //   })
 
   static logoutUsersService = ({config}) =>
     new LogoutUsersService({
-      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
+      cookieRepository: UsersRepositoriesFactory.cookieUsersRepository({
+        config
+      })
     })
 }

@@ -9,11 +9,18 @@ export default class CookieUserRepository extends UsersRepository {
     this._sessionEntityFactory = sessionEntityFactory
   }
 
-  current() {
+  async current({cookies}) {
     const cookieSessionName = this._config.get('COOKIE_SESSION_NAME')
-    const {token} = this._cookie.getJSON(cookieSessionName)
-    const sessionEntity = this._sessionEntityFactory({token})
-    return Promise.resolve(sessionEntity)
+    if (cookies) {
+      const cookiesSession = this._cookie.parse(cookies)
+      const {token} = JSON.parse(cookiesSession[cookieSessionName])
+      return this._sessionEntityFactory({token})
+    } else {
+      if (this._cookie.get(cookieSessionName)) {
+        const {token} = this._cookie.getJSON(cookieSessionName)
+        return this._sessionEntityFactory({token})
+      }
+    }
   }
 
   login(session) {
