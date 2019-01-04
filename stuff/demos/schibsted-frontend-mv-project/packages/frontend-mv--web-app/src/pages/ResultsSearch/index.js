@@ -2,9 +2,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
+import Page from '../../hoc/Page'
 import MoviesList from '../../components/MoviesList'
 
-const ResultsSearchPage = (
+const ResultsSearch = (
   {movies, canonical, query, page, totalResults, totalPages},
   {i18n}
 ) => {
@@ -27,7 +28,7 @@ const ResultsSearchPage = (
   )
 }
 
-ResultsSearchPage.propTypes = {
+ResultsSearch.propTypes = {
   movies: PropTypes.array,
   canonical: PropTypes.string,
   query: PropTypes.string,
@@ -35,9 +36,9 @@ ResultsSearchPage.propTypes = {
   totalResults: PropTypes.number,
   totalPages: PropTypes.number
 }
-ResultsSearchPage.contextTypes = {i18n: PropTypes.object}
-ResultsSearchPage.renderLoading = () => <h1>Loading...</h1>
-ResultsSearchPage.getInitialProps = async ({context, routeInfo}) => {
+ResultsSearch.contextTypes = {i18n: PropTypes.object}
+ResultsSearch.renderLoading = () => <h1>Loading...</h1>
+ResultsSearch.getInitialProps = async ({context, routeInfo}) => {
   const {domain, i18n} = context
   const {
     params: {query, page}
@@ -61,4 +62,4 @@ ResultsSearchPage.getInitialProps = async ({context, routeInfo}) => {
   }
 }
 
-export default ResultsSearchPage
+export default Page(ResultsSearch)

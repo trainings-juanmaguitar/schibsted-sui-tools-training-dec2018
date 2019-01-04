@@ -3,15 +3,15 @@ import {UseCase} from '@s-ui/domain'
 /**
  * @implements UseCase
  */
-class LogoutUsersUseCase extends UseCase {
+class LoginUsersUseCase extends UseCase {
   constructor({repository} = {}) {
     super()
     this._repository = repository
   }
 
-  execute() {
-    return this._repository.logout()
+  async execute() {
+    await this._repository.loginWithGoogle()
   }
 }
 
-export default LogoutUsersUseCase
+export default LoginUsersUseCase

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -26,18 +27,8 @@ contextFactory(createClientContextFactoryParams()).then(context => {
       context.router = router
       const App = withContext(context)(Router)
 
-      const render = () =>
-        ReactDOM.render(
-          <App {...renderProps} />,
-          document.getElementById('app')
-        )
+      ReactDOM.hydrate(<App {...renderProps} />, document.getElementById('app'))
 
-      const {domain} = context
-      const firebaseApp = domain.get('config').get('firebase')
-
-      firebaseApp.auth().onAuthStateChanged(user => {
-        render()
-      })
     }
   )
 })

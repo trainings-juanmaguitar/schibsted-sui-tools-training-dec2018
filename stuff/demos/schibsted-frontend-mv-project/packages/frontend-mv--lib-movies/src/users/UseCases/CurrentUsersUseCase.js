@@ -1,13 +1,16 @@
-import {streamify} from '@s-ui/decorators'
+import {UseCase} from '@s-ui/domain'
 
-@streamify('execute')
-class CurrentUsersUseCase {
-  constructor({service} = {}) {
-    this._service = service
+/**
+ * @implements UseCase
+ */
+class CurrentUsersUseCase extends UseCase {
+  constructor({repository} = {}) {
+    super()
+    this._repository = repository
   }
 
-  async execute() {
-    const userEntity = await this._service.execute()
+  async execute({cookies}) {
+    const userEntity = await this._repository.current({cookies})
     return userEntity && userEntity.toJSON()
   }
 }

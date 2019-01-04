@@ -1,34 +1,22 @@
-import UsersServicesFactory from '../Services/factory'
+import UsersRepositoriesFactory from '../Repositories/factory'
 
-import CreateUsersUseCase from './CreateUsersUseCase'
-import CurrentUsersUseCase from './CurrentUsersUseCase'
-import IsPrivilegedUsersUseCase from './IsPrivilegedUsersUseCase'
-import LoginUsersUseCase from './LoginUsersUseCase'
-import LogoutUsersUseCase from './LogoutUsersUseCase'
+import CurrentUserUseCase from './CurrentUsersUseCase'
+import LoginWithGoogleUseCase from './LoginWithGoogleUsersUseCase'
+import LogoutUseCase from './LogoutUsersUseCase'
 
 export default class UsersUseCasesFactory {
-  static currentUsersUseCase = ({config}) =>
-    new CurrentUsersUseCase({
-      service: UsersServicesFactory.currentUsersService({config})
+  static currentUserUseCase = ({config}) =>
+    new CurrentUserUseCase({
+      repository: UsersRepositoriesFactory.httpUsersRepository({config})
     })
 
-  static loginUsersUseCase = ({config}) =>
-    new LoginUsersUseCase({
-      service: UsersServicesFactory.loginUsersService({config})
+  static loginWithGoogleUseCase = ({config}) =>
+    new LoginWithGoogleUseCase({
+      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
     })
 
-  static createUsersUseCase = ({config}) =>
-    new CreateUsersUseCase({
-      service: UsersServicesFactory.createUsersService({config})
-    })
-
-  static logoutUsersUseCase = ({config}) =>
-    new LogoutUsersUseCase({
-      service: UsersServicesFactory.logoutUsersService({config})
-    })
-
-  static isPrivilegedUsersUseCase = ({config}) =>
-    new IsPrivilegedUsersUseCase({
-      currentUsersService: UsersServicesFactory.currentUsersService({config})
+  static logoutUseCase = ({config}) =>
+    new LogoutUseCase({
+      repository: UsersRepositoriesFactory.httpUsersRepository({config})
     })
 }

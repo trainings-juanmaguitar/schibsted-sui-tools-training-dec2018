@@ -3,9 +3,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
+import Page from '../../hoc/Page'
 import MoviesList from '../../components/MoviesList'
 
-const MoviesPopularPage = (
+const MoviesPopular = (
   {movies, canonical, page, totalResults, totalPages},
   {i18n}
 ) => (
@@ -26,16 +27,16 @@ const MoviesPopularPage = (
   </React.Fragment>
 )
 
-MoviesPopularPage.propTypes = {
+MoviesPopular.propTypes = {
   movies: PropTypes.array,
   canonical: PropTypes.string,
   page: PropTypes.number,
   totalResults: PropTypes.number,
   totalPages: PropTypes.number
 }
-MoviesPopularPage.contextTypes = {i18n: PropTypes.object}
-MoviesPopularPage.renderLoading = () => <h1>Loading...</h1>
-MoviesPopularPage.getInitialProps = async ({context, routeInfo}) => {
+MoviesPopular.contextTypes = {i18n: PropTypes.object, domain: PropTypes.object}
+MoviesPopular.renderLoading = () => <h1>Loading...</h1>
+MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
   const {domain, i18n} = context
   const {
     params: {page = 1}
@@ -60,4 +61,4 @@ MoviesPopularPage.getInitialProps = async ({context, routeInfo}) => {
   }
 }
 
-export default MoviesPopularPage
+export default Page(MoviesPopular)
