@@ -37,7 +37,6 @@ MoviesPopular.propTypes = {
 MoviesPopular.contextTypes = {i18n: PropTypes.object, domain: PropTypes.object}
 MoviesPopular.renderLoading = () => <h1>Loading...</h1>
 MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
-  console.log('MoviesPopular.getInitialProps...')
   const {domain, i18n} = context
   const {
     params: {page = 1}

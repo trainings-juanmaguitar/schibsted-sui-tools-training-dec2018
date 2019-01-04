@@ -4,7 +4,6 @@ import UsersEntitiesFactory from '../Entities/factory.js'
 import factoryLogger from '../../logger/factory'
 
 import FireBaseUsersRepository from './FireBaseUsersRepository'
-import CookieUsersRepository from './CookieUsersRepository'
 import HTTPUsersRepository from './HTTPUsersRepository'
 
 class UsersRepositoriesFactory {
@@ -13,16 +12,7 @@ class UsersRepositoriesFactory {
       config,
       cookie,
       log: factoryLogger({prefix: 'FireBaseUsersRepository'}),
-      sessionEntityFactory: UsersEntitiesFactory.sessionEntity,
       userEntityFactory: UsersEntitiesFactory.userEntity
-    })
-
-  static cookieUsersRepository = ({config}) =>
-    new CookieUsersRepository({
-      config,
-      cookie,
-      log: factoryLogger({prefix: 'CookieUsersRepository'}),
-      sessionEntityFactory: UsersEntitiesFactory.sessionEntity
     })
 
   static httpUsersRepository = ({config}) =>

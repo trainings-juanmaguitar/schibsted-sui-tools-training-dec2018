@@ -1,13 +1,16 @@
-import {streamify} from '@s-ui/decorators'
+import {UseCase} from '@s-ui/domain'
 
-@streamify('execute')
-class LogoutUsersUseCase {
-  constructor({service} = {}) {
-    this._service = service
+/**
+ * @implements UseCase
+ */
+class LogoutUsersUseCase extends UseCase {
+  constructor({repository} = {}) {
+    super()
+    this._repository = repository
   }
 
   execute() {
-    return this._service.execute()
+    return this._repository.logout()
   }
 }
 

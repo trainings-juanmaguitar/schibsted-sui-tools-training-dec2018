@@ -47,7 +47,7 @@ class NavbarApp extends Component {
     const {
       location: {pathname: currentPath}
     } = router
-    await domain.get('login_with_google_users_use_case').execute()
+    await domain.get('login_with_google_use_case').execute()
     router.push(currentPath)
   }
 
@@ -56,7 +56,7 @@ class NavbarApp extends Component {
     const {
       location: {pathname: currentPath}
     } = router
-    await domain.get('logout_users_use_case').execute()
+    await domain.get('logout_use_case').execute()
     router.push(currentPath)
   }
 

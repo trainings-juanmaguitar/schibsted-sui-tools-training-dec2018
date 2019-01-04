@@ -13,6 +13,7 @@ const config = new Config({
 })
 
 const useCases = {
+  /* movies */
   search_movies_use_case: MoviesUseCasesFactory.searchMoviesUseCase({config}),
   get_movie_details_by_id_use_case: MoviesUseCasesFactory.getMovieDetailsByIdUseCase(
     {config}
@@ -20,14 +21,12 @@ const useCases = {
   get_popular_movies_use_case: MoviesUseCasesFactory.getPopularMoviesUseCase({
     config
   }),
-  current_users_use_case: UsersUseCasesFactory.currentUsersUseCase({config}),
-  is_privileged_users_use_case: UsersUseCasesFactory.isPrivilegedUsersUseCase({
+  /* users */
+  get_logged_user_use_case: UsersUseCasesFactory.currentUserUseCase({config}),
+  login_with_google_use_case: UsersUseCasesFactory.loginWithGoogleUseCase({
     config
   }),
-  login_with_google_users_use_case: UsersUseCasesFactory.loginWithGoogleUsersUseCase(
-    {config}
-  ),
-  logout_users_use_case: UsersUseCasesFactory.logoutUsersUseCase({config})
+  logout_use_case: UsersUseCasesFactory.logoutUseCase({config})
 }
 
 const EntryPoint = EntryPointFactory({config, useCases})
