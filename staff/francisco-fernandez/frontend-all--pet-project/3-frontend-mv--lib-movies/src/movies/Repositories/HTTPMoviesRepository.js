@@ -29,6 +29,16 @@ class HTTPMoviesRepository extends MoviesRepository {
 
     return results.map(this._moviesEntityFactory)
   }
+
+  async detailsById({id}) {
+    const url = this._config.get('URL_JSON_MOVIES')
+    const key = this._config.get('URL_KEY')
+    const {data: details} = await this._fetcher.get(
+      `${url}/movie/${id}?api_key=${key}`
+    )
+
+    return details
+  }
 }
 
 export default HTTPMoviesRepository

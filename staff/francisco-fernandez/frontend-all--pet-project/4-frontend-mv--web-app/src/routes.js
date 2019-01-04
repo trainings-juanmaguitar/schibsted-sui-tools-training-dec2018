@@ -18,6 +18,10 @@ const loadSearchPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "List" */ './pages/Search')
 )
 
+const loadDetailMovie = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "List" */ './pages/Detail')
+)
+
 export default (
   <Router>
     <Route component={App}>
@@ -25,6 +29,7 @@ export default (
         <IndexRoute getComponent={LoadHomePage} />
         <Route path="popular" getComponent={loadListPage} />
         <Route path="s/:query" getComponent={loadSearchPage} />
+        <Route path="detail/:id" getComponent={loadDetailMovie} />
       </Route>
     </Route>
   </Router>

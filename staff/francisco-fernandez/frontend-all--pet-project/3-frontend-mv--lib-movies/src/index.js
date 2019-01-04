@@ -8,6 +8,9 @@ const useCases = {
   list_movies_use_case: MoviesUseCasesFactory.listMoviesUseCase({config}),
   search_by_name_movies_use_case: MoviesUseCasesFactory.searchByNameMoviesUseCase(
     {config}
+  ),
+  search_movie_details_use_case: MoviesUseCasesFactory.searchMovieDetailsUseCase(
+    {config}
   )
 }
 
