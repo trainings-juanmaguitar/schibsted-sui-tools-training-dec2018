@@ -49,10 +49,8 @@
     "@s-ui/domain": "^1.12.0",
     "@s-ui/js": "^1.18.0",
     "await-to-js": "^2.1.1",
-    "axios": "^0.18.0",
     "babel-plugin-add-module-exports": "^1.0.0",
-    "firebase": "5.7.1",
-    "flatry": "1.0.12"
+    "firebase": "5.7.1"
   },
   "eslintConfig": {
     "extends": [
