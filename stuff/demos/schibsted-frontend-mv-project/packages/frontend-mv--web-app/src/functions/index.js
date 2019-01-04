@@ -1,22 +1,19 @@
 /* eslint-disable */
+const URL = require('url').URL
+
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 const cors = require('cors')
 const express = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
-
 const to = require('await-to-js').default
 
-const Movies = require('../../../frontend-mv--lib-movies/lib')
-const domain = new Movies()
-
 require('dotenv').load()
+const {THEMOVIEDB_API_KEY, THEMOVIEDB_API_BASE_URL} = process.env
 
 /* Express with CORS & automatic trailing '/' solution */
 const app = express()
-const host = domain.get('config').get('API_BASE_URL')
-// const { URL_BASE, TOKEN } = process.env
 
 var serviceAccount = require('./serviceAccountKey.json')
 
@@ -44,27 +41,6 @@ app.use(
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-// app.get('/user/current', (req, res) => {
-//   const user = admin.auth().currentUser
-
-//   instance
-//     .database()
-//     .ref(`/users/${user.uid}`)
-//     .once('value')
-//     .val()
-//     .then(userDB => res.send(userDB))
-// })
-
-// const { token } = req.params
-// admin.auth().verifyIdToken(token)
-//   .then(function(decodedToken) {
-//     var uid = decodedToken.uid;
-//     res.send(`your uid is ${uid}`)
-//   })
-//   .catch(function(error) {
-//     console.log(error)
-//   })
-
 const getTokenFromHeaders = ({headers: {authorization}}) => {
   if (authorization && authorization.split(' ')[0] === 'Bearer') {
     return authorization.split(' ')[1]
@@ -72,26 +48,17 @@ const getTokenFromHeaders = ({headers: {authorization}}) => {
   return null
 }
 
-// const asyncMiddleware = fn => (req, res, next) => {
-//   Promise.resolve(fn(req, res, next)).catch(error => {
-//     const resMethod = typeof error === 'object' ? 'json' : 'send'
-//     res.status(500)[resMethod](error)
-//   })
-// }
-
-
 app.get('/users/current', async (req, res) => {
   console.log(new Date())
   const token = getTokenFromHeaders(req)
   if (!token) res.status(404).send('Token not found in headers')
-  console.log(`Token → ${token}`)
+
   const [errDecodedToken, decodedToken] = await to(admin.auth().verifyIdToken(token))
   if (errDecodedToken) {
     res.status(500).json(errDecodedToken)
     return
   }
   const {uid} = decodedToken
-  console.log(`uid → ${uid}`)
 
   const [errUserDB, userDB] = await to(instance
     .database()
@@ -101,7 +68,6 @@ app.get('/users/current', async (req, res) => {
     res.status(500).json(errUserDB)
     return
   }
-  console.log(`userDB → ${userDB}`)
   
   res.send(userDB)
 })
@@ -111,15 +77,23 @@ app.get('*', (req, res) => {
   console.log('-'.repeat(20))
   console.log(`→ Attempt ${++counter}`)
   console.log('path requested = ' + urlRequested)
+
   if (urlRequested.includes('favicon.ico')) {
     res.status(500).send("Couldn't get a JSON!")
     return
   }
 
-  options.url = host + urlRequested
+  if (!urlRequested.includes(THEMOVIEDB_API_BASE_URL)) {
+    console.log('exiting...')
+    res.status(500).send("Couldn't get a JSON!")
+    return
+  }
 
-  console.log(options.url)
-
+  const url = new URL(`https://${urlRequested}`);
+  url.searchParams.append('api_key', THEMOVIEDB_API_KEY)
+  
+  options.url = url.href
+  
   if (cache[options.url]) {
     console.log('💾 from cache...')
     res.json(cache[options.url])
@@ -131,8 +105,8 @@ app.get('*', (req, res) => {
         res.status(500).send('Something went wrong!')
         return
       }
-
-      const json = JSON.parse(body.replace(/\\/g, ''))
+      const json = JSON.parse(body)
+      // const json = JSON.parse(body.replace(/\\/g, ''))
       cache[options.url] = json
       res.json(json)
     })

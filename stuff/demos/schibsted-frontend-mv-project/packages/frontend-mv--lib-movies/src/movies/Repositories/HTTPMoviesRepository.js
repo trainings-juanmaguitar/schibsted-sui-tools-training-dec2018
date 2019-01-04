@@ -8,20 +8,21 @@ class HTTPMoviesRepository extends MoviesRepository {
     this._fetcher = fetcher
     this._mapper = mapper
     this._moviesListValueObject = moviesListValueObject
+
+    this._host = this._config.get('FIREBASE_API_URL')
+    this._moviesHost = this._config.get('THEMOVIEDB_API_BASE_URL')
   }
 
   async popular({page: pageRequest, language, region} = {}) {
     this._log(
       `Getting POPULAR movies on page:${pageRequest}, language:${language}, region:${region}`
     )
-
-    const host = this._config.get('API_BASE_URL')
-    const apiKey = this._config.get('API_KEY')
-
-    let url = `${host}/movie/popular?api_key=${apiKey}`
-    if (pageRequest) url += `&page=${pageRequest}`
-    if (language) url += `&language=${language}`
-    if (region) url += `&region=${region}`
+    const {_host, _moviesHost} = this
+    const url = `${_host}/${_moviesHost}/movie/popular`
+    const options = {params: {}}
+    if (pageRequest) options.params.page = pageRequest
+    if (language) options.params.language = language
+    if (region) options.params.region = region
 
     const {
       data: {
@@ -30,7 +31,7 @@ class HTTPMoviesRepository extends MoviesRepository {
         total_pages: totalPages,
         results
       }
-    } = await this._fetcher.get(url)
+    } = await this._fetcher.get(url, options)
 
     return this._moviesListValueObject({
       page,
@@ -46,13 +47,12 @@ class HTTPMoviesRepository extends MoviesRepository {
       `Getting movies by query:${query}, page:${pageRequest}, language:${language}, region:${region}`
     )
 
-    const host = this._config.get('API_BASE_URL')
-    const apiKey = this._config.get('API_KEY')
-
-    let url = `${host}/search/movie?api_key=${apiKey}&query=${query}`
-    if (pageRequest) url += `&page=${pageRequest}`
-    if (language) url += `&language=${language}`
-    if (region) url += `&region=${region}`
+    const {_host, _moviesHost} = this
+    const url = `${_host}/${_moviesHost}/search/movie?query=${query}`
+    const options = {params: {}}
+    if (pageRequest) options.params.page = pageRequest
+    if (language) options.params.language = language
+    if (region) options.params.region = region
 
     const {
       data: {
@@ -61,7 +61,7 @@ class HTTPMoviesRepository extends MoviesRepository {
         total_pages: totalPages,
         results
       }
-    } = await this._fetcher.get(url)
+    } = await this._fetcher.get(url, options)
 
     return this._moviesListValueObject({
       page,
@@ -74,10 +74,8 @@ class HTTPMoviesRepository extends MoviesRepository {
   async getMovieById({id: idMovie}) {
     this._log(`Getting movie by query → ${idMovie}`)
 
-    const host = this._config.get('API_BASE_URL')
-    const apiKey = this._config.get('API_KEY')
-
-    const url = `${host}/movie/${idMovie}?api_key=${apiKey}`
+    const {_host, _moviesHost} = this
+    const url = `${_host}/${_moviesHost}/movie/${idMovie}`
 
     const {data: result} = await this._fetcher.get(url)
     return this._mapper.map(result)
