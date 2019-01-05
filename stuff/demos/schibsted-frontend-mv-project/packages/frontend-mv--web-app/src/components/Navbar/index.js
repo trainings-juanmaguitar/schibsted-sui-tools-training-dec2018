@@ -26,20 +26,30 @@ const CLASS_TOOLBAR_LANGUAGES = `${CLASS_TOOLBAR}-languages`
 class NavbarApp extends Component {
   constructor() {
     super()
-    this.changeLanguageES = this.changeLanguage.bind(null, {lang: 'es-ES'})
-    this.changeLanguageEN = this.changeLanguage.bind(null, {lang: 'en-GB'})
+    this.changeLanguageES = this.changeLanguage.bind(null, {locale: 'es'})
+    this.changeLanguageEN = this.changeLanguage.bind(null, {locale: 'en'})
     this.language = new LanguageContainer()
   }
 
-  changeLanguage = ({lang}) => {
-    const {i18n, router} = this.context
-    const {
+  changeLanguage = ({locale}) => {
+    const {i18n, domain, router} = this.context
+    let {
       location: {pathname: currentPath}
     } = router
+
+    const localeConfig = domain.get('config').get('locale')
+    const {language: lang} = localeConfig[locale]
+
     console.log(`changing language to ${lang}`) // eslint-disable-line
+    if (currentPath[0] !== '/') currentPath = '/' + currentPath
+    const hasLocale = /^\/(es|en)/.test(currentPath)
+    const pathRedirect = hasLocale
+    ? currentPath.replace(/^\/(es|en)/, `/${locale}`)
+    : `/${locale}${currentPath}`
+    
     i18n.setCulture(lang)
     this.language.changeLanguage({lang})
-    router.push(currentPath)
+    router.push(pathRedirect)
   }
 
   loginWithGoogle = async () => {
@@ -66,7 +76,6 @@ class NavbarApp extends Component {
     const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
     return (
       <div className="Navbar">
-        {/*JSON.stringify(user, null, 2)*/}
         <Navbar
           style={{
             border: 'solid 1px #00D1B2',
@@ -77,6 +86,7 @@ class NavbarApp extends Component {
           <NavbarBrand>
             <NavbarItem>
               <Link to="/">{i18n.t('HOME')}</Link>
+              <Icon isSize="medium" className="mdi mdi-home mdi-24px" />
             </NavbarItem>
             <NavbarItem isHidden="desktop">
               <Icon className="fa fa-github" />

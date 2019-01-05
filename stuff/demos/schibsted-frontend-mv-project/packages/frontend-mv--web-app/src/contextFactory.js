@@ -11,6 +11,5 @@ export default async params => {
   Object.keys(params).forEach(key => {
     domain.config(key, params[key])
   })
-  // console.log(params) // eslint-disable-line
   return {domain, i18n}
 }

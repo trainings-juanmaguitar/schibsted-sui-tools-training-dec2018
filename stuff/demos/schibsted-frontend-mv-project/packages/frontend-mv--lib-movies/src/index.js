@@ -27,6 +27,16 @@ const useCases = {
     config
   }),
   logout_use_case: UsersUseCasesFactory.logoutUseCase({config})
+  /* users-movies */
+  // get_favorites_movies_user_use_case: UsersUseCasesFactory.getFavoritesMoviesUserUseCase(
+  //   {config}
+  // )
+  // add_favorite_movie_user_use_case: UsersUseCasesFactory.addFavoriteMovieUserUseCase(
+  //   {config}
+  // ),
+  // remove_favorite_movie_user_use_case: UsersUseCasesFactory.removeFavoriteMovieUserUseCase(
+  //   {config}
+  // )
 }
 
 const EntryPoint = EntryPointFactory({config, useCases})

@@ -39,19 +39,16 @@ MoviesPopular.renderLoading = () => <h1>Loading...</h1>
 MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
   const {domain, i18n} = context
   const {
-    params: {page = 1}
+    params: {locale='es', page = 1}
   } = routeInfo
 
-  const {
-    culture: language
-  } = i18n
-
-  const region = language.split('-')[1]
+  const localeConfig = domain.get('config').get('locale')
+  const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
     .get('get_popular_movies_use_case')
     .execute({page, language, region})
-  
+
   return {
     movies: movies || [],
     page: _page,
