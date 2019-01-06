@@ -26,7 +26,7 @@ const loadMovieDetailsPage = loadPage(contextFactory, () =>
 export default (
   <Router>
     {
-      ["/",`/:locale`].map( (path, i) => (
+      [`/`,`/:locale`].map( (path, i) => (
         <Route key={i} path={path} component={require('./components/App').default}>
           <IndexRoute getComponent={loadHomePage} />
           <Route path="s/:query(/p/:page)" getComponent={loadResultsSearchPage} />

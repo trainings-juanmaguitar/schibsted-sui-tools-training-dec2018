@@ -18,6 +18,7 @@ import {
 import AtomButton from '@schibstedspain/sui-atom-button'
 
 import Link from 'react-router/lib/Link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
@@ -71,9 +72,10 @@ class NavbarApp extends Component {
   }
 
   render() {
-    const {i18n} = this.context
+    const {i18n, router} = this.context
     const {user} = this.props
     const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
+    const {params: {locale}} = router
     return (
       <div className="Navbar">
         <Navbar
@@ -84,21 +86,23 @@ class NavbarApp extends Component {
           }}
         >
           <NavbarBrand>
+            <NavbarItem style={{ marginRight: '10px'}}>
+              <Link to={locale ? `/${locale}/` : `/`} style={{ marginLeft: '10px', display: 'flex', width: '65px', alignItems: 'center', justifyContent: 'space-between'}}>
+                <FontAwesomeIcon icon={'home'} />
+                {i18n.t('HOME')}
+              </Link>
+            </NavbarItem>
             <NavbarItem>
-              <Link to="/">{i18n.t('HOME')}</Link>
-              <Icon isSize="medium" className="mdi mdi-home mdi-24px" />
+              <FontAwesomeIcon icon={['fab', 'github']} />
             </NavbarItem>
-            <NavbarItem isHidden="desktop">
-              <Icon className="fa fa-github" />
-            </NavbarItem>
-            <NavbarItem isHidden="desktop">
-              <Icon className="fa fa-twitter" style={{color: '#55acee'}} />
+            <NavbarItem>
+              <FontAwesomeIcon icon={['fab', 'twitter']} />
             </NavbarItem>
           </NavbarBrand>
           <NavbarMenu>
             <NavbarEnd>
               <NavbarItem>
-                <Link to="/popular">{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
+                <Link to={locale ? `/${locale}/popular` : `/popular`}>{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
               </NavbarItem>
             </NavbarEnd>
           </NavbarMenu>

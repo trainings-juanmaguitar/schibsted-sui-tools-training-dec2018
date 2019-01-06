@@ -23,14 +23,12 @@ const MoviesList = (
     const {
       location: {pathname: currentPath}
     } = router
-    // let pathPage = `/p/${page}`
 
     const hasPages = /\/p\//.test(currentPath)
     const pathRedirect = hasPages
       ? currentPath.replace(/\/p\/\d+/, `/p/${page}`)
       : `${currentPath}/p/${page}`
 
-    console.log({currentPath, hasPages, pathRedirect}) // eslint-disable-line
     router.push(pathRedirect)
   }
 

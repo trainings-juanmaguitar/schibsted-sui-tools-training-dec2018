@@ -12,8 +12,8 @@ import {
   Content
 } from 'bloomer'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 const MovieDetails = ({movie}, {router}) => {
   const imgStyles = {
@@ -31,7 +31,9 @@ const MovieDetails = ({movie}, {router}) => {
             router.goBack()
           }}
         >
+          {/*
           <FontAwesomeIcon icon={faArrowLeft} /> Go Back
+          */}
         </a>
       </div>
       <Columns>

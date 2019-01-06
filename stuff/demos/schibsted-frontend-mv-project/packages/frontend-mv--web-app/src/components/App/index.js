@@ -1,7 +1,15 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-const App = ({children}) => ( // eslint-disable-line
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+import {faHome} from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faHome)
+
+const App = (
+  {children} // eslint-disable-line
+) => (
   <div className="App">
     <Helmet>
       <meta charSet="utf-8" />
