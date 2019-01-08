@@ -17,7 +17,8 @@
 
 - [Definition and motivation](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/1-Definition-and-motivation.md)
 - [Concepts](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/2-Concepts.md)
-- [Folder structure](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/3-Folder-structure.md.md)
+- [Folder structure](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/3-Folder-structure.md)
+- [Domain Notes](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/domain-notes.md)
 
 +++?color=#C4EAF0
 

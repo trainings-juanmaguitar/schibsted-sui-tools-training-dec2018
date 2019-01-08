@@ -11,7 +11,7 @@ This piece of our architecture is in charge of:
 
 +++?color=#FFD3A2
 
-[Project Creation step by step](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/blob/pitchme/docs/WEB-APP.md)
+[Project Creation step by step](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/WEB-APP.md)
 
 
 +++?color=#FFD3A2
