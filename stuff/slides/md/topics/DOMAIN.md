@@ -15,23 +15,23 @@
 
 +++?color=#C4EAF0
 
-- [Definition and motivation](../../docs/DOMAIN/1-Definition-and-motivation.md)
-- [Concepts](../../docs/DOMAIN/2-Concepts.md)
-- [Folder structure](../../docs/DOMAIN/3-Folder-structure.md.md)
+- [Definition and motivation](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/1-Definition-and-motivation.md)
+- [Concepts](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/2-Concepts.md)
+- [Folder structure](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/3-Folder-structure.md.md)
 
 +++?color=#C4EAF0
 
 ## Elements
 
-- [Entity](../../docs/DOMAIN/Elements/1-Entity.md)
-- [Value Object](../../docs/DOMAIN/Elements/2-ValueObject.md)
-- [Mapper](../../docs/DOMAIN/Elements/3-Mapper.md)
-- [Repository](../../docs/DOMAIN/Elements/4-Repository.md)
-- [Service](../../docs/DOMAIN/Elements/5-Service.md)
-- [Use Case](../../docs/DOMAIN/Elements/6-UseCase.md)
-- [Factory](../../docs/DOMAIN/Elements/7-Factory.md)
-- [Entry Point](../../docs/DOMAIN/Elements/8-EntryPoint.md)
-- [Common Services](../../docs/DOMAIN/Elements/9-CommonServices.md)
+- [Entity](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/1-Entity.md)
+- [Value Object](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/2-ValueObject.md)
+- [Mapper](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/3-Mapper.md)
+- [Repository](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/4-Repository.md)
+- [Service](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/5-Service.md)
+- [Use Case](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/6-UseCase.md)
+- [Factory](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/7-Factory.md)
+- [Entry Point](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/8-EntryPoint.md)
+- [Common Services](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/DOMAIN/Elements/9-CommonServices.md)
 
 
 +++?color=#C4EAF0
