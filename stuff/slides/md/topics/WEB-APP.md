@@ -16,7 +16,7 @@ This piece of our architecture is in charge of:
 
 +++?color=#FFD3A2
 
-## Resources
+#### Resources
 
 - Boilerplate → https://github.schibsted.io/carlos-villuendas/spa-mock
 
