@@ -6,3 +6,5 @@ public/
 server
 package-lock.json
 serviceAccountKey.json
+.env
+firebase-debug.log
