@@ -37,6 +37,6 @@
 
 +++?color=#C4EAF0
 
-## Resources
+#### Resources
 
 - `@s-ui/domain` → https://github.com/SUI-Components/sui/tree/master/packages/sui-domain
