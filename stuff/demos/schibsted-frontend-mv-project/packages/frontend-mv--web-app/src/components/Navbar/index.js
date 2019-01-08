@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React, {Component} from 'react'
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 import {LanguageContainer} from '../../state'
@@ -9,7 +7,6 @@ import {
   NavbarItem,
   NavbarBrand,
   Navbar,
-  Icon,
   NavbarMenu,
   NavbarEnd,
   NavbarDivider
@@ -18,6 +15,7 @@ import {
 import AtomButton from '@schibstedspain/sui-atom-button'
 
 import Link from 'react-router/lib/Link'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
@@ -26,20 +24,30 @@ const CLASS_TOOLBAR_LANGUAGES = `${CLASS_TOOLBAR}-languages`
 class NavbarApp extends Component {
   constructor() {
     super()
-    this.changeLanguageES = this.changeLanguage.bind(null, {lang: 'es-ES'})
-    this.changeLanguageEN = this.changeLanguage.bind(null, {lang: 'en-GB'})
+    this.changeLanguageES = this.changeLanguage.bind(null, {locale: 'es'})
+    this.changeLanguageEN = this.changeLanguage.bind(null, {locale: 'en'})
     this.language = new LanguageContainer()
   }
 
-  changeLanguage = ({lang}) => {
-    const {i18n, router} = this.context
-    const {
+  changeLanguage = ({locale}) => {
+    const {i18n, domain, router} = this.context
+    let {
       location: {pathname: currentPath}
     } = router
+
+    const localeConfig = domain.get('config').get('locale')
+    const {language: lang} = localeConfig[locale]
+
     console.log(`changing language to ${lang}`) // eslint-disable-line
+    if (currentPath[0] !== '/') currentPath = '/' + currentPath
+    const hasLocale = /^\/(es|en)/.test(currentPath)
+    const pathRedirect = hasLocale
+      ? currentPath.replace(/^\/(es|en)/, `/${locale}`)
+      : `/${locale}${currentPath}`
+
     i18n.setCulture(lang)
     this.language.changeLanguage({lang})
-    router.push(currentPath)
+    router.push(pathRedirect)
   }
 
   loginWithGoogle = async () => {
@@ -61,12 +69,15 @@ class NavbarApp extends Component {
   }
 
   render() {
-    const {i18n} = this.context
+    const {i18n, router} = this.context
     const {user} = this.props
     const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
+    const {
+      params: {locale}
+    } = router
+
     return (
       <div className="Navbar">
-        {/*JSON.stringify(user, null, 2)*/}
         <Navbar
           style={{
             border: 'solid 1px #00D1B2',
@@ -75,21 +86,42 @@ class NavbarApp extends Component {
           }}
         >
           <NavbarBrand>
+            <NavbarItem style={{marginRight: '10px'}}>
+              <Link
+                to={locale ? `/${locale}/` : `/`}
+                style={{
+                  marginLeft: '10px',
+                  display: 'flex',
+                  width: '65px',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <FontAwesomeIcon icon={'home'} />
+                {i18n.t('HOME')}
+              </Link>
+            </NavbarItem>
             <NavbarItem>
-              <Link to="/">{i18n.t('HOME')}</Link>
+              <FontAwesomeIcon icon={['fab', 'github']} />
             </NavbarItem>
-            <NavbarItem isHidden="desktop">
-              <Icon className="fa fa-github" />
-            </NavbarItem>
-            <NavbarItem isHidden="desktop">
-              <Icon className="fa fa-twitter" style={{color: '#55acee'}} />
+            <NavbarItem>
+              <FontAwesomeIcon icon={['fab', 'twitter']} />
             </NavbarItem>
           </NavbarBrand>
           <NavbarMenu>
             <NavbarEnd>
               <NavbarItem>
-                <Link to="/popular">{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
+                <Link to={locale ? `/${locale}/popular` : `/popular`}>
+                  {i18n.t('POPULAR_MOVIES_TITLE')}
+                </Link>
               </NavbarItem>
+              {user && (
+                <NavbarItem>
+                  <Link to={locale ? `/${locale}/favorites` : `/favorites`}>
+                    {i18n.t('FAVORITES_MOVIES_TITLE')}
+                  </Link>
+                </NavbarItem>
+              )}
             </NavbarEnd>
           </NavbarMenu>
           <NavbarDivider />
@@ -121,7 +153,7 @@ class NavbarApp extends Component {
   }
 }
 
-NavbarApp.propTypes = {children: PropTypes.element, user: PropTypes.object}
+NavbarApp.propTypes = {children: PropTypes.element, user: PropTypes.object} // eslint-disable-line
 NavbarApp.contextTypes = {
   i18n: PropTypes.object,
   router: PropTypes.object,

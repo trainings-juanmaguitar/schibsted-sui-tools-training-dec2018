@@ -39,14 +39,13 @@ ResultsSearch.propTypes = {
 ResultsSearch.contextTypes = {i18n: PropTypes.object}
 ResultsSearch.renderLoading = () => <h1>Loading...</h1>
 ResultsSearch.getInitialProps = async ({context, routeInfo}) => {
-  const {domain, i18n} = context
+  const {domain} = context
   const {
-    params: {query, page}
+    params: {locale = 'es', query, page}
   } = routeInfo
 
-  const {culture: language} = i18n
-
-  const region = language.split('-')[1]
+  const localeConfig = domain.get('config').get('locale')
+  const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
     .get('search_movies_use_case')

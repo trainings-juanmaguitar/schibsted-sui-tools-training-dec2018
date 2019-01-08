@@ -19,11 +19,15 @@ MovieDetails.getInitialProps = async ({context, routeInfo}) => {
   const {domain} = context
 
   const {
-    params: {id}
+    params: {locale = 'es', id}
   } = routeInfo
+
+  const localeConfig = domain.get('config').get('locale')
+  const {language, region} = localeConfig[locale]
+
   const movie = await domain
     .get('get_movie_details_by_id_use_case')
-    .execute({id})
+    .execute({id, language, region})
 
   return {
     movie,

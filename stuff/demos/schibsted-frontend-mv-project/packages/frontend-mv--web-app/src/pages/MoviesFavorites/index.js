@@ -16,7 +16,7 @@ const MoviesPopular = (
     </Helmet>
     <MoviesList
       movies={movies}
-      title={i18n.t('POPULAR_MOVIES', {totalResults})}
+      title={i18n.t('FAVORITE_MOVIES', {totalResults})}
       subtitle={i18n.t('RESULTS_PAGINATION', {
         page,
         totalPages
@@ -43,12 +43,15 @@ MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
     params: {locale='es', page = 1}
   } = routeInfo
 
-  const localeConfig = domain.get('config').get('locale')
-  const {language, region} = localeConfig[locale]
+  const cookies = domain.get('config').get('cookies')
+
+  // const localeConfig = domain.get('config').get('locale')
+  // const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
-    .get('get_popular_movies_use_case')
-    .execute({page, language, region})
+    .get('get_favorites_movies_user_use_case')
+    //.execute({page, language, region})
+    .execute({cookies})
 
   return {
     movies: movies || [],

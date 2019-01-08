@@ -22,5 +22,7 @@ module.exports = {
   SIGNUP_USERNAME_LABEL: 'username',
   SIGNUP_USER_LABEL: 'mail',
   LOGIN_WITH_GOOGLE: 'Log in with your Google Account',
-  LOGIN_WITH_FACEBOOK: 'Log in with your Facebook Account'
+  LOGIN_WITH_FACEBOOK: 'Log in with your Facebook Account',
+  FAVORITES_MOVIES_TITLE: 'My Favorite Movies',
+  FAVORITE_MOVIES: '%{totalResults} Favorite movies'
 }
