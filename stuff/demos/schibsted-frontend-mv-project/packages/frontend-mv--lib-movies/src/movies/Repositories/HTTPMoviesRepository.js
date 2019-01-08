@@ -52,7 +52,10 @@ class HTTPMoviesRepository extends MoviesRepository {
 
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/search/movie?query=${query}`
-    const options = {params: {}}
+    const options = {
+      params: {},
+      withCredentials: true
+    }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
     if (region) options.params.region = region
@@ -77,10 +80,14 @@ class HTTPMoviesRepository extends MoviesRepository {
   async getMovieById({id: idMovie}) {
     this._log(`Getting movie by query → ${idMovie}`)
 
+    const options = {
+      params: {},
+      withCredentials: true
+    }
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/${idMovie}`
 
-    const {data: result} = await this._fetcher.get(url)
+    const {data: result} = await this._fetcher.get(url, options)
     return this._mapper.map(result)
   }
 }

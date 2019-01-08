@@ -27,7 +27,11 @@ class HTTPUsersRepository extends UsersRepository {
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/`
 
-    const [err, response] = await to(this._fetcher.get(url))
+    const options = {
+      withCredentials: true
+    }
+
+    const [err, response] = await to(this._fetcher.get(url, options))
     if (err) {
       console.log(err) // eslint-disable-line
       return
@@ -45,7 +49,11 @@ class HTTPUsersRepository extends UsersRepository {
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/favorites`
 
-    const [err, response] = await to(this._fetcher.get(url))
+    const options = {
+      withCredentials: true
+    }
+
+    const [err, response] = await to(this._fetcher.get(url, options))
     if (err) {
       console.log(err) // eslint-disable-line
       return
@@ -72,7 +80,11 @@ class HTTPUsersRepository extends UsersRepository {
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/favorites`
 
-    const [err, response] = await to(this._fetcher.get(url))
+    const options = {
+      withCredentials: true
+    }
+
+    const [err, response] = await to(this._fetcher.get(url, options))
     if (err) {
       console.log(err) // eslint-disable-line
       return

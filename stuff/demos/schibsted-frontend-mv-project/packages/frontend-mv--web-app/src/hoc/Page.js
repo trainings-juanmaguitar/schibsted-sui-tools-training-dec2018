@@ -14,7 +14,7 @@ export default Page =>
         context: {domain}
       } = paramsPage
 
-      const [err, user] = await to(
+      const [err, {user}] = await to(
         domain.get('get_logged_user_use_case').execute()
       )
 

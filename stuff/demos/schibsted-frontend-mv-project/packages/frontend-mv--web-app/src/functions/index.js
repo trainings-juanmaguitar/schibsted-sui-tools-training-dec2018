@@ -68,11 +68,10 @@ app.get('/users/current', async (req, res) => {
   const {token} = req
   console.log({token})
   if (!token) {
-    console.log({ logged: false })
     res.json({ logged: false })
     return;
   }
-  console.log('aqui no deberia llegar...')
+
   const [errDecodedToken, decodedToken] = await to(
     admin.auth().verifyIdToken(token)
   )
@@ -93,12 +92,6 @@ app.get('/users/current', async (req, res) => {
     res.status(500).json(errUserDB)
     return
   }
-
-  console.log({
-    token,
-    logged: true,
-    user: userDB.val()
-  })
 
   res.json({
     logged: true,
@@ -170,7 +163,7 @@ app.get('/users/current/favorites', async (req, res) => {
     res.status(500).json(errFavoritesMovies)
     return
   }
-  console.log(favoritesMovies.map(({id, title}) => ({id, title})))
+  
   res.json({
     page: 1,
     total_results: favoritesMovies.length,
@@ -180,7 +173,7 @@ app.get('/users/current/favorites', async (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  console.log('token: ', req.token)
+  
   const urlRequested = req.originalUrl
   console.log('-'.repeat(20))
   console.log(`→ Attempt ${++counter}`)
