@@ -14,10 +14,8 @@ export default Page =>
         context: {domain}
       } = paramsPage
 
-      const cookies = domain.get('config').get('cookies')
-
       const [err, user] = await to(
-        domain.get('get_logged_user_use_case').execute({cookies})
+        domain.get('get_logged_user_use_case').execute()
       )
 
       if (err) console.log(err) // eslint-disable-line

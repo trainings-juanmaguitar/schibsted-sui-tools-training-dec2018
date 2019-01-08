@@ -9,8 +9,8 @@ class CurrentUsersUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute({cookies}) {
-    const userEntity = await this._repository.current({cookies})
+  async execute() {
+    const userEntity = await this._repository.current()
     return userEntity && userEntity.toJSON()
   }
 }

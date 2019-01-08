@@ -22,18 +22,12 @@ class HTTPUsersRepository extends UsersRepository {
     this._mapper = mapper
   }
 
-  async current({cookies}) {
-    /* eslint-disable */
-    if (!cookies) return
+  async current() {
     this._log(`Getting CURRENT user`)
-    const cookieSessionName = this._config.get('COOKIE_SESSION_NAME')
-    const cookie = this._cookie.parse(cookies)[cookieSessionName]
-    const {token} = JSON.parse(cookie)
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/`
-    const options = {headers: {Authorization: `Bearer ${token}`}}
 
-    const [err, response] = await to(this._fetcher.get(url, options))
+    const [err, response] = await to(this._fetcher.get(url))
     if (err) {
       console.log(err) // eslint-disable-line
       return
@@ -47,17 +41,11 @@ class HTTPUsersRepository extends UsersRepository {
     return this._cookie.remove(cookieSessionName)
   }
 
-  async favoriteMovies({cookies}) {
-    if (!cookies) return
-    this._log(`Getting favorite Movies CURRENT user`)
-    const cookieSessionName = this._config.get('COOKIE_SESSION_NAME')
-    const cookie = this._cookie.parse(cookies)[cookieSessionName]
-    const {token} = JSON.parse(cookie)
+  async favoriteMovies() {
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/favorites`
-    const options = {headers: {Authorization: `Bearer ${token}`}}
 
-    const [err, response] = await to(this._fetcher.get(url, options))
+    const [err, response] = await to(this._fetcher.get(url))
     if (err) {
       console.log(err) // eslint-disable-line
       return
@@ -77,20 +65,14 @@ class HTTPUsersRepository extends UsersRepository {
       totalPages,
       movies: results.map(this._mapper.map)
     })
-
   }
 
-  async addFavoriteMovies({cookies}) {
-    if (!cookies) return
+  async addFavoriteMovies() {
     this._log(`Getting favorite Movies CURRENT user`)
-    const cookieSessionName = this._config.get('COOKIE_SESSION_NAME')
-    const cookie = this._cookie.parse(cookies)[cookieSessionName]
-    const {token} = JSON.parse(cookie)
     const host = this._config.get('FIREBASE_API_URL')
     const url = `${host}/users/current/favorites`
-    const options = {headers: {Authorization: `Bearer ${token}`}}
 
-    const [err, response] = await to(this._fetcher.get(url, options))
+    const [err, response] = await to(this._fetcher.get(url))
     if (err) {
       console.log(err) // eslint-disable-line
       return
@@ -110,7 +92,6 @@ class HTTPUsersRepository extends UsersRepository {
       totalPages,
       movies: results.map(this._mapper.map)
     })
-
   }
 }
 

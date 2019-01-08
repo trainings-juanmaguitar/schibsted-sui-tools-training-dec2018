@@ -19,7 +19,10 @@ class HTTPMoviesRepository extends MoviesRepository {
     )
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/popular`
-    const options = {params: {}}
+    const options = {
+      params: {},
+      withCredentials: true
+    }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
     if (region) options.params.region = region

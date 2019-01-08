@@ -7,13 +7,16 @@ const cors = require('cors')
 const express = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const to = require('await-to-js').default
+const cookieLib = require('@s-ui/js/lib/cookie').default
 
 require('dotenv').load()
 const {
   THEMOVIEDB_API_KEY,
   THEMOVIEDB_API_BASE_URL,
-  FIREBASE_API_URL
+  FIREBASE_API_URL,
+  COOKIE_SESSION_NAME
 } = process.env
 
 /* Express with CORS & automatic trailing '/' solution */
@@ -38,25 +41,38 @@ let counter = 0
 
 app.use(
   cors({
-    origin: true
+    origin: true,
+    credentials: true
   })
 )
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(cookieParser())
 
-const getTokenFromHeaders = ({headers: {authorization}}) => {
-  if (authorization && authorization.split(' ')[0] === 'Bearer') {
-    return authorization.split(' ')[1]
+app.use(function (req, res, next) {
+  const {cookies} = req
+  const cookie = cookies[COOKIE_SESSION_NAME]
+  if (!cookie) {
+    req.token = null
+    next();
+    return
   }
-  return null
-}
+  const {token} = JSON.parse(cookie)
+  req.token = token
+  next();
+});
 
 app.get('/users/current', async (req, res) => {
   console.log(new Date())
-  const token = getTokenFromHeaders(req)
-  if (!token) res.status(404).send('Token not found in headers')
-
+  const {token} = req
+  console.log({token})
+  if (!token) {
+    console.log({ logged: false })
+    res.json({ logged: false })
+    return;
+  }
+  console.log('aqui no deberia llegar...')
   const [errDecodedToken, decodedToken] = await to(
     admin.auth().verifyIdToken(token)
   )
@@ -78,12 +94,21 @@ app.get('/users/current', async (req, res) => {
     return
   }
 
-  res.json(userDB.val())
+  console.log({
+    token,
+    logged: true,
+    user: userDB.val()
+  })
+
+  res.json({
+    logged: true,
+    user: userDB.val()
+  })
 })
 
 app.get('/users/current/favorites', async (req, res) => {
   console.log(new Date())
-  const token = getTokenFromHeaders(req)
+  const {token} = req
   if (!token) res.status(404).send('Token not found in headers')
 
   const [errDecodedToken, decodedToken] = await to(
@@ -155,6 +180,7 @@ app.get('/users/current/favorites', async (req, res) => {
 })
 
 app.get('*', (req, res) => {
+  console.log('token: ', req.token)
   const urlRequested = req.originalUrl
   console.log('-'.repeat(20))
   console.log(`→ Attempt ${++counter}`)
