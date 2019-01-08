@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React, {Component} from 'react'
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 import {LanguageContainer} from '../../state'
@@ -9,7 +7,6 @@ import {
   NavbarItem,
   NavbarBrand,
   Navbar,
-  Icon,
   NavbarMenu,
   NavbarEnd,
   NavbarDivider
@@ -18,7 +15,7 @@ import {
 import AtomButton from '@schibstedspain/sui-atom-button'
 
 import Link from 'react-router/lib/Link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const BASE_CLASS = `MoviesApp`
 const CLASS_TOOLBAR = `${BASE_CLASS}-toolbar`
@@ -45,9 +42,9 @@ class NavbarApp extends Component {
     if (currentPath[0] !== '/') currentPath = '/' + currentPath
     const hasLocale = /^\/(es|en)/.test(currentPath)
     const pathRedirect = hasLocale
-    ? currentPath.replace(/^\/(es|en)/, `/${locale}`)
-    : `/${locale}${currentPath}`
-    
+      ? currentPath.replace(/^\/(es|en)/, `/${locale}`)
+      : `/${locale}${currentPath}`
+
     i18n.setCulture(lang)
     this.language.changeLanguage({lang})
     router.push(pathRedirect)
@@ -75,7 +72,10 @@ class NavbarApp extends Component {
     const {i18n, router} = this.context
     const {user} = this.props
     const {changeLanguageES, changeLanguageEN, loginWithGoogle, logout} = this
-    const {params: {locale}} = router
+    const {
+      params: {locale}
+    } = router
+
     return (
       <div className="Navbar">
         <Navbar
@@ -86,8 +86,17 @@ class NavbarApp extends Component {
           }}
         >
           <NavbarBrand>
-            <NavbarItem style={{ marginRight: '10px'}}>
-              <Link to={locale ? `/${locale}/` : `/`} style={{ marginLeft: '10px', display: 'flex', width: '65px', alignItems: 'center', justifyContent: 'space-between'}}>
+            <NavbarItem style={{marginRight: '10px'}}>
+              <Link
+                to={locale ? `/${locale}/` : `/`}
+                style={{
+                  marginLeft: '10px',
+                  display: 'flex',
+                  width: '65px',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
                 <FontAwesomeIcon icon={'home'} />
                 {i18n.t('HOME')}
               </Link>
@@ -102,8 +111,17 @@ class NavbarApp extends Component {
           <NavbarMenu>
             <NavbarEnd>
               <NavbarItem>
-                <Link to={locale ? `/${locale}/popular` : `/popular`}>{i18n.t('POPULAR_MOVIES_TITLE')}</Link>
+                <Link to={locale ? `/${locale}/popular` : `/popular`}>
+                  {i18n.t('POPULAR_MOVIES_TITLE')}
+                </Link>
               </NavbarItem>
+              {user && (
+                <NavbarItem>
+                  <Link to={locale ? `/${locale}/favorites` : `/favorites`}>
+                    {i18n.t('FAVORITES_MOVIES_TITLE')}
+                  </Link>
+                </NavbarItem>
+              )}
             </NavbarEnd>
           </NavbarMenu>
           <NavbarDivider />
@@ -135,7 +153,7 @@ class NavbarApp extends Component {
   }
 }
 
-NavbarApp.propTypes = {children: PropTypes.element, user: PropTypes.object}
+NavbarApp.propTypes = {children: PropTypes.element, user: PropTypes.object} // eslint-disable-line
 NavbarApp.contextTypes = {
   i18n: PropTypes.object,
   router: PropTypes.object,

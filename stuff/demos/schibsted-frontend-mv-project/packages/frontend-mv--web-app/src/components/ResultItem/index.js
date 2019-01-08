@@ -9,21 +9,15 @@ import {
   Content,
   Level,
   LevelItem,
-  LevelLeft,
-  Icon
+  LevelLeft
 } from 'bloomer'
 
 import Link from 'react-router/lib/Link'
 
 import TextTruncate from 'react-text-truncate'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-const ResultItem = ({movie}, {i18n}) => {
-  // const imgStyles = {
-  //   backgroundImage: `url(${movie.posterPath})`,
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundPosition: '50% 50%'
-  // }
+const ResultItem = ({movie, user}, {i18n}) => {
   return (
     <Media>
       <MediaLeft>
@@ -45,31 +39,26 @@ const ResultItem = ({movie}, {i18n}) => {
             textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
           />
         </Content>
-        <Level isMobile>
-          <LevelLeft>
-            <LevelItem href="#">
-              <Icon isSize="small">
-                <span className="fa fa-reply" aria-hidden="true" />
-              </Icon>
-            </LevelItem>
-            <LevelItem href="#">
-              <Icon isSize="small">
-                <span className="fa fa-retweet" aria-hidden="true" />
-              </Icon>
-            </LevelItem>
-            <LevelItem href="#">
-              <Icon isSize="small">
-                <span className="fa fa-heart" aria-hidden="true" />
-              </Icon>
-            </LevelItem>
-          </LevelLeft>
-        </Level>
+        {user && (
+          <Level isMobile>
+            <LevelLeft>
+              <LevelItem href="#">
+                <FontAwesomeIcon
+                  icon={[
+                    user.favorites.includes(movie.id) ? 'fas' : 'far',
+                    'heart'
+                  ]}
+                />
+              </LevelItem>
+            </LevelLeft>
+          </Level>
+        )}
       </MediaContent>
     </Media>
   )
 }
 
-ResultItem.propTypes = {movie: PropTypes.object}
+ResultItem.propTypes = {movie: PropTypes.object, user: PropTypes.object}
 ResultItem.contextTypes = {i18n: PropTypes.object}
 
 export default ResultItem

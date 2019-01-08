@@ -16,7 +16,7 @@ const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
 // const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
 
 const MoviesList = (
-  {movies, title, subtitle, page = 1, totalPages = 1},
+  {movies, title, subtitle, page = 1, totalPages = 1, user},
   {router}
 ) => {
   const updatePage = (e, {page}) => {
@@ -44,17 +44,20 @@ const MoviesList = (
         </Title>
       )}
 
-      {movies.map((movie, i) => <ResultItem key={i} movie={movie} />)}
-
-      <div className={CLASS_PAGINATION}>
-        <MoleculePagination
-          totalPages={totalPages}
-          page={page}
-          onSelectPage={updatePage}
-          onSelectNext={updatePage}
-          onSelectPrev={updatePage}
-        />
-      </div>
+      {movies.map((movie, i) => (
+        <ResultItem key={i} movie={movie} user={user} />
+      ))}
+      {totalPages > 1 && (
+        <div className={CLASS_PAGINATION}>
+          <MoleculePagination
+            totalPages={totalPages}
+            page={page}
+            onSelectPage={updatePage}
+            onSelectNext={updatePage}
+            onSelectPrev={updatePage}
+          />
+        </div>
+      )}
     </div>
   )
 }
@@ -66,7 +69,8 @@ MoviesList.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   page: PropTypes.number,
-  totalPages: PropTypes.number
+  totalPages: PropTypes.number,
+  user: PropTypes.object
 }
 
 export default MoviesList

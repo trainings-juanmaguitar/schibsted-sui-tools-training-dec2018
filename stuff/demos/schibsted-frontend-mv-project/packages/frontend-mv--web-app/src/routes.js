@@ -15,6 +15,10 @@ const loadMoviesPopularPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "MoviesPopular" */ './pages/MoviesPopular')
 )
 
+const loadMoviesFavoritesPage = loadPage(contextFactory, () =>
+  import(/* webpackChunkName: "MoviesFavorites" */ './pages/MoviesFavorites')
+)
+
 const loadResultsSearchPage = loadPage(contextFactory, () =>
   import(/* webpackChunkName: "ResultsSearch" */ './pages/ResultsSearch')
 )
@@ -31,6 +35,7 @@ export default (
           <IndexRoute getComponent={loadHomePage} />
           <Route path="s/:query(/p/:page)" getComponent={loadResultsSearchPage} />
           <Route path="popular(/p/:page)" getComponent={loadMoviesPopularPage} />
+          <Route path="favorites(/p/:page)" getComponent={loadMoviesFavoritesPage} />
           <Route path="movie/:id" getComponent={loadMovieDetailsPage} />
         </Route>
       ))

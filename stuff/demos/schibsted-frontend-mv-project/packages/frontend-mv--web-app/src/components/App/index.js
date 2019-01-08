@@ -3,9 +3,13 @@ import Helmet from 'react-helmet'
 
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fab} from '@fortawesome/free-brands-svg-icons'
-import {faHome} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons'
+import {
+  faHome,
+  faHeart as faHeartSolid
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, faHome)
+library.add(fab, faHome, faHeartRegular, faHeartSolid)
 
 const App = (
   {children} // eslint-disable-line

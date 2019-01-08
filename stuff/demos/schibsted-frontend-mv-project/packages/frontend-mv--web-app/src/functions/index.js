@@ -10,7 +10,11 @@ const bodyParser = require('body-parser')
 const to = require('await-to-js').default
 
 require('dotenv').load()
-const {THEMOVIEDB_API_KEY, THEMOVIEDB_API_BASE_URL} = process.env
+const {
+  THEMOVIEDB_API_KEY,
+  THEMOVIEDB_API_BASE_URL,
+  FIREBASE_API_URL
+} = process.env
 
 /* Express with CORS & automatic trailing '/' solution */
 const app = express()
@@ -53,23 +57,101 @@ app.get('/users/current', async (req, res) => {
   const token = getTokenFromHeaders(req)
   if (!token) res.status(404).send('Token not found in headers')
 
-  const [errDecodedToken, decodedToken] = await to(admin.auth().verifyIdToken(token))
+  const [errDecodedToken, decodedToken] = await to(
+    admin.auth().verifyIdToken(token)
+  )
   if (errDecodedToken) {
     res.status(500).json(errDecodedToken)
     return
   }
   const {uid} = decodedToken
 
-  const [errUserDB, userDB] = await to(instance
-    .database()
-    .ref(`/users/${uid}`)
-    .once('value'))
+  const [errUserDB, userDB] = await to(
+    instance
+      .database()
+      .ref(`/users/${uid}`)
+      .once('value')
+  )
+
   if (errUserDB) {
     res.status(500).json(errUserDB)
     return
   }
+
+  res.json(userDB.val())
+})
+
+app.get('/users/current/favorites', async (req, res) => {
+  console.log(new Date())
+  const token = getTokenFromHeaders(req)
+  if (!token) res.status(404).send('Token not found in headers')
+
+  const [errDecodedToken, decodedToken] = await to(
+    admin.auth().verifyIdToken(token)
+  )
+  if (errDecodedToken) {
+    res.status(500).json(errDecodedToken)
+    return
+  }
+  const {uid} = decodedToken
+
+  const [errUserDB, userDB] = await to(
+    instance
+      .database()
+      .ref(`/users/${uid}`)
+      .once('value')
+  )
+
+  if (errUserDB) {
+    res.status(500).json(errUserDB)
+    return
+  }
+
+  const {favorites} = userDB.val()
+
+  console.log(`favorites → ${favorites}`)
   
-  res.send(userDB)
+  const movieDetailsFavorites = favorites
+    .map(idMovie => {
+      const url = new URL(
+        `${FIREBASE_API_URL}/${THEMOVIEDB_API_BASE_URL}/movie/${idMovie}`
+      )
+      url.searchParams.append('api_key', THEMOVIEDB_API_KEY)
+      return {
+        url: url.href
+      }
+    })
+    .map(
+      options =>
+        new Promise((resolve, reject) => {
+          request(options, (error, response, body) => {
+            if (error) {
+              reject('Something went wrong!')
+              return
+            }
+            const json = JSON.parse(body)
+            // const json = JSON.parse(body.replace(/\\/g, ''))
+            cache[options.url] = json
+            resolve(json)
+          })
+        })
+    )
+
+  const [errFavoritesMovies, favoritesMovies] = await to(
+    Promise.all(movieDetailsFavorites)
+  )
+
+  if (errFavoritesMovies) {
+    res.status(500).json(errFavoritesMovies)
+    return
+  }
+  console.log(favoritesMovies.map(({id, title}) => ({id, title})))
+  res.json({
+    page: 1,
+    total_results: favoritesMovies.length,
+    total_pages: 1,
+    results: favoritesMovies
+  })
 })
 
 app.get('*', (req, res) => {
@@ -89,11 +171,11 @@ app.get('*', (req, res) => {
     return
   }
 
-  const url = new URL(`https://${urlRequested}`);
+  const url = new URL(`https://${urlRequested}`)
   url.searchParams.append('api_key', THEMOVIEDB_API_KEY)
-  
+
   options.url = url.href
-  
+
   if (cache[options.url]) {
     console.log('💾 from cache...')
     res.json(cache[options.url])

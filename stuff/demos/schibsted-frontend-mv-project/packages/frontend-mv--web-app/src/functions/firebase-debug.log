@@ -1,32 +1,126 @@
-[debug] [2019-01-06T08:32:54.125Z] ----------------------------------------------------------------------
-[debug] [2019-01-06T08:32:54.133Z] Command:       /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/node /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
-[debug] [2019-01-06T08:32:54.134Z] CLI Version:   6.2.2
-[debug] [2019-01-06T08:32:54.134Z] Platform:      darwin
-[debug] [2019-01-06T08:32:54.134Z] Node Version:  v8.11.1
-[debug] [2019-01-06T08:32:54.138Z] Time:          Sun Jan 06 2019 09:32:54 GMT+0100 (CET)
-[debug] [2019-01-06T08:32:54.138Z] ----------------------------------------------------------------------
+[debug] [2019-01-07T19:40:36.845Z] ----------------------------------------------------------------------
+[debug] [2019-01-07T19:40:36.849Z] Command:       /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/node /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2019-01-07T19:40:36.850Z] CLI Version:   6.2.2
+[debug] [2019-01-07T19:40:36.850Z] Platform:      darwin
+[debug] [2019-01-07T19:40:36.850Z] Node Version:  v8.11.1
+[debug] [2019-01-07T19:40:36.851Z] Time:          Mon Jan 07 2019 20:40:36 GMT+0100 (CET)
+[debug] [2019-01-07T19:40:36.851Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-01-06T08:32:54.171Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-01-06T08:32:54.171Z] > authorizing via signed-in user
-[debug] [2019-01-06T08:32:54.171Z] [iam] checking project moviesfinder-ecb7c for permissions ["firebase.projects.get"]
-[debug] [2019-01-06T08:32:54.174Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-01-06T08:32:54.175Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2019-01-06T08:32:54.627Z] <<< HTTP RESPONSE 200
-[debug] [2019-01-06T08:32:54.650Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c:testIamPermissions  
+[debug] [2019-01-07T19:40:36.877Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-07T19:40:36.877Z] > authorizing via signed-in user
+[debug] [2019-01-07T19:40:36.877Z] [iam] checking project moviesfinder-ecb7c for permissions ["firebase.projects.get"]
+[debug] [2019-01-07T19:40:36.879Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c:testIamPermissions  
 
-[debug] [2019-01-06T08:32:55.689Z] <<< HTTP RESPONSE 200
-[debug] [2019-01-06T08:32:55.690Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c  
+[debug] [2019-01-07T19:40:41.226Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T19:40:41.227Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c  
  
-[debug] [2019-01-06T08:32:56.602Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T19:40:42.447Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Volumes/RINGO/PROJECTS/2018/SCHIBSTED/training-sui/schibsted-sui-tools-training/stuff/demos/schibsted-frontend-mv-project/packages/frontend-mv--web-app/src'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2019-01-06T08:32:59.055Z] Fetching environment
-[debug] [2019-01-06T08:32:59.057Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/852704581938:getServerAppConfig  
+[debug] [2019-01-07T19:40:44.690Z] Fetching environment
+[debug] [2019-01-07T19:40:44.692Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/852704581938:getServerAppConfig  
  
-[debug] [2019-01-06T08:32:59.454Z] <<< HTTP RESPONSE 200
-[debug] [2019-01-06T08:32:59.456Z] Starting @google-cloud/functions-emulator
-[debug] [2019-01-06T08:33:03.051Z] Parsing function triggers
+[debug] [2019-01-07T19:40:45.065Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T19:40:45.066Z] Starting @google-cloud/functions-emulator
+[debug] [2019-01-07T19:40:48.683Z] Parsing function triggers
 [info] ✔  functions: api: http://localhost:5000/moviesfinder-ecb7c/us-central1/api
+[info] Shutting down...
+[info] Shutting down...
+[debug] [2019-01-07T20:05:05.441Z] ----------------------------------------------------------------------
+[debug] [2019-01-07T20:05:05.444Z] Command:       /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/node /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2019-01-07T20:05:05.444Z] CLI Version:   6.2.2
+[debug] [2019-01-07T20:05:05.444Z] Platform:      darwin
+[debug] [2019-01-07T20:05:05.444Z] Node Version:  v8.11.1
+[debug] [2019-01-07T20:05:05.445Z] Time:          Mon Jan 07 2019 21:05:05 GMT+0100 (CET)
+[debug] [2019-01-07T20:05:05.445Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-07T20:05:05.466Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-07T20:05:05.467Z] > authorizing via signed-in user
+[debug] [2019-01-07T20:05:05.467Z] [iam] checking project moviesfinder-ecb7c for permissions ["firebase.projects.get"]
+[debug] [2019-01-07T20:05:05.470Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-01-07T20:05:05.470Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-01-07T20:05:08.856Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:05:08.880Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c:testIamPermissions  
+
+[debug] [2019-01-07T20:05:09.947Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:05:09.948Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c  
+ 
+[debug] [2019-01-07T20:05:11.174Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Volumes/RINGO/PROJECTS/2018/SCHIBSTED/training-sui/schibsted-sui-tools-training/stuff/demos/schibsted-frontend-mv-project/packages/frontend-mv--web-app/src'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-01-07T20:05:13.443Z] Fetching environment
+[debug] [2019-01-07T20:05:13.447Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/852704581938:getServerAppConfig  
+ 
+[debug] [2019-01-07T20:05:13.829Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:05:13.829Z] Starting @google-cloud/functions-emulator
+[debug] [2019-01-07T20:05:17.435Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:5000/moviesfinder-ecb7c/us-central1/api
+[info] Shutting down...
+[info] Shutting down...
+[debug] [2019-01-07T20:05:35.152Z] ----------------------------------------------------------------------
+[debug] [2019-01-07T20:05:35.154Z] Command:       /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/node /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2019-01-07T20:05:35.155Z] CLI Version:   6.2.2
+[debug] [2019-01-07T20:05:35.155Z] Platform:      darwin
+[debug] [2019-01-07T20:05:35.155Z] Node Version:  v8.11.1
+[debug] [2019-01-07T20:05:35.156Z] Time:          Mon Jan 07 2019 21:05:35 GMT+0100 (CET)
+[debug] [2019-01-07T20:05:35.156Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-07T20:05:35.179Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-07T20:05:35.179Z] > authorizing via signed-in user
+[debug] [2019-01-07T20:05:35.180Z] [iam] checking project moviesfinder-ecb7c for permissions ["firebase.projects.get"]
+[debug] [2019-01-07T20:05:35.182Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c:testIamPermissions  
+
+[debug] [2019-01-07T20:05:36.250Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:05:36.252Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c  
+ 
+[debug] [2019-01-07T20:05:37.183Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Volumes/RINGO/PROJECTS/2018/SCHIBSTED/training-sui/schibsted-sui-tools-training/stuff/demos/schibsted-frontend-mv-project/packages/frontend-mv--web-app/src'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-01-07T20:05:38.532Z] Fetching environment
+[debug] [2019-01-07T20:05:38.534Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/852704581938:getServerAppConfig  
+ 
+[debug] [2019-01-07T20:05:38.866Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:05:38.866Z] Starting @google-cloud/functions-emulator
+[debug] [2019-01-07T20:05:40.960Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:5000/moviesfinder-ecb7c/us-central1/api
+[info] Shutting down...
+[info] Shutting down...
+[info] Shutting down...
+[debug] [2019-01-07T20:09:48.020Z] ----------------------------------------------------------------------
+[debug] [2019-01-07T20:09:48.025Z] Command:       /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/node /Users/juanmanuelgarrido/.nvm/versions/node/v8.11.1/bin/firebase serve --only functions
+[debug] [2019-01-07T20:09:48.026Z] CLI Version:   6.2.2
+[debug] [2019-01-07T20:09:48.026Z] Platform:      darwin
+[debug] [2019-01-07T20:09:48.026Z] Node Version:  v8.11.1
+[debug] [2019-01-07T20:09:48.027Z] Time:          Mon Jan 07 2019 21:09:48 GMT+0100 (CET)
+[debug] [2019-01-07T20:09:48.027Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-07T20:09:48.058Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-07T20:09:48.058Z] > authorizing via signed-in user
+[debug] [2019-01-07T20:09:48.058Z] [iam] checking project moviesfinder-ecb7c for permissions ["firebase.projects.get"]
+[debug] [2019-01-07T20:09:48.060Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c:testIamPermissions  
+
+[debug] [2019-01-07T20:09:49.093Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:09:49.094Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/moviesfinder-ecb7c  
+ 
+[debug] [2019-01-07T20:09:50.006Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Volumes/RINGO/PROJECTS/2018/SCHIBSTED/training-sui/schibsted-sui-tools-training/stuff/demos/schibsted-frontend-mv-project/packages/frontend-mv--web-app/src'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-01-07T20:09:52.210Z] Fetching environment
+[debug] [2019-01-07T20:09:52.213Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/852704581938:getServerAppConfig  
+ 
+[debug] [2019-01-07T20:09:52.586Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-07T20:09:52.586Z] Starting @google-cloud/functions-emulator
+[debug] [2019-01-07T20:09:56.204Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:5000/moviesfinder-ecb7c/us-central1/api
+[info] Shutting down...
+[info] Shutting down...
+[info] Shutting down...

@@ -9,8 +9,8 @@ class GetFavoritesMoviesUserUseCase extends UseCase {
     this._repository = repository
   }
 
-  async execute({cookies}) {
-    const favoritesMovies = await this._repository.favoriteMovies({cookies})
+  async execute({id}) {
+    const favoritesMovies = await this._repository.addFavoriteMovie({id})
     return favoritesMovies && favoritesMovies.toJSON()
   }
 }
