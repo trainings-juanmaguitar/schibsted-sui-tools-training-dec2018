@@ -17,20 +17,6 @@
 
 [Definition and motivation](../../docs/DOMAIN/1-Definition-and-motivation)
 
-+++?color=#C4EAF0
-
-- [Command Pattern](https://hackernoon.com/the-command-pattern-using-higher-order-functions-e482fe322460) [[1]](https://github.com/KleoPetroff/javascript-design-patterns/tree/master/command-pattern) [[2]](https://www.joezimjs.com/javascript/javascript-design-patterns-command/)
-
-- [Entities across bounded contexts in Domain-Driven Design](https://stackoverflow.com/questions/8244405/entities-across-bounded-contexts-in-domain-driven-design)
-- [Bounded Contexts](https://beberlei.de/2013/06/24/bounded_contexts.html)
-- [Bounded Contexts and data duplication in action: adding a shop system to the movie database](https://blog.codecentric.de/en/2015/04/bounded-contexts-and-data-duplication-in-action-adding-a-shop-system-to-the-movie-database/)
-
-+++?color=#C4EAF0
-
-- [Resumen sobre DDD. Domain Driven Design](https://github.com/jatubio/5minutos_laravel/wiki/Resumen-sobre-DDD.-Domain-Driven-Design)
-- [Domain Driven Design Slides Talk](https://www.slideshare.net/dodonona/domain-driven-design-29187892)
-
-+++?color=#C4EAF0
 
 ## Resources
 
