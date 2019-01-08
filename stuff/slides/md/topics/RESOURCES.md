@@ -8,4 +8,4 @@
 
 - 📺 <https://www.youtube.com/watch?v=0Q1p1cXI_64>
 - 📝 <https://github.com/AprendiendoFrontend/wtfront-site>
-- 🗒  [Notes](../../docs/RAW-LIVE-CODING.md)
+- 🗒  [Notes](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/tree/devel/stuff/docs/RAW-LIVE-CODING.md)
