@@ -9,7 +9,6 @@ const request = require('request')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const to = require('await-to-js').default
-const cookieLib = require('@s-ui/js/lib/cookie').default
 
 require('dotenv').load()
 const {
@@ -39,6 +38,17 @@ const options = {
 const cache = {}
 let counter = 0
 
+const asyncMiddleware = fn => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next)
+}
+
+const getTokenFromHeaders = ({headers: {authorization}}) => {
+  if (authorization && authorization.split(' ')[0] === 'Bearer') {
+    return authorization.split(' ')[1]
+  }
+  return null
+}
+
 app.use(
   cors({
     origin: true,
@@ -50,130 +60,64 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.use(function (req, res, next) {
-  const {cookies} = req
-  const cookie = cookies[COOKIE_SESSION_NAME]
-  if (!cookie) {
-    req.token = null
-    next();
-    return
-  }
-  const {token} = JSON.parse(cookie)
-  req.token = token
-  next();
-});
+app.use(
+  asyncMiddleware(async (req, res, next) => {
+    let token, cookie
+    
+    token = getTokenFromHeaders(req)
+    if (!token) {
+      const {cookies} = req
+      cookie = cookies[COOKIE_SESSION_NAME]
+      if (!cookie && !token) {
+        req.user = null
+        next()
+        return
+      }
+    }
+
+    token = token || JSON.parse(cookie)
+    console.log({token})
+    const [errDecodedToken, decodedToken] = await to(
+      admin.auth().verifyIdToken(token)
+    )
+
+    if (errDecodedToken) {
+      res.json({user: null, err: errDecodedToken})
+      return
+    }
+    const {uid} = decodedToken
+    console.log({errDecodedToken, uid})
+
+    const [errUserDB, userDB] = await to(
+      instance
+        .database()
+        .ref(`/users/${uid}`)
+        .once('value')
+    )
+    if (errUserDB) {
+      res.json({user: null, err: errUserDB})
+      return
+    }
+    console.log({userDB})
+
+    req.user = userDB
+    next()
+  })
+)
 
 app.get('/users/current', async (req, res) => {
-  console.log(new Date())
-  const {token} = req
-  console.log({token})
-  if (!token) {
-    res.json({ logged: false })
-    return;
-  }
-
-  const [errDecodedToken, decodedToken] = await to(
-    admin.auth().verifyIdToken(token)
-  )
-  if (errDecodedToken) {
-    res.status(500).json(errDecodedToken)
-    return
-  }
-  const {uid} = decodedToken
-
-  const [errUserDB, userDB] = await to(
-    instance
-      .database()
-      .ref(`/users/${uid}`)
-      .once('value')
-  )
-
-  if (errUserDB) {
-    res.status(500).json(errUserDB)
-    return
-  }
-
-  res.json({
-    logged: true,
-    user: userDB.val()
-  })
+  const {user} = req
+  res.json({user})
 })
 
 app.get('/users/current/favorites', async (req, res) => {
-  console.log(new Date())
-  const {token} = req
-  if (!token) res.status(404).send('Token not found in headers')
-
-  const [errDecodedToken, decodedToken] = await to(
-    admin.auth().verifyIdToken(token)
-  )
-  if (errDecodedToken) {
-    res.status(500).json(errDecodedToken)
-    return
-  }
-  const {uid} = decodedToken
-
-  const [errUserDB, userDB] = await to(
-    instance
-      .database()
-      .ref(`/users/${uid}`)
-      .once('value')
-  )
-
-  if (errUserDB) {
-    res.status(500).json(errUserDB)
-    return
-  }
-
-  const {favorites} = userDB.val()
-
-  console.log(`favorites → ${favorites}`)
-  
-  const movieDetailsFavorites = favorites
-    .map(idMovie => {
-      const url = new URL(
-        `${FIREBASE_API_URL}/${THEMOVIEDB_API_BASE_URL}/movie/${idMovie}`
-      )
-      url.searchParams.append('api_key', THEMOVIEDB_API_KEY)
-      return {
-        url: url.href
-      }
-    })
-    .map(
-      options =>
-        new Promise((resolve, reject) => {
-          request(options, (error, response, body) => {
-            if (error) {
-              reject('Something went wrong!')
-              return
-            }
-            const json = JSON.parse(body)
-            // const json = JSON.parse(body.replace(/\\/g, ''))
-            cache[options.url] = json
-            resolve(json)
-          })
-        })
-    )
-
-  const [errFavoritesMovies, favoritesMovies] = await to(
-    Promise.all(movieDetailsFavorites)
-  )
-
-  if (errFavoritesMovies) {
-    res.status(500).json(errFavoritesMovies)
-    return
-  }
-  
-  res.json({
-    page: 1,
-    total_results: favoritesMovies.length,
-    total_pages: 1,
-    results: favoritesMovies
-  })
+  const {
+    user: {favorites}
+  } = req
+  res.json({favorites})
 })
 
 app.get('*', (req, res) => {
-  
   const urlRequested = req.originalUrl
   console.log('-'.repeat(20))
   console.log(`→ Attempt ${++counter}`)
@@ -203,7 +147,7 @@ app.get('*', (req, res) => {
     console.log(options)
     request(options, (error, response, body) => {
       if (error) {
-        res.status(500).send('Something went wrong!')
+        res.status(500).send(error)
         return
       }
       const json = JSON.parse(body)

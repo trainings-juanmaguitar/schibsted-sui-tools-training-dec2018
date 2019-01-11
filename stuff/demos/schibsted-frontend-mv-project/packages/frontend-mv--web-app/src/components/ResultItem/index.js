@@ -6,16 +6,18 @@ import {
   MediaLeft,
   Image,
   MediaContent,
-  Content,
+  Content
+  /*,
   Level,
   LevelItem,
   LevelLeft
+  */
 } from 'bloomer'
 
 import Link from 'react-router/lib/Link'
 
 import TextTruncate from 'react-text-truncate'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const ResultItem = ({movie, user}, {i18n}) => {
   return (
@@ -39,7 +41,9 @@ const ResultItem = ({movie, user}, {i18n}) => {
             textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
           />
         </Content>
-        {user && (
+        {/*
+
+          {user && (
           <Level isMobile>
             <LevelLeft>
               <LevelItem href="#">
@@ -53,6 +57,7 @@ const ResultItem = ({movie, user}, {i18n}) => {
             </LevelLeft>
           </Level>
         )}
+          */}
       </MediaContent>
     </Media>
   )

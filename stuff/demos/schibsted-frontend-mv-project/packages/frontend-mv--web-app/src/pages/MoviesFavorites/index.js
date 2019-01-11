@@ -47,7 +47,8 @@ MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
   // const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
-    .get('get_favorites_movies_user_use_case')
+    .get('get_popular_movies_use_case')
+    //.get('get_favorites_movies_user_use_case')
     //.execute({page, language, region})
     .execute()
 
