@@ -1,6 +1,7 @@
 import {EntryPointFactory} from '@s-ui/domain'
 import MoviesUseCasesFactory from './movies/UseCases/factory'
 import UsersUseCasesFactory from './users/UseCases/factory'
+import FavoriteMoviesUseCasesFactory from './favoriteMovies/UseCases/factory'
 
 import Config from './config'
 import {firebase, firebaseApp} from './config/firebase'
@@ -27,8 +28,11 @@ const useCases = {
     config
   }),
   logout_use_case: UsersUseCasesFactory.logoutUseCase({config}),
-  /* users-movies */
-  get_favorites_movies_user_use_case: UsersUseCasesFactory.getFavoritesMoviesUserUseCase(
+  /* favorite-movies */
+  get_ids_favorites_movies_user_use_case: FavoriteMoviesUseCasesFactory.getFavoritesMoviesIdsUseCase(
+    {config}
+  ),
+  get_favorites_movies_user_use_case: FavoriteMoviesUseCasesFactory.getFavoritesMoviesUseCase(
     {config}
   )
   // add_favorite_movie_user_use_case: UsersUseCasesFactory.addFavoriteMovieUserUseCase(

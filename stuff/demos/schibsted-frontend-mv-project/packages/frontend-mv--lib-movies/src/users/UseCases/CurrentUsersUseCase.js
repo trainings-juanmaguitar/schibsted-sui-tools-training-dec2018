@@ -4,13 +4,13 @@ import {UseCase} from '@s-ui/domain'
  * @implements UseCase
  */
 class CurrentUsersUseCase extends UseCase {
-  constructor({repository} = {}) {
+  constructor({service} = {}) {
     super()
-    this._repository = repository
+    this._service = service
   }
 
-  async execute({cookies}) {
-    const userEntity = await this._repository.current({cookies})
+  async execute() {
+    const userEntity = await this._service.execute()
     return userEntity && userEntity.toJSON()
   }
 }

@@ -17,7 +17,7 @@ import Link from 'react-router/lib/Link'
 import TextTruncate from 'react-text-truncate'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-const ResultItem = ({movie, user}, {i18n}) => {
+const ResultItem = ({movie, user, favorites}, {i18n}) => {
   return (
     <Media>
       <MediaLeft>
@@ -39,15 +39,13 @@ const ResultItem = ({movie, user}, {i18n}) => {
             textTruncateChild={<Link to={`/movie/${movie.id}`}>Read on</Link>}
           />
         </Content>
+
         {user && (
           <Level isMobile>
             <LevelLeft>
               <LevelItem href="#">
                 <FontAwesomeIcon
-                  icon={[
-                    user.favorites.includes(movie.id) ? 'fas' : 'far',
-                    'heart'
-                  ]}
+                  icon={[favorites.includes(movie.id) ? 'fas' : 'far', 'heart']}
                 />
               </LevelItem>
             </LevelLeft>
@@ -58,7 +56,11 @@ const ResultItem = ({movie, user}, {i18n}) => {
   )
 }
 
-ResultItem.propTypes = {movie: PropTypes.object, user: PropTypes.object}
+ResultItem.propTypes = {
+  movie: PropTypes.object,
+  user: PropTypes.object,
+  favorites: PropTypes.array
+}
 ResultItem.contextTypes = {i18n: PropTypes.object}
 
 export default ResultItem

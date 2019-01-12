@@ -16,7 +16,7 @@ const CLASS_PAGINATION = `${BASE_CLASS}-pagination`
 // const CLASS_CARD_MEDIA = `${BASE_CLASS}-cardMedia`
 
 const MoviesList = (
-  {movies, title, subtitle, page = 1, totalPages = 1, user},
+  {movies, title, subtitle, page = 1, totalPages = 1, user, favorites},
   {router}
 ) => {
   const updatePage = (e, {page}) => {
@@ -45,7 +45,7 @@ const MoviesList = (
       )}
 
       {movies.map((movie, i) => (
-        <ResultItem key={i} movie={movie} user={user} />
+        <ResultItem key={i} movie={movie} user={user} favorites={favorites} />
       ))}
       {totalPages > 1 && (
         <div className={CLASS_PAGINATION}>
@@ -70,6 +70,7 @@ MoviesList.propTypes = {
   subtitle: PropTypes.string,
   page: PropTypes.number,
   totalPages: PropTypes.number,
+  favorites: PropTypes.array,
   user: PropTypes.object
 }
 

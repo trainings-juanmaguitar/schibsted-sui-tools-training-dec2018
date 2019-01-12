@@ -1,8 +1,8 @@
 import MoviesListValueObject from './MoviesListValueObject'
 
-class MoviesListValueObjectFactory {
+class MoviesValueObjectFactory {
   static moviesListValueObject = rawValueObject =>
     new MoviesListValueObject(rawValueObject)
 }
 
-export default MoviesListValueObjectFactory
+export default MoviesValueObjectFactory

@@ -7,7 +7,7 @@ import Page from '../../hoc/Page'
 import MoviesList from '../../components/MoviesList'
 
 const MoviesPopular = (
-  {movies, canonical, page, totalResults, totalPages, user},
+  {movies, canonical, page, totalResults, totalPages, user, favorites},
   {i18n}
 ) => (
   <React.Fragment>
@@ -16,6 +16,7 @@ const MoviesPopular = (
     </Helmet>
     <MoviesList
       movies={movies}
+      user={user}
       title={i18n.t('POPULAR_MOVIES', {totalResults})}
       subtitle={i18n.t('RESULTS_PAGINATION', {
         page,
@@ -23,7 +24,7 @@ const MoviesPopular = (
       })}
       page={page}
       totalPages={totalPages}
-      user={user}
+      favorites={favorites}
     />
   </React.Fragment>
 )
@@ -50,8 +51,13 @@ MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
     .get('get_popular_movies_use_case')
     .execute({page, language, region})
 
+  const {ids} = await domain
+    .get('get_ids_favorites_movies_user_use_case')
+    .execute()
+
   return {
     movies: movies || [],
+    favorites: ids,
     page: _page,
     totalResults,
     totalPages,

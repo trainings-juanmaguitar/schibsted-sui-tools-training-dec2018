@@ -1,4 +1,5 @@
 import MoviesRepository from './MoviesRepository'
+import {cache} from '@s-ui/decorators'
 
 class HTTPMoviesRepository extends MoviesRepository {
   constructor({config, mapper, log, fetcher, moviesListValueObject} = {}) {
@@ -13,13 +14,16 @@ class HTTPMoviesRepository extends MoviesRepository {
     this._moviesHost = this._config.get('THEMOVIEDB_API_BASE_URL')
   }
 
+  @cache({ttl: '5 minutes', server: true})
   async popular({page: pageRequest, language, region} = {}) {
     this._log(
       `Getting POPULAR movies on page:${pageRequest}, language:${language}, region:${region}`
     )
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/popular`
-    const options = {params: {}}
+    const options = {
+      params: {}
+    }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
     if (region) options.params.region = region
@@ -42,6 +46,7 @@ class HTTPMoviesRepository extends MoviesRepository {
   }
 
   // all methods of the domain are named → receives an object w/ properties
+  @cache({ttl: '5 minutes', server: true})
   async search({query, page: pageRequest, language, region} = {}) {
     this._log(
       `Getting movies by query:${query}, page:${pageRequest}, language:${language}, region:${region}`
@@ -49,7 +54,9 @@ class HTTPMoviesRepository extends MoviesRepository {
 
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/search/movie?query=${query}`
-    const options = {params: {}}
+    const options = {
+      params: {}
+    }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
     if (region) options.params.region = region
@@ -71,13 +78,17 @@ class HTTPMoviesRepository extends MoviesRepository {
     })
   }
 
+  @cache({ttl: '5 minutes', server: true})
   async getMovieById({id: idMovie}) {
     this._log(`Getting movie by query → ${idMovie}`)
 
+    const options = {
+      params: {}
+    }
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/${idMovie}`
 
-    const {data: result} = await this._fetcher.get(url)
+    const {data: result} = await this._fetcher.get(url, options)
     return this._mapper.map(result)
   }
 }

@@ -1,28 +1,22 @@
-import UsersRepositoriesFactory from '../Repositories/factory'
+import UsersServicesFactory from '../Services/factory'
 
 import CurrentUserUseCase from './CurrentUsersUseCase'
 import LoginWithGoogleUseCase from './LoginWithGoogleUsersUseCase'
 import LogoutUseCase from './LogoutUsersUseCase'
-import GetFavoritesMoviesUserUseCase from './GetFavoritesMoviesUserUseCase'
 
 export default class UsersUseCasesFactory {
   static currentUserUseCase = ({config}) =>
     new CurrentUserUseCase({
-      repository: UsersRepositoriesFactory.httpUsersRepository({config})
+      service: UsersServicesFactory.currentUsersService({config})
     })
 
   static loginWithGoogleUseCase = ({config}) =>
     new LoginWithGoogleUseCase({
-      repository: UsersRepositoriesFactory.fireBaseUsersRepository({config})
+      service: UsersServicesFactory.loginWithGoogleUsersService({config})
     })
 
   static logoutUseCase = ({config}) =>
     new LogoutUseCase({
-      repository: UsersRepositoriesFactory.httpUsersRepository({config})
-    })
-
-  static getFavoritesMoviesUserUseCase = ({config}) =>
-    new GetFavoritesMoviesUserUseCase({
-      repository: UsersRepositoriesFactory.httpUsersRepository({config})
+      service: UsersServicesFactory.logoutUsersService({config})
     })
 }

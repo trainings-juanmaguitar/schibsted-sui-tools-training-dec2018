@@ -24,6 +24,7 @@ const MoviesPopular = (
       page={page}
       totalPages={totalPages}
       user={user}
+      favorites={movies.map(({id}) => id )}
     />
   </React.Fragment>
 )
@@ -43,16 +44,22 @@ MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
     params: {locale='es', page = 1}
   } = routeInfo
 
-  const cookies = domain.get('config').get('cookies')
-
   // const localeConfig = domain.get('config').get('locale')
   // const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
+    //.get('get_popular_movies_use_case')
     .get('get_favorites_movies_user_use_case')
     //.execute({page, language, region})
-    .execute({cookies})
+    .execute()
 
+    console.log({
+      movies: movies || [],
+      page: _page,
+      totalResults,
+      totalPages,
+      canonical: 'http:/spa.mock/list'
+    })
   return {
     movies: movies || [],
     page: _page,

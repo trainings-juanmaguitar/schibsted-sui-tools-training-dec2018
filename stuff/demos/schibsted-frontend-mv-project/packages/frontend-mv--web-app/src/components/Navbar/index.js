@@ -135,7 +135,7 @@ class NavbarApp extends Component {
             {user ? (
               <AtomButton type="tertiary" onClick={logout}>
                 <span>{i18n.t('SIGNOUT')}</span>&nbsp;<strong>
-                  ({user.name})
+                  ({user.email})
                 </strong>
               </AtomButton>
             ) : (
