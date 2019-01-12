@@ -17,14 +17,11 @@ class GetFavoritesMoviesService extends Service {
   }
 
   async execute() {
-    /* eslint-disable */
     const idsFavoritesMovies = await this._favoriteMoviesRepository.getIds()
     const {ids = []} = idsFavoritesMovies && idsFavoritesMovies.toJSON()
-    console.log(ids)
     const favoriteMovies = await Promise.all(
       ids.map(id => this._moviesRepository.getMovieById({id}))
     )
-    console.log(favoriteMovies)
     return this._moviesListValueObject({
       page: 1,
       totalResults: favoriteMovies.length,
