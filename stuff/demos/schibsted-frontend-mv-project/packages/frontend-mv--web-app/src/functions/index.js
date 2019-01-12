@@ -62,21 +62,24 @@ app.use(cookieParser())
 
 app.use(
   asyncMiddleware(async (req, res, next) => {
-    let token, cookie
     
-    token = getTokenFromHeaders(req)
+    const {cookies} = req
+    const cookie = cookies && cookies[COOKIE_SESSION_NAME]
+
+    if (cookie) {
+      const {token: tokenFromCookie} = JSON.parse(cookie)
+      token = tokenFromCookie
+    }
+    else {
+      token  = getTokenFromHeaders(req)
+    }
+    
     if (!token) {
-      const {cookies} = req
-      cookie = cookies[COOKIE_SESSION_NAME]
-      if (!cookie && !token) {
-        req.user = null
-        next()
-        return
-      }
+      req.user = null
+      next()
+      return
     }
 
-    token = token || JSON.parse(cookie)
-    console.log({token})
     const [errDecodedToken, decodedToken] = await to(
       admin.auth().verifyIdToken(token)
     )
@@ -86,7 +89,6 @@ app.use(
       return
     }
     const {uid} = decodedToken
-    console.log({errDecodedToken, uid})
 
     const [errUserDB, userDB] = await to(
       instance
@@ -98,7 +100,6 @@ app.use(
       res.json({user: null, err: errUserDB})
       return
     }
-    console.log({userDB})
 
     req.user = userDB
     next()
