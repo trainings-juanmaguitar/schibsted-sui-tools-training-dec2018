@@ -1,4 +1,4 @@
-import {FetcherFactory} from '@s-ui/domain'
+import CustomFetcherFactory from '../../fetcher/factory'
 import HTTPMoviesRepository from './HTTPMoviesRepository'
 import MovieMapperFactory from '../Mappers/factory'
 import MoviesValueObjectsFactory from '../ValueObjects/factory'
@@ -10,7 +10,7 @@ class MoviesRepositoriesFactory {
       config,
       mapper: MovieMapperFactory.movieMapper({config}),
       log: factoryLogger({prefix: 'HTTPMoviesRepository'}),
-      fetcher: FetcherFactory.httpFetcher({config}),
+      fetcher: CustomFetcherFactory.customHttpFetcher({config}),
       moviesListValueObject: MoviesValueObjectsFactory.moviesListValueObject
     })
 }

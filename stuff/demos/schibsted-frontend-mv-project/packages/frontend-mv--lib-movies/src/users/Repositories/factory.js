@@ -1,4 +1,4 @@
-import {FetcherFactory} from '@s-ui/domain'
+import CustomFetcherFactory from '../../fetcher/factory'
 import cookie from '@s-ui/js/lib/cookie'
 import UsersEntitiesFactory from '../Entities/factory.js'
 import factoryLogger from '../../logger/factory'
@@ -19,10 +19,9 @@ class UsersRepositoriesFactory {
   static httpUsersRepository = ({config}) =>
     new HTTPUsersRepository({
       config,
-      cookie,
       log: factoryLogger({prefix: 'HTTPUsersRepository'}),
       userEntityFactory: UsersEntitiesFactory.userEntity,
-      fetcher: FetcherFactory.httpFetcher({config})
+      fetcher: CustomFetcherFactory.customHttpFetcher({config})
     })
 
   static storageUsersRepository = ({config}) =>

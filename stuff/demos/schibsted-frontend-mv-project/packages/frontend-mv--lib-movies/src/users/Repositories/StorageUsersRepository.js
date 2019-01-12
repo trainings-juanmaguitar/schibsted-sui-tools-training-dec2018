@@ -10,7 +10,6 @@ class StorageUsersRepository extends UsersRepository {
     this._userEntityFactory = userEntityFactory
     this._storage = storage
     this._storageUserName = this._config.get('STORAGE_USER_NAME')
-    console.log(this)
   }
 
   async loginPersist({user}) {

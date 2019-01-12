@@ -22,8 +22,7 @@ class HTTPMoviesRepository extends MoviesRepository {
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/popular`
     const options = {
-      params: {},
-      withCredentials: true
+      params: {}
     }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
@@ -56,8 +55,7 @@ class HTTPMoviesRepository extends MoviesRepository {
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/search/movie?query=${query}`
     const options = {
-      params: {},
-      withCredentials: true
+      params: {}
     }
     if (pageRequest) options.params.page = pageRequest
     if (language) options.params.language = language
@@ -85,8 +83,7 @@ class HTTPMoviesRepository extends MoviesRepository {
     this._log(`Getting movie by query → ${idMovie}`)
 
     const options = {
-      params: {},
-      withCredentials: true
+      params: {}
     }
     const {_host, _moviesHost} = this
     const url = `${_host}/${_moviesHost}/movie/${idMovie}`

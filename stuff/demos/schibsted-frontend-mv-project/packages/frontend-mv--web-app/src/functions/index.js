@@ -79,7 +79,7 @@ app.use(
       next()
       return
     }
-
+    
     const [errDecodedToken, decodedToken] = await to(
       admin.auth().verifyIdToken(token)
     )
@@ -100,8 +100,7 @@ app.use(
       res.json({user: null, err: errUserDB})
       return
     }
-
-    req.user = userDB
+    req.user = userDB.val()
     next()
   })
 )
@@ -112,10 +111,15 @@ app.get('/users/current', async (req, res) => {
 })
 
 app.get('/users/current/favorites', async (req, res) => {
-  const {
-    user: {favorites}
-  } = req
-  res.json({favorites})
+  if (req.user) {
+    const {
+      user: {favorites}
+    } = req
+    res.json({favorites})
+  }
+  else {
+    res.json({favorites: []})
+  }
 })
 
 app.get('*', (req, res) => {
