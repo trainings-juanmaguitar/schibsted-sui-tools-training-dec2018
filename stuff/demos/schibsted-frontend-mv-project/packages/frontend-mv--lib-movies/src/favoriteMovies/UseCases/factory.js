@@ -1,7 +1,8 @@
 import FavoriteMoviesRepositoriesFactory from '../Repositories/factory'
+import FavoriteMoviesServicesFactory from '../Services/factory'
 
 import GetFavoritesMoviesIdsUseCase from './GetFavoritesMoviesIdsUseCase'
-// import GetFavoritesMoviesListUseCase from './GetFavoritesMoviesListUseCase'
+import GetFavoritesMoviesUseCase from './GetFavoritesMoviesUseCase'
 
 export default class FavoriteMoviesUseCasesFactory {
   static getFavoritesMoviesIdsUseCase = ({config}) =>
@@ -11,8 +12,8 @@ export default class FavoriteMoviesUseCasesFactory {
       )
     })
 
-  // static getFavoritesMoviesListUseCase = ({config}) =>
-  //   new GetFavoritesMoviesListUseCase({
-  //     repository: MoviesRepositoriesFactory.httpMoviesRepository({config})
-  //   })
+  static getFavoritesMoviesUseCase = ({config}) =>
+    new GetFavoritesMoviesUseCase({
+      service: FavoriteMoviesServicesFactory.getFavoritesMoviesService({config})
+    })
 }

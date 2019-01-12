@@ -31,10 +31,10 @@ const useCases = {
   /* favorite-movies */
   get_ids_favorites_movies_user_use_case: FavoriteMoviesUseCasesFactory.getFavoritesMoviesIdsUseCase(
     {config}
+  ),
+  get_favorites_movies_user_use_case: FavoriteMoviesUseCasesFactory.getFavoritesMoviesUseCase(
+    {config}
   )
-  // get_favorites_movies_user_use_case: UsersUseCasesFactory.getFavoritesMoviesUserUseCase(
-  //   {config}
-  // )
   // add_favorite_movie_user_use_case: UsersUseCasesFactory.addFavoriteMovieUserUseCase(
   //   {config}
   // ),
