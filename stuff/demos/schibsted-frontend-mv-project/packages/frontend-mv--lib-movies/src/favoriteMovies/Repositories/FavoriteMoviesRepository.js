@@ -21,6 +21,16 @@ class FavoriteMoviesRepository extends Repository {
       '[FavoriteMoviesRepository#getMoviesList] must be implemented'
     )
   }
+
+  /**
+   * @method
+   * @return {Error}
+   */
+  addFavoriteMovie() {
+    throw new Error(
+      '[FavoriteMoviesRepository#addFavoriteMovie] must be implemented'
+    )
+  }
 }
 
 export default FavoriteMoviesRepository

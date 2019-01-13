@@ -11,5 +11,6 @@ export default async params => {
   Object.keys(params).forEach(key => {
     domain.config(key, params[key])
   })
+
   return {domain, i18n}
 }

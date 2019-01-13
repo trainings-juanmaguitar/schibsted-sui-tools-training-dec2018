@@ -62,24 +62,22 @@ app.use(cookieParser())
 
 app.use(
   asyncMiddleware(async (req, res, next) => {
-    
     const {cookies} = req
     const cookie = cookies && cookies[COOKIE_SESSION_NAME]
 
     if (cookie) {
       const {token: tokenFromCookie} = JSON.parse(cookie)
       token = tokenFromCookie
+    } else {
+      token = getTokenFromHeaders(req)
     }
-    else {
-      token  = getTokenFromHeaders(req)
-    }
-    
+
     if (!token) {
       req.user = null
       next()
       return
     }
-    
+
     const [errDecodedToken, decodedToken] = await to(
       admin.auth().verifyIdToken(token)
     )
@@ -105,6 +103,60 @@ app.use(
   })
 )
 
+app.post('/favorites/:id', async (req, res) => {
+  const {
+    user: {id: uid},
+    params: {id}
+  } = req
+
+  const [errFavoritesRef, favoritesRef] = await to(
+    instance
+      .database()
+      .ref(`/users/${uid}`)
+      .child('favorites')
+      .push().set(id)
+  )
+
+  if (errFavoritesRef) {
+    res.json({user: null, err: errFavoritesRef})
+    return
+  }
+
+  res.json({msg: `success adding movie ${id} as favorite for user ${uid}`})
+})
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
+app.delete('/favorites/:id', async (req, res) => {
+
+  const {
+    user: {id: uid, favorites},
+    params: {id}
+  } = req
+
+  const keyToRemove = getKeyByValue(favorites, id)
+
+
+  const [errFavoritesRef, favoritesRef] = await to(
+    instance
+      .database()
+      .ref(`/users/${uid}`)
+      .child('favorites')
+      .child(keyToRemove)
+      .remove()
+  )
+
+  if (errFavoritesRef) {
+    res.json({user: null, err: errFavoritesRef})
+    return
+  }
+
+  res.json({msg: `success removing movie ${id} from favorites for user ${uid}`})
+})
+
+
 app.get('/users/current', async (req, res) => {
   const {user} = req
   res.json({user})
@@ -115,9 +167,8 @@ app.get('/users/current/favorites', async (req, res) => {
     const {
       user: {favorites}
     } = req
-    res.json({favorites})
-  }
-  else {
+    res.json({favorites: Object.values(favorites)})
+  } else {
     res.json({favorites: []})
   }
 })

@@ -23,10 +23,37 @@ class HTTPFavoriteMoviesRepository extends FavoriteMoviesRepository {
       return
     }
     const {
-      data: {favorites: ids}
+      data: {favorites}
     } = response
 
-    return ids && this._favoriteMoviesValueObject({ids})
+    const ids = Object.values(favorites)
+    return ids.length && this._favoriteMoviesValueObject({ids})
+  }
+
+  async addFavoriteMovie({id}) {
+    this._log(`Adding movie ${id} as Favorite for this user`)
+    const host = this._config.get('FIREBASE_API_URL')
+    const url = `${host}/favorites/${id}`
+    const [err, response] = await to(this._fetcher.post(url)) // eslint-disable-line
+    if (err) {
+      console.log(err) // eslint-disable-line
+      return
+    }
+
+    this._log(`movie ${id} added as Favorite succesfully`)
+  }
+
+  async removeFavoriteMovie({id}) {
+    this._log(`Removing movie ${id} as Favorite for this user`)
+    const host = this._config.get('FIREBASE_API_URL')
+    const url = `${host}/favorites/${id}`
+    const [err, response] = await to(this._fetcher.delete(url)) // eslint-disable-line
+    if (err) {
+      console.log(err) // eslint-disable-line
+      return
+    }
+
+    this._log(`movie ${id} removed from Favorites succesfully`)
   }
 }
 

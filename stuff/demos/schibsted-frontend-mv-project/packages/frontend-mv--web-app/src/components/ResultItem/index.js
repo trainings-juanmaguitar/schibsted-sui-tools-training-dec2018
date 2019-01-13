@@ -17,7 +17,16 @@ import Link from 'react-router/lib/Link'
 import TextTruncate from 'react-text-truncate'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-const ResultItem = ({movie, user, favorites}, {i18n}) => {
+const ResultItem = ({movie, user, isFavorite}, {domain}) => {
+  const {id} = movie
+
+  const handleToggleFavorite = async ev => {
+    ev.preventDefault()
+    if (isFavorite)
+      await domain.get('remove_favorite_movie_user_use_case').execute({id})
+    else await domain.get('add_favorite_movie_user_use_case').execute({id})
+  }
+
   return (
     <Media>
       <MediaLeft>
@@ -45,7 +54,8 @@ const ResultItem = ({movie, user, favorites}, {i18n}) => {
             <LevelLeft>
               <LevelItem href="#">
                 <FontAwesomeIcon
-                  icon={[favorites.includes(movie.id) ? 'fas' : 'far', 'heart']}
+                  icon={[isFavorite ? 'fas' : 'far', 'heart']}
+                  onClick={handleToggleFavorite}
                 />
               </LevelItem>
             </LevelLeft>
@@ -59,8 +69,12 @@ const ResultItem = ({movie, user, favorites}, {i18n}) => {
 ResultItem.propTypes = {
   movie: PropTypes.object,
   user: PropTypes.object,
-  favorites: PropTypes.array
+  isFavorite: PropTypes.bool
 }
-ResultItem.contextTypes = {i18n: PropTypes.object}
+ResultItem.contextTypes = {
+  i18n: PropTypes.object,
+  domain: PropTypes.object,
+  router: PropTypes.object
+}
 
 export default ResultItem

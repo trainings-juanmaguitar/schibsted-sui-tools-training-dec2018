@@ -16,6 +16,7 @@ class HTTPMoviesRepository extends MoviesRepository {
 
   @cache({ttl: '5 minutes', server: true})
   async popular({page: pageRequest, language, region} = {}) {
+    /* eslint-disable */
     this._log(
       `Getting POPULAR movies on page:${pageRequest}, language:${language}, region:${region}`
     )

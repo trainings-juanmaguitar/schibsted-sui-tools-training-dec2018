@@ -51,13 +51,13 @@ MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
     .get('get_popular_movies_use_case')
     .execute({page, language, region})
 
-  const {ids} = await domain
+  const {ids: favorites} = await domain
     .get('get_ids_favorites_movies_user_use_case')
     .execute()
 
   return {
     movies: movies || [],
-    favorites: ids,
+    favorites,
     page: _page,
     totalResults,
     totalPages,
