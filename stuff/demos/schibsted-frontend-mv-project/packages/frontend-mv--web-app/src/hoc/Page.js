@@ -14,12 +14,19 @@ export default Page =>
         context: {domain}
       } = paramsPage
 
-      const [err, user] = await to(
+      const [errUser, user] = await to(
         domain.get('get_logged_user_use_case').execute()
       )
 
-      if (err) console.log(err) // eslint-disable-line
-      return {...pageProperties, user}
+      if (errUser) console.log(errUser) // eslint-disable-line
+
+      const [errFavorites, {ids: favorites}] = await to(
+        domain.get('get_ids_favorites_movies_user_use_case').execute()
+      )
+
+      if (errFavorites) console.log(errFavorites) // eslint-disable-line
+
+      return {...pageProperties, user, favorites}
     }
 
     render() {

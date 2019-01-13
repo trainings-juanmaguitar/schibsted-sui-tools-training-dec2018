@@ -6,7 +6,7 @@ import Page from '../../hoc/Page'
 import MoviesList from '../../components/MoviesList'
 
 const ResultsSearch = (
-  {movies, canonical, query, page, totalResults, totalPages},
+  {movies, canonical, query, page, totalResults, totalPages, user, favorites},
   {i18n}
 ) => {
   return (
@@ -23,6 +23,8 @@ const ResultsSearch = (
         })}
         page={page}
         totalPages={totalPages}
+        favorites={favorites}
+        user={user}
       />
     </React.Fragment>
   )
@@ -34,7 +36,9 @@ ResultsSearch.propTypes = {
   query: PropTypes.string,
   page: PropTypes.number,
   totalResults: PropTypes.number,
-  totalPages: PropTypes.number
+  totalPages: PropTypes.number,
+  user: PropTypes.object,
+  favorites: PropTypes.array
 }
 ResultsSearch.contextTypes = {i18n: PropTypes.object}
 ResultsSearch.renderLoading = () => <h1>Loading...</h1>

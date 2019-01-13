@@ -43,9 +43,6 @@ class MoviesList extends Component {
     this.listenerRemoveFavorites = domain
       .get('remove_favorite_movie_user_use_case')
       .$.execute.subscribe(async () => {
-        console.log(
-          'remove_favorite_movie_user_use_case > get_ids_favorites_movies_user_use_case...'
-        )
         const {ids: favorites} = await domain
           .get('get_ids_favorites_movies_user_use_case')
           .execute()
@@ -56,10 +53,6 @@ class MoviesList extends Component {
     this.listenerAddFavorites = domain
       .get('add_favorite_movie_user_use_case')
       .$.execute.subscribe(async ({params, result}) => {
-        console.log(
-          'add_favorite_movie_user_use_case > get_ids_favorites_movies_user_use_case...'
-        )
-
         const {ids: favorites} = await domain
           .get('get_ids_favorites_movies_user_use_case')
           .execute()

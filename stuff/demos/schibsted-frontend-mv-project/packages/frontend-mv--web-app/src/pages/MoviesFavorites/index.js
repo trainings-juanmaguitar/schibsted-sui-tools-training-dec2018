@@ -16,7 +16,6 @@ const MoviesPopular = (
     </Helmet>
     <MoviesList
       movies={movies}
-      user={user}
       title={i18n.t('FAVORITE_MOVIES', {totalResults})}
       subtitle={i18n.t('RESULTS_PAGINATION', {
         page,
@@ -25,6 +24,7 @@ const MoviesPopular = (
       page={page}
       totalPages={totalPages}
       favorites={favorites}
+      user={user}
     />
   </React.Fragment>
 )
@@ -34,31 +34,28 @@ MoviesPopular.propTypes = {
   canonical: PropTypes.string,
   page: PropTypes.number,
   totalResults: PropTypes.number,
-  totalPages: PropTypes.number
+  totalPages: PropTypes.number,
+  user: PropTypes.object,
+  favorites: PropTypes.array
 }
 MoviesPopular.contextTypes = {i18n: PropTypes.object, domain: PropTypes.object}
 MoviesPopular.renderLoading = () => <h1>Loading...</h1>
 MoviesPopular.getInitialProps = async ({context, routeInfo}) => {
-  const {domain, i18n} = context
+  const {domain} = context
   const {
     params: {locale='es', page = 1}
   } = routeInfo
 
-  // const localeConfig = domain.get('config').get('locale')
-  // const {language, region} = localeConfig[locale]
+  const localeConfig = domain.get('config').get('locale')
+  const {language, region} = localeConfig[locale]
 
   const {page: _page, totalResults, totalPages, movies} = await domain
     .get('get_favorites_movies_user_use_case')
-    .execute()
+    .execute({page, language, region})
   
-  const {ids: favorites} = await domain
-    .get('get_ids_favorites_movies_user_use_case')
-    .execute()
-
-
   return {
     movies: movies || [],
-    favorites,
+
     page: _page,
     totalResults,
     totalPages,

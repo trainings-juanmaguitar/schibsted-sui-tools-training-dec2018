@@ -6,14 +6,13 @@ class CustomHttpFetcher {
   }
 
   setHeaders() {
-    const cookieUserName = this._config.get('COOKIE_SESSION_NAME')
     const cookies = this._config.get('cookies')
     if (cookies) {
-      const jsonToken = this._cookie.parse(cookies)[cookieUserName]
-      const {token} = JSON.parse(jsonToken)
       this._fetcher._axios.interceptors.request.use(config => {
-        config.headers = {Authorization: `Bearer ${token}`}
+        if (typeof window === 'undefined')
+          config.headers = {Cookie: `${cookies}`}
         config.withCredentials = true
+        config.crossDomain = true
         return config
       })
     }

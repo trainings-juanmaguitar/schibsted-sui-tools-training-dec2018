@@ -14,7 +14,6 @@ require('dotenv').load()
 const {
   THEMOVIEDB_API_KEY,
   THEMOVIEDB_API_BASE_URL,
-  FIREBASE_API_URL,
   COOKIE_SESSION_NAME
 } = process.env
 
@@ -42,13 +41,6 @@ const asyncMiddleware = fn => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next)
 }
 
-const getTokenFromHeaders = ({headers: {authorization}}) => {
-  if (authorization && authorization.split(' ')[0] === 'Bearer') {
-    return authorization.split(' ')[1]
-  }
-  return null
-}
-
 app.use(
   cors({
     origin: true,
@@ -64,14 +56,8 @@ app.use(
   asyncMiddleware(async (req, res, next) => {
     const {cookies} = req
     const cookie = cookies && cookies[COOKIE_SESSION_NAME]
-
-    if (cookie) {
-      const {token: tokenFromCookie} = JSON.parse(cookie)
-      token = tokenFromCookie
-    } else {
-      token = getTokenFromHeaders(req)
-    }
-
+    const {token} = (cookie && JSON.parse(cookie)) || {}
+      
     if (!token) {
       req.user = null
       next()
@@ -165,7 +151,7 @@ app.get('/users/current', async (req, res) => {
 app.get('/users/current/favorites', async (req, res) => {
   if (req.user) {
     const {
-      user: {favorites}
+      user: {favorites={}}
     } = req
     res.json({favorites: Object.values(favorites)})
   } else {
