@@ -2,6 +2,16 @@
 
 This is a demo of a project for finding movies using Schibsted tools
 
+## Run
+
+Once you have configured the app properly to work locally (follow intructions described at `Local Installation`) we can run the app by doing
+
+- from `frontend-mv--web-app/src/functions`
+  - `npm run serve` to run the _backend_ (Firebase Cloud Functions)
+- from `frontend-mv--web-app`
+  - `npm run spa:dev` to run the SPA version of the web app
+  - or `npm run ssr:dev` to run the SSR version of the web app
+
 ## Local Installation
 
 ### Firebase
