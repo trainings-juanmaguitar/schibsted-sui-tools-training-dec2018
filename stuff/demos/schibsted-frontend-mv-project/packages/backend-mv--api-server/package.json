@@ -20,5 +20,10 @@
   "engines": {
     "node": "8.11"
   },
-  "private": true
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }

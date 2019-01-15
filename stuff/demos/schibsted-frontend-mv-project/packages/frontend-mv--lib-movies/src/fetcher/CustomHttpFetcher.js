@@ -9,10 +9,10 @@ class CustomHttpFetcher {
     const cookies = this._config.get('cookies')
     if (cookies) {
       this._fetcher._axios.interceptors.request.use(config => {
-        if (typeof window === 'undefined')
-          config.headers = {Cookie: `${cookies}`}
         config.withCredentials = true
         config.crossDomain = true
+        if (typeof window === 'undefined')
+          config.headers = {Cookie: `${cookies}`}
         return config
       })
     }
