@@ -1,0 +1,24 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "dependencies": {
+    "nodemon": "^1.12.1",
+    "await-to-js": "2.1.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.15.2",
+    "firebase-admin": "^5.11.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  },
+  "engines": {
+    "node": "8.11"
+  },
+  "private": true
+}

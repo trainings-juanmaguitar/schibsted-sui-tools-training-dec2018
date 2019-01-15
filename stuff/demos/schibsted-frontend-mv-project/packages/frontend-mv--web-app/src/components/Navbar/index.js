@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-import {LanguageContainer} from '../../state'
-
 import {
   NavbarItem,
   NavbarBrand,
@@ -26,7 +24,6 @@ class NavbarApp extends Component {
     super()
     this.changeLanguageES = this.changeLanguage.bind(null, {locale: 'es'})
     this.changeLanguageEN = this.changeLanguage.bind(null, {locale: 'en'})
-    this.language = new LanguageContainer()
   }
 
   changeLanguage = ({locale}) => {
@@ -46,7 +43,6 @@ class NavbarApp extends Component {
       : `/${locale}${currentPath}`
 
     i18n.setCulture(lang)
-    this.language.changeLanguage({lang})
     router.push(pathRedirect)
   }
 

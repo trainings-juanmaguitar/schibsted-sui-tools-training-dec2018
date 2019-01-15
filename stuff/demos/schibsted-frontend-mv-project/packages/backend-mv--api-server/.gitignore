@@ -1,0 +1,10 @@
+.tern-port
+node_modules/
+npm-debug.log
+public/
+.DS_Store
+server
+package-lock.json
+serviceAccountKey.json
+.env
+firebase-debug.log

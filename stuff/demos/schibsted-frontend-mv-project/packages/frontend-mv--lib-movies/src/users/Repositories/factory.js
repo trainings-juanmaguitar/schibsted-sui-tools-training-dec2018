@@ -27,7 +27,7 @@ class UsersRepositoriesFactory {
   static storageUsersRepository = ({config}) =>
     new StorageUsersRepository({
       config,
-      storage: typeof window !== 'undefined' && window.localStorage,
+      storage: typeof window !== 'undefined' && window.sessionStorage,
       log: factoryLogger({prefix: 'StorageUsersRepository'}),
       userEntityFactory: UsersEntitiesFactory.userEntity
     })
