@@ -2,6 +2,8 @@
 
 This is a demo of a project for finding movies using Schibsted tools
 
+https://20190116-1547675909-spa-mock-production-tqwqacidkh.now.sh/es/favorites
+
 ## Run
 
 Once you have configured the app properly to work locally (follow intructions described at `Local Installation`) we can run the app by doing
@@ -11,6 +13,19 @@ Once you have configured the app properly to work locally (follow intructions de
 - from `frontend-mv--web-app`
   - `npm run spa:dev` to run the SPA version of the web app
   - or `npm run ssr:dev` to run the SSR version of the web app
+
+## Deployment
+
+```
+NOW_TOKEN=Fo8ezwNtCWhSulHxkbubVg7v npm run spa:deploy:now
+```
+
+```
+now \
+  -e THEMOVIEDB_API_KEY=x0xx0x0x0x0xx0x0x0xxxx0x \
+  -e THEMOVIEDB_API_BASE_URL=api.themoviedb.org/3 \
+  -e COOKIE_SESSION_NAME=firebase-auth-token
+```
 
 ## Local Installation
 

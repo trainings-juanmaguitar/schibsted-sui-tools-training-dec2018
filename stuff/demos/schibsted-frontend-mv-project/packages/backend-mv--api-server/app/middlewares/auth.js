@@ -1,19 +1,26 @@
 
-const { asyncMiddleware } = require("../helpers")
+const { asyncMiddleware, getTokenFromHeaders } = require("../helpers")
 const { getCurrentUserService, verifyToken } = require("../services")
 
 const authMiddleware = asyncMiddleware(async (req, res, next) => {
   const { COOKIE_SESSION_NAME } = req.app.locals
   const { cookies } = req
   const cookie = cookies && cookies[COOKIE_SESSION_NAME]
-  const { token } = (cookie && JSON.parse(cookie)) || {}
 
+  if (cookie) {
+    const {token: tokenFromCookie} = JSON.parse(cookie)
+    token = tokenFromCookie
+  }
+  else {
+    token  = getTokenFromHeaders(req)
+  }
+  
   if (!token) {
     req.user = null
     next()
     return
   }
-
+  
   const [errDecodedToken, decodedToken] = await verifyToken({token})
 
   if (errDecodedToken) {

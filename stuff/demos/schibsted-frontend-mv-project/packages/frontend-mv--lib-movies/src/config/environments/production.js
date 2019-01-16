@@ -1,3 +1,3 @@
 export default {
-  FIREBASE_API_URL: 'https://movies-finder-schibsted.herokuapp.com'
+  FIREBASE_API_URL: 'https://backend-mv--api-server-jbrztuvlgj.now.sh'
 }

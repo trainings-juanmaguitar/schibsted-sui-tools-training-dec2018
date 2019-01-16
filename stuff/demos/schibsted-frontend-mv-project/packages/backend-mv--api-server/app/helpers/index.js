@@ -24,5 +24,12 @@ const getKeyByValue = (object, value) => {
   return Object.keys(object).find(key => object[key] === value)
 }
 
+const getTokenFromHeaders = ({headers: {authorization}}) => {
+  if (authorization && authorization.split(' ')[0] === 'Bearer') {
+    return authorization.split(' ')[1]
+  }
+  return null
+}
 
-module.exports = {getAndCache, asyncMiddleware, getKeyByValue}
+
+module.exports = {getAndCache, asyncMiddleware, getKeyByValue, getTokenFromHeaders}

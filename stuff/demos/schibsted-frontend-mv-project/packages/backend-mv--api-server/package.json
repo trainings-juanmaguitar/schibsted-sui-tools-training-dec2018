@@ -1,6 +1,6 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
+  "name": "backend-mv--api-server",
+  "description": "API Server for Movies Finder",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
