@@ -8,21 +8,23 @@ https://20190116-1547675909-spa-mock-production-tqwqacidkh.now.sh/es/favorites
 
 Once you have configured the app properly to work locally (follow intructions described at `Local Installation`) we can run the app by doing
 
-- from `frontend-mv--web-app/src/functions`
-  - `npm run serve` to run the _backend_ (Firebase Cloud Functions)
+- from `backend-mv--api-server`
+  - `npm run dev` to run the _backend_ 
 - from `frontend-mv--web-app`
   - `npm run spa:dev` to run the SPA version of the web app
   - or `npm run ssr:dev` to run the SSR version of the web app
 
 ## Deployment
 
+For SPA through now
 ```
-NOW_TOKEN=Fo8ezwNtCWhSulHxkbubVg7v npm run spa:deploy:now
+NOW_TOKEN=000x000x000x000x000x0 npm run spa:deploy:now
 ```
 
+For Backend (node) through now
 ```
 now \
-  -e THEMOVIEDB_API_KEY=x0xx0x0x0x0xx0x0x0xxxx0x \
+  -e THEMOVIEDB_API_KEY=xxxxxxx000000xxxx000000 \
   -e THEMOVIEDB_API_BASE_URL=api.themoviedb.org/3 \
   -e COOKIE_SESSION_NAME=firebase-auth-token
 ```
@@ -75,17 +77,17 @@ And choose your firebase project
 
 Once this is done you can run from `frontend-mv--web-app` the script `npm run createfirebaseconf` to automatically generate the `firebase-config.json` at `frontend-mv--web-app/src`
 
-### Cloud Function (Backend)
+### Backend
 
 #### Firebase
 
 This project has a backend in the form of a cloud function that also relies on a firebase app. This cloud function needs a credentials JSON file with the name `serviceAccountKey.json` that can be generated from firebase (https://firebase.google.com/docs/admin/setup > Agrega Firebase a tu app)
  
-Once generated put that file in `frontend-mv--web-app/src/functions`
+Once generated put that file in `backend-mv--api-server/app/firebase/serviceAccountKey.json`
 
 #### Environment Variables
 
-The cloud function relies on a `.env` file with some environment variables:
+The backend relies on a `backend-mv--api-server/.env` file with some environment variables:
 
 - `THEMOVIEDB_API_KEY` → Api Key to access the API at `=api.themoviedb.org/3`
 - `THEMOVIEDB_API_BASE_URL`  →  for example `api.themoviedb.org/3`
