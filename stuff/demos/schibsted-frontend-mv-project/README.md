@@ -2,7 +2,7 @@
 
 This is a demo of a project for finding movies using Schibsted tools
 
-https://20190116-1547675909-spa-mock-production-tqwqacidkh.now.sh/es/favorites
+https://20190116-1547675909-spa-mock-production-tqwqacidkh.now.sh/
 
 ## Run
 
