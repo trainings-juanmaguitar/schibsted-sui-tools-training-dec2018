@@ -88,7 +88,7 @@ More DDD
 
 
 
-##### Sesion 4 - Jueves 13 Diciembre
+#### 📅 Sesion 4 - Jueves 13 Diciembre
 
 Routing en Web App
 
@@ -97,7 +97,7 @@ Routing en Web App
 - 👉 [Routing Demo 1](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/blob/devel/stuff/demos/sui-bundler-demo-pro-routes-context)
 
 
-##### Sesion 5 - Viernes 14 Diciembre
+#### 📅 Sesion 5 - Viernes 14 Diciembre
 
 - [sui-components](https://github.com/SUI-Components/sui-components) como primera opción de componentes
 - custom components del proyecto se crean aparte utlizando el `sui-studio` tal y cómo se explica [aqui](https://github.com/trainings-juanmaguitar/schibsted-sui-tools-training/blob/devel/stuff/docs/SUI-STUDIO.md)
